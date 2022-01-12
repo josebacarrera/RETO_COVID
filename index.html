@@ -1,11 +1,68 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="view/css/style.css">
+    <link rel="stylesheet" href="view/css/footer.css">
+
+    <title>Página de Inicio</title>
 </head>
+
 <body>
-    
+    <div id="navbar"></div>
+
+    <div class="row py-2">
+        <div class="col-md-9 col-sm-12 ">
+            <div class="text-center p-2">
+                <img src="view/img/informacion-covid.png" alt="" srcset="" class="img-fluid py-2Z">
+                
+                <img src="view/img/pruebas_covid.png" alt="" srcset="" class="img-fluid py-2">
+            </div>
+        </div>
+        <!-- login-->
+        <div class="col-md-3 col-sm-12  login">
+            <div class="form_login bg-light rounded">
+                <form>
+                    <h5 class="">ACCESO CITA VACUNACION</h5>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="loginUser">DNI: </label>
+                        <input type="text" id="loginUser" class="form-control" />
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="loginPasswordr">Contraseña: </label>
+                        <input type="password" id="loginPasswordr" class="form-control" />
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-block"  ng-click='login()'>Sign in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container py-2">
+        RELLENO
+    </div>
+
+    <div id="footer"></div>
+
+
 </body>
+<!--SCRIPTS-->
+<script src="view/js/jquery-3.6.0.js"></script>
+<script src="view/js/angular.min.js"></script>
+<script src="view/js/bootstrap.bundle.min.js"></script>
+<script src="view/js/script.js"></script>
+<script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
+<script src="view/js/insert.js"></script>
+
 </html>
