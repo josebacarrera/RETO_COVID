@@ -5,10 +5,10 @@
     include_once ("connect_data_LOCAL.php");
 //}
 
-include_once ("RegistroVacunacionClass.php");
+include_once ("registroVacunacionClass.php");
 
 // ////////////////////////////////////////////////////////////////////////////////////////////
-class RegistroVacunacionModel extends RegistroVacunacionClass
+class registroVacunacionModel extends registroVacunacionClass
 {
 
     public $link;
