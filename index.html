@@ -23,14 +23,31 @@
         </div>
         <!-- login-->
         <div class="col-md-6 col-sm-12 bg-danger login">
-            <div class=" bg-light">
-                hola
-            </div>
+            <form id="formLogin">
+
+                <label for="loginUser">User</label>
+                <input id="loginUser" type="text">
+                
+                <label for="loginPasswordr">Password</label>
+                <input id="loginPassword" type="text">
+        
+                <button type="submit" ng-click='login()'>Login</button>
+        
+            </form>
         </div>
 
     </div>
+
+
+
+
 </body>
    <!--SCRIPTS-->
+       
+<script src="view/js/jquery-3.6.0.js"></script>
+<script src="view/js/angular.min.js"></script>
+<script src="view/js/bootstrap.bundle.min.js"></script>
+<script src="view/js/script.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
