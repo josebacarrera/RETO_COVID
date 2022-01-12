@@ -7,7 +7,7 @@ if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
     include_once ("connect_data_LOCAL.php");
 }
 
-include_once("citaClass.php");
+include_once("datosPacienteClass.php");
 
 class datosPacienteModel extends datosPacienteClass{
 
