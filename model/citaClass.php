@@ -2,12 +2,12 @@
 
 class citaClass{
     
-    private $cod;
-    private $tis_paciente;
-    private $cod_paciente;
-    private $fecha;
-    private $hora;
-    private $cod_centro;
+    protected $cod;
+    protected $tis_paciente;
+    protected $cod_paciente;
+    protected $fecha;
+    protected $hora;
+    protected $cod_centro;
     
 
     /**

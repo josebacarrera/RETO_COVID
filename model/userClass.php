@@ -1,12 +1,9 @@
 <?php
-
 class userClass{
-    private $cod;
-    private $cod_rol;
-    private $password;
-    private $dni_sanitario;
-
-    
+    protected $cod;
+    protected $cod_rol;
+    protected $password;
+    protected $dni_sanitario;
 
     /**
      * Get the value of cod

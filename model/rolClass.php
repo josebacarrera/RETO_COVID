@@ -1,9 +1,9 @@
 <?php
 class rolClass 
 {
-    private $cod;
-    private $nombre;
-    private $descripcion;
+    protected $cod;
+    protected $nombre;
+    protected $descripcion;
     
     /**
      * Get the value of cod

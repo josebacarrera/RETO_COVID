@@ -1,10 +1,10 @@
 <?php
 
 class vacunaClass{
-    private $cod;
-    private $nombre;
-    private $max;
-    private $intervalo;
+    protected $cod;
+    protected $nombre;
+    protected $max;
+    protected $intervalo;
     
 
     /**

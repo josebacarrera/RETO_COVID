@@ -1,14 +1,14 @@
 <?php
 
 class datosPacienteClass{
-    private $tis;
-    private $nombre;
-    private $apellido;
-    private $fecha_nacimiento;
-    private $email;
-    private $foto_perfil;
-    private $direccion;
-    private $cod_localidad;
+    protected $tis;
+    protected $nombre;
+    protected $apellido;
+    protected $fecha_nacimiento;
+    protected $email;
+    protected $foto_perfil;
+    protected $direccion;
+    protected $cod_localidad;
     
 
     /**
