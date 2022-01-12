@@ -16,27 +16,41 @@
 <body>
     <div id="navbar"></div>
 
-    <div class="row">
-        <div class="col-md-6 col-sm-12 bg-dark">
+    <div class="row py-2">
+        <div class="col-md-9 col-sm-12 ">
             <div class="text-center p-2">
-                <img src="view/img/vacunacion_peru.jpg" alt="" srcset="" class="img-fluid">
+                <img src="view/img/informacion-covid.png" alt="" srcset="" class="img-fluid py-2Z">
+                
+                <img src="view/img/pruebas_covid.png" alt="" srcset="" class="img-fluid py-2">
             </div>
         </div>
         <!-- login-->
-        <div class="col-md-6 col-sm-12 bg-danger login">
-            <form id="formLogin">
+        <div class="col-md-3 col-sm-12  login">
+            <div class="form_login bg-light rounded">
+                <form>
+                    <h5 class="">ACCESO CITA VACUNACION</h5>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="loginUser">DNI: </label>
+                        <input type="text" id="loginUser" class="form-control" />
+                    </div>
 
-                <label for="loginUser">User</label>
-                <input id="loginUser" type="text">
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="loginPasswordr">Contraseña: </label>
+                        <input type="password" id="loginPasswordr" class="form-control" />
+                    </div>
 
-                <label for="loginPasswordr">Password</label>
-                <input id="loginPassword" type="text">
-
-                <button type="submit" ng-click='login()'>Login</button>
-
-            </form>
+                    <!-- Submit button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-block"  ng-click='login()'>Sign in</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
+    </div>
+    <div class="container py-2">
+        RELLENO
     </div>
 
     <div id="footer"></div>

@@ -2,18 +2,30 @@
     font-family: title;
     font-size: 20px;
 }
-
+.text {
+    font-family: text;
+}
 a {
     color: black;
 }
 
 .login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    margin-top: 10px;
 }
 
+.form_login{
+    width: 90%;
+    padding: 10px;
+    box-shadow: 5px 10px;
+}
+.btn-primary{
+    background-color: #67B99A;
+    border-color: #67B99A;
+}
+.btn-primary:hover{
+    background-color: #057A55;
+    border-color: #057A55;
+}
 /*Fuentes*/
 
 @font-face {
