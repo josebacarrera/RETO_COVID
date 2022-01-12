@@ -1,29 +1,25 @@
-var miApp = angular.module('miApp',[]);
-
-miApp.controller('mainController', async ($scope) => {
-
-    $scope.login = () => {
-        console.log(event.target);
-        $scope.user = await login();
-    }
-
-    $scope.$digest();
-
-})
-
+$('#formLogin').on('submit', login)
 
 function login() {
-    return new Promise ((resolve,reject)=>{
 
-        fetch('controller/cLogin.php', {
-            method: 'POST', 
-            headers:{'Content-Type': 'application/json'}
-        }).then(res => res.json()).then(result => {
+    var url = "controller/cLogin.php";
+	var data = {
+                    'solicitud':'LogDNI',
+                    'usuario':$('#formLogin input')[0].value, 
+                    'password':$('#formLogin input')[1].value
+                };
+	
+	fetch(url, {
+		  method: 'POST',
+		  body: JSON.stringify(data),
+		  headers:{'Content-Type': 'application/json'}  
+		  
+    }).then(res => res.json()).then(result => {
 
-          console.log(result);
-          resolve(result);
+        console.log(result);
 
-        }).catch(error => console.error('Error status:', error));
+    }).catch(error => console.error('Error status:', error));
+    
+    return false;
 
-    })
 }
