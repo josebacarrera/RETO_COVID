@@ -4,6 +4,7 @@ miApp.controller('mainController', async ($scope) => {
 
     $scope.login = () => {
         console.log(event.target);
+        $scope.user = await login();
     }
 
     $scope.$digest();
