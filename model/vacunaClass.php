@@ -1,11 +1,11 @@
 <?php
 
-class vacunaClass{
-    private $cod;
-    private $nombre;
-    private $max;
-    private $intervalo;
-    
+class vacunaClass
+{
+    protected $cod;
+    protected $nombre;
+    protected $max;
+    protected $intervalo;
 
     /**
      * Get the value of cod
