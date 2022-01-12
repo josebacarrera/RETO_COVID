@@ -26,7 +26,4 @@ public function CloseConnect()
     mysqli_close ($this->link);
 }
 
-
-
-
 }  
