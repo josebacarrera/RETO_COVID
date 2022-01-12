@@ -1,5 +1,6 @@
 <?php
-class userClass{
+class userClass
+{
     protected $cod;
     protected $cod_rol;
     protected $password;

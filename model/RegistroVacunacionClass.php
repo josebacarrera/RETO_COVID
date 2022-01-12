@@ -2,7 +2,6 @@
 
 class RegistroVacunacionClass
 {
-
     protected $cod;
     protected $tis;
     protected $cod_vacuna;

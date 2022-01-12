@@ -1,6 +1,7 @@
 <?php
 
-class datosPacienteClass{
+class datosPacienteClass
+{
     protected $tis;
     protected $nombre;
     protected $apellido;
@@ -9,7 +10,6 @@ class datosPacienteClass{
     protected $foto_perfil;
     protected $direccion;
     protected $cod_localidad;
-    
 
     /**
      * Get the value of tis

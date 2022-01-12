@@ -1,11 +1,11 @@
 <?php
 
-class vacunaClass{
+class vacunaClass
+{
     protected $cod;
     protected $nombre;
     protected $max;
     protected $intervalo;
-    
 
     /**
      * Get the value of cod

@@ -1,14 +1,13 @@
 <?php
 
-class citaClass{
-    
+class citaClass
+{
     protected $cod;
     protected $tis_paciente;
     protected $cod_paciente;
     protected $fecha;
     protected $hora;
     protected $cod_centro;
-    
 
     /**
      * Get the value of cod

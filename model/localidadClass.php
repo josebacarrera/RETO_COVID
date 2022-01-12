@@ -1,5 +1,6 @@
 <?php
-class localidadClass{
+class localidadClass
+{
     protected $cod;
     protected $nombre;
 

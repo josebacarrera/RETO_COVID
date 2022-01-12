@@ -11,8 +11,6 @@ class centroClass
     private $horario_noche;
     private $dias;
 
-    
-
     /**
      * Get the value of cod
      */ 
