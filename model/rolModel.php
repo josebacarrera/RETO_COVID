@@ -1,15 +1,8 @@
 <?php
+ include_once 'rolClass.php';
 
-if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
-    include_once ("connect_data_SERV.php");
-} else {
-    include_once ("connect_data_LOCAL.php");
-}
-
-include_once 'centroClass.php';
-
-class centroModel extends centroClass{
-
+ class rolModel extends rolClass{
+     
     private $link;  // datu basera lotura - enlace a la bbdd  
 
     public function OpenConnect() {
@@ -38,4 +31,4 @@ class centroModel extends centroClass{
         return get_object_vars($this);
     }
 
-}
+ }

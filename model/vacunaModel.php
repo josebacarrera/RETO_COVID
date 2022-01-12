@@ -1,15 +1,8 @@
 <?php
 
-if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
-    include_once ("connect_data_SERV.php");
-} else {
-    include_once ("connect_data_LOCAL.php");
-}
+include_once 'vacunaClass.php';
 
-include_once 'centroClass.php';
-
-class centroModel extends centroClass{
-
+class vacunaModel extends vacunaClass{
     private $link;  // datu basera lotura - enlace a la bbdd  
 
     public function OpenConnect() {
