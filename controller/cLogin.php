@@ -1,14 +1,14 @@
 <?php
-
-include_once ("../model/userModel.php");
+require_once ("../model/userModel.php");
 error_reporting(E_ERROR | E_WARNING | E_PARSE); // <-- Esto solo muestra errores de ejecución
-$response = array();
 
+$response = array();
 $data=json_decode(file_get_contents("php://input"),true);
 
-$response['error'] = false;
 
 // Bloque de Datos Recibidos
+
+$response['error'] = false;
 
 if (isset($data['solicitud'])) {
     $solicitud=$data['solicitud'];
@@ -41,6 +41,7 @@ if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay
     if ($solicitud == 'LogDNI') {
         $user->setDni_sanitario($usuario);
         $user->setPassword($password);
+        $user->loginDNI();
     }
 
 }

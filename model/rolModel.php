@@ -27,6 +27,25 @@
 
     // FUNCIONES MOD //
 
+    public function getRolByCode() {
+
+        $this->OpenConnect();  
+        
+        $sql = "SELECT * FROM rol WHERE cod = '" . $this->getCod() . "'"; 
+        
+        $result = $this->link->query($sql);
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $this->setNombre($row['nombre']);
+            $this->setDescripcion($row['descripcion']);
+
+        }
+
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
+
     public function ObjVars() {
         return get_object_vars($this);
     }
