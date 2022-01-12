@@ -1,6 +1,6 @@
 <?php
 
-class datosPacienteClass{
+class datos_paciente{
     private $tis;
     private $nombre;
     private $apellido;

@@ -7,33 +7,29 @@ if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
     include_once ("connect_data_LOCAL.php");
 }
 
-include_once("datosPacienteClass.php");
+include_once("citaClass.php");
 
 class datosPacienteModel extends datosPacienteClass{
 
-    private $links;
-  
-public function OpenConnect()
-{
-    $konDat=new connect_data();
-    try
-    {
-        $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
+    private $link;
+
+    //enlace con la base de datos
+
+    public function OpenConnect(){
+        $kondat=new connect data();
+        try{
+            $this->link=new mysqli($kondat->host,$kondat->userbbdd,$kondat->passbbdd,$kondat->ddbbname);
+            // creamos el objeto link en la clase mysqli con la informacion de conexion
+        }
+        catch(Exception $e){
+            echo $e->getMessage();
+        }
+        $this->link->set_charset("utf8");
+        // forzamos el uso de utf8 para el intercambio de datos entre la aplicacion y la base de datos
+
     }
-    catch(Exception $e)
-    {
-        echo $e->getMessage();
+    public function CloseConnect() {
+        mysqli_close ($this->link);
     }
-    $this->link->set_charset("utf8"); // honek behartu egiten du aplikazio eta
-    //                  //databasearen artean UTF -8 erabiltzera datuak trukatzeko
-}
-
-public function CloseConnect()
-{
-    mysqli_close ($this->link);
-}
-
-
-
 }
 ?>
