@@ -2,12 +2,18 @@
 var reto_covid = angular.module('reto_covid', []);
 reto_covid.controller('loginController', function ($scope) {
 
-    $scope.login() = function () {
+    $scope.usuario;
+    $scope.password;
+
+    
+
+    $scope.login = function () {
+
         var url = "controller/cLogin.php";
         var data = {
-                        'solicitud':'LogDNI',
-                        'usuario':$('#formLogin input')[0].value, 
-                        'password':$('#formLogin input')[1].value
+                        'solicitud':'loginDni',
+                        'usuario':$scope.usuario,
+                        'password':$scope.password
                     };
 
         fetch(url, {
