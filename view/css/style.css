@@ -1,3 +1,4 @@
+/*General*/
 .title {
     font-family: title;
 }
@@ -10,23 +11,34 @@ a {
     color: black;
 }
 
-.trabajo{
-    opacity: 0.7;
-    background-image: url('https://mundopositor.info/wp-content/uploads/2021/12/Enfermero-contento.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+.row {
+    margin-right: 0;
 }
 
+.btn-primary {
+    background-color: #67B99A;
+    border-color: #67B99A;
+}
+
+.btn-primary:hover {
+    background-color: #057A55;
+    border-color: #057A55;
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+
+/*Login*/
 .login {
     display: flex;
     margin-top: 10px;
     justify-content: center;
     align-items: center;
-}
-
-.row {
-    margin-right: 0;
 }
 
 .form_login {
@@ -35,23 +47,18 @@ a {
     box-shadow: 5px 10px;
 }
 
-.btn-primary {
-    background-color: #67B99A;
-    border-color: #67B99A;
-}
-.overlay-text{
-    position: absolute; 
-    bottom: 0; 
-    right: 0; 
-    width: 100%; 
+.trabajo {
+    opacity: 0.7;
+    background-image: url('https://mundopositor.info/wp-content/uploads/2021/12/Enfermero-contento.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
-.card-img-top{
+
+/*Card*/
+.card-img-top {
     opacity: 0.6;
-}
-.btn-primary:hover {
-    background-color: #057A55;
-    border-color: #057A55;
 }
 
 
@@ -72,7 +79,20 @@ a {
     display: flex;
 }
 
-/* medium and up screens */
+
+/*Fuentes*/
+@font-face {
+    font-family: text;
+    src: url(../fonts/Champagne\ &\ Limousines.ttf);
+}
+
+@font-face {
+    font-family: title;
+    src: url(../fonts/BebasNeue-Regular.ttf);
+}
+
+
+/*MediaQuery medium and up screens */
 @media (min-width: 768px) {
 
     .carousel-inner .carousel-item-end.active,
@@ -89,16 +109,4 @@ a {
 .carousel-inner .carousel-item-end,
 .carousel-inner .carousel-item-start {
     transform: translateX(0);
-}
-
-
-/*Fuentes*/
-@font-face {
-    font-family: text;
-    src: url(../fonts/Champagne\ &\ Limousines.ttf);
-}
-
-@font-face {
-    font-family: title;
-    src: url(../fonts/BebasNeue-Regular.ttf);
 }
