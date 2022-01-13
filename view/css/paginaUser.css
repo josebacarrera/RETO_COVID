@@ -1,0 +1,25 @@
+body {
+    background-color: #eee
+}
+
+.nav-link:hover {
+    background-color: #525252 !important
+}
+
+.nav-link .fa {
+    transition: all 1s
+}
+
+.nav-link:hover .fa {
+    transform: rotate(360deg)
+}
+.nav-link .fas {
+    transition: all 1s
+}
+
+.nav-link:hover .fas {
+    transform: rotate(360deg)
+}
+.covid{
+    font-size: 40px;
+}
