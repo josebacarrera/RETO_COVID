@@ -2,7 +2,7 @@
 var reto_covid = angular.module('reto_covid', []);
 reto_covid.controller('loginController', function ($scope) {
 
-    $scope.login() = function () {
+    $scope.login = function () {
         var url = "controller/cLogin.php";
         var data = {
                         'solicitud':'LogDNI',
