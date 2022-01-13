@@ -7,8 +7,9 @@
     font-family: text;
 }
 
-a {
+.navbar-nav a {
     color: black;
+    font-size: 25px;
 }
 
 .row {
