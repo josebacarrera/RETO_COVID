@@ -6,6 +6,7 @@ $response = array();
 $data=json_decode(file_get_contents("php://input"),true);
 
 
+
 // Bloque de Datos Recibidos
 
 $response['error'] = false;
@@ -13,41 +14,46 @@ $response['error'] = false;
 if (isset($data['solicitud'])) {
     $solicitud=$data['solicitud'];
 } else {
-    $response['error'] = 'true';
+    $response['error'] = true;
     $response['errorInf'] = 'Solicitud Not Found';
 }
 
 if (isset($data['usuario'])) {
     $usuario=$data['usuario'];
 } else {
-    $response['error'] = 'true';
+    $response['error'] = true;
     $response['errorInf'] = 'User Not Found';
 }
 
 if (isset($data['password'])) {
     $password=$data['password'];
 } else {
-    $response['error'] = 'true';
+    $response['error'] = true;
     $response['errorInf'] = 'Password Not Found';
 }
 
 // FIN Bloque de Datos Recibidos
 
 if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
-    $response['debug'] = 'Testing';
 
     $user = new userModel();
     
     if ($solicitud == 'LogDNI') {
         $user->setDni_sanitario($usuario);
         $user->setPassword($password);
-        $user->loginDNI();
-    }
+        
+        if ($user->loginDNI()) {
+            session_start();
+            $response['logged'] = true;
+            $response['user'] = $user->ObjVars();
+        } else {
+            $response['error'] = true;
+            $response['errorInf'] = 'Wrong User or Password';
+        }
+
+    }    
 
 }
-
-$response['user'] = $user->ObjVars();
-
 
 echo json_encode($response);
 

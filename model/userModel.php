@@ -2,6 +2,7 @@
 
 include_once 'userClass.php';
 include_once 'rolModel.php';
+include_once 'sanitarioModel.php';
 
 if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
     include_once ("connect_data_serv.php");
@@ -12,7 +13,8 @@ if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
 class userModel extends userClass{
     
     private $link;  // datu basera lotura - enlace a la bbdd 
-    private $objRol; 
+    private $objRol;
+    private $objSanitario; 
 
     public function OpenConnect() {
         $konDat=new connect_data();
@@ -51,8 +53,13 @@ class userModel extends userClass{
 
             $this->objRol = new rolModel();
             $this->objRol->setCod($row['cod_rol']);
-            $this->objRol->getRolByCode();
-            $this->objRol = get_object_vars($this->objRol);
+            $this->objRol = $this->objRol->getRolByCode();
+
+            $this->objSanitario = new sanitarioModel();
+            $this->objSanitario->setDni($row['dni_sanitario']);
+            $this->objSanitario = $this->objSanitario->getSanitarioByDni();
+
+            return true;
 
         }
 

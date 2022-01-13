@@ -31,7 +31,7 @@
 
         $this->OpenConnect();  
         
-        $sql = "SELECT * FROM rol WHERE cod = '" . $this->getCod() . "'"; 
+        $sql = "SELECT * FROM rol WHERE cod = " . $this->getCod(); 
         
         $result = $this->link->query($sql);
         
@@ -42,8 +42,11 @@
 
         }
 
+        return get_object_vars($this);
+
         mysqli_free_result($result);
         $this->CloseConnect();
+
     }
 
     public function ObjVars() {
