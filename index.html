@@ -57,6 +57,52 @@
     
 
     </div>
+
+    <div class="container py-2">
+
+        <div id="carousel" class="">
+            <div class="carousel-inner">
+              <div class="item">
+                test1
+              </div>
+              <div class="item">
+                test2
+              </div>
+              <div class="item">
+                test3
+              </div>
+              <div class="item">
+                test4
+              </div>
+              <div class="item">
+                test5
+              </div>
+            </div>
+            <button class="carousel-control" type="button" data-slide="next">
+              next
+            </button>
+            <button class="carousel-control" type="button" data-slide="prev">
+              prev
+            </button>
+          </div>
+
+    </div>
+
+    
+    <div class="container py-2" ng-controller="carouselController">
+
+        <h2>TESTING</h2>
+
+        <div class="d-flex">
+            <div class="card" ng-repeat='card in activeArr'>
+                {{ card }}
+            </div>
+        </div>
+
+        
+
+    </div>
+
     <!--FOOTER-->
     <div id="footer"></div>
 
