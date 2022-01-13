@@ -1,16 +1,40 @@
+/*General*/
 .title {
     font-family: title;
-    font-size: 20px;
 }
 
 .text {
     font-family: text;
 }
 
-a {
+.navbar-nav a {
     color: black;
+    font-size: 25px;
 }
 
+.row {
+    margin-right: 0;
+}
+
+.btn-primary {
+    background-color: #67B99A;
+    border-color: #67B99A;
+}
+
+.btn-primary:hover {
+    background-color: #057A55;
+    border-color: #057A55;
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+
+/*Login*/
 .login {
     display: flex;
     margin-top: 10px;
@@ -24,14 +48,18 @@ a {
     box-shadow: 5px 10px;
 }
 
-.btn-primary {
-    background-color: #67B99A;
-    border-color: #67B99A;
+.trabajo {
+    opacity: 0.7;
+    background-image: url('https://mundopositor.info/wp-content/uploads/2021/12/Enfermero-contento.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
-.btn-primary:hover {
-    background-color: #057A55;
-    border-color: #057A55;
+
+/*Card*/
+.card-img-top {
+    opacity: 0.6;
 }
 
 
@@ -52,7 +80,20 @@ a {
     display: flex;
 }
 
-/* medium and up screens */
+
+/*Fuentes*/
+@font-face {
+    font-family: text;
+    src: url(../fonts/Champagne\ &\ Limousines.ttf);
+}
+
+@font-face {
+    font-family: title;
+    src: url(../fonts/BebasNeue-Regular.ttf);
+}
+
+
+/*MediaQuery medium and up screens */
 @media (min-width: 768px) {
 
     .carousel-inner .carousel-item-end.active,

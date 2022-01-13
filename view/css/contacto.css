@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+.uno{
+    border: solid black 1px;
+}
+.dos{
+    border: solid black 1px;
+}
+.container2{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+.bat{
+    border: solid black 1px;
+    width: 33%;
+}
+.bi{
+    border: solid black 1px;
+    width: 33%;
+}
+.hiru{
+    border: solid black 1px;
+    width: 33%;
+}

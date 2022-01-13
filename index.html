@@ -20,43 +20,70 @@
     <div id="navbar"></div>
 
     <div class="row py-2">
-        <div class="col-lg-9 col-md-8 col-sm-12 ">
-            <div class="text-center p-2">
-                <img src="view/img/informacion-covid.png" alt="" srcset="" class="img-fluid py-2Z">
-                
-                <img src="view/img/pruebas_covid.png" alt="" srcset="" class="img-fluid py-2">
+        <div class="col-lg-7 col-md-8 col-sm-12 ">
+            <div class="text-center p-5">
+                <img src="view/img/informacion-covid.png" class="img-fluid py-2">
+                <img src="https://www.grupoaseguranza.com/adjuntos/fichero_36627_20200625.jpg" class="img-fluid py-2 w-50">
+                <img src="view/img/pruebas_covid.png" class="img-fluid py-2">
             </div>
         </div>
         <!-- login-->
-        <div class="col-lg-3 col-md-4 col-sm-12  login">
+        <div class="col-lg-5 col-md-4 col-sm-12  login">
             <div class="form_login bg-light rounded">
                 <form ng-controller="loginController">
                     <h5 class="">ACCESO CARPETA SALUD</h5>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="loginUser">DNI: </label>
-                        <input type="text" id="loginUser" class="form-control" />
+                        <input type="text" class="form-control" ng-model='usuario'/>
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="loginPasswordr">Contraseña: </label>
-                        <input type="password" id="loginPasswordr" class="form-control" />
+                        <input type="password" class="form-control" ng-model='password'/>
                     </div>
 
                     <!-- Submit button -->
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary btn-block"  ng-click='login()'>Sign in</button>
+                        <button type="button" class="btn btn-primary btn-block" ng-click='login()'>Sign in</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="container py-2">
-        
-        
+    <div class="text-center py-5 my-5 trabajo">
+        <h1 class="title">Trabajamos con aseguradoras de ámbito nacional e internacional</h1>
+        <p>Quirónsalud presta servicios asistenciales a través de diferentes acuerdos con un amplio espectro de
+            compañías aseguradoras. Solicita cita en alguno de nuestros centros que tienen acuerdo con estas
+            aseguradoras.</p>
 
-    
+        <button type="button" class="btn btn-primary text-light"> <i class="fas fa-calendar"></i> Pedir cita</button>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4 m-3 title text-center">
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://www.osakidetza.euskadi.eus/images/ab84-servicios-atencion-16-9.jpg"
+                    class="card-img-top img-responsive" alt="...">
+                <h5 class="overlay-text">Atención a pacientes</h5>
+
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://www.osakidetza.euskadi.eus/images/ab84-servicios-telefono-16-9.jpg"
+                    class="card-img-top img-responsive" alt="...">
+                <h5 class="overlay-text">Atención telefónica</h5>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://www.osakidetza.euskadi.eus/images/home/ab84-home-innovacion.jpg"
+                    class="card-img-top img-responsive" alt="...">
+                <h5 class="overlay-text">Investigación e innovación</h5>
+
+            </div>
+        </div>
 
     </div>
     <!--FOOTER-->
