@@ -4,7 +4,7 @@ function login() {
 
     var url = "controller/cLogin.php";
 	var data = {
-                    'solicitud':'LogDNI',
+                    'solicitud':'loginDni',
                     'usuario':$('#formLogin input')[0].value, 
                     'password':$('#formLogin input')[1].value
                 };
