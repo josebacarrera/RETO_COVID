@@ -1,25 +1,28 @@
-$('#formLogin').on('submit', login)
 
-function login() {
+var reto_covid = angular.module('reto_covid', []);
+reto_covid.controller('loginController', function ($scope) {
 
-    var url = "controller/cLogin.php";
-	var data = {
-                    'solicitud':'LogDNI',
-                    'usuario':$('#formLogin input')[0].value, 
-                    'password':$('#formLogin input')[1].value
-                };
-	
-	fetch(url, {
-		  method: 'POST',
-		  body: JSON.stringify(data),
-		  headers:{'Content-Type': 'application/json'}  
-		  
-    }).then(res => res.json()).then(result => {
+    $scope.login() = function () {
+        var url = "controller/cLogin.php";
+        var data = {
+                        'solicitud':'LogDNI',
+                        'usuario':$('#formLogin input')[0].value, 
+                        'password':$('#formLogin input')[1].value
+                    };
 
-        console.log(result);
-
-    }).catch(error => console.error('Error status:', error));
+        fetch(url, {
+              method: 'POST',
+              body: JSON.stringify(data),
+              headers:{'Content-Type': 'application/json'}  
+              
+        }).then(res => res.json()).then(result => {
     
-    return false;
+            console.log(result);
+    
+        }).catch(error => console.error('Error status:', error));
+        
+        return false;    
+    };
+});
 
-}
+
