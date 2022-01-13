@@ -1,10 +1,9 @@
+/* INICIO MENU LATERAL */
 body {
     background-color: #eee
 }
 
-.nav-link:hover {
-    background-color: #525252 !important
-}
+
 
 .nav-link .fa {
     transition: all 1s
@@ -23,3 +22,68 @@ body {
 .covid{
     font-size: 40px;
 }
+
+/* FIN MENU LATERAL */
+/* CONTAINER */
+.container{
+    background-color: #c9f8e4;
+    height: 100vh;
+    width: 90vw;
+    position: absolute;
+    margin-left: 16vw;
+    margin-top: -100vh;
+    display:flex;
+    flex-direction: column;
+}
+/* FIN CONTAINER */
+
+/* INICIO AGENDA */
+.agenda{
+    padding: 5%;
+    display: none;
+    
+}
+.agendaOptions{
+    display:flex;
+    flex-direction: row;
+    margin-top: 10%;
+    
+}
+.agendaOpt{
+    height: 25vh;
+    width: 15vw;
+    background-color: white;
+    border: 0px solid #1C6EA4;
+    border-radius: 30px;
+    -webkit-box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.27); 
+    box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.27);
+    margin: 5%;
+    text-align: center;
+    padding-top: 4.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-weight: bold;
+}
+.agendaOpt:hover{
+    background-color: rgb(238, 232, 232);
+    transform: scale(1.1);
+    transition: 0.5s ease-out; 
+    
+    
+}
+.agendaOpt:hover::after{
+    background-color: rgb(238, 232, 232);
+    transform: scale(1.1);
+    transition: 0.5s ease-out; 
+    
+    
+}
+
+
+/* FIN AGENDA */
+/* INICIO INFORMES */
+.informe{
+    padding: 5%;
+    
+}
+/* FIN INFORMES */
