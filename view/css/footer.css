@@ -4,7 +4,7 @@
 }
 footer { 
     width:100%;
-    background-color:#263238; 
+    background-color:#036666a1; 
     min-height:250px; 
     padding:10px 0px 25px 0px;
 }
@@ -60,7 +60,7 @@ footer p {
 }
 
 .bottom_border { 
-    border-bottom:1px solid #323f45; 
+    border-bottom:1px solid white; 
     padding-bottom:20px;
 }
 .foote_bottom_ul_amrc {
