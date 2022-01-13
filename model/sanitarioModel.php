@@ -1,5 +1,5 @@
 <?php
-include_once 'sanitariosClass.php';
+include_once 'sanitarioClass.php';
 
 class sanitarioModel extends sanitarioClass{
     
@@ -26,6 +26,31 @@ class sanitarioModel extends sanitarioClass{
     }
 
     // FUNCIONES MOD //
+
+    public function getSanitarioByDni() {
+
+        $this->OpenConnect();  
+        
+        $sql = "SELECT * FROM sanitario WHERE dni = '" . $this->getDni() . "'"; 
+        
+        $result = $this->link->query($sql);
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $this->setNombre($row['nombre']);
+            $this->setApellido($row['apellido']);
+            $this->setCargo($row['cargo']);
+            $this->setAdmin($row['admin']);
+            $this->setCod_centro($row['cod_centro']);
+
+        }
+
+        return get_object_vars($this);
+
+        mysqli_free_result($result);
+        $this->CloseConnect();
+
+    }
 
     public function ObjVars() {
         return get_object_vars($this);

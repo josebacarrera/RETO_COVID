@@ -1,6 +1,6 @@
 <?php
 
-class RegistroVacunacionClass
+class registroVacunacionClass
 {
     protected $cod;
     protected $tis;
