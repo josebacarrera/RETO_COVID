@@ -30,26 +30,57 @@
         </div>
         <!-- login-->
         <div class="col-lg-5 col-md-4 col-sm-12  login">
+
+            
             <div class="form_login bg-light rounded border">
-                <form ng-controller="loginController">
-                    <h5 class="">ACCESO CARPETA SALUD</h5>
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="loginUser">DNI: </label>
-                        <input type="text" class="form-control" ng-model='usuario'/>
-                    </div>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">ACCESO CARPETA SALUD</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">ACCESO TRABAJADORES</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <form class="p-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" value=" ">
+                                <label for="floatingInput">TIS</label>
+                              </div>
+                              <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingPassword" value=" ">
+                                <label for="floatingPassword">Fecha de nacimiento</label>
+                              </div>
 
-                    <!-- Password input -->
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="loginPasswordr">Contraseña: </label>
-                        <input type="password" class="form-control" ng-model='password'/>
+                        </form>
                     </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <form ng-controller="loginController" class="p-3">
+                            <!-- Email input -->
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" ng-model='usuario'/>
+                                <label class="form-label" for="loginUser">DNI: </label>
 
-                    <!-- Submit button -->
-                    <div class="text-center">
-                        <button type="button" class="btn btn-primary btn-block" ng-click='login()'>Sign in</button>
+                            </div>
+        
+                            <!-- Password input -->
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" ng-model='password'/>
+                                <label class="form-label" for="loginPasswordr">Contraseña: </label>
+
+                            </div>
+        
+                            <!-- Submit button -->
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary btn-block" ng-click='login()'>Sign in</button>
+                            </div>
+                        </form>
+
                     </div>
-                </form>
+                  </div>
+                  
+
             </div>
         </div>
     </div>
