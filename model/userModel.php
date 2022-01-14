@@ -1,10 +1,20 @@
 <?php
 
 include_once 'userClass.php';
+include_once 'rolModel.php';
+include_once 'sanitarioModel.php';
+
+if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
+    include_once ("connect_data_serv.php");
+} else {
+    include_once ("connect_data_local.php");
+}
 
 class userModel extends userClass{
     
-    private $link;  // datu basera lotura - enlace a la bbdd  
+    private $link;  // datu basera lotura - enlace a la bbdd 
+    private $objRol;
+    private $objSanitario; 
 
     public function OpenConnect() {
         $konDat=new connect_data();
@@ -27,6 +37,35 @@ class userModel extends userClass{
     }
 
     // FUNCIONES MOD //
+
+    public function loginDNI() {
+
+        $this->OpenConnect();  
+        
+        $sql = "CALL spLogin('" . $this->getDni_sanitario() . "','" . $this->getPassword() . "')"; 
+        
+        $result = $this->link->query($sql);
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $this->setCod($row['cod']);
+            $this->setCod_rol($row['cod_rol']);
+
+            $this->objRol = new rolModel();
+            $this->objRol->setCod($row['cod_rol']);
+            $this->objRol = $this->objRol->getRolByCode();
+
+            $this->objSanitario = new sanitarioModel();
+            $this->objSanitario->setDni($row['dni_sanitario']);
+            $this->objSanitario = $this->objSanitario->getSanitarioByDni();
+
+            return true;
+
+        }
+
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
 
     public function ObjVars() {
         return get_object_vars($this);

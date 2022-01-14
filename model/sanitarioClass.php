@@ -1,13 +1,13 @@
 <?php
 class sanitarioClass 
 {
-    private $cod;
-    private $nombre;
-    private $apellido;
-    private $dni;
-    private $cargo;
-    private $admin;
-    private $cod_centro;
+    protected $cod;
+    protected $nombre;
+    protected $apellido;
+    protected $dni;
+    protected $cargo;
+    protected $admin;
+    protected $cod_centro;
 
     /**
      * Get the value of cod

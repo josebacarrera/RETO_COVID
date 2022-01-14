@@ -1,17 +1,12 @@
 <?php
 
-class RegistroVacunacionClass
+class registroVacunacionClass
 {
-
-    public $cod;
-
-    public $tis;
-
-    public $cod_vacuna;
-
-    public $dosis;
-
-    public $fecha_ultima_vacuna;
+    protected $cod;
+    protected $tis;
+    protected $cod_vacuna;
+    protected $dosis;
+    protected $fecha_ultima_vacuna;
 
     /**
      * Get the value of cod

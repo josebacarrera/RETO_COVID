@@ -1,15 +1,15 @@
 <?php
 
-class datos_paciente{
-    private $tis;
-    private $nombre;
-    private $apellido;
-    private $fecha_nacimiento;
-    private $email;
-    private $foto_perfil;
-    private $direccion;
-    private $cod_localidad;
-    
+class datosPacienteClass
+{
+    protected $tis;
+    protected $nombre;
+    protected $apellido;
+    protected $fecha_nacimiento;
+    protected $email;
+    protected $foto_perfil;
+    protected $direccion;
+    protected $cod_localidad;
 
     /**
      * Get the value of tis
