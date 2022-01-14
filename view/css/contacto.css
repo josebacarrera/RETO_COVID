@@ -1,0 +1,22 @@
+body{
+    background-color: #99E2B4;
+}
+.container{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+.caja{
+    border: solid black 1px;
+    background-color: #67B99A;
+}
+.container2{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+.caja2{
+    border: solid black 1px;
+    width: 33%;
+    background-color: #67B99A;
+}
