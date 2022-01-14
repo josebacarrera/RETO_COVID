@@ -71,7 +71,43 @@ body {
     
     
 }
-.agendaOpt:hover::after{
+
+
+/* FIN AGENDA */
+/* INICIO INFORMES */
+.informe{
+    padding: 5%;
+    display: none;
+}
+/* FIN INFORMES */
+/* INICIO COVID AREA */
+.vacuna{
+    padding: 5%;
+    
+}
+.vacunaOptions{
+    display:flex;
+    flex-direction: row;
+    margin-top: 10%;
+    
+}
+.vacunaOpt{
+    height: 25vh;
+    width: 15vw;
+    background-color: white;
+    border: 0px solid #1C6EA4;
+    border-radius: 30px;
+    -webkit-box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.27); 
+    box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.27);
+    margin: 5%;
+    text-align: center;
+    padding-top: 4.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-weight: bold;
+    
+}
+.vacunaOpt:hover{
     background-color: rgb(238, 232, 232);
     transform: scale(1.1);
     transition: 0.5s ease-out; 
@@ -79,11 +115,4 @@ body {
     
 }
 
-
-/* FIN AGENDA */
-/* INICIO INFORMES */
-.informe{
-    padding: 5%;
-    
-}
-/* FIN INFORMES */
+/* FIN COVID AREA */
