@@ -45,18 +45,14 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <form class="p-3">
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="tis" value=" ">
+                                <input type="text" class="form-control" id="tis" value=" ">
                                 <label for="tis">TIS (ej.: 12345678)</label>
                               </div>
                               <div class="form-floating">
-                                <input type="text" class="form-control" id="birthDate" value=" ">
-                                <label for="birthDate">Fecha de nacimiento (ej.: 01.01.2001)</label>
+                                <input type="date" class="form-control" id="birthDate" >
+                                <label for="birthDate">Fecha de nacimiento (ej.: 09/09/1999)</label>
                               </div>
-
                         </form>
-
-
-                        
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <form ng-controller="loginController" class="p-3">
