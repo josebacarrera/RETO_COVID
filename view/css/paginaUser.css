@@ -1,9 +1,13 @@
+
+.contenedorgeneral{
+    display: flex;
+    flex-direction: row;
+}
+
 /* INICIO MENU LATERAL */
 body {
     background-color: #eee
 }
-
-
 
 .nav-link .fa {
     transition: all 1s
@@ -71,7 +75,6 @@ body {
     
     
 }
-
 
 /* FIN AGENDA */
 /* INICIO INFORMES */
