@@ -239,6 +239,10 @@ b{
     font: bold;
 }
 
+#bloque{
+    width: 25%;
+}
+
 /* RESPONSIVE */ 
  @media screen and (max-width:991.5px)  {
     nav div ul {
