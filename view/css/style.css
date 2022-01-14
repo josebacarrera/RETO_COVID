@@ -11,7 +11,9 @@
     color: black;
     font-size: 25px;
 }
-
+.nav-link{
+    color: #057A55;
+}
 .row {
     margin-right: 0;
 }
