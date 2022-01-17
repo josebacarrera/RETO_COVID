@@ -4,7 +4,7 @@ class citaClass
 {
     protected $cod;
     protected $tis_paciente;
-    protected $cod_paciente;
+    protected $cod_sanitario;
     protected $fecha;
     protected $hora;
     protected $cod_centro;
@@ -52,9 +52,9 @@ class citaClass
     /**
      * Get the value of cod_paciente
      */ 
-    public function getCod_paciente()
+    public function getCod_sanitario()
     {
-        return $this->cod_paciente;
+        return $this->cod_sanitario;
     }
 
     /**
@@ -62,9 +62,9 @@ class citaClass
      *
      * @return  self
      */ 
-    public function setCod_paciente($cod_paciente)
+    public function setCod_sanitario($cod_sanitario)
     {
-        $this->cod_paciente = $cod_paciente;
+        $this->cod_sanitario = $cod_sanitario;
 
         return $this;
     }

@@ -1,5 +1,6 @@
 <?php
 require_once ("../model/userModel.php");
+require_once ("../model/datosPacienteModel.php");
 error_reporting(E_ERROR | E_WARNING | E_PARSE); // <-- Esto solo muestra errores de ejecución
 
 $response = array();
@@ -16,7 +17,6 @@ if (isset($data['solicitud'])) {
     switch ($solicitud) {
 
         case 'loginDni':
-        case 'loginTis': 
 
             if (isset($data['usuario'])) {
                 $usuario=$data['usuario'];
@@ -31,8 +31,6 @@ if (isset($data['solicitud'])) {
                 $response['error'] = true;
                 $response['errorInf'] = 'Password Not Found';
             }
-
-        case 'loginDni':
 
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
 
@@ -61,16 +59,31 @@ if (isset($data['solicitud'])) {
             break;
 
         case 'loginTis':
+
+            if (isset($data['usuario'])) {
+                $usuario=$data['usuario'];
+            } else {
+                $response['error'] = true;
+                $response['errorInf'] = 'User Not Found';
+            }
+            
+            if (isset($data['password'])) {
+                $password=$data['password'];
+            } else {
+                $response['error'] = true;
+                $response['errorInf'] = 'Password Not Found';
+            }
+
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
 
                 $paciente = new datosPacienteModel();
                 $paciente->setTis($usuario);
                 $paciente->setFecha_nacimiento($password);
 
-                if ($user->loginTIS()) {
+                if ($paciente->loginTIS()) {
                     session_start();
                     $response['logged'] = true;
-                    $response['user'] = $user->ObjVars();
+                    $response['user'] = $paciente->ObjVars();
 
                 } else {
                     $response['error'] = true;

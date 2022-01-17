@@ -8,7 +8,7 @@ if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
 
 include_once("citaClass.php");
 
-class cuenta_model extends citaClass {
+class citaModel extends citaClass {
 
     private $link;  // datu basera lotura - enlace a la bbdd  
 
@@ -33,6 +33,26 @@ class cuenta_model extends citaClass {
     }
 
     // FUNCIONES MOD //
+
+    public function getCita() {
+        $this->OpenConnect();
+        $sql = "SELECT * FROM cita WHERE tis_paciente = '" . $this->getTis_paciente() . "'";
+        $result = $this->link->query($sql);
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $this->setCod($row['cod']);
+            $this->setTis_paciente($this->getTis_paciente());
+            $this->setCod_sanitario($row['cod_sanitario']);
+            $this->setFecha($row['fecha']);
+            $this->setHora($row['hora']);
+            $this->setCod_centro($row['cod_centro']);
+            
+    
+        }  
+        return get_object_vars($this);
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
 
     public function ObjVars() {
         return get_object_vars($this);
