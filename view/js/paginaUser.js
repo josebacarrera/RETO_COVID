@@ -8,20 +8,23 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 function showAgenda(){
-    document.getElementById("#mostrarAgenda").style.display = '';
-    document.getElementById("#mostrarInforme").style.display = 'none';
-    document.getElementById("#mostrarDatos").style.display = 'none';
+    document.getElementById("mostrarAgenda").style.display = '';
+    document.getElementById("mostrarInforme").style.display = 'none';
+    document.getElementById("mostrarDatos").style.display = 'none';
+    document.getElementById("mostrarCovid").style.display = 'none';
 }
 function showInforme(){
-    document.getElementById("#mostrarAgenda").style.display = 'none';
-    document.getElementById("#mostrarInforme").style.display = '';
-    document.getElementById("#mostrarDatos").style.display = 'none';
+    document.getElementById("mostrarAgenda").style.display = 'none';
+    document.getElementById("mostrarInforme").style.display = '';
+    document.getElementById("mostrarDatos").style.display = 'none';
+    document.getElementById("mostrarCovid").style.display = 'none';
 }
 function showDatos(){
     document.getElementById("mostrarAgenda").style.display = 'none';
     document.getElementById("mostrarInforme").style.display = 'none';
     document.getElementById("mostrarDatos").style.display = '';
-    console.log("hawaii");
+    document.getElementById("mostrarCovid").style.display = 'none';
+    console.log(hawaii);
 }
 function showCovid(){
     document.getElementById("mostrarAgenda").style.display = 'none';
