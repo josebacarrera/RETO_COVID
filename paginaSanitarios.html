@@ -10,7 +10,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="view/css/footer.css">
     <link rel="stylesheet" href="view/css/style.css">
-    <link rel="stylesheet" href="view/css/index.css">
+    <link rel="stylesheet" href="view/css/paginaSanitarios.css">
 
     <title>Area Paciente</title>
 
@@ -18,37 +18,61 @@
 
 <body>
     <div id="navbar"></div>
-<div class="row">
+    <div class="row">
+        <div class="col-2 p-3 text-white" style="background-color: #036666;"> <a href="/"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
+                    class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Nombre Paciente</span> </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li> <a href="#" class="nav-link text-white"> <i class="fa fa-book"></i><span class="ms-2"
+                            ng-click="cambiaragenda()">Agenda sanitaria</span> </a> </li>
+                <li> <a href="#" class="nav-link text-white"> <i class="fa fa-scroll"></i><span class="ms-2"
+                            ng-click="cambiarinformes()">Informes</span> </a> </li>
+                <li> <a href="#" class="nav-link text-white"> <i class="fas fa-user"></i><span class="ms-2"
+                            ng-click="cambiardatos()">Datos personales</span> </a> </li>
+            </ul>
+            <hr>
+        </div>
+
+        <div class="col-10 bg-primary vh-100 " style="display: none;">
+        </div>
+
+        <!-- DATOS PERSONALES DEL SANITARIO -->
+        <div class="col-10 vh-100 p-4" ng-controller="datosPersonales">
+            <h1 class="title ">DATOS PERSONALES</h1>
+            <form action="">
+                <div class="row justify-content-center">
+                    <div class="col-2 text-center"><img
+                            src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg"
+                            srcset="" class="img-fluid img-perfil img-thumbnail"></div>
+                    <div class="mb-4 col-5 p-1 m-auto">
+                        <div class="form-floating ">
+                            <input type="text" class="form-control" id="nombreTrabajador" ng-model="nombre">
+                            <label for="nombreTrabajador">Nombre</label>
+                        </div>
+                        <br>
+                        <div class="form-floating ">
+                            <input type="text" class="form-control" id="dniTrabajador" ng-model="nombre">
+                            <label for="dniTrabajador">DNI</label>
+                        </div>
+                    </div>
+                    <div class="mb-4 col-5 p-1 m-auto">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="apellidoTrabajador" ng-model="nombre">
+                            <label for="tis">Apellido</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="cargoTrabajador" ng-model="nombre" disabled>
+                            <label for="tis">Cargo</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
 
 
-    <div class="col-2 p-3 text-white"
-        style="background-color: #036666;"> <a href="/"
-            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
-                class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Nombre Paciente</span> </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li> <a href="#" class="nav-link text-white"> <i class="fa fa-book"></i><span class="ms-2"
-                        ng-click="cambiaragenda()">Agenda sanitaria</span> </a> </li>
-            <li> <a href="#" class="nav-link text-white"> <i class="fa fa-scroll"></i><span class="ms-2"
-                        ng-click="cambiarinformes()">Informes</span> </a> </li>
-            <li> <a href="#" class="nav-link text-white"> <i class="fas fa-user"></i><span class="ms-2"
-                        ng-click="cambiardatos()">Datos personales</span> </a> </li>
-        </ul>
-        <hr>
     </div>
-
-    <div class="col-10 bg-primary vh-100 " style="display: none;">
-    </div>
-    <div class="col-10 vh-100 p-4" ng-controller="datosPersonales">
-        <h1 class="title ">DATOS PERSONALES</h1>
-        <form action="">
-            <div class="form-floating mb-4">
-                <input type="text" class="form-control" id="nombreTrabajador" ng-model="nombre" >
-                <label for="tis">Nombre</label>
-            </div>
-        </form>
-    </div>
-</div>
 </body>
 
 <!--SCRIPTS-->
