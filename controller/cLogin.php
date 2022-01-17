@@ -61,7 +61,23 @@ if (isset($data['solicitud'])) {
             break;
 
         case 'loginTis':
-            // PROXIMAMENTE...
+            if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
+
+                $paciente = new datosPacienteModel();
+                $paciente->setTis($usuario);
+                $paciente->setFecha_nacimiento($password);
+
+                if ($user->loginTIS()) {
+                    session_start();
+                    $response['logged'] = true;
+                    $response['user'] = $user->ObjVars();
+
+                } else {
+                    $response['error'] = true;
+                    $response['errorInf'] = 'Wrong User or Password';
+                }    
+            
+            }
             break;
 
         case 'logout':

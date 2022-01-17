@@ -26,4 +26,10 @@ public function CloseConnect()
     mysqli_close ($this->link);
 }
 
+public function ObjVars() {
+    return get_object_vars($this);
+}
+
 }  
+
+
