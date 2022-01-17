@@ -1,0 +1,209 @@
+
+.contenedorgeneral{
+    display: flex;
+    flex-direction: row;
+}
+
+/* INICIO MENU LATERAL */
+body {
+    background-color: #eee
+}
+
+.nav-link .fa {
+    transition: all 1s
+}
+
+.nav-link:hover .fa {
+    transform: rotate(360deg)
+}
+.nav-link .fas {
+    transition: all 1s
+}
+
+.nav-link:hover .fas {
+    transform: rotate(360deg)
+}
+.covid{
+    font-size: 40px;
+}
+
+/* FIN MENU LATERAL */
+/* CONTAINER */
+.container{
+    /* background-color: #c9f8e4;  */
+    height: auto;
+    width: 100%;
+    position: absolute;
+    margin-left: 16vw;
+    margin-top: -100vh;
+    display:flex;
+    flex-direction: column;
+}
+/* FIN CONTAINER */
+
+/* INICIO AGENDA */
+.agenda{
+    padding: 5%;
+    display: none;
+    
+}
+.agendaOptions{
+    display:flex;
+    flex-direction: row;
+    margin-top: 10%;
+    
+}
+.agendaOpt{
+    height: 25vh;
+    width: 15vw;
+    background-color: white;
+    border: 0px solid #1C6EA4;
+    border-radius: 30px;
+    -webkit-box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.27); 
+    box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.27);
+    margin: 5%;
+    text-align: center;
+    padding-top: 4.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-weight: bold;
+}
+.agendaOpt:hover{
+    background-color: rgb(238, 232, 232);
+    transform: scale(1.1);
+    transition: 0.5s ease-out; 
+    
+    
+}
+
+/* FIN AGENDA */
+/* INICIO INFORMES */
+.informe{
+    padding: 5%;
+    display: none;
+}
+/* FIN INFORMES */
+/* INICIO COVID AREA */
+.vacuna{
+    padding: 5%;
+    
+}
+.vacunaOptions{
+    display:flex;
+    flex-direction: row;
+    margin-top: 10%;
+    
+}
+.vacunaOpt{
+    height: 25vh;
+    width: 15vw;
+    background-color: white;
+    border: 0px solid #1C6EA4;
+    border-radius: 30px;
+    -webkit-box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.27); 
+    box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.27);
+    margin: 5%;
+    text-align: center;
+    padding-top: 4.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-weight: bold;
+    
+}
+.vacunaOpt:hover{
+    background-color: rgb(238, 232, 232);
+    transform: scale(1.1);
+    transition: 0.5s ease-out; 
+    
+    
+}
+
+/* FIN COVID AREA */
+
+/* INICIO FAQ */
+body{margin-top:20px;}
+.section_padding_130 {
+    padding-top: 130px;
+    padding-bottom: 130px;
+}
+.faq_area {
+    position: relative;
+    z-index: 1;
+    background-color: #f5f5ff;
+}
+
+.faq-accordian {
+    position: relative;
+    z-index: 1;
+}
+.faq-accordian .card {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+}
+.faq-accordian .card:last-child {
+    margin-bottom: 0;
+}
+.faq-accordian .card .card-header {
+    background-color: #ffffff;
+    padding: 0;
+    border-bottom-color: #ebebeb;
+}
+.faq-accordian .card .card-header h6 {
+    cursor: pointer;
+    padding: 1.75rem 2rem;
+    color: #3f43fd;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.faq-accordian .card .card-header h6 span {
+    font-size: 1.5rem;
+}
+.faq-accordian .card .card-header h6.collapsed {
+    color: #070a57;
+}
+.faq-accordian .card .card-header h6.collapsed span {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+.faq-accordian .card .card-body {
+    padding: 1.75rem 2rem;
+}
+.faq-accordian .card .card-body p:last-child {
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 575px) {
+    .support-button p {
+        font-size: 14px;
+    }
+}
+
+.support-button i {
+    color: #3f43fd;
+    font-size: 1.25rem;
+}
+@media only screen and (max-width: 575px) {
+    .support-button i {
+        font-size: 1rem;
+    }
+}
+
+.support-button a {
+    text-transform: capitalize;
+    color: #2ecc71;
+}
+@media only screen and (max-width: 575px) {
+    .support-button a {
+        font-size: 13px;
+    }
+}
+/*FIN FAQ*/
