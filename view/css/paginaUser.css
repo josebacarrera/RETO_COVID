@@ -44,7 +44,7 @@ body {
 /* INICIO AGENDA */
 .agenda{
     padding: 5%;
-    display: none;
+    
     
 }
 .agendaOptions{
@@ -75,12 +75,14 @@ body {
     
     
 }
-
+.general{
+    display: flex;
+}
 /* FIN AGENDA */
 /* INICIO INFORMES */
 .informe{
     padding: 5%;
-    display: none;
+    
 }
 /* FIN INFORMES */
 /* INICIO COVID AREA */
@@ -117,5 +119,5 @@ body {
     
     
 }
-
 /* FIN COVID AREA */
+/* VISIBILIDADES */
