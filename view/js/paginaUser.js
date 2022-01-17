@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
-    elementoAgenda=document.getElementById("mostrarAgenda");
+    elementoAgenda=document.getElementById("#mostrarAgenda");
     elementoAgenda.addEventListener("click", showAgenda);
-    elementoInforme=document.getElementById("mostrarInforme");
+    elementoInforme=document.getElementById("#mostrarInforme");
     elementoInforme.addEventListener("click", showInforme);
-    elementoDatos=document.getElementById("mostrarDatos");
+    elementoDatos=document.getElementById("#mostrarDatos");
     elementoDatos.addEventListener("click", showDatos);
 });
 

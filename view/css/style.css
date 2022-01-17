@@ -1,16 +1,40 @@
+/*General*/
 .title {
     font-family: title;
-    font-size: 20px;
 }
 
 .text {
     font-family: text;
 }
 
-a {
+.navbar-nav a {
     color: black;
+    font-size: 25px;
 }
 
+.row {
+    margin-right: 0;
+}
+
+.btn-primary {
+    background-color: #67B99A;
+    border-color: #67B99A;
+}
+
+.btn-primary:hover {
+    background-color: #057A55;
+    border-color: #057A55;
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+
+/*Login*/
 .login {
     display: flex;
     margin-top: 10px;
@@ -24,14 +48,18 @@ a {
     box-shadow: 5px 10px;
 }
 
-.btn-primary {
-    background-color: #67B99A;
-    border-color: #67B99A;
+.trabajo {
+    opacity: 0.7;
+    background-image: url('https://mundopositor.info/wp-content/uploads/2021/12/Enfermero-contento.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
-.btn-primary:hover {
-    background-color: #057A55;
-    border-color: #057A55;
+
+/*Card*/
+.card-img-top {
+    opacity: 0.6;
 }
 
 
@@ -52,7 +80,20 @@ a {
     display: flex;
 }
 
-/* medium and up screens */
+
+/*Fuentes*/
+@font-face {
+    font-family: text;
+    src: url(../fonts/Champagne\ &\ Limousines.ttf);
+}
+
+@font-face {
+    font-family: title;
+    src: url(../fonts/BebasNeue-Regular.ttf);
+}
+
+
+/*MediaQuery medium and up screens */
 @media (min-width: 768px) {
 
     .carousel-inner .carousel-item-end.active,
@@ -84,3 +125,169 @@ a {
     font-family: title;
     src: url(../fonts/BebasNeue-Regular.ttf);
 }
+
+/*FOOTER INICIO*/
+.col_white_amrc { 
+    color:#FFF;
+}
+footer { 
+    width:100%;
+    background-color:#036666a1; 
+    min-height:250px; 
+    padding:10px 0px 25px 0px;
+}
+.pt2 { 
+    padding-top:40px; 
+    margin-bottom:20px;
+}
+footer p { 
+    font-size:13px;
+    color:#CCC;
+    padding-bottom:0px; 
+    margin-bottom:8px;
+}
+.mb10 { 
+    padding-bottom:15px;
+}
+
+.footer_ul_amrc { 
+    margin:0px;
+    list-style-type:none; 
+    font-size:14px; 
+    padding:0px 0px 10px 0px; 
+}
+.footer_ul_amrc li {
+    padding:0px 0px 5px 0px;
+}
+.footer_ul_amrc li a{ 
+    color:#CCC;
+}
+.footer_ul_amrc li a:hover{ 
+    color:#fff; 
+    text-decoration:none;
+}
+.fleft { 
+    float:left;
+}
+.padding-right { 
+    padding-right:10px; 
+}
+.footer_ul2_amrc {
+    margin:0px; 
+    list-style-type:none; 
+    padding:0px;
+}
+.footer_ul2_amrc li p { 
+    display:table; 
+}
+.footer_ul2_amrc li a:hover { 
+    text-decoration:none;
+}
+.footer_ul2_amrc li i { 
+    margin-top:5px;
+}
+
+.bottom_border { 
+    border-bottom:1px solid white; 
+    padding-bottom:20px;
+}
+.foote_bottom_ul_amrc {
+	list-style-type:none;
+	padding:0px;
+	display:table;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+}
+
+.foote_bottom_ul_amrc li { 
+    display:inline;
+}
+.foote_bottom_ul_amrc li a { 
+    color:#999;
+    margin:0 12px;
+}
+
+.carousel-inner{
+    height: 82vh;
+    
+}
+
+/*css redes sociales*/
+#redesSociales{
+   width: auto;
+   height: auto;
+}
+.redesSociales img{
+   width: 60px;
+   height: 60px;
+   margin: 5px;
+}
+.redesSociales p{
+   font: bold;
+   color: grey;
+   font-size: 17px;
+}
+
+section b{
+   margin: 70px;
+}
+
+b{
+    font-size:25px;
+    font: bold;
+}
+
+#bloque{
+    width: 25%;
+}
+
+/* RESPONSIVE */ 
+ @media screen and (max-width:991.5px)  {
+    nav div ul {
+        position: absolute;
+        right: 1.5em;
+        background-color: wheat !important;
+    }    
+}
+
+@media (min-width: 300px) and (max-width: 1025px) {
+  
+    nav div ul {
+        position: absolute;
+        right: 1.5em;
+        background-color: white;
+    } 
+
+/*css redes sociales*/
+#redesSociales{
+height: auto;
+}
+.redesSociales img{
+width: 60px;
+height: 60px;
+margin: 5px;
+}
+.redesSociales p{
+font: bold;
+color: grey;
+font-size: 17px;
+}
+
+section b{
+margin: 70px;
+}
+
+.btn {
+    border: none !important;
+}
+
+b{
+    font-size:20px;
+    font: bold;
+}
+
+
+}  
+/*FOOTER FINAL*/
