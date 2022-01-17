@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
-    <script src="/view/Bootstrap/bootstrap-5.1.2-dist/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
+    <script src="view/Bootstrap/bootstrap-5.1.2-dist/js/bootstrap.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="view/css/footer.css">
     <link rel="stylesheet" href="view/css/style.css">
 
     <title>Página de Inicio</title>
@@ -18,38 +17,82 @@
 
 <body>
     <!--NAVBAR-->
-    <div id="navbar" ng-controller="navbarController"></div>
+    <div id="navbar"></div>
 
     <div class="row py-2">
         <div class="col-lg-7 col-md-8 col-sm-12 ">
             <div class="text-center p-5">
                 <img src="view/img/informacion-covid.png" class="img-fluid py-2">
-                <img src="https://www.grupoaseguranza.com/adjuntos/fichero_36627_20200625.jpg" class="img-fluid py-2 w-50">
+                <img src="https://www.grupoaseguranza.com/adjuntos/fichero_36627_20200625.jpg"
+                    class="img-fluid py-2 w-50">
                 <img src="view/img/pruebas_covid.png" class="img-fluid py-2">
             </div>
         </div>
         <!-- login-->
         <div class="col-lg-5 col-md-4 col-sm-12  login">
+
+
             <div class="form_login bg-light rounded border">
-                <form ng-controller="loginController">
-                    <h5 class="">ACCESO CARPETA SALUD</h5>
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="loginUser">DNI: </label>
-                        <input type="text" class="form-control" ng-model='usuario'/>
-                    </div>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                            type="button" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-user"></i> &nbsp ACCESO CARPETA
+                            SALUD</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                            type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-user-md"></i> &nbsp ACCESO
+                            TRABAJADORES</button>
+                    </li>
+                </ul>
+                <!-- PANES USUARIOS -->
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <form class="p-3">
+                            <!-- TIS input -->
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="tis" value=" ">
+                                <label for="tis">TIS (ej.: 12345678)</label>
+                            </div>
+                            
+                            <!-- Birth Date input -->
+                            <div class="form-floating mb-4">
+                                <input type="date" class="form-control" id="birthDate">
+                                <label for="birthDate">Fecha de nacimiento (ej.: 09/09/1999)</label>
+                            </div>
 
-                    <!-- Password input -->
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="loginPasswordr">Contraseña: </label>
-                        <input type="password" class="form-control" ng-model='password'/>
+                            <!-- Submit button -->
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary btn-block" ng-click='login()'>Sign
+                                    in</button>
+                            </div>
+                        </form>
                     </div>
+                    <!-- PANEL TRABAJADORES -->
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <form ng-controller="loginController" class="p-3">
+                            <!-- Email input -->
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" ng-model='usuario' />
+                                <label class="form-label" for="loginUser">DNI (e.j.: 12345678A) </label>
 
-                    <!-- Submit button -->
-                    <div class="text-center">
-                        <button type="button" class="btn btn-primary btn-block" ng-click='login()'>Sign in</button>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" ng-model='password' />
+                                <label class="form-label" for="loginPasswordr">Contraseña  </label>
+
+                            </div>
+
+                            <!-- Submit button -->
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary btn-block" ng-click='login()'>Sign
+                                    in</button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -92,33 +135,33 @@
 
         <div id="carousel" class="">
             <div class="carousel-inner">
-              <div class="item">
-                test1
-              </div>
-              <div class="item">
-                test2
-              </div>
-              <div class="item">
-                test3
-              </div>
-              <div class="item">
-                test4
-              </div>
-              <div class="item">
-                test5
-              </div>
+                <div class="item">
+                    test1
+                </div>
+                <div class="item">
+                    test2
+                </div>
+                <div class="item">
+                    test3
+                </div>
+                <div class="item">
+                    test4
+                </div>
+                <div class="item">
+                    test5
+                </div>
             </div>
             <button class="carousel-control" type="button" data-slide="next">
-              next
+                next
             </button>
             <button class="carousel-control" type="button" data-slide="prev">
-              prev
+                prev
             </button>
-          </div>
+        </div>
 
     </div>
 
-    
+
     <div class="container py-2" ng-controller="carouselController">
 
         <h2>TESTING</h2>
@@ -129,12 +172,12 @@
             </div>
         </div>
 
-        
+
 
     </div>
 
     <!--FOOTER-->
-   <id id="footer"></id>
+    <id id="footer"></id>
 
 </body>
 <!--SCRIPTS-->
