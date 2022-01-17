@@ -19,7 +19,8 @@
 <body>
     <div id="navbar"></div>
     <div class="row">
-        <div class="col-2 p-3 text-white" style="background-color: #036666;"> <a href="/"
+        <div class="col-lg-2 col-md-2 col-sm-12 p-3 text-white  " style="background-color: #036666;"> 
+            <a href="/"
                 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
                     class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Nombre Paciente</span> </a>
             <hr>
@@ -28,17 +29,22 @@
                             ng-click="cambiaragenda()">Agenda sanitaria</span> </a> </li>
                 <li> <a href="#" class="nav-link text-white"> <i class="fa fa-scroll"></i><span class="ms-2"
                             ng-click="cambiarinformes()">Informes</span> </a> </li>
-                <li> <a href="#" class="nav-link text-white"> <i class="fas fa-user"></i><span class="ms-2"
+                <li> <a href="#" id="datosPersonales" class="nav-link text-white"> <i class="fas fa-user"></i><span class="ms-2"
                             ng-click="cambiardatos()">Datos personales</span> </a> </li>
             </ul>
             <hr>
         </div>
 
-        <div class="col-10 bg-primary vh-100 " style="display: none;">
+        <div id="infoInicio" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion">
         </div>
 
+        <div id="infoAgenda" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion" style="display: none;">
+        </div>
+
+        <div id="infoInformes" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion" style="display: none;">
+        </div>
         <!-- DATOS PERSONALES DEL SANITARIO -->
-        <div class="col-10 vh-100 p-4" ng-controller="datosPersonales">
+        <div id="infoDatosPersonales" class="col-lg-10 col-md-10 col-sm-12 vh-100 p-4 infoOpcion" ng-controller="datosPersonales" style="display: none;">
             <h1 class="title ">DATOS PERSONALES</h1>
             <form action="">
                 <div class="row justify-content-center">
