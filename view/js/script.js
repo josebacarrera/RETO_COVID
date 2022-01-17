@@ -1,6 +1,15 @@
-$(document).ready(getSession);
-
+$(document).ready(init);
 var reto_covid = angular.module('reto_covid', []);
+
+async function init() {
+    await getSession().then(async function(session){
+         loadUser(session);
+    });
+    
+}
+function loadUser(session) {
+    console.log(session);
+}
 reto_covid.controller('loginController', function ($scope) {
 
     $scope.usuario;
