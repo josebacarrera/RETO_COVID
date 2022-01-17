@@ -44,6 +44,13 @@ if (isset($data['solicitud'])) {
                     session_start();
                     $response['logged'] = true;
                     $response['user'] = $user->ObjVars();
+
+                    $_SESSION['cod_user'] = $user->getCod();
+                    $_SESSION['dni_sanitario'] = $user->getDni_sanitario();
+                    $_SESSION['nombre_sanitario'] = $user->ObjVars()['objSanitario']['nombre'];
+                    $_SESSION['cargo_sanitario'] = $user->ObjVars()['objSanitario']['cargo'];
+                    $_SESSION['rol'] = $user->ObjVars()['objRol']['nombre'];
+
                 } else {
                     $response['error'] = true;
                     $response['errorInf'] = 'Wrong User or Password';

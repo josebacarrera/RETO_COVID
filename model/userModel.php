@@ -3,6 +3,7 @@
 include_once 'userClass.php';
 include_once 'rolModel.php';
 include_once 'sanitarioModel.php';
+include_once 'centroModel.php';
 
 if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
     include_once ("connect_data_serv.php");
@@ -15,6 +16,7 @@ class userModel extends userClass{
     private $link;  // datu basera lotura - enlace a la bbdd 
     private $objRol;
     private $objSanitario; 
+    private $objCentro;
 
     public function OpenConnect() {
         $konDat=new connect_data();
@@ -49,15 +51,19 @@ class userModel extends userClass{
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             
             $this->setCod($row['cod']);
-            $this->setCod_rol($row['cod_rol']);
 
             $this->objRol = new rolModel();
-            $this->objRol->setCod($row['cod_rol']);
-            $this->objRol = $this->objRol->getRolByCode();
+            $this->objRol->setNombre($row['rol']);
+            $this->objRol = $this->objRol->ObjVars();
 
             $this->objSanitario = new sanitarioModel();
-            $this->objSanitario->setDni($row['dni_sanitario']);
-            $this->objSanitario = $this->objSanitario->getSanitarioByDni();
+            $this->objSanitario->setNombre($row['nombre']);
+            $this->objSanitario->setCargo($row['cargo']);
+            $this->objSanitario = $this->objSanitario->ObjVars();
+
+            $this->objCentro = new centroModel();
+            $this->objCentro->setNombre($row['centro']);
+            $this->objCentro = $this->objCentro->ObjVars();
 
             return true;
 
