@@ -22,8 +22,11 @@
 }
 .row {
     margin-right: 0;
+    padding: 0px;
 }
-
+.row > *{
+    padding: 0px;
+}
 .btn-primary {
     background-color: #67B99A;
     border-color: #67B99A;
