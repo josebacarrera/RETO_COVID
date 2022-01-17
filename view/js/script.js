@@ -1,4 +1,17 @@
+$(document ).ready(load)
 
+function load() {
+    var url = "controller/cSessionVarsView.php";
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json()).then(result => {
+        $("#intranetCorporativa").css('display', 'none');
+        $("#carpetaSalud").css('display', 'none');
+
+
+    })
+}
 var reto_covid = angular.module('reto_covid', []);
 reto_covid.controller('loginController', function ($scope) {
 
