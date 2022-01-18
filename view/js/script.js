@@ -3,31 +3,22 @@ var reto_covid = angular.module('reto_covid', []);
 
 async function init() {
     await getSession().then(async function (session) {
-        // loadUser(session);
+        //loadUser(session);
     });
 
 }
-
-// function loadUser(session) {
-//     console.log(session);
-//     console.log(session.nombre_sanitario)
-//     $('#formLogin').css('text-align', 'center')
-//     $('#formLogin').css('padding', '30px')
-//     if (session.nombre_sanitario) {
-//         $('#formLogin').html('<p> <u> Nombre y apellido:</u> ' + session.nombre_sanitario + ' ' + session.nombre_sanitario + '</p>' +
-//             '<p> <u> DNI:</u> ' + session.dni_sanitario + '</p>' +
-//             '<p><u>Cargo: </u>' + session.cargo_sanitario + '</p>')
-//         $('#formLogin').append('<button id="logout" class="btn btn-primary" type="button">Log Out</button>')
-//         $('#logout').attr('ng-click','cLogin(`logout`)');
-//     }
-// }
-
+function loadUser(session) {
+    console.log(session.sanitario);
+    $('#formLogin').css('text-align', 'center')
+    $('#formLogin').css('padding', '30px')
+    if (session.sanitario) {
+        $('#formLogin').css('display','none')
+    }
+}
 reto_covid.controller('login', function ($scope) {
 
     $scope.usuario;
     $scope.password;
-    $scope.tis;
-    $scope.fecha_nac;
 
     $scope.login = function (solicitud) {
 
@@ -55,6 +46,7 @@ reto_covid.controller('login', function ($scope) {
         }).then(res => res.json()).then(result => {
 
             console.log(result);
+            
 
         }).catch(error => console.error('Error status:', error));
 
