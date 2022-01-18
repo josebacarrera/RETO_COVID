@@ -31,8 +31,15 @@ if (isset($data['solicitud'])) {
                 $sanitario->setNombre($nombre);
                 $sanitario->setApellido($apellido);
                 $sanitario->setFoto_pefil($fotoPerfil);
-                $sanitario->update();
-                $response['newSanitario'] = $sanitario->ObjVars();
+
+                if ($sanitario->update()) {
+                    $response['updated'] = true;
+                    $response['newSanitario'] = $sanitario->ObjVars();
+                } else {
+                    $response['error'] = true;
+                    $response['errorInf'] = 'Update failed';
+                }
+                
             }
             break;
     }
@@ -40,3 +47,5 @@ if (isset($data['solicitud'])) {
     $response['error'] = true;
     $response['errorInf'] = 'Solicitud Not Found';
 }
+
+echo json_encode($response);

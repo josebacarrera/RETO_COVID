@@ -56,7 +56,7 @@ class sanitarioModel extends sanitarioClass{
 
         $this->OpenConnect();  
         
-        $sql = "UPDATE sanitario SET WHERE dni = '" . $this->getDni() . "'"; 
+        $sql = "UPDATE sanitario SET nombre_s='" . $this->getNombre() . "', apellido_s='" . $this->getApellido() . "', dni_s ='" . $this->getDni() . "', foto_perfil_s ='" . $this->getFoto_pefil() . "' WHERE dni = '" . $this->getDni() . "'"; 
         
         $result = $this->link->query($sql);
         
