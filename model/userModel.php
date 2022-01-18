@@ -14,7 +14,7 @@ class userModel extends userClass{
     
     private $link;  // datu basera lotura - enlace a la bbdd 
     private $objRol;
-    private $objSanitario; 
+    private $objSanitario;
 
     public function OpenConnect() {
         $konDat=new connect_data();
@@ -48,16 +48,21 @@ class userModel extends userClass{
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             
-            $this->setCod($row['cod']);
-            $this->setCod_rol($row['cod_rol']);
+            $this->setCod($row['cod_user_u']);
 
             $this->objRol = new rolModel();
-            $this->objRol->setCod($row['cod_rol']);
-            $this->objRol = $this->objRol->getRolByCode();
+            $this->objRol->setNombre($row['nombre_r']);
+            $this->objRol = $this->objRol->ObjVars();
 
             $this->objSanitario = new sanitarioModel();
-            $this->objSanitario->setDni($row['dni_sanitario']);
-            $this->objSanitario = $this->objSanitario->getSanitarioByDni();
+            $this->objSanitario->setCod($row['cod_sanitario_s']);
+            $this->objSanitario->setNombre($row['nombre_s']);
+            $this->objSanitario->setApellido($row['apellido_s']);
+            $this->objSanitario->setDni($row['dni_s']);
+            $this->objSanitario->setCargo($row['cargo_s']);
+            $this->objSanitario->setCod_centro($row['cod_centro_s']);
+            $this->objSanitario->setFoto_pefil($row['foto_perfil_s']);
+            $this->objSanitario = $this->objSanitario->ObjVars();
 
             return true;
 

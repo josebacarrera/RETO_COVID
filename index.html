@@ -5,11 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="/view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
-    <script src="/view/Bootstrap/bootstrap-5.1.2-dist/js/bootstrap.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="view/css/footer.css">
     <link rel="stylesheet" href="view/css/style.css">
 
@@ -30,10 +27,10 @@
             </div>
         </div>
         <!-- login-->
-        <div class="col-lg-5 col-md-4 col-sm-12  login" ng-controller='cLogin'>
+        <div id="login" class="col-lg-5 col-md-5 col-sm-12  login" ng-controller='cLogin'>
 
 
-            <div class="form_login bg-light rounded border">
+            <div id='formLogin' class="form_login bg-light rounded border">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
@@ -59,7 +56,7 @@
                             <!-- Birth Date input -->
                             <div class="form-floating mb-4">
                                 <input type="date" class="form-control" id="birthDate" ng-model='password'>
-                                <label for="birthDate">Fecha de nacimiento (ej.: 09/09/1999)</label>
+                                <label for="birthDate">Fecha de nacimiento</label>
                             </div>
 
                             <!-- Submit button -->

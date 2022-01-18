@@ -14,45 +14,90 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="icon" href="icono.jpg">
     <link rel="stylesheet" href="view/css/style.css">
-    <link rel="stylesheet" href="view/css/paginaUser.css">
+    <link rel="stylesheet" href="view/css/paginaSanitarios.css">
 
     <title>Area Paciente</title>
 </head>
 <body>
     <div id="navbar"></div>
-
-    <div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white" style="width: 250px; background-color: #036666;"> <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Nombre Paciente</span> </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li> <a href="#" class="nav-link text-white"> <i class="fa fa-book"></i><span class="ms-2" onclick="cambiaragenda()">Agenda sanitaria</span> </a> </li>
-            <li> <a href="#" class="nav-link text-white"> <i class="fa fa-scroll"></i><span class="ms-2" onclick="cambiarinformes()">Informes</span> </a> </li>
-            <li> <a href="#" class="nav-link text-white"> <i class="fas fa-user"></i><span class="ms-2" onclick="cambiardatos()">Datos personales</span> </a> </li>
-            <div class="covid">
-                <li> <a href="#" class="nav-link text-white"> <i class="fas fa-virus"></i><span class="ms-2" onclick="cambiarcovid()">COVID</span> </a> </li>
-            </div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12 p-3 text-white  " style="background-color: #036666;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
+                    class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Nombre Paciente</span> </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li> <a href="#" id="agendaSanitaria" class="nav-link text-white"> <i class="fa fa-book"></i><span
+                            class="ms-2" ng-click="cambiaragenda()">Agenda sanitaria</span> </a> </li>
+                <li> <a href="#" id="informes" class="nav-link text-white"> <i class="fa fa-scroll"></i><span
+                            class="ms-2" ng-click="cambiarinformes()">Informes</span> </a> </li>
+                <li> <a href="#" id="datosPersonales" class="nav-link text-white"> <i class="fas fa-user"></i><span
+                            class="ms-2" ng-click="cambiardatos()">Datos personales</span> </a> </li>
             </ul>
-        <hr>
-        
-    </div>  
-    <div class="container">
-        <div class="agenda">
-            <h2>Agenda</h2>
-            <div class="agendaOptions">
-                <div class="agendaOpt">PEDIR CITA ATENCION PRIMARIA</div>
-                <div class="agendaOpt">MIS CITAS</div>
-                <div class="agendaOpt">LISTA ESPERA QUIRURGICA</div>
-            </div>
+            <hr>
         </div>
-        <div class="informe">
-            <h2>Informes</h2>
-            <div class="agendaOptions">
-                <div class="agendaOpt">HOSPITALIZACIÓN</div>
-                <div class="agendaOpt">CONSULTAS EXTERNAS</div>
-                <div class="agendaOpt">URGENCIAS</div>
+
+        <div id="infoInicio" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion">
+            <div class="d-flex align-center justify-content-center"></div>
+        </div>
+
+        <div id="infoAgenda" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion" style="display: none;">
+            agenda
+        </div>
+
+        <div id="infoInformes" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion" style="display: none;">
+            informes
+        </div>
+
+
+        <!-- DATOS PERSONALES DEL SANITARIO -->
+        <div id="infoDatosPersonales" class="col-lg-10 col-md-10 col-sm-12 vh-100 p-4 infoOpcion"
+            ng-controller="datosPersonales" style="display: none;">
+            <div class="text-center row">
+                <div class="col-11">
+                    <h1 class="title ">DATOS PERSONALES</h1>
+                </div>
+
+                <div class="col-1">
+                    <button ng-click="editableInput = !editableInput" class="btn btn-warning">Editar</button>
+                </div>
             </div>
+            <form>
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 col-md-2 col-lg-2 text-center p-2"><img
+                            src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg"
+                            srcset="" class="img-fluid img-perfil img-thumbnail"></div>
+                    <div class="mb-4 col-sm-6 col-md-4 col-lg-5 p-1 m-auto">
+                        <div class="form-floating ">
+                            <input type="text" class="form-control" id="nombreTrabajador" ng-model="nombre"
+                                input-disabled="editableInput">
+                            <label for="nombreTrabajador">Nombre</label>
+                        </div>
+                        <br>
+                        <div class="form-floating ">
+                            <input type="text" class="form-control" id="dniTrabajador" ng-model="nombre"
+                                input-disabled="editableInput">
+                            <label for="dniTrabajador">DNI</label>
+                        </div>
+                    </div>
+                    <div class="mb-4 col-sm-12 col-md-4 col-lg-5 p-1 m-auto">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="apellidoTrabajador" ng-model="nombre"
+                                input-disabled="editableInput">
+                            <label for="tis">Apellido</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="cargoTrabajador" ng-model="nombre" disabled>
+                            <label for="tis">Cargo</label>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button id="btnGuardar" class="btn btn-primary"> Guardar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    
 </body>
 
 <!--SCRIPTS-->
