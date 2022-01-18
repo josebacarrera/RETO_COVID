@@ -28,7 +28,7 @@
             </div>
         </div>
         <!-- login-->
-        <div id="login" class="col-lg-5 col-md-5 col-sm-12  login" ng-controller='cLogin'>
+        <div id="login" class="col-lg-5 col-md-5 col-sm-12  login" ng-controller='login'>
 
 
             <div id='formLogin' class="form_login bg-light rounded border">
@@ -49,13 +49,13 @@
                         <form class="p-3">
                             <!-- TIS input -->
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control" id="tis" ng-model="usuario">
+                                <input type="text" class="form-control" id="tis" ng-model="tis">
                                 <label for="tis">TIS (ej.: 12345678)</label>
                             </div>
                             
                             <!-- Birth Date input -->
                             <div class="form-floating mb-4">
-                                <input type="date" class="form-control" id="birthDate" ng-model='password'>
+                                <input type="date" class="form-control" id="birthDate" ng-model='fecha_nac'>
                                 <label for="birthDate">Fecha de nacimiento</label>
                             </div>
 
