@@ -34,22 +34,22 @@ class citaModel extends citaClass {
 
     // FUNCIONES MOD //
 
-    public function getCita() {
+    public function getCitaByTis() {
         $this->OpenConnect();
         $sql = "SELECT * FROM cita WHERE tis_paciente = '" . $this->getTis_paciente() . "'";
         $result = $this->link->query($sql);
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
-            $this->setCod($row['cod']);
-            $this->setTis_paciente($this->getTis_paciente());
-            $this->setCod_sanitario($row['cod_sanitario']);
-            $this->setFecha($row['fecha']);
-            $this->setHora($row['hora']);
-            $this->setCod_centro($row['cod_centro']);
-            
-    
-        }  
-        return get_object_vars($this);
+        $list=array();
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $newCita = new citaModel();
+            $newCita->setCod($row['cod']);
+            $newCita->setTis_paciente($row['tis_paciente']);
+            $newCita->setCod_sanitario($row['cod_sanitario']);
+            $newCita->setFecha($row['fecha']);
+            $newCita->setHora($row['hora']);
+            $newCita->setCod_centro($row['cod_centro']);
+            array_push($list, get_object_vars($newCita));
+        }
+        return $list;  
         mysqli_free_result($result);
         $this->CloseConnect();
     }

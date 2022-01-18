@@ -10,12 +10,15 @@ if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
 include_once("datosPacienteClass.php");
 include_once("citaModel.php");
 include_once("localidadModel.php");
+include_once("RegistroVacunacionModel.php");
 
 class datosPacienteModel extends datosPacienteClass{
 
     private $link;
     private $objLocalidad;
     private $objCita;
+    private $objVacunacion;
+    private $objVacuna;
 
     //enlace con la base de datos
     public function OpenConnect(){
@@ -72,11 +75,15 @@ class datosPacienteModel extends datosPacienteClass{
 
             $this->objLocalidad = new localidadModel();
             $this->objLocalidad->setCod($row['cod_localidad']);
-            $this->objLocalidad = $this->objLocalidad->getLocalidad();
+            $this->objLocalidad->setNombre($row['localidad.nombre']);
+            $this->objLocalidad = $this->objLocalidad->ObjVars();
 
             $this->objCita = new citaModel();
-            $this->objCita->setTis_paciente($this->getTis());
-            $this->objCita = $this->objCita->getCita();
+            $this->objCita->setTis_paciente('4990916');
+            $this->objCita = $this->objCita->getCitaByTis();
+
+            $this->objVacunacion = new registroVacunacionModel();
+            $this->objVacunacion->setTis('4990916');
 
             return true;
 
