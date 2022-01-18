@@ -3,7 +3,7 @@ var reto_covid = angular.module('reto_covid', []);
 
 async function init() {
     await getSession().then(async function (session) {
-        //loadUser(session);
+        loadUser(session);
     });
 
 }
@@ -13,6 +13,7 @@ function loadUser(session) {
     $('#formLogin').css('padding', '30px')
     if (session.sanitario) {
         $('#formLogin').css('display','none')
+        $('#loggedSanitario').removeClass('d-none')
     }
 }
 reto_covid.controller('login', function ($scope) {
