@@ -26,12 +26,12 @@ reto_covid.controller('login', function ($scope) {
     $scope.password;
 
     $scope.login = function (solicitud) {
-
+        console.log(solicitud)
         if (solicitud == 'loginTis') {
             var data = {
                 'solicitud': solicitud,
-                'tis': $scope.usuario,
-                'fecha_nac': $scope.password
+                'tis': $scope.tis,
+                'fecha_nac': $scope.fecha_nac
             };
         } else if (solicitud == 'loginDni') {
             var data = {
@@ -40,6 +40,7 @@ reto_covid.controller('login', function ($scope) {
                 'password': $scope.password
             };
         }
+        console.log(data)
 
         var url = "controller/cLogin.php";
 
@@ -69,4 +70,5 @@ reto_covid.controller('login', function ($scope) {
             console.log(result)
         })
     }
+
 });
