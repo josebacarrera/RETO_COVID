@@ -18,19 +18,43 @@
 <body>
     <div id="navbar"></div>
 
-    <form name="formulario" class="formulario">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Nombre y Apellidos</label>
-          <input type="text" class="form-control" id="name">
+    <form role="form" id="formulario" action="?" method="POST" onsubmit="formRelleno()">
+        <div class="form-group">
+          <label class="control-label es" for="Nombre">Nombre</label>
+          <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Introduzca su nombre"
+            required />
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" id="comentario" class="form-label">Comentario</label>
-          <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-            <label for="floatingTextarea"></label>
-          </div>
+        <div class="form-group">
+          <label class="control-label es" for="Correo">Dirección de Correo Electrónico</label>
+          <input type="email" class="form-control" id="Correo" name="Correo"
+            placeholder="Introduzca su correo electrónico" required />
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <div class="form-group">
+          <label class="control-label es" for="Motivo" name="Mcontacto">Motivo de Contacto</label>
+          <select name="MotivoS" id="MotivoS" onchange="mostrar()" class="form-control">
+            <option class="es" value="Opcion" id="Opcion" selected disabled>Escoge una opción</option>
+            <option class="es" value="Duda" id="Duda">Duda</option>
+            <option class="es" value="Queja">Queja</option>
+            <option class="es" value="Asistencia">Asistencia</option>
+            <option class="es" value="Otro">Otro...</option>
+          </select>
+        </div>
+        <div></div>
+        <div class="form-group" style="display: none;" id="motivo">
+          <label class="control-label es" for="MasMotivo">Motivo</label>
+          <input class="form-control" for="MasMotivo" name="MasMotivo" type="text" id="MasMotivo2"
+            placeholder="Motivo adjunto" />
+        </div>
+        <div class="form-group">
+          <label class="control-label es" for="Mensaje">Mensaje</label>
+          <textarea rows="5" cols="30" class="form-control" id="Mensaje" name="Mensaje"
+            placeholder="Introduzca su mensaje"></textarea>
+        </div><br>
+        <div class="form-group">
+          <button type="submit" class="boton boton-gold  es" value="Enviar" id="btnEnviar">Enviar</button>
+          <input type="reset" class="btn btn-default" value="Limpiar">
+        </div>
+        <div id="respuesta" style="display: none;"></div>
       </form>
 
     <div class="container">

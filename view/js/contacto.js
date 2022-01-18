@@ -1,18 +1,57 @@
-document.addEventListener("DOMContentLoaded", function(){
-    document.formulario.addEventListener('submit', validarFormulario);
+//MOSTRAR DIV MOTIVO CUANDO CLICKAS EN 'OTRO...'
+function mostrar() {
 
-    function validarFormulario(evObject){
-        evObject.preventDefault();
-        var nombre = document.getElementById("name")
-        var comentario = document.getElementById("comentario")
-        if (nombre.value == null || nombre.value == 0)
-        {
-            alert("El campo del nombre no puede estar vacio"); 
-        }else if(comentario.value == null || comentario.value == 0){
-            alert("El campo del comentario no puede estar vacio")
-        }else{
-            document.formulario.submit();
+    var valor = document.getElementById("MotivoS").value;
+
+    if (valor == "Otro") {
+        document.getElementById("motivo").style.display = 'block';
+        document.getElementById("MasMotivo2").required = true;
+    } else {
+        document.getElementById("motivo").style.display = 'none';
+    }
+}
+//RELLENAR FORMULARIO
+function formRelleno() {
+        event.preventDefault()
+        var nombre = $('#Nombre').val();
+        var correo = $('#Correo').val();
+        var motivoC = $('#MotivoS').val();
+        var masMotivo = $('#MasMotivo2').val();
+        var mensaje = $('#Mensaje').val();
+        var datos = {'Nombre': nombre, 'Correo': correo, 'MotivoS': motivoC, 'MasMotivo': masMotivo, 'Mensaje': mensaje };
+        var datos = JSON.stringify(datos);
+
+
+        $.ajax({
+            url: "../../controller/cForm.php",
+            method: "POST",
+            data: {
+                'datos': datos,
+            },
+            success: function (result) {
+                enviarFormulario();
+            },
+            error: function (xhr, textStatus, error) {
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        })
+
+}
+
+//ENVIAR FORMULARIO Y LIMPIAR
+function enviarFormulario() {
+    window.alert("FORMULARIO ENVIADO");
+    var a = Array.from($('#formulario .form-control'));
+    a.forEach(element => {
+        if (element.name == 'MotivoS') {
+          var valor = document.getElementById("MotivoS");
+          valor.selectedIndex = "0";
+        }
+        else{
+            element.value = '';
         }
 
-    }
-})
+     });
+}
