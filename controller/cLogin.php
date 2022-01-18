@@ -65,7 +65,7 @@ if (isset($data['solicitud'])) {
                 if ($paciente->loginTIS()) {
                     session_start();
                     $response['logged'] = true;
-                    $response['user'] = $paciente->ObjVars();
+                    $response['paciente'] = $paciente->ObjVars();
 
                 } else {
                     $response['error'] = true;
