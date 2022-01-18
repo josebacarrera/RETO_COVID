@@ -29,14 +29,14 @@ reto_covid.controller('cLogin', function ($scope) {
         if (solicitud == 'loginTis') {
             var data = {
                 'solicitud': solicitud,
-                'tis':$scope.usuario,
-                'fecha_nac':$scope.password
+                'tis': $scope.usuario,
+                'fecha_nac': $scope.password
             };
         } else if (solicitud == 'loginDni') {
             var data = {
                 'solicitud': solicitud,
-                'dni':$scope.usuario,
-                'password':$scope.password
+                'dni': $scope.usuario,
+                'password': $scope.password
             };
         }
 
@@ -54,4 +54,5 @@ reto_covid.controller('cLogin', function ($scope) {
         }).catch(error => console.error('Error status:', error));
 
         return false;
-    };
+    }
+});
