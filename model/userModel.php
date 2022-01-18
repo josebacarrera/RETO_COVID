@@ -44,7 +44,7 @@ class userModel extends userClass{
 
         $this->OpenConnect();  
         
-        $sql = "CALL spLogin('" . $this->getDni_sanitario() . "','" . $this->getPassword() . "')"; 
+        $sql = "CALL spLoginDNI('" . $this->getDni_sanitario() . "','" . $this->getPassword() . "')"; 
         
         $result = $this->link->query($sql);
         
