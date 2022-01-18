@@ -21,7 +21,7 @@ function showDatos(){
     document.getElementById("mostrarAgenda").style.display = 'none';
     document.getElementById("mostrarInforme").style.display = 'none';
     document.getElementById("mostrarDatos").style.display = '';
-    console.log("hawaii");
+    document.getElementById("mostrarCovid").style.display = 'none';
 }
 function showCovid(){
     document.getElementById("mostrarAgenda").style.display = 'none';

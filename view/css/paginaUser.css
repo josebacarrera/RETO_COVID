@@ -42,9 +42,10 @@ body {
 /* FIN CONTAINER */
 
 /* INICIO AGENDA */
-.agenda{
-    padding: 5%;
-    display: none;
+.cardsAgenda{
+    display: flex;
+    align-items: center;
+    
     
 }
 .agendaOptions{
@@ -117,5 +118,22 @@ body {
     
     
 }
-
+.datos{
+    margin-left: 4vw;
+    margin-top: 4vh;
+}
 /* FIN COVID AREA */
+/* FOTO PERFIL */
+.wrapper {
+   
+    margin: 10px auto;
+    max-width: 600px
+}
+.img {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    object-fit: cover
+}
+
+
