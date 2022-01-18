@@ -23,7 +23,7 @@ function formRelleno() {
 
 
         $.ajax({
-            url: "../../controller/cForm.php",
+            url: "../../controller/cContacto.php",
             method: "POST",
             data: {
                 'datos': datos,
