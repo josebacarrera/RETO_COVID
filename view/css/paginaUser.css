@@ -42,8 +42,9 @@ body {
 /* FIN CONTAINER */
 
 /* INICIO AGENDA */
-.agenda{
-    padding: 5%;
+.cardsAgenda{
+    display: flex;
+    align-items: center;
     
     
 }
@@ -119,5 +120,22 @@ body {
     
     
 }
+.datos{
+    margin-left: 4vw;
+    margin-top: 4vh;
+}
 /* FIN COVID AREA */
-/* VISIBILIDADES */
+/* FOTO PERFIL */
+.wrapper {
+   
+    margin: 10px auto;
+    max-width: 600px
+}
+.img {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    object-fit: cover
+}
+
+
