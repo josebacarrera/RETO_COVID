@@ -18,6 +18,8 @@ if (isset($data['solicitud'])) {
 
         case 'loginDni':
 
+            // @Param: dni, password
+
             if (isset($data['dni'])) {$dni=$data['dni'];}
             else {$response['error'] = true;$response['errorInf'] = 'User Not Found';}
             
@@ -49,6 +51,8 @@ if (isset($data['solicitud'])) {
             break;
 
         case 'loginTis':
+
+            // @Param: tis, fecha_nac
 
             if (isset($data['tis'])) {$tis=$data['tis'];} 
             else {$response['error'] = true;$response['errorInf'] = 'User Not Found';}
