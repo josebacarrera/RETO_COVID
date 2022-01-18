@@ -9,17 +9,6 @@ async function init() {
 }
 function loadUser(session) {
     console.log(session.sanitario);
-    switch (session) {
-        case null:
-        case undefined:
-
-            
-            break;
-    
-        default:
-            break;
-    }
-
     if (session.sanitario) {
         $('#formLogin').css('display','none')
         $('#loggedSanitario').removeClass('d-none')
