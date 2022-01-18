@@ -9,12 +9,22 @@ async function init() {
 }
 function loadUser(session) {
     console.log(session.sanitario);
-    $('#formLogin').css('text-align', 'center')
-    $('#formLogin').css('padding', '30px')
+    switch (session) {
+        case null:
+        case undefined:
+
+            
+            break;
+    
+        default:
+            break;
+    }
+
     if (session.sanitario) {
         $('#formLogin').css('display','none')
         $('#loggedSanitario').removeClass('d-none')
     }
+
 }
 reto_covid.controller('login', function ($scope) {
 
@@ -52,5 +62,20 @@ reto_covid.controller('login', function ($scope) {
         }).catch(error => console.error('Error status:', error));
 
         return false;
+    }
+
+    $scope.logout = function () {
+
+        var url = "controller/cLogin.php";
+
+        data = {'solicitud':'logout'}
+        fetch(url, {
+            method: 'GET',
+            data:JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(res => res.json()).then(result => {
+
+            console.log(result)
+        })
     }
 });
