@@ -36,10 +36,8 @@ if (isset($data['solicitud'])) {
                     $response['user'] = $user->ObjVars();
 
                     $_SESSION['cod_user'] = $user->getCod();
-                    $_SESSION['dni_sanitario'] = $dni;
-                    $_SESSION['nombre_sanitario'] = $user->ObjVars()['objSanitario']['nombre'];
-                    $_SESSION['cargo_sanitario'] = $user->ObjVars()['objSanitario']['cargo'];
                     $_SESSION['rol'] = $user->ObjVars()['objRol']['nombre'];
+                    $_SESSION['sanitario'] = $user->ObjVars()['objSanitario'];
 
                 } else {
                     $response['error'] = true;
