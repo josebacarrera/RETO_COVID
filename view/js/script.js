@@ -19,19 +19,19 @@ function loadUser(session) {
         $('#formLogin').append('<button class="btn btn-primary" type="button">Log Out</button>')
     }
 }
-reto_covid.controller('loginController', function ($scope) {
+reto_covid.controller('cLogin', function ($scope) {
 
     $scope.usuario;
     $scope.password;
 
-    $scope.login = function () {
+    $scope.login = function (solicitud) {
 
         var url = "controller/cLogin.php";
         var data = {
-            'solicitud': 'loginDni',
-            'usuario': $scope.usuario,
-            'password': $scope.password
-        };
+                        'solicitud': solicitud,
+                        'usuario':$scope.usuario,
+                        'password':$scope.password
+                    };
 
         fetch(url, {
             method: 'POST',
@@ -46,4 +46,3 @@ reto_covid.controller('loginController', function ($scope) {
 
         return false;
     };
-});

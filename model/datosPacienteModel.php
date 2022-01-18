@@ -8,10 +8,17 @@ if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
 }
 
 include_once("datosPacienteClass.php");
+include_once("citaModel.php");
+include_once("localidadModel.php");
+include_once("RegistroVacunacionModel.php");
 
 class datosPacienteModel extends datosPacienteClass{
 
     private $link;
+    private $objLocalidad;
+    private $objCita;
+    private $objVacunacion;
+    private $objVacuna;
 
     //enlace con la base de datos
     public function OpenConnect(){
@@ -36,6 +43,16 @@ class datosPacienteModel extends datosPacienteClass{
 
         $this->OpenConnect();  
         
+        // $sql = "SELECT *
+        //         FROM datos_paciente d
+        //         INNER JOIN localidad l ON l.cod = d.cod_localidad
+        //         INNER JOIN centro c ON c.cod_localidad = l.cod
+        //         INNER JOIN cita ci ON ci.tis_paciente = d.tis
+        //         INNER JOIN registro_vacunacion r ON r.tis = d.tis
+        //         INNER JOIN vacuna v ON v.cod = r.cod_vacuna
+        //         WHERE d.tis ='" . $this->getTis() . "'  AND d.fecha_nacimiento = '" . $this->getFecha_nacimiento() . "';"; 
+        
+                
         $sql = "SELECT *
                 FROM datos_paciente d
                 INNER JOIN localidad l ON l.cod = d.cod_localidad
@@ -43,26 +60,30 @@ class datosPacienteModel extends datosPacienteClass{
                 INNER JOIN cita ci ON ci.tis_paciente = d.tis
                 INNER JOIN registro_vacunacion r ON r.tis = d.tis
                 INNER JOIN vacuna v ON v.cod = r.cod_vacuna
-                WHERE d.tis ='" . $this->getTis() . "'  AND d.fecha_nacimiento = '" . $this->getFecha_nacimiento() . "';"; 
-        
+                WHERE d.tis ='4990916'  AND d.fecha_nacimiento = '2018-03-17';";
+
         $result = $this->link->query($sql);
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             
-            // $this->setCod($row['cod']);
+            $this->setNombre($row['nombre']);
+            $this->setApellido($row['apellido']);
+            $this->setEmail($row['email']);
+            $this->setFoto_perfil($row['foto_perfil']);
+            $this->setDireccion($row['direccion']);
+            $this->setCod_localidad($row['cod_localidad']);
 
-            // $this->objRol = new rolModel();
-            // $this->objRol->setNombre($row['rol']);
-            // $this->objRol = $this->objRol->ObjVars();
+            $this->objLocalidad = new localidadModel();
+            $this->objLocalidad->setCod($row['cod_localidad']);
+            $this->objLocalidad->setNombre($row['localidad.nombre']);
+            $this->objLocalidad = $this->objLocalidad->ObjVars();
 
-            // $this->objSanitario = new sanitarioModel();
-            // $this->objSanitario->setNombre($row['nombre']);
-            // $this->objSanitario->setCargo($row['cargo']);
-            // $this->objSanitario = $this->objSanitario->ObjVars();
+            $this->objCita = new citaModel();
+            $this->objCita->setTis_paciente('4990916');
+            $this->objCita = $this->objCita->getCitaByTis();
 
-            // $this->objCentro = new centroModel();
-            // $this->objCentro->setNombre($row['centro']);
-            // $this->objCentro = $this->objCentro->ObjVars();
+            $this->objVacunacion = new registroVacunacionModel();
+            $this->objVacunacion->setTis('4990916');
 
             return true;
 
