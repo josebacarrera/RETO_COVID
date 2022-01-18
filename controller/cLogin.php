@@ -1,5 +1,6 @@
 <?php
 require_once ("../model/userModel.php");
+require_once ("../model/datosPacienteModel.php");
 error_reporting(E_ERROR | E_WARNING | E_PARSE); // <-- Esto solo muestra errores de ejecución
 
 $response = array();
@@ -16,34 +17,30 @@ if (isset($data['solicitud'])) {
     switch ($solicitud) {
 
         case 'loginDni':
-        case 'loginTis': 
 
-            if (isset($data['usuario'])) {
-                $usuario=$data['usuario'];
-            } else {
-                $response['error'] = true;
-                $response['errorInf'] = 'User Not Found';
-            }
+            if (isset($data['dni'])) {$dni=$data['dni'];}
+            else {$response['error'] = true;$response['errorInf'] = 'User Not Found';}
             
-            if (isset($data['password'])) {
-                $password=$data['password'];
-            } else {
-                $response['error'] = true;
-                $response['errorInf'] = 'Password Not Found';
-            }
-
-        case 'loginDni':
+            if (isset($data['password'])) {$password=$data['password'];} 
+            else {$response['error'] = true;$response['errorInf'] = 'Password Not Found';}
 
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
 
                 $user = new userModel();
-                $user->setDni_sanitario($usuario);
+                $user->setDni_sanitario($dni);
                 $user->setPassword($password);
 
                 if ($user->loginDNI()) {
                     session_start();
                     $response['logged'] = true;
                     $response['user'] = $user->ObjVars();
+
+                    $_SESSION['cod_user'] = $user->getCod();
+                    $_SESSION['dni_sanitario'] = $dni;
+                    $_SESSION['nombre_sanitario'] = $user->ObjVars()['objSanitario']['nombre'];
+                    $_SESSION['cargo_sanitario'] = $user->ObjVars()['objSanitario']['cargo'];
+                    $_SESSION['rol'] = $user->ObjVars()['objRol']['nombre'];
+
                 } else {
                     $response['error'] = true;
                     $response['errorInf'] = 'Wrong User or Password';
@@ -54,7 +51,30 @@ if (isset($data['solicitud'])) {
             break;
 
         case 'loginTis':
-            // PROXIMAMENTE...
+
+            if (isset($data['tis'])) {$tis=$data['tis'];} 
+            else {$response['error'] = true;$response['errorInf'] = 'User Not Found';}
+            
+            if (isset($data['fecha_nac'])) {$fecha_nac=$data['fecha_nac'];} 
+            else {$response['error'] = true;$response['errorInf'] = 'Password Not Found';}
+
+            if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
+
+                $paciente = new datosPacienteModel();
+                $paciente->setTis($tis);
+                $paciente->setFecha_nacimiento($fecha_nac);
+
+                if ($paciente->loginTIS()) {
+                    session_start();
+                    $response['logged'] = true;
+                    $response['user'] = $paciente->ObjVars();
+
+                } else {
+                    $response['error'] = true;
+                    $response['errorInf'] = 'Wrong User or Password';
+                }    
+            
+            }
             break;
 
         case 'logout':

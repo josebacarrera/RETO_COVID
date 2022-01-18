@@ -52,6 +52,25 @@ class sanitarioModel extends sanitarioClass{
 
     }
 
+    public function update() {
+
+        $this->OpenConnect();  
+        
+        $sql = "UPDATE sanitario SET WHERE dni = '" . $this->getDni() . "'"; 
+        
+        $result = $this->link->query($sql);
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            return true;
+
+        }
+
+        mysqli_free_result($result);
+        $this->CloseConnect();
+
+    }
+
     public function ObjVars() {
         return get_object_vars($this);
     }

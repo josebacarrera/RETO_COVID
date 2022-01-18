@@ -30,7 +30,7 @@
             </div>
         </div>
         <!-- login-->
-        <div class="col-lg-5 col-md-4 col-sm-12  login">
+        <div class="col-lg-5 col-md-4 col-sm-12  login" ng-controller='cLogin'>
 
 
             <div class="form_login bg-light rounded border">
@@ -52,26 +52,26 @@
                         <form class="p-3">
                             <!-- TIS input -->
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control" id="tis" value=" ">
+                                <input type="text" class="form-control" id="tis" ng-model="usuario">
                                 <label for="tis">TIS (ej.: 12345678)</label>
                             </div>
                             
                             <!-- Birth Date input -->
                             <div class="form-floating mb-4">
-                                <input type="date" class="form-control" id="birthDate">
+                                <input type="date" class="form-control" id="birthDate" ng-model='password'>
                                 <label for="birthDate">Fecha de nacimiento (ej.: 09/09/1999)</label>
                             </div>
 
                             <!-- Submit button -->
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary btn-block" ng-click='login()'>Sign
+                                <button type="button" class="btn btn-primary btn-block" ng-click='login("loginTis")'>Sign
                                     in</button>
                             </div>
                         </form>
                     </div>
                     <!-- PANEL TRABAJADORES -->
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <form ng-controller="loginController" class="p-3">
+                        <form class="p-3">
                             <!-- Email input -->
                             <div class="form-floating mb-4">
                                 <input type="text" class="form-control" ng-model='usuario' />
@@ -88,7 +88,7 @@
 
                             <!-- Submit button -->
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary btn-block" ng-click='login()'>Sign
+                                <button type="button" class="btn btn-primary btn-block" ng-click='login("loginDni")'>Sign
                                     in</button>
                             </div>
                         </form>
