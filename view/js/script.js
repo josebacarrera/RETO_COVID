@@ -26,12 +26,21 @@ reto_covid.controller('cLogin', function ($scope) {
 
     $scope.login = function (solicitud) {
 
+        if (solicitud == 'loginTis') {
+            var data = {
+                'solicitud': solicitud,
+                'tis':$scope.usuario,
+                'fecha_nac':$scope.password
+            };
+        } else if (solicitud == 'loginDni') {
+            var data = {
+                'solicitud': solicitud,
+                'dni':$scope.usuario,
+                'password':$scope.password
+            };
+        }
+
         var url = "controller/cLogin.php";
-        var data = {
-                        'solicitud': solicitud,
-                        'usuario':$scope.usuario,
-                        'password':$scope.password
-                    };
 
         fetch(url, {
             method: 'POST',
