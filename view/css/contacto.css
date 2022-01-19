@@ -1,0 +1,71 @@
+body{
+    background-color: #99E2B4;
+}
+.formulario{
+    background-color: white;
+    margin: 15px;
+}
+.container{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.caja{
+    background-color: #67B99A;
+}
+.caja a{
+    text-decoration: none;
+    color: rgb(226, 226, 226);
+}
+.caja li{
+    margin: 5px;
+}
+.caja h4{
+    margin-left: 10px;
+    color: green;
+}
+.container2{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.caja2{
+    width: 30%;
+    margin-right: 5px;
+    background-color: #67B99A;
+    border-radius: 5px;
+}
+.caja2 a{
+    text-decoration: none;
+    color: rgb(226, 226, 226);
+}
+.caja2 p{
+    margin-left: 10px;
+}
+.caja2 h4{
+    margin-left: 10px;
+    color: green;
+}
+.container h4{
+    margin:10px;
+}
+#formulario{
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 15px;
+}
+@media screen and (max-width: 1199px) {
+    .container{
+        flex-flow: column;
+        margin-bottom: 50px;
+    }
+    .caja{
+        width: 100%;
+    }
+    .caja2{
+        width: 100%;
+    }
+}
