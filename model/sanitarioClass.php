@@ -8,7 +8,6 @@ class sanitarioClass
     protected $cargo;
     protected $admin;
     protected $cod_centro;
-    protected $foto_pefil;
 
     /**
      * Get the value of cod
@@ -143,26 +142,6 @@ class sanitarioClass
     public function setCargo($cargo)
     {
         $this->cargo = $cargo;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of foto_pefil
-     */ 
-    public function getFoto_pefil()
-    {
-        return $this->foto_pefil;
-    }
-
-    /**
-     * Set the value of foto_pefil
-     *
-     * @return  self
-     */ 
-    public function setFoto_pefil($foto_pefil)
-    {
-        $this->foto_pefil = $foto_pefil;
 
         return $this;
     }

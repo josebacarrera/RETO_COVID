@@ -52,25 +52,6 @@ class sanitarioModel extends sanitarioClass{
 
     }
 
-    public function update() {
-
-        $this->OpenConnect();  
-        
-        $sql = "UPDATE sanitario SET nombre_s='" . $this->getNombre() . "', apellido_s='" . $this->getApellido() . "', dni_s ='" . $this->getDni() . "', foto_perfil_s ='" . $this->getFoto_pefil() . "' WHERE dni = '" . $this->getDni() . "'"; 
-        
-        $result = $this->link->query($sql);
-        
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
-            return true;
-
-        }
-
-        mysqli_free_result($result);
-        $this->CloseConnect();
-
-    }
-
     public function ObjVars() {
         return get_object_vars($this);
     }
