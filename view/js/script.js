@@ -18,7 +18,6 @@ function loadUser(session) {
         $('#formLogin').css('display','block')
     }
 
-
 }
 reto_covid.controller('login', function ($scope) {
 
@@ -36,9 +35,13 @@ reto_covid.controller('login', function ($scope) {
         } else if (solicitud == 'loginDni') {
             var data = {
                 'solicitud': solicitud,
-                'dni': $scope.usuario,
+                'dni': $scope.dni,
                 'password': $scope.password
             };
+        } else if (solicitud == 'logout') {
+            var data = {
+                'solicitud': solicitud
+            };   
         }
         console.log(data)
 
