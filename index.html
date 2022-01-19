@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+    <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="view/css/footer.css">
     <link rel="stylesheet" href="view/css/style.css">
@@ -17,12 +17,14 @@
     <!--NAVBAR-->
     <div id="navbar"></div>
 
-    <div class="row py-2">
-        <div class="col-lg-7 col-md-8 col-sm-12 ">
+
+
+    <div class="row py-5 parallax"
+        style="background-image: url('https://www.grupoaseguranza.com/adjuntos/fichero_36627_20200625.jpg'); ">
+        <div class="col-lg-7 col-md-7 col-sm-12 ">
             <div class="text-center p-5">
                 <img src="view/img/informacion-covid.png" class="img-fluid py-2">
-                <img src="https://www.grupoaseguranza.com/adjuntos/fichero_36627_20200625.jpg"
-                    class="img-fluid py-2 w-50">
+
                 <img src="view/img/pruebas_covid.png" class="img-fluid py-2">
             </div>
         </div>
@@ -34,12 +36,13 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                            type="button" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-user"></i> &nbsp ACCESO CARPETA
-                            SALUD</button>
+                            type="button" role="tab" aria-controls="home" aria-selected="true"><i
+                                class="fas fa-user"></i> &nbsp ACCESO PACIENTES</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                            type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-user-md"></i> &nbsp ACCESO
+                            type="button" role="tab" aria-controls="profile" aria-selected="false"><i
+                                class="fas fa-user-md"></i> &nbsp RED
                             TRABAJADORES</button>
                     </li>
                 </ul>
@@ -52,7 +55,7 @@
                                 <input type="text" class="form-control" id="tis" ng-model="tis">
                                 <label for="tis">TIS (ej.: 12345678)</label>
                             </div>
-                            
+
                             <!-- Birth Date input -->
                             <div class="form-floating mb-4">
                                 <input type="date" class="form-control" id="birthDate" ng-model='fecha_nac'>
@@ -61,7 +64,8 @@
 
                             <!-- Submit button -->
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary btn-block" ng-click='login("loginTis")'>Sign
+                                <button type="button" class="btn btn-primary btn-block"
+                                    ng-click='login("loginTis")'>Sign
                                     in</button>
                             </div>
                         </form>
@@ -71,39 +75,82 @@
                         <form class="p-3">
                             <!-- Email input -->
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control" ng-model='usuario' />
-                                <label class="form-label" for="loginUser">DNI (e.j.: 12345678A) </label>
+                                <input type="text" class="form-control" ng-model='dni' />
+                                <label class="form-label" for="dni">DNI (e.j.: 12345678A) </label>
 
                             </div>
 
                             <!-- Password input -->
                             <div class="form-floating mb-4">
                                 <input type="password" class="form-control" ng-model='password' />
-                                <label class="form-label" for="loginPasswordr">Contraseña  </label>
+                                <label class="form-label" for="password">Contraseña </label>
 
                             </div>
 
                             <!-- Submit button -->
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary btn-block" ng-click='login("loginDni")'>Sign
+                                <button type="button" class="btn btn-primary btn-block"
+                                    ng-click='result("loginDni")'>Sign
                                     in</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+
+            <div id="loggedSanitario"
+                class="w-100 h-100 m-3 bg-light rounded border d-flex align-content-center justify-content-center d-none">
+                <p><b>Nombre:</b></p>
+                <button class="btn btn-primary" ng-click="logout()">Log Out</button>
+            </div>
+            <div id="loggedUser"
+                class="w-100 h-100 m-3 bg-light rounded border d-flex align-content-center justify-content-center d-none">
+                <p><b>Nombre:</b></p>
+            </div>
         </div>
     </div>
-    <div class="text-center py-5 my-5 trabajo">
-        <h1 class="title">Trabajamos con aseguradoras de ámbito nacional e internacional</h1>
-        <p>Quirónsalud presta servicios asistenciales a través de diferentes acuerdos con un amplio espectro de
-            compañías aseguradoras. Solicita cita en alguno de nuestros centros que tienen acuerdo con estas
-            aseguradoras.</p>
 
-        <button type="button" class="btn btn-primary text-light"> <i class="fas fa-calendar"></i> Pedir cita</button>
-    </div>
+    <section id="counts" class="counts bg-light">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="count-box">
+                        <i class="fas fa-user-md"></i>
+                        <a href="" class="text-dark">Médicos</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+                    <div class="count-box">
+                        <i class="far fa-hospital"></i>
+                        <a href="" class="text-dark">Departamentos</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="fas fa-flask"></i>
+                        <a href="" class="text-dark">Laboratorios</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="fas fa-award"></i>
+                        <a href="" class="text-dark">Premios</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
     <div class="row row-cols-1 row-cols-md-3 g-4 m-3 title text-center">
-        <div class="col">
+        <div class="col p-2">
             <div class="card h-100">
                 <img src="https://www.osakidetza.euskadi.eus/images/ab84-servicios-atencion-16-9.jpg"
                     class="card-img-top img-responsive" alt="...">
@@ -111,14 +158,14 @@
 
             </div>
         </div>
-        <div class="col">
+        <div class="col p-2">
             <div class="card h-100">
                 <img src="https://www.osakidetza.euskadi.eus/images/ab84-servicios-telefono-16-9.jpg"
                     class="card-img-top img-responsive" alt="...">
-                <h5 class="overlay-text bg-white p-1">Atención telefónica</h5>
+                <h5 class="overlay-text bg-white p-1"> Atención telefónica 24/7</h5>
             </div>
         </div>
-        <div class="col">
+        <div class="col p-2">
             <div class="card h-100">
                 <img src="https://www.osakidetza.euskadi.eus/images/home/ab84-home-innovacion.jpg"
                     class="card-img-top img-responsive" alt="...">
@@ -126,7 +173,15 @@
 
             </div>
         </div>
+    </div>
 
+    <div class="text-center py-5 my-5 trabajo">
+        <h1 class="title">Trabajamos con aseguradoras de ámbito nacional e internacional</h1>
+        <p>Quirónsalud presta servicios asistenciales a través de diferentes acuerdos con un amplio espectro de
+            compañías aseguradoras. Solicita cita en alguno de nuestros centros que tienen acuerdo con estas
+            aseguradoras.</p>
+
+        <button type="button" class="btn btn-primary text-light"> <i class="fas fa-calendar"></i> Pedir cita</button>
     </div>
 
     <div class="container py-2">
@@ -160,30 +215,17 @@
     </div>
 
 
-    <div class="container py-2" ng-controller="carouselController">
-
-        <h2>TESTING</h2>
-
-        <div class="d-flex">
-            <div class="card" ng-repeat='card in activeArr'>
-                {{ card }}
-            </div>
-        </div>
-
-
-
-    </div>
 
     <!--FOOTER-->
     <id id="footer"></id>
 
 </body>
 <!--SCRIPTS-->
+<script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
 <script src="view/js/jquery-3.6.0.js"></script>
 <script src="view/js/angular.min.js"></script>
 <script src="view/js/bootstrap.bundle.min.js"></script>
 <script src="view/js/script.js"></script>
 <script src="view/js/insert.js"></script>
-<script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
 
 </html>

@@ -72,60 +72,70 @@
                     </div>
                 </div>
             </div>
+        </ul>
+        <hr>
+    </div>  
+    <div class="agenda" id="mostrarAgenda">
+        <h2>Agenda</h2>
+        <div class="cards">
+        <div class="card" style="width: 18rem; margin-left: 4%">
+            <img class="card-img-top" src="/view/img/citaprevia.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">CITA</h5>
+              <a href="#" class="btn btn-primary">PEDIR CITA</a>
+            </div>
+          </div>
+          <div class="card" style="width: 18rem; margin-left: 4%">
+            <img class="card-img-top" src="/view/img/agenda.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">MIS CITAS</h5>
+              <a href="#" class="btn btn-primary">REVISAR</a>
+            </div>
+          </div>
+          <div class="card" style="width: 18rem; margin-left: 4%">
+            <img class="card-img-top" src="/view/img/cirugia.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">ESPERA CIRUGIA</h5>
+              <a href="#" class="btn btn-primary">COMRPOBAR</a>
+            </div>
+          </div>
+    </div>
+</div>
+    <div class="informe" id="mostrarInforme">
+        <h2>Informes</h2>
+        <div class="cards">
+            <div class="card" style="width: 18rem; margin-left: 4%">
+                <img class="card-img-top" src="/view/img/infobasica.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">INFORMACION BÁSICA</h5>
+                  <a href="#" class="btn btn-primary">CONSULTAR</a>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem; margin-left: 4%">
+                <img class="card-img-top" src="/view/img/medicinas.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">MIS MEDICACIONES</h5>
+                  <a href="#" class="btn btn-primary">REVISAR</a>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem; margin-left: 4%">
+                <img class="card-img-top" src="/view/img/informe.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">INFORMES MÉDICOS</h5>
+                  <a href="#" class="btn btn-primary">COMRPOBAR</a>
+                </div>
+              </div>
         </div>
-        <div class="informe" id="mostrarInforme">
-            <h2>Informes</h2>
-            <div class="agendaOptions">
-                <div class="agendaOpt">HOSPITALIZACIÓN</div>
-                <div class="agendaOpt">CONSULTAS EXTERNAS</div>
-                <div class="agendaOpt">URGENCIAS</div>
-            </div>
+    </div>
+    <div class="datos" id="mostrarDatos">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Datos Personales</h4>
         </div>
-        <div class="datos" id="mostrarDatos">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Datos Personales</h4>
-            </div>
-            <div class="wrapper mt-sm-5">
-
-                <div class="d-flex align-items-start py-3 border-bottom"> <img
-                        src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                        class="img" alt="">
-                    <div class="pl-sm-4 pl-2" id="img-section"> <b>Foto de perfil</b>
-                        <p>Tamaño máximo aceptado: 1MB</p> <button class="btn button border"><b>Subir</b></button>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control"
-                            value=""></div>
-                    <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control"
-                            value=""></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Numero TIS</label><input type="text"
-                            class="form-control" placeholder="Numero TIS bloqueado" value=""></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control"
-                            placeholder="Correo electronico" value=""></div>
-                    <div class="col-md-12"><label class="labels">Telefono</label><input type="text" class="form-control"
-                            placeholder="Telefono" value=""></div>
-                    <div class="col-md-12"><label class="labels">Direccion</label><input type="text"
-                            class="form-control" placeholder="Direccion" value=""></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Poblacion</label><input type="text" class="form-control"
-                            placeholder="Poblacion" value=""></div>
-                    <div class="col-md-6"><label class="labels">Provincia</label><input type="text" class="form-control"
-                            value="" placeholder="state"></div>
-                </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">GUARDAR
-                        CAMBIOS</button></div>
-            </div>
-
-            <div class="vacuna" id="mostrarCovid">
-                <h2>COVID</h2>
-                <div class="vacunaOptions">
-                    <div class="vacunaOpt">CITA VACUNACION</div>
-                    <div class="vacunaOpt">MIS VACUNAS</div>
-                    <div class="vacunaOpt">URGENCIAS</div>
+        <div class="wrapper mt-sm-5">
+            
+            <div class="d-flex align-items-start py-3 border-bottom"> <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img" alt="">
+                <div class="pl-sm-4 pl-2" id="img-section"> <b>Foto de perfil</b>
+                    <p>Tamaño máximo aceptado: 1MB</p> <button class="btn button border"><b>Subir</b></button>
                 </div>
             </div>
         </div>
