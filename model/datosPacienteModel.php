@@ -7,6 +7,7 @@ include_once("datosPacienteClass.php");
 include_once("citaModel.php");
 include_once("localidadModel.php");
 include_once("RegistroVacunacionModel.php");
+include_once("centroModel.php");
 
 class datosPacienteModel extends datosPacienteClass{
 
@@ -35,14 +36,21 @@ class datosPacienteModel extends datosPacienteClass{
         mysqli_close ($this->link);
     }
 
-    // FUNCIONES MOD //
+    public function     loginTIS() {
 
-    public function loginTIS() {
+        $this->OpenConnect();
 
-        $this->OpenConnect();  
         
-        // $sql = "CALL spLoginTIS('" . $this->getTis() . "','" . $this->getFecha_nacimiento() . "')";            
-        $sql = "CALL spLoginTIS('4990916','2018-03-17')";
+        
+                
+        $sql = "SELECT *
+                FROM datos_paciente d
+                INNER JOIN localidad l ON l.cod = d.cod_localidad
+                INNER JOIN centro c ON c.cod_localidad = l.cod
+                INNER JOIN cita ci ON ci.tis_paciente = d.tis
+                INNER JOIN registro_vacunacion r ON r.tis = d.tis
+                INNER JOIN vacuna v ON v.cod = r.cod_vacuna
+                WHERE d.tis ='4990916'  AND d.fecha_nacimiento = '2018-03-17';";
 
         $result = $this->link->query($sql);
         
@@ -62,15 +70,6 @@ class datosPacienteModel extends datosPacienteClass{
 
             $this->objCentro = new centroModel();
             $this->objCentro->setCod($row['cod_centro_ce']);
-            $this->objCentro->setCod_localidad($row['cod_localidad_ce']);
-            $this->objCentro->setNombre($row['nombre_ce']);
-            $this->objCentro->setTelefono($row['telefono_ce']);
-            $this->objCentro->setEmail($row['email_ce']);
-            $this->objCentro->setHorario_temprano($row['horario_temprano_ce']);
-            $this->objCentro->setHorario_tarde($row['horario_tarde_ce']);
-            $this->objCentro->setHorario_noche($row['horario_noche_ce']);
-            $this->objCentro->setDias($row['dias_ce']);
-            $this->objCentro = $this->objCentro->ObjVars();
 
             $this->objCita = new citaModel();
             $this->objCita->setCod($row['cod_cita_ci']);

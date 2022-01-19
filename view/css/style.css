@@ -11,22 +11,30 @@
     color: black;
     font-size: 25px;
 }
-.nav-link{
+
+.nav-link {
     color: #2d2d2d;
     font-size: 11px;
     padding: 5px;
 }
-.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link,.nav-link:hover, .nav-link:focus{
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link,
+.nav-link:hover,
+.nav-link:focus {
     color: #036666;
     padding: 5px;
 }
+
 .row {
     margin-right: 0;
     padding: 0px;
 }
-.row > *{
+
+.row>* {
     padding: 0px;
 }
+
 .btn-primary {
     background-color: #036666;
     border-color: #036666;
@@ -36,8 +44,45 @@
     background-color: #036666;
     border-color: #036666;
 }
-.bg-primary{
+
+.bg-primary {
     background-color: #036666;
+}
+
+
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar-nav a,
+.navbar-nav a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    color: #036666;
+    white-space: nowrap;
+    transition: 0.3s;
+    border-bottom: 2px solid #fff;
+    padding: 5px 2px;
+}
+
+.navbar a i,
+.navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover>a {
+    color: #1977cc;
+    border-color: #036666;
 }
 
 /*Fuentes*/
@@ -50,6 +95,3 @@
     font-family: title;
     src: url(../fonts/BebasNeue-Regular.ttf);
 }
-
-
-
