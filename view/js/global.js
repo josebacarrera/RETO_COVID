@@ -16,11 +16,10 @@ reto_covid.controller('main', async function ($scope) {
 
 
 function loadContent(session) {
-    console.log(session)
-
+    
     if (session) { // TIENE SESSION
-        console.log(session)
         $('#formLogin').css('display', 'none')
+
         if (session.sanitario) { // SANITARIO
             $('#loggedSanitario').removeClass('d-none')
             $('#intranetCorporativa').removeClass('d-none')

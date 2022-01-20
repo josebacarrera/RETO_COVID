@@ -1,4 +1,11 @@
 <?php
+
+if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
+    include_once ("connect_data_serv.php");
+} else {
+    include_once ("connect_data_local.php");
+}
+
 include_once 'sanitarioClass.php';
 
 class sanitarioModel extends sanitarioClass{
@@ -33,15 +40,10 @@ class sanitarioModel extends sanitarioClass{
         
         $sql = "UPDATE sanitario SET nombre_s='".$this->getNombre()."', apellido_s='".$this->getApellido()."', dni_s='".$this->getDni()."' WHERE dni_s = '" . $this->getDni() . "'"; 
         
-        $result = $this->link->query($sql);
-        
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
+        if ($this->link->query($sql)) {
             return true;
-
         }
 
-        mysqli_free_result($result);
         $this->CloseConnect();
 
     }
