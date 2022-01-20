@@ -39,6 +39,14 @@ body {
     display:flex;
     flex-direction: column;
 }
+#aside{
+    height: 1000px;
+    width: 1000px;
+}
+.principal{
+    width: 100% ;
+    height: auto;
+}
 /* FIN CONTAINER */
 
 /* INICIO AGENDA */
