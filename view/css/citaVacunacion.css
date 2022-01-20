@@ -1,0 +1,34 @@
+#formulario{
+    width: 70%;
+    margin-left: 15%;
+}
+#date{
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+/* FOTO PERFIL */
+.wrapper {
+   
+    margin: 10px auto;
+    max-width: 600px
+}
+.img {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    object-fit: cover
+}
+.cards{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-left: 20%;
+    margin-top: 15%;
+}
+.card{
+    -webkit-box-shadow: 5px 5px 15px -5px #000000; 
+    box-shadow: 5px 5px 15px -5px #000000;
+}
+.btn>btn-primary{
+    background-color: #e00f66;
+}
