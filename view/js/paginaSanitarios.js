@@ -44,6 +44,7 @@ reto_covid.controller('datosPersonales', async function ($scope) {
 
     $scope.updateSanitario = function () {
 
+        
         var data = {
             'solicitud': 'updateSanitario',
             'dni': $('#dniTrabajador').val(),

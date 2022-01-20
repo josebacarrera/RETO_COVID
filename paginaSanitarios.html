@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="view/css/footer.css">
@@ -19,7 +19,8 @@
     <div class="row">
         <div class="col-lg-2 col-md-2 col-sm-12 p-3 text-white  " style="background-color: #036666;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
-                    class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">{{usuario.nombre}} {{usuario.apellido}}</span> </a>
+                    class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">{{usuario.nombre}}
+                    {{usuario.apellido}}</span> </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li> <a href="#" id="agendaSanitaria" class="nav-link text-white"> <i class="fa fa-book"></i><span
@@ -49,19 +50,28 @@
         <div id="infoDatosPersonales" class="col-lg-10 col-md-10 col-sm-12 vh-100 p-4 infoOpcion"
             ng-controller="datosPersonales" style="display: none;">
             <div class="text-center row">
-                <div class="col-11">
+                <div class="col-10">
                     <h1 class="title ">DATOS PERSONALES</h1>
                 </div>
 
-                <div class="col-1">
+                <div class="col-2">
                     <button ng-click="editableInput = !editableInput" class="btn btn-warning">Editar</button>
                 </div>
             </div>
             <form>
                 <div class="row justify-content-center">
-                    <div class="col-sm-6 col-md-2 col-lg-2 text-center p-2"><img
-                            src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg"
-                            srcset="" class="img-fluid img-perfil img-thumbnail"></div>
+                    <div class="col-sm-6 col-md-2 col-lg-2 text-center p-2">
+           
+                        <div class="input-file">
+                            <input type="file" id="file" class="input-file-input"/>
+                            <label for="" class="input-file-btn">
+                            Seleccionar archivo
+                            </label>
+                        </div>
+                              <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg"
+                              srcset="" class="img-fluid img-perfil img-thumbnail">
+
+                        </div>
                     <div class="mb-4 col-sm-6 col-md-4 col-lg-5 p-1 m-auto">
                         <div class="form-floating ">
                             <input type="text" class="form-control" id="nombreTrabajador" ng-model="nombre"
