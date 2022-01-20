@@ -70,6 +70,8 @@ if (isset($data['solicitud'])) {
                     session_start();
                     $response['logged'] = true;
                     $response['paciente'] = $paciente->ObjVars();
+                    $_SESSION['rol'] = 'paciente';
+                    $_SESSION['paciente'] = $paciente->ObjVars();
 
                 } else {
                     $response['error'] = true;
@@ -80,12 +82,14 @@ if (isset($data['solicitud'])) {
             break;
 
         case 'logout':
+            session_start();
             $response['Inf'] = "Session eliminada correctamente";
             session_unset();
             session_destroy();
             break;
         
         default:
+            session_start();
             $response['error'] = true;
             $response['errorInf'] = "Session eliminada, acceso no autorizado";
             session_unset();
