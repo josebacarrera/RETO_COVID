@@ -15,7 +15,7 @@
     <link rel="icon" href="icono.jpg">
     <link rel="stylesheet" href="view/css/style.css">
     <link rel="stylesheet" href="view/css/paginaUser.css">
-
+    
     <!-- <script src="view/js/insert.js"></script>  -->
 
 </head>
@@ -119,26 +119,104 @@
         </div>
         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">GUARDAR CAMBIOS</button></div>
     </div>
-    
-    <div class="vacuna" id="mostrarCovid">
-        <h2>COVID</h2>
-        <div class="vacunaOptions">
-            <div class="vacunaOpt">CITA VACUNACION</div>
-            <div class="vacunaOpt">MIS VACUNAS</div>
-            <div class="vacunaOpt">URGENCIAS</div>
-        </div>
-    </div>
 </div>  
+<div class="vacuna" id="mostrarCovid">
+  <h2>Area COVID</h2>
+  <div class="cards">
+      <div class="card" style="width: 18rem; margin-left: 4%">
+          <img class="card-img-top" src="/view/img/citavacuna.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">CITA</h5>
+            <a href="#" class="btn btn-primary">PEDIR CITA</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem; margin-left: 4%">
+          <img class="card-img-top" src="/view/img/agendavacunas.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">MIS VACUNAS</h5>
+            <a href="#" class="btn btn-primary">REVISAR</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem; margin-left: 4%">
+          <img class="card-img-top" src="/view/img/informe.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">PREGUNTAS FREC. </h5>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              VER
+            </button>
+          </div>
+        </div>
+  </div>
+</div>
+<!--Modal preguntas frecuentes-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Preguntas Frecuentes</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" role="button">
+        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta1">
+          <a data-bs-toggle="collapse" href="#pregunta1" role="button" aria-expanded="false" aria-controls="pregunta1" style="text-decoration: none; color: black; font-weight: bold;">
+            ¿Con que profesionales puedo reservar una cita?
+          </a>
+        </p>
+        <div class="collapse" id="pregunta1">
+          <div class="card card-body">
+            <ul>
+              <li>Médico o médica de cabecera</li>
+              <li>Pediatra</li>
+              <li>Matrona</li>
+              <li>Enfermería</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" role="button">
+        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta2">
+          <a data-bs-toggle="collapse" href="#pregunta2" role="button" aria-expanded="false" aria-controls="pregunta2" style="text-decoration: none; color: black; font-weight: bold;">
+            ¿Cuál es el número de la TIS?
+          </a>
+        </p>
+        <div class="collapse" id="pregunta2">
+          <div class="card card-body">
+           <p>
+            El número de la TIS es necesario para identificarse y solicitar Cita Previa. Independientemente del tipo de tarjeta (ONA, Tarjeta Sanitaria Electrónica o TIS), es un número de 8 cifras que viene impreso junto al nombre. Lo podrás encontrar donde está indicado por la flecha:
+            <img src="/view/img/tarjetaindicadora.jpg">
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" role="button">
+        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta2">
+          <a data-bs-toggle="collapse" href="#pregunta2" role="button" aria-expanded="false" aria-controls="pregunta2" style="text-decoration: none; color: black; font-weight: bold;">
+            ¿Cuál es el número de la TIS?
+          </a>
+        </p>
+        <div class="collapse" id="pregunta2">
+          <div class="card card-body">
+           <p>
+            El número de la TIS es necesario para identificarse y solicitar Cita Previa. Independientemente del tipo de tarjeta (ONA, Tarjeta Sanitaria Electrónica o TIS), es un número de 8 cifras que viene impreso junto al nombre. Lo podrás encontrar donde está indicado por la flecha:
+            <img src="/view/img/tarjetaindicadora.jpg">
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     
 </body>
 
 
-</body>
 
-<!-- SCRIPT -->
 <script src="view/js/paginaUser.js"></script>
-<script src="view/js/insert.js"></script>
-<script src="view/js/global.js"></script>
-
 </html>

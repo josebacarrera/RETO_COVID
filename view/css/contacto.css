@@ -10,10 +10,10 @@ body{
     flex-flow: row;
     justify-content: center;
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 .caja{
     background-color: #67B99A;
-    border-radius: 5px;
 }
 .caja a{
     text-decoration: none;
