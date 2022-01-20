@@ -25,26 +25,26 @@
 }
 
 .input-file-input {
-    display:none;
-  }
+    display: none;
+}
 
-  .input-file__btn {
+.input-file__btn {
     height: 34px;
-      padding: 6px 12px;
-      border-radius: 17px;
-      background-color: var(--color-bg-btn);
-      color: white;
-      width: 170px;
-      text-align: center;
-      line-height: 22px;
-      cursor: pointer;
-  }
-  
-  .input-file__btn:hover {
-      background-color: var(--color-bg-btn-hover);
-  }
-  
-  .input-file__btn:active {
-      -webkit-box-shadow: 0 3px 5px var(--color-shadow-btn-active) inset;
-      box-shadow: 0 3px 5px var(--color-shadow-btn-active) inset;
-  }
+    padding: 6px 12px;
+    border-radius: 17px;
+    background-color: var(--color-bg-btn);
+    color: white;
+    width: 170px;
+    text-align: center;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.input-file__btn:hover {
+    background-color: var(--color-bg-btn-hover);
+}
+
+.input-file__btn:active {
+    -webkit-box-shadow: 0 3px 5px var(--color-shadow-btn-active) inset;
+    box-shadow: 0 3px 5px var(--color-shadow-btn-active) inset;
+}
