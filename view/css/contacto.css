@@ -1,14 +1,10 @@
 body{
     background-color: #99E2B4;
 }
-/*INICIO FORMULARIO*/
-#formulario{
-    width: 70%;
-    margin-left: 15%;
-    margin-top: 15px;
+.formulario{
+    background-color: white;
+    margin: 15px;
 }
-/*FIN FORMULARIO*/
-/*INICIO CONTAINER DE ARRIBA*/
 .container{
     display: flex;
     flex-flow: row;
@@ -30,8 +26,6 @@ body{
     margin-left: 10px;
     color: green;
 }
-/*FIN CONTAINER DE ARRIBA*/
-/*INICIO CONTAINER DE ABAJO*/
 .container2{
     display: flex;
     flex-flow: row;
@@ -58,8 +52,11 @@ body{
 .container h4{
     margin:10px;
 }
-/*FIN CONTAINER DE ABAJO*/
-/*RESPONSIVE*/
+#formulario{
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 15px;
+}
 @media screen and (max-width: 1199px) {
     .container{
         flex-flow: column;
