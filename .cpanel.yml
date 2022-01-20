@@ -1,0 +1,5 @@
+---
+deployment:
+      tasks:
+        - rm -rf /home/hiruzerbi/public_html/*
+        - cp -Rf /home/hiruzerbi/repositories/RETO_COVID/* /home/hiruzerbi/public_html/.

@@ -5,23 +5,28 @@ document.addEventListener("DOMContentLoaded", function(){
     elementoInforme.addEventListener("click", showInforme);
     elementoDatos=document.getElementById("mostrarDatos");
     elementoDatos.addEventListener("click", showDatos);
+    elementoDatos=document.getElementById("mostrarCovid");
+    elementoDatos.addEventListener("click", showCovid);
 });
 
 function showAgenda(){
     document.getElementById("mostrarAgenda").style.display = '';
     document.getElementById("mostrarInforme").style.display = 'none';
     document.getElementById("mostrarDatos").style.display = 'none';
+    document.getElementById("mostrarCovid").style.display = 'none';
 }
 function showInforme(){
     document.getElementById("mostrarAgenda").style.display = 'none';
     document.getElementById("mostrarInforme").style.display = '';
     document.getElementById("mostrarDatos").style.display = 'none';
+    document.getElementById("mostrarCovid").style.display = 'none';
+    console.log("hawaii");
 }
 function showDatos(){
     document.getElementById("mostrarAgenda").style.display = 'none';
     document.getElementById("mostrarInforme").style.display = 'none';
     document.getElementById("mostrarDatos").style.display = '';
-    console.log("hawaii");
+    document.getElementById("mostrarCovid").style.display = 'none';
 }
 function showCovid(){
     document.getElementById("mostrarAgenda").style.display = 'none';

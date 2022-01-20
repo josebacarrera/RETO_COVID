@@ -12,42 +12,115 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="icon" href="/icono.jpg">
-    <link rel="stylesheet" href="/view/css/paginaUser.css">
-    <script src="../RETO_COVID/view/js/paginaUser.js"></script>
+    <link rel="icon" href="icono.jpg">
+    <link rel="stylesheet" href="view/css/style.css">
+    <link rel="stylesheet" href="view/css/paginaUser.css">
+
+    <!-- <script src="view/js/insert.js"></script>  -->
+
 </head>
 
-<body>
-    <div class="contenedorgeneral">
-    <div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white" style="width: 250px; background-color: #036666;"> <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Nombre Paciente</span> </a>
+<body onload="showAgenda()">
+
+    <div id="navbar"></div>
+
+    <div class="general">
+    <div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white"
+        style="width: 250px; background-color: #036666;"> <a href="/"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
+                class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">AREA PERSONAL</span> </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-            <li> <a href="#" class="nav-link text-white"><i class="fa fa-book"></i><span class="ms-2" id="mostrarAgenda" onclick="showAgenda()">Agenda sanitaria</span> </a> </li>
-            <li> <a href="#" class="nav-link text-white"><i class="fa fa-scroll"></i><span class="ms-2" id="mostrarAgenda" onclick="showInforme()">Informes</span> </a> </li>
-            <li> <a href="#" class="nav-link text-white"><i class="fas fa-user"></i><span class="ms-2" id="mostrarAgenda" onclick="showDatos()">Datos personales</span> </a> </li>
-            <div class="covid">
-                <li> <a href="#" class="nav-link text-white"> <i class="fas fa-virus"></i><span class="ms-2" onclick="showCovid()" id="mostrarCovid">COVID</span> </a> </li>
+            <li> <a href="#" class="nav-link text-white"><i class="fa fa-book"></i><span class="ms-2" onclick="showAgenda()">Agenda sanitaria</span> </a> </li>
+            <li> <a href="#" class="nav-link text-white"><i class="fa fa-scroll"></i><span class="ms-2" onclick="showInforme()">Informes</span> </a> </li>
+            <li> <a href="#" class="nav-link text-white"><i class="fas fa-user"></i><span class="ms-2" onclick="showDatos()">Datos personales</span> </a> </li>
+        <div class="covid">
+            <li> <a href="#" class="nav-link text-white"> <i class="fas fa-virus"></i><span class="ms-2" onclick="showCovid()">COVID</span> </a> </li>
             </div>
         </ul>
         <hr>
     </div>  
-    <div class="agenda">
+    <div class="agenda" id="mostrarAgenda">
         <h2>Agenda</h2>
-        <div class="agendaOptions">
-            <div class="agendaOpt">PEDIR CITA ATENCION PRIMARIA</div>
-            <div class="agendaOpt">MIS CITAS</div>
-            <div class="agendaOpt">LISTA ESPERA QUIRURGICA</div>
-        </div>
+        <div class="cards">
+        <div class="card" style="width: 18rem; margin-left: 4%">
+            <img class="card-img-top" src="/view/img/citaprevia.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">CITA</h5>
+              <a href="#" class="btn btn-primary">PEDIR CITA</a>
+            </div>
+          </div>
+          <div class="card" style="width: 18rem; margin-left: 4%">
+            <img class="card-img-top" src="/view/img/agenda.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">MIS CITAS</h5>
+              <a href="#" class="btn btn-primary">REVISAR</a>
+            </div>
+          </div>
+          <div class="card" style="width: 18rem; margin-left: 4%">
+            <img class="card-img-top" src="/view/img/cirugia.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">ESPERA CIRUGIA</h5>
+              <a href="#" class="btn btn-primary">COMRPOBAR</a>
+            </div>
+          </div>
     </div>
-    <div class="informe">
+</div>
+    <div class="informe" id="mostrarInforme">
         <h2>Informes</h2>
-        <div class="agendaOptions">
-            <div class="agendaOpt">HOSPITALIZACIÓN</div>
-            <div class="agendaOpt">CONSULTAS EXTERNAS</div>
-            <div class="agendaOpt">URGENCIAS</div>
+        <div class="cards">
+            <div class="card" style="width: 18rem; margin-left: 4%">
+                <img class="card-img-top" src="/view/img/infobasica.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">INFORMACION BÁSICA</h5>
+                  <a href="#" class="btn btn-primary">CONSULTAR</a>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem; margin-left: 4%">
+                <img class="card-img-top" src="/view/img/medicinas.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">MIS MEDICACIONES</h5>
+                  <a href="#" class="btn btn-primary">REVISAR</a>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem; margin-left: 4%">
+                <img class="card-img-top" src="/view/img/informe.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">INFORMES MÉDICOS</h5>
+                  <a href="#" class="btn btn-primary">COMRPOBAR</a>
+                </div>
+              </div>
         </div>
     </div>
-    <div class="vacuna">
+    <div class="datos" id="mostrarDatos">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Datos Personales</h4>
+        </div>
+        <div class="wrapper mt-sm-5">
+            
+            <div class="d-flex align-items-start py-3 border-bottom"> <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img" alt="">
+                <div class="pl-sm-4 pl-2" id="img-section"> <b>Foto de perfil</b>
+                    <p>Tamaño máximo aceptado: 1MB</p> <button class="btn button border"><b>Subir</b></button>
+                </div>
+            </div>
+        <div class="row mt-2">
+            <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control"  value=""></div>
+            <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control" value=""></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12"><label class="labels">Numero TIS</label><input type="text" class="form-control" placeholder="Numero TIS bloqueado" value=""></div>
+            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="Correo electronico" value=""></div>
+            <div class="col-md-12"><label class="labels">Telefono</label><input type="text" class="form-control" placeholder="Telefono" value=""></div>
+            <div class="col-md-12"><label class="labels">Direccion</label><input type="text" class="form-control" placeholder="Direccion" value=""></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6"><label class="labels">Poblacion</label><input type="text" class="form-control" placeholder="Poblacion" value=""></div>
+            <div class="col-md-6"><label class="labels">Provincia</label><input type="text" class="form-control" value="" placeholder="state"></div>
+        </div>
+        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">GUARDAR CAMBIOS</button></div>
+    </div>
+    
+    <div class="vacuna" id="mostrarCovid">
         <h2>COVID</h2>
         <div class="vacunaOptions">
             <div class="vacunaOpt">CITA VACUNACION</div>
@@ -55,36 +128,17 @@
             <div class="vacunaOpt">URGENCIAS</div>
         </div>
     </div>
-    
-</div>
-    
-    <!-- <div class="container">
-        <div class="agenda">
-            <h2>Agenda</h2>
-            <div class="agendaOptions">
-                <div class="agendaOpt">PEDIR CITA ATENCION PRIMARIA</div>
-                <div class="agendaOpt">MIS CITAS</div>
-                <div class="agendaOpt">LISTA ESPERA QUIRURGICA</div>
-            </div>
-        </div>
-        <div class="informe">
-            <h2>Informes</h2>
-            <div class="agendaOptions">
-                <div class="agendaOpt">HOSPITALIZACIÓN</div>
-                <div class="agendaOpt">CONSULTAS EXTERNAS</div>
-                <div class="agendaOpt">URGENCIAS</div>
-            </div>
-        </div>
-        <div class="vacuna">
-            <h2>Informes</h2>
-            <div class="vacunaOptions">
-                <div class="vacunaOpt">CITA VACUNACION</div>
-                <div class="vacunaOpt">MIS VACUNAS</div>
-                <div class="vacunaOpt">URGENCIAS</div>
-            </div>
-        </div>
-    </div> -->
-    
+</div>  
+
     
 </body>
+
+
+</body>
+
+<!-- SCRIPT -->
+<script src="view/js/paginaUser.js"></script>
+<script src="view/js/insert.js"></script>
+<script src="view/js/global.js"></script>
+
 </html>
