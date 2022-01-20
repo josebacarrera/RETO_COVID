@@ -1,15 +1,15 @@
 <?php
 class centroClass 
 {
-    private $cod;
-    private $cod_localidad;
-    private $nombre;
-    private $telefono;
-    private $email;
-    private $horario_temprano;
-    private $horario_tarde;
-    private $horario_noche;
-    private $dias;
+    protected $cod;
+    protected $cod_localidad;
+    protected $nombre;
+    protected $telefono;
+    protected $email;
+    protected $horario_temprano;
+    protected $horario_tarde;
+    protected $horario_noche;
+    protected $dias;
 
     /**
      * Get the value of cod

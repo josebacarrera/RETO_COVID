@@ -14,7 +14,7 @@
     <title>Página de Inicio</title>
 </head>
 
-<body>
+<body ng-controller="main">
     <!--NAVBAR-->
     <div id="navbar"></div>
 
@@ -53,13 +53,13 @@
                         <form class="p-3">
                             <!-- TIS input -->
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control" id="tis" ng-model="tis">
+                                <input type="text" class="form-control" id="tis" ng-model="tis" required>
                                 <label for="tis">TIS (ej.: 12345678)</label>
                             </div>
 
                             <!-- Birth Date input -->
                             <div class="form-floating mb-4">
-                                <input type="date" class="form-control" id="birthDate" ng-model='fecha_nac'>
+                                <input type="date" class="form-control" id="birthDate" ng-model='fecha_nac' required>
                                 <label for="birthDate">Fecha de nacimiento</label>
                             </div>
 
@@ -76,14 +76,14 @@
                         <form class="p-3">
                             <!-- Email input -->
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control" ng-model='dni' />
+                                <input type="text" class="form-control" ng-model='dni' required/>
                                 <label class="form-label" for="dni">DNI (e.j.: 12345678A) </label>
 
                             </div>
 
                             <!-- Password input -->
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" ng-model='password' />
+                                <input type="password" class="form-control" ng-model='password' required/>
                                 <label class="form-label" for="password">Contraseña </label>
 
                             </div>
@@ -91,7 +91,7 @@
                             <!-- Submit button -->
                             <div class="text-center">
                                 <button type="button" class="btn btn-primary btn-block"
-                                    ng-click='result("loginDni")'>Sign
+                                    ng-click='login("loginDni")'>Sign
                                     in</button>
                             </div>
                         </form>
@@ -100,13 +100,17 @@
             </div>
 
             <div id="loggedSanitario"
-                class="w-100 h-100 m-3 bg-light rounded border d-flex align-content-center justify-content-center d-none">
-                <p><b>Nombre:</b></p>
-                <button class="btn btn-primary" ng-click="logout()">Log Out</button>
+                class="w-100 h-100 m-3 bg-light rounded border align-content-center justify-content-center d-none p-3">
+
+                <p><u>Nombre y apellido:</u> {{ usuario.nombre}}</p>
+                <div class="text-center">
+                    <button class="btn btn-primary" ng-click="login('logout')">Log Out</button>
+                </div>
             </div>
             <div id="loggedUser"
                 class="w-100 h-100 m-3 bg-light rounded border d-flex align-content-center justify-content-center d-none">
-                <p><b>Nombre:</b></p>
+                <button class="btn btn-primary" ng-click="login('logout')">Log Out</button>
+
             </div>
         </div>
     </div>

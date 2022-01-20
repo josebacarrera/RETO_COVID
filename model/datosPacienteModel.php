@@ -12,6 +12,7 @@ include_once("citaModel.php");
 include_once("localidadModel.php");
 include_once("RegistroVacunacionModel.php");
 include_once("centroModel.php");
+include_once("vacunaModel.php");
 
 class datosPacienteModel extends datosPacienteClass{
 
@@ -48,14 +49,8 @@ class datosPacienteModel extends datosPacienteClass{
         
         
                 
-        $sql = "SELECT *
-                FROM datos_paciente d
-                INNER JOIN localidad l ON l.cod = d.cod_localidad
-                INNER JOIN centro c ON c.cod_localidad = l.cod
-                INNER JOIN cita ci ON ci.tis_paciente = d.tis
-                INNER JOIN registro_vacunacion r ON r.tis = d.tis
-                INNER JOIN vacuna v ON v.cod = r.cod_vacuna
-                WHERE d.tis ='4990916'  AND d.fecha_nacimiento = '2018-03-17';";
+        $sql = "CALL spLoginTIS('" . $this->getTis() . "','" . $this->getFecha_nacimiento() . "')";
+        // $sql = "CALL spLoginTIS('4990916','2018-03-17')";
 
         $result = $this->link->query($sql);
         
@@ -75,13 +70,39 @@ class datosPacienteModel extends datosPacienteClass{
 
             $this->objCentro = new centroModel();
             $this->objCentro->setCod($row['cod_centro_ce']);
+            $this->objCentro->setCod_localidad($row['cod_localidad_ce']);
+            $this->objCentro->setNombre($row['nombre_ce']);
+            $this->objCentro->setTelefono($row['telefono_ce']);
+            $this->objCentro->setEmail($row['email_ce']);
+            $this->objCentro->setHorario_temprano($row['horario_temprano_ce']);
+            $this->objCentro->setHorario_tarde($row['horario_tarde_ce']);
+            $this->objCentro->setHorario_noche($row['horario_noche_ce']);
+            $this->objCentro->setDias($row['dias_ce']);
+            $this->objCentro = $this->objCentro->ObjVars();
 
             $this->objCita = new citaModel();
-            $this->objCita->setTis_paciente('4990916');
-            $this->objCita = $this->objCita->getCitaByTis();
+            $this->objCita->setCod($row['cod_cita_ci']);
+            $this->objCita->setTis_paciente($row['tis_paciente_ci']);
+            $this->objCita->setCod_sanitario($row['cod_sanitario_ci']);
+            $this->objCita->setFecha($row['fecha_ci']);
+            $this->objCita->setHora($row['hora_ci']);
+            $this->objCita->setCod_centro($row['cod_centro_ci']);
+            $this->objCita = $this->objCita->ObjVars();
 
             $this->objVacunacion = new registroVacunacionModel();
-            $this->objVacunacion->setTis('4990916');
+            $this->objVacunacion->setCod($row['cod_registro_rg']);
+            $this->objVacunacion->setTis($row['tis_registro_rg']);
+            $this->objVacunacion->setCod_vacuna($row['cod_vacuna_rg']);
+            $this->objVacunacion->setDosis($row['dosis_rg']);
+            $this->objVacunacion->setFecha_ultima_vacuna($row['fecha_ultima_vacuna_rg']);
+            $this->objVacunacion = $this->objVacunacion->ObjVars();
+
+            $this->objVacuna = new vacunaModel();
+            $this->objVacuna->setCod($row['cod_vacuna_v']);
+            $this->objVacuna->setNombre($row['nombre_v']);
+            $this->objVacuna->setMax($row['max_v']);
+            $this->objVacuna->setIntervalo($row['intervalo_v']);
+            $this->objVacuna = $this->objVacuna->ObjVars();
 
             return true;
 
