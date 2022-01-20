@@ -1,11 +1,7 @@
 <?php
 
-
-if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
-    include_once ("connect_data_SERV.php");
-} else {
-    include_once ("connect_data_LOCAL.php");
-}
+if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {include_once ("connect_data_SERV.php");} 
+else {include_once ("connect_data_LOCAL.php");}
 
 include_once("datosPacienteClass.php");
 include_once("citaModel.php");
@@ -23,7 +19,6 @@ class datosPacienteModel extends datosPacienteClass{
     private $objVacuna;
     private $objCentro;
 
-    //enlace con la base de datos
     public function OpenConnect(){
         $kondat=new connect_data();
         try{
@@ -37,7 +32,6 @@ class datosPacienteModel extends datosPacienteClass{
         // forzamos el uso de utf8 para el intercambio de datos entre la aplicacion y la base de datos
 
     }
-
     public function CloseConnect() {
         mysqli_close ($this->link);
     }
