@@ -26,23 +26,65 @@
                 <li> <a href="#" id="agendaSanitaria" class="nav-link text-white"> <i class="fa fa-book"></i><span
                             class="ms-2" ng-click="cambiaragenda()">Agenda sanitaria</span> </a> </li>
                 <li> <a href="#" id="informes" class="nav-link text-white"> <i class="fa fa-scroll"></i><span
-                            class="ms-2" ng-click="cambiarinformes()">Informes</span> </a> </li>
+                            class="ms-2" ng-click="cambiarinformes()">Pacientes</span> </a> </li>
                 <li> <a href="#" id="datosPersonales" class="nav-link text-white"> <i class="fas fa-user"></i><span
                             class="ms-2" ng-click="cambiardatos()">Datos personales</span> </a> </li>
             </ul>
             <hr>
         </div>
 
-        <div id="infoInicio" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion">
-            <div class="d-flex align-center justify-content-center"></div>
+
+
+        <div id="infoAgenda" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion p-4">
+            <div class="container">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Company</th>
+                            <th>Contact</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                            <td>Mexico</td>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                            <td>Mexico</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
         </div>
 
-        <div id="infoAgenda" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion" style="display: none;">
-            agenda
-        </div>
+        <div id="infoInformes" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion p-4" style="display: none;">
+            <h1 class="title">Pacientes</h1>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 ">
+                    <h2>Pedir cita</h2>
 
-        <div id="infoInformes" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion" style="display: none;">
-            informes
+                </div>
+                <div class="col-sm-12 col-md-6 ">
+                    <h2>Dar de alta/baja a un cliente</h2>
+                    
+                </div>
+            </div>
         </div>
 
 
@@ -61,17 +103,17 @@
             <form>
                 <div class="row justify-content-center">
                     <div class="col-sm-6 col-md-2 col-lg-2 text-center p-2">
-           
+
                         <div class="input-file">
-                            <input type="file" id="file" class="input-file-input"/>
+                            <input type="file" id="file" class="input-file-input" />
                             <label for="" class="input-file-btn">
-                            Seleccionar archivo
+                                Seleccionar archivo
                             </label>
                         </div>
-                              <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg"
-                              srcset="" class="img-fluid img-perfil img-thumbnail">
+                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg"
+                            srcset="" class="img-fluid img-perfil img-thumbnail">
 
-                        </div>
+                    </div>
                     <div class="mb-4 col-sm-6 col-md-4 col-lg-5 p-1 m-auto">
                         <div class="form-floating ">
                             <input type="text" class="form-control" id="nombreTrabajador" ng-model="nombre"
