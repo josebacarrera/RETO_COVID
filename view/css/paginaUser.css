@@ -12,6 +12,9 @@ body {
 .nav-link .fa {
     transition: all 1s
 }
+#navbarVerde{
+    position: sticky;
+}
 
 .nav-link:hover .fa {
     transform: rotate(360deg)
@@ -150,6 +153,10 @@ body {
     background-color: #e00f66;
 }
 /*faqs*/
+.preguntas:hover{
+background-color: #b2eec8;
+font-size: 105%;
+}
 
 
 
