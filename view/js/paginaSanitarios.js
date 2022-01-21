@@ -20,6 +20,11 @@ function loadPaginaSanitario() {
         $("#infoInformes").css('display', 'block');
 
     });
+    $("#configuracionVacuna").click(function () {
+        $(".infoOpcion").css('display', 'none');
+        $("#infoVacunas").css('display', 'block');
+
+    });
 }
 
 var savedFileBase64;
@@ -62,6 +67,11 @@ reto_covid.controller('datosPersonales', async function ($scope) {
         }).catch(error => console.error('Error status:', error));
 
     };
+
+});
+
+reto_covid.controller('editarVacunas', async function ($scope) {
+
 
 });
 
