@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .contenedorgeneral{
     display: flex;
@@ -122,6 +123,12 @@ body {
 
 /* INICIO FAQ */
 body{margin-top:20px;}
+=======
+.general{
+    display: flex;
+}
+/* INICIO FAQ */
+>>>>>>> origin/ekaitz
 .section_padding_130 {
     padding-top: 130px;
     padding-bottom: 130px;
