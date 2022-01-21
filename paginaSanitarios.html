@@ -17,7 +17,7 @@
 
 <body ng-controller="main">
     <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-12 p-3 text-white  " style="background-color: #036666;">
+        <div class="col-lg-2 col-md-2 col-sm-12 p-3 text-white  " style="background-color: #036666;"  >
             <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
                     class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">{{usuario.nombre}}
                     {{usuario.apellido}}</span> </a>
@@ -86,12 +86,65 @@
                     <input type="time" name="" id="">
 
                 </div>
-                <div class="col-sm-12 col-md-6 ">
-                    <h2>Dar de alta/baja a un cliente</h2>
-                    <form action="">
+                <!-- DEBUG -->
+                <div class="col-sm-12 col-md-6 border">
+                    <form action="" ng-controller='altaPaciente'>
+                        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                            <li class="nav-item d-flex" role="presentation">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#altaPaciente" role="tab"><h2>Dar de Alta</h2></a>
+                              <a class="nav-link" data-bs-toggle="tab" href="#bajaPaciente" role="tab"><h2>Dar de Baja</h2></a>
+                            </li>
+                          </ul>
+                          <!-- Tabs navs -->
+                          
+                          <!-- Tabs content -->
+                          <div class="tab-content p-2">
+                            <div class="tab-pane fade show active" id="altaPaciente">
+                                <div class="d-flex">
+                                    <div class="form-outline mb-4 w-100">
+                                        <label class="form-label" for="newPacienteNombre">Nombre:</label>
+                                        <input type="text" id="newPacienteNombre" class="form-control" ng-model='nombre'/>
+                                    </div>
+    
+                                    <div class="form-outline mb-4  w-100">
+                                        <label class="form-label" for="newPacienteApellido">Apellido:</label>
+                                        <input type="text" id="newPacienteApellido" class="form-control"/>
+                                    </div>
+                                </div>
 
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="newPacienteNacimiento">Fecha Nacimiento:</label>
+                                    <input type="date" id="newPacienteNacimiento" class="form-control"/>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="newPacienteEmail">Email:</label>
+                                    <input type="email" id="newPacienteEmail" class="form-control"/>
+                                </div>
+
+                                <div class="d-flex">
+                                    <div class="form-outline mb-4 w-100">
+                                        <label class="form-label" for="newPacienteDireccion">Direccion:</label>
+                                        <input type="text" id="newPacienteDireccion" class="form-control"/>
+                                    </div>
+                                    <div class="form-outline mb-4 w-100">
+                                        <label class="form-label" for="newPacienteDireccion">Localidad:</label>
+                                        <select name="" id="" class="form-control form-select">
+                                            <option value="{{localidad.cod}}" ng-repeat='localidad in localidades'>{{localidad.nombre}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary w-100" ng-click='alta()'>Save</button>
+
+                            </div>
+                            <div class="tab-pane fade show" id="bajaPaciente">
+                                Tab 2 content
+                              </div>
+                          </div>
                     </form>
                 </div>
+                <!-- DEBUG -->
             </div>
         </div>
 

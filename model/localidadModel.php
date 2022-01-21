@@ -47,6 +47,24 @@ public function getLocalidad() {
     $this->CloseConnect();
 }
 
+public function getLocalidades() {
+    $this->OpenConnect();
+
+    $sql = "SELECT * FROM localidad";
+    $result = $this->link->query($sql);
+
+    $list=array();
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $newLocalidad = new localidadModel();
+        $newLocalidad->setCod($row['cod_localidad_l']);
+        $newLocalidad->setNombre($row['nombre_l']);
+        array_push($list, get_object_vars($newLocalidad));
+    }
+    return $list;
+    mysqli_free_result($result);
+    $this->CloseConnect();
+}
+
 public function ObjVars() {
     return get_object_vars($this);
 }

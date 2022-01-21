@@ -94,3 +94,43 @@ reto_covid.directive("inputDisabled", function () {
         });
     }
 });
+
+reto_covid.controller('altaPaciente', async function ($scope) {
+
+    // VARIABLES
+
+    $scope.nombre;
+    $scope.apellido;
+    $scope.fecha_nac;
+    $scope.email;
+    $scope.direccion;
+    $scope.localidad;
+
+    // FUNCIONES
+
+    $scope.localidades = await getLocalidades();
+    $scope.alta = () => {
+       console.log(1);
+    }
+
+    // CUERPO
+
+    $scope.$digest();
+
+})
+
+function getLocalidades() {
+    return new Promise((resolve, reject) => {
+        var data = {'solicitud': 'getLocalidades'}
+        var url = "controller/cLocalidad.php";
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+    
+        }).then(res => res.json()).then(result => {
+            resolve(result.localidades);
+    
+        }).catch(error => console.error('Error status:', error));
+    })
+}
