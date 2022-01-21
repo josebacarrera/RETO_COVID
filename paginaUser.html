@@ -6,7 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Area Paciente</title>
-    <link rel="stylesheet" href="../Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+    <link rel="icon" href="icono.jpg">
+    <link rel="stylesheet" href="view/css/style.css">
+    <link rel="stylesheet" href="view/css/paginaUser.css">
+     -->
+    <!-- <script src="view/js/insert.js"></script>  -->
+    <link rel="stylesheet" href="../view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
@@ -14,9 +23,11 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="icon" href="icono.jpg">
     <link rel="stylesheet" href="view/css/style.css">
-    <link rel="stylesheet" href="view/css/paginaUser.css">
-    
-    <!-- <script src="view/js/insert.js"></script>  -->
+    <link rel="stylesheet" href="view/css/paginaPreguntasF.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="view/css/paginaUser.css">
+
 
 </head>
 <body onload="showAgenda()">
@@ -30,15 +41,16 @@
                 class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">AREA PERSONAL</span> </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-            <li> <a href="#" class="nav-link text-white"><i class="fa fa-book"></i><span class="ms-2" onclick="showAgenda()">Agenda sanitaria</span> </a> </li>
-            <li> <a href="#" class="nav-link text-white"><i class="fa fa-scroll"></i><span class="ms-2" onclick="showInforme()">Informes</span> </a> </li>
-            <li> <a href="#" class="nav-link text-white"><i class="fas fa-user"></i><span class="ms-2" onclick="showDatos()">Datos personales</span> </a> </li>
+            <li> <a href="#" class="nav-link text-white"><i class="fa fa-book"></i><span class="ms-2 btnAgenda" >Agenda sanitaria</span> </a> </li>
+            <li> <a href="#" class="nav-link text-white"><i class="fa fa-scroll"></i><span class="ms-2 btnInforme">Informes</span> </a> </li>
+            <li> <a href="#" class="nav-link text-white"><i class="fas fa-user"></i><span class="ms-2 btnDatos" >Datos personales</span> </a> </li>
         <div class="covid">
-            <li> <a href="#" class="nav-link text-white"> <i class="fas fa-virus"></i><span class="ms-2" onclick="showCovid()">COVID</span> </a> </li>
+            <li> <a href="#" class="nav-link text-white"> <i class="fas fa-virus"></i><span class="ms-2 btnVacuna" >COVID</span> </a> </li>
             </div>
         </ul>
         <hr>
     </div>  
+
     <div class="agenda" id="mostrarAgenda">
         <h2>Agenda</h2>
         <div class="cards">
@@ -65,6 +77,7 @@
           </div>
     </div>
 </div>
+
     <div class="informe" id="mostrarInforme">
         <h2>Informes</h2>
         <div class="cards">
@@ -91,6 +104,7 @@
               </div>
         </div>
     </div>
+    
     <div class="datos" id="mostrarDatos">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-right">Datos Personales</h4>
@@ -119,6 +133,7 @@
         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">GUARDAR CAMBIOS</button></div>
     </div>
 </div>  
+
 <div class="vacuna" id="mostrarCovid">
   <h2>Area COVID</h2>
   <div class="cards">
@@ -148,7 +163,267 @@
   </div>
 </div>
 <!--Modal preguntas frecuentes-->
+<div class="col-12 col-sm-10 col-lg-8 faq">
+  <div class="accordion faq-accordian" id="faqAccordion">
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s"
+          style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingOne">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">Tengo una tarjeta electrónica pero
+                  no dispongo de un lector de tarjetas, ¿cómo puedo coger una cita?<span
+                      class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapseOne" aria-labelledby="headingOne"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>Aunque tengas una tarjeta electrónica, tienes que identificarte mediante el
+                      número de la tarjeta y tu fecha de nacimiento.</p>
+              </div>
+          </div>
+      </div>
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingTwo">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                  aria-expanded="true" aria-controls="collapseTwo">¿Puedo acceder con el DNI
+                  electrónico o la tarjeta de ciudadano o ciudadana?<span
+                      class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapseTwo" aria-labelledby="headingTwo"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>No. En la actualidad, sólo se puede acceder identificándose mediante el número de
+                      la tarjeta y la fecha de nacimiento, independientemente de la tarjeta que tengas
+                      (ONA, Tarjeta Sanitaria Electrónica o TIS).</p>
+              </div>
+          </div>
+      </div>
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingThree">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree"
+                  aria-expanded="true" aria-controls="collapseThree">¿Puedo consultar o anular una
+                  cita previa por la web de Osakidetza?<span class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapseThree" aria-labelledby="headingThree"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>Para consultar o anular la cita debes acceder a la aplicación introduciendo tu
+                      número de TIS y fecha de nacimiento y seleccionar la opción “Consultar o anular
+                      mis citas”. Tras rellenar el campo “Código de Cita” con el código que se entregó
+                      al pedir la cita por la web, aparecerá en pantalla la cita correspondiente al
+                      código introducido, así pudiendo anularla.</p>
+              </div>
+          </div>
+      </div>
 
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingfour">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsfour"
+                  aria-expanded="true" aria-controls="collapsfour">¿Puedo modificar por medio de la
+                  web de Osakidetza la fecha de la cita?<span class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapsfour" aria-labelledby="headingfour"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>No se puede modificar una cita. Debes anularla y realizar una nueva reserva de
+                      cita previa.</p>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingfive">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsefive"
+                  aria-expanded="true" aria-controls="collapsefive">¿Con qué profesionales puedo
+                  reservar una cita?<span class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapsefive" aria-labelledby="headingfive"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>En la aplicación, una vez escojas “Pedir una nueva cita” se dará la opción de
+                      solicitarla para los siguientes profesionales según corresponda:
+                  <ul>
+                      <li>Médico o médica de cabecera</li>
+                      <li>Pediatra</li>
+                      <li>Matrona</li>
+                      <li>Enfermería (pediátrica y/o de adultos)</li>
+                  </ul>
+                  </p>
+
+              </div>
+          </div>
+      </div>
+
+
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingsix">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsesix"
+                  aria-expanded="true" aria-controls="collapsesix">¿Cómo puedo realizar la cita
+                  previa con pediatra para mi hijo o hija?<span class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapsesix" aria-labelledby="headingsix"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>Todas las personas, independientemente de su edad, tienen su propia TIS (Tarjeta
+                      Individual Sanitaria). Para reservar cita a tu hijo o hija debes, por tanto,
+                      utilizar la TIS del niño o de la niña siguiendo el procedimiento general.</p>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingseven">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseseven"
+                  aria-expanded="true" aria-controls="collapseseven">¿Qué debo hacer si aparecen mal
+                  los datos de mi médico o médica al intentar realizar una reserva de cita
+                  previa?<span class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapseseven" aria-labelledby="headingseven"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>En caso de que los datos no aparezcan correctamente, debes ponerte en contacto
+                      con tu centro de salud para actualizarlos.</p>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingeight">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseeight"
+                  aria-expanded="true" aria-controls="collapseeight">El sistema dice que he superado
+                  el límite de citas¿qué significa?<span class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapseeight" aria-labelledby="headingeight"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>Actualmente existe un límite de citas pendientes para poder coger una cita por la
+                      web. Este límite es:
+                  <ul>
+                      <li>Máximo de 2 citas pendientes por profesional en el mismo día, por cada
+                          paciente.</li>
+                      <li>Máximo de 12 citas pendientes a futuro por profesional, por cada paciente.
+                      </li>
+                  </ul>
+                  Si se supera este número, se mostrará un mensaje indicando que se ha superado el
+                  límite de citas. Para poder coger una nueva, tendrás que ponerte en contacto con tu
+                  centro de salud.</p>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingnine">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsenine"
+                  aria-expanded="true" aria-controls="collapsenine">He intentado coger una cita y me
+                  indica que no ha sido posible,que me ponga en contacto con mi centro de salud.¿Esto
+                  a qué es debido?<span class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapsenine" aria-labelledby="headingnine"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>A veces por saturaciones puntuales del sistema de reserva de cita médica a través
+                      de la web de Perulabs, se puede dar el caso de que se le indique que debe
+                      ponerse en contacto con tu centro de salud para tener una cita.</p>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingten">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseten"
+                  aria-expanded="true" aria-controls="collapseten">El sistema dice que de forma
+                  temporal no podré acceder a este servicio.¿Qué siginfica?<span
+                      class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapseten" aria-labelledby="headingten"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>Se está llevando a cabo un proceso de reordenación en su centro de salud para
+                      mejorar la atención. Por ello, se han tenido que bloquear aquellas plazas
+                      involucradas en el proceso de reestructuración, ocasionando que no se puedan
+                      coger citas en la web para dichas plazas.
+
+                      Para coger una cita deberá ponerse en contacto con su centro de salud, donde le
+                      podrán informar de los plazos de dicha reordenación.</p>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingeleven">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseeleven"
+                  aria-expanded="true" aria-controls="collapseeleven">¿Puedo pedir una cita mediante la
+                  App de Perulabs?<span class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapseeleven" aria-labelledby="headingeleven"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>La App de Perulabs es un contenedor de varias App como son la Carpeta de Salud,
+                      Mi Tratamiento y Cita Previa entre otras.
+
+                      Mediante la APP de Cita Previa no sólo se puede pedir cita, sino que además se
+                      pueden guardar diferentes perfiles de usuario (otros familiares), y así cada vez
+                      que queramos pedir una cita, no tendremos que introducir el número de TIS y la
+                      fecha de nacimiento, basta con seleccionar el usuario y seguir los pasos.
+
+                      Además podemos descargarnos la cita con el código de la misma para tenerlo en
+                      caso de necesidad o añadir la cita al calendario de nuestro Smartphone.</p>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
+          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="card-header" id="headingtwelve">
+              <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsetwelve"
+                  aria-expanded="true" aria-controls="collapsetwelve">Quiero anular una cita y no tengo
+                  el código de la misma,¿Qué puedo hacer?<span class="lni-chevron-up"></span></h6>
+          </div>
+          <div class="collapse" id="collapsetwelve" aria-labelledby="headingtwelve"
+              data-parent="#faqAccordion">
+              <div class="card-body">
+                  <p>El código de la cita es un requisito legal para poder gestionar una cita ya que
+                      si no, un tercero podría acceder a nuestras citas a través del número de TIS y
+                      la fecha de nacimiento.
+
+                      Es por ello que debemos guardarlo o anotarlo cuando cogemos una cita.
+
+                      En caso de no haberlo hecho podemos recuperarlo accediendo a la Carpeta de Salud
+                      dentro de la pestaña de “próximas citas” o mediante la APP de Cita Previa si
+                      hemos descargado nuestra cita a la hora de pedirla.
+
+                      En el caso de no ser posible lo anterior tenemos que contactar con el centro de
+                      salud para gestionar la cita.</p>
+              </div>
+          </div>
+      </div>
+
+  </div>
+  <!-- Support Button-->
+  <div class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp"
+      data-wow-delay="0.5s"
+      style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+      <i class="lni-emoji-sad"></i>
+      <p class="mb-0 px-2">Can't find your answers?</p>
+      <a href="#"> Contact us</a>
+  </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -255,7 +530,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <a type="button" class="btn btn-primary"  href="/paginaPreguntasF.html">VER MÁS</a>
+        <a type="button" class="btn btn-primary btnVMas">VER MÁS</a>
       </div>
     </div>
   </div>
@@ -268,10 +543,11 @@
 </body>
 
 
+<!-- <script src="view/js/script.js"></script> -->
 <script src="view/js/jquery-3.6.0.js"></script>
+<script src="view/js/paginaUser.js"></script>
+
 <script src="view/js/angular.min.js"></script>
 <script src="view/js/bootstrap.bundle.min.js"></script>
-<script src="view/js/script.js"></script>
-<script src="view/js/paginaUser.js"></script>
 
 </html>
