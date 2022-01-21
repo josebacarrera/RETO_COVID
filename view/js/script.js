@@ -1,36 +1,3 @@
-var reto_covid = angular.module('reto_covid', []);
-
-reto_covid.controller('main', async function ($scope) {
-
-    let session = await getSession();
-    session.sanitario1?$scope.usuario=session.sanitario:$scope.usuario=session.paciente;
-    console.log($scope.usuario);
-    loadContent(session, $scope)
-
-});
-
-
-function loadContent(session, $scope) {
-    if (session) { // TIENE SESSION
-        $('#formLogin').css('display', 'none')
-        if (session.sanitario) { // SANITARIO
-            $('#loggedSanitario').removeClass('d-none')
-            $('#intranetCorporativa').removeClass('d-none')
-            // $scope.nombre_sanitario=$scope.usuario.nombre
-            
-        } else if(session.paciente) { // PACIENTE
-            $('#loggedUser').removeClass('d-none')
-            $('#carpetaSalud').removeClass('d-none')
-        }
-    } else { // NO TIENE SESSION
-        $('#formLogin').css('display', 'block')
-        $('#loggedSanitario').addClass('d-none')
-        $('#loggedUser').addClass('d-none')
-        $('#intranetCorporativa').addClass('d-none')
-        $('#carpetaSalud').addClass('d-none')
-    }
-}
-
 reto_covid.controller('login', function ($scope) {
 
     $scope.usuario;
@@ -64,9 +31,9 @@ reto_covid.controller('login', function ($scope) {
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
 
-        }).then(res => res.json()).then(result => {
+        }).then(res => res.json()).then(async function result () {
 
-            console.log(result)
+            loadContent(await getSession());
 
         }).catch(error => console.error('Error status:', error));
 
@@ -74,10 +41,3 @@ reto_covid.controller('login', function ($scope) {
     }
 
 });
-
-
-
-// function loadContent(session, $scope) {
-//     console.log($scope);
-//     $scope.dni='123'
-// }

@@ -22,22 +22,16 @@ if (isset($data['solicitud'])) {
             if (isset($data['apellido'])) {$apellido=$data['apellido'];}
             else {$response['error'] = true;$response['errorInf'] = 'Apellido Not Found';}
 
-            if (isset($data['fotoPerfil'])) {$fotoPerfil=$data['fotoPerfil'];}
-            else {$response['error'] = true;$response['errorInf'] = 'FotoPerfil Not Found';}
-
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
                 $sanitario = new sanitarioModel();
                 $sanitario->setDni($dni);
                 $sanitario->setNombre($nombre);
                 $sanitario->setApellido($apellido);
-                $sanitario->setFoto_pefil($fotoPerfil);
-
                 if ($sanitario->update()) {
-                    $response['updated'] = true;
                     $response['newSanitario'] = $sanitario->ObjVars();
                 } else {
                     $response['error'] = true;
-                    $response['errorInf'] = 'Update failed';
+                    $response['errorInf'] = 'SQL Fail';
                 }
                 
             }

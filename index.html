@@ -75,14 +75,14 @@
                         <form class="p-3">
                             <!-- Email input -->
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control" ng-model='dni' required/>
+                                <input type="text" class="form-control" ng-model='dni' required />
                                 <label class="form-label" for="dni">DNI (e.j.: 12345678A) </label>
 
                             </div>
 
                             <!-- Password input -->
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" ng-model='password' required/>
+                                <input type="password" class="form-control" ng-model='password' required />
                                 <label class="form-label" for="password">Contraseña </label>
 
                             </div>
@@ -101,14 +101,22 @@
             <div id="loggedSanitario"
                 class="w-100 h-100 m-3 bg-light rounded border align-content-center justify-content-center d-none p-3">
 
-                <p><u>Nombre y apellido:</u> {{ usuario.nombre}}</p>
+                <p><u>Nombre y apellido:</u> {{ usuario.nombre }} {{usuario.apellido}}</p>
+                <p><u>DNI:</u> {{ usuario.dni }}</p>
+                <p><u>Cargo:</u> {{usuario.cargo}}</p>
                 <div class="text-center">
                     <button class="btn btn-primary" ng-click="login('logout')">Log Out</button>
                 </div>
             </div>
-            <div id="loggedUser"
-                class="w-100 h-100 m-3 bg-light rounded border d-flex align-content-center justify-content-center d-none">
-                <button class="btn btn-primary" ng-click="login('logout')">Log Out</button>
+            <div id="loggedUser" class="w-100 h-100 m-3 bg-light rounded border p-3 d-none text">
+
+                <p><u>Nombre y apellido:</u> {{ usuario.nombre }} {{usuario.apellido}}</p>
+                <p><u>TIS:</u> {{ usuario.tis }}</p>
+                <p><u>Fecha de nacimiento:</u> {{usuario.fecha_nacimiento}}</p>
+                <div class="text-center">
+                    <button class="btn btn-primary" ng-click="login('logout')">Log Out</button>
+
+                </div>
 
             </div>
         </div>
@@ -230,6 +238,5 @@
 <script src="view/js/angular.min.js"></script>
 <script src="view/js/bootstrap.bundle.min.js"></script>
 <script src="view/js/script.js"></script>
-<script src="view/js/insert.js"></script>
 
 </html>

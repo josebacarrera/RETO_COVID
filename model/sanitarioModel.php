@@ -1,4 +1,11 @@
 <?php
+
+if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {
+    include_once ("connect_data_serv.php");
+} else {
+    include_once ("connect_data_local.php");
+}
+
 include_once 'sanitarioClass.php';
 
 class sanitarioModel extends sanitarioClass{
@@ -27,46 +34,16 @@ class sanitarioModel extends sanitarioClass{
 
     // FUNCIONES MOD //
 
-    public function getSanitarioByDni() {
-
-        $this->OpenConnect();  
-        
-        $sql = "SELECT * FROM sanitario WHERE dni = '" . $this->getDni() . "'"; 
-        
-        $result = $this->link->query($sql);
-        
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
-            $this->setNombre($row['nombre']);
-            $this->setApellido($row['apellido']);
-            $this->setCargo($row['cargo']);
-            $this->setAdmin($row['admin']);
-            $this->setCod_centro($row['cod_centro']);
-
-        }
-
-        return get_object_vars($this);
-
-        mysqli_free_result($result);
-        $this->CloseConnect();
-
-    }
-
     public function update() {
 
         $this->OpenConnect();  
         
-        $sql = "UPDATE sanitario SET nombre_s='" . $this->getNombre() . "', apellido_s='" . $this->getApellido() . "', dni_s ='" . $this->getDni() . "', foto_perfil_s ='" . $this->getFoto_pefil() . "' WHERE dni = '" . $this->getDni() . "'"; 
+        $sql = "UPDATE sanitario SET nombre_s='".$this->getNombre()."', apellido_s='".$this->getApellido()."', dni_s='".$this->getDni()."' WHERE dni_s = '" . $this->getDni() . "'"; 
         
-        $result = $this->link->query($sql);
-        
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
+        if ($this->link->query($sql)) {
             return true;
-
         }
 
-        mysqli_free_result($result);
         $this->CloseConnect();
 
     }
