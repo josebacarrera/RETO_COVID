@@ -79,7 +79,9 @@ body {
 }
 .agenda{
     padding: 5%;
+
 }
+
 /* FIN AGENDA */
 /* INICIO INFORMES */
 .informe{
@@ -90,7 +92,7 @@ body {
 /* INICIO COVID AREA */
 .vacuna{
     padding: 5%;
-    
+    display:none;
 }
 .vacunaOptions{
     display:flex;
@@ -124,6 +126,7 @@ body {
 .datos{
     margin-left: 4vw;
     margin-top: 4vh;
+    display:none;
 }
 /* FIN COVID AREA */
 /* FOTO PERFIL */
