@@ -29,3 +29,5 @@ function showCovid(){
     document.getElementById("mostrarDatos").style.display = 'none';
     document.getElementById("mostrarCovid").style.display = '';
 }
+
+
