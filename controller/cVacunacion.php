@@ -38,3 +38,5 @@ if (isset($data['solicitud'])) {
     $response['error'] = true;
     $response['errorInf'] = 'Solicitud Not Found';
 }
+
+echo json_encode($response);
