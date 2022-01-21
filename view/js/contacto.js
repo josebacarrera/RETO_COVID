@@ -33,7 +33,6 @@ function formRelleno() {
                 'datos': datos,
             },
             success: function (result) {
-                console.log(result)
                 result?window.alert("FORMULARIO ENVIADO"):window.alert("ERROR!! VUELVE A INTENTARLO");
             },
             error: function (xhr, textStatus, error) {

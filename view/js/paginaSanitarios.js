@@ -28,7 +28,6 @@ var filesize;
 
 reto_covid.controller('datosPersonales', async function ($scope) {
     let session = await getSession();
-    console.log(session)
 
     $scope.nombre = session.sanitario.nombre;
     $scope.apellido = session.sanitario.apellido;
@@ -59,7 +58,6 @@ reto_covid.controller('datosPersonales', async function ($scope) {
             headers: { 'Content-Type': 'application/json' }
 
         }).then(res => res.json()).then(result => {
-            console.log(result);
 
         }).catch(error => console.error('Error status:', error));
 

@@ -23,7 +23,6 @@ function loadContent(session) {
         if (session.sanitario) { // SANITARIO
             $('#loggedSanitario').removeClass('d-none')
             $('#intranetCorporativa').removeClass('d-none')
-            console.log($('#intranetCorporativa'));
 
         } else if (session.paciente) { // PACIENTE
             $('#loggedUser').removeClass('d-none')

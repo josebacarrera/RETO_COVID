@@ -6,7 +6,6 @@ reto_covid.controller('login', function ($scope) {
     $scope.login = function (solicitud) {
 
         if (solicitud == 'loginTis') {
-            console.log( $scope.fecha_nac.getUTCFullYear()+"-"+($scope.fecha_nac.getUTCMonth()+1)+"-"+($scope.fecha_nac.getUTCDate()+1))
             var data = {
                 'solicitud': solicitud,
                 'tis': $scope.tis,
@@ -23,7 +22,6 @@ reto_covid.controller('login', function ($scope) {
                 'solicitud': solicitud
             };
         }
-        console.log(data)
 
         var url = "controller/cLogin.php";
         fetch(url, {
