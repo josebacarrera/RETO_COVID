@@ -19,7 +19,6 @@
     <!-- <script src="view/js/insert.js"></script>  -->
 
 </head>
-
 <body onload="showAgenda()">
 
     <div id="navbar"></div>
@@ -160,8 +159,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" role="button">
-        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta1">
-          <a data-bs-toggle="collapse" href="#pregunta1" role="button" aria-expanded="false" aria-controls="pregunta1" style="text-decoration: none; color: black; font-weight: bold;">
+        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta1" class="preguntas">
+          <a  data-bs-toggle="collapse" href="#pregunta1" role="button" aria-expanded="false" aria-controls="pregunta1" style="text-decoration: none; color: black; font-weight: bold;">
             ¿Con que profesionales puedo reservar una cita?
           </a>
         </p>
@@ -177,22 +176,7 @@
         </div>
       </div>
       <div class="modal-body" role="button">
-        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta2">
-          <a data-bs-toggle="collapse" href="#pregunta2" role="button" aria-expanded="false" aria-controls="pregunta2" style="text-decoration: none; color: black; font-weight: bold;">
-            ¿Cuál es el número de la TIS?
-          </a>
-        </p>
-        <div class="collapse" id="pregunta2">
-          <div class="card card-body">
-           <p>
-            El número de la TIS es necesario para identificarse y solicitar Cita Previa. Independientemente del tipo de tarjeta (ONA, Tarjeta Sanitaria Electrónica o TIS), es un número de 8 cifras que viene impreso junto al nombre. Lo podrás encontrar donde está indicado por la flecha:
-            <img src="/view/img/tarjetaindicadora.jpg">
-          </p>
-          </div>
-        </div>
-      
-      <div class="modal-body" role="button">
-        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta2">
+        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta2" class="preguntas">
           <a data-bs-toggle="collapse" href="#pregunta2" role="button" aria-expanded="false" aria-controls="pregunta2" style="text-decoration: none; color: black; font-weight: bold;">
             ¿Cuál es el número de la TIS?
           </a>
@@ -207,26 +191,76 @@
         </div>
       </div>
       <div class="modal-body" role="button">
-        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta2">
-          <a data-bs-toggle="collapse" href="#pregunta2" role="button" aria-expanded="false" aria-controls="pregunta2" style="text-decoration: none; color: black; font-weight: bold;">
-            ¿Cuál es el número de la TIS?
+        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta3" class="preguntas">
+          <a data-bs-toggle="collapse" href="#pregunta3" role="button" aria-expanded="false" aria-controls="pregunta2" style="text-decoration: none; color: black; font-weight: bold;">
+            ¿Qué es el covid?
           </a>
         </p>
-        <div class="collapse" id="pregunta2">
+        <div class="collapse" id="pregunta3">
           <div class="card card-body">
            <p>
-            El número de la TIS es necesario para identificarse y solicitar Cita Previa. Independientemente del tipo de tarjeta (ONA, Tarjeta Sanitaria Electrónica o TIS), es un número de 8 cifras que viene impreso junto al nombre. Lo podrás encontrar donde está indicado por la flecha:
-            <img src="/view/img/tarjetaindicadora.jpg">
+            El COVID-19 (enfermedad del coronavirus 2019) es una enfermedad causada por un virus llamado SARS-CoV-2 y fue descubierta en diciembre del 2019 en Wuhan, China. Es muy contagioso y se ha propagado rápidamente en todo el mundo.
+
+            Los síntomas más frecuentes del COVID-19 son respiratorios, muy parecidos a los de un resfriado, influenza o neumonía. El COVID-19 puede atacar a otras partes de su organismo además de sus pulmones y sistema respiratorio. Otras partes de su cuerpo también pueden verse afectadas por la enfermedad.
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" role="button">
+        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta4" class="preguntas">
+          <a data-bs-toggle="collapse" href="#pregunta4" role="button" aria-expanded="false" aria-controls="pregunta4" style="text-decoration: none; color: black; font-weight: bold;">
+            ¿Tengo COVID?
+          </a>
+        </p>
+        <div class="collapse" id="pregunta4">
+          <div class="card card-body">
+           <p>
+            <ul>
+              <li>Fiebre o escalofríos</li>
+              <li>Tos</li>
+              <li>Dificultad para respirar</li>
+              <li>Fatiga</li>
+              <li>Dolores musculares y corporales</li>
+              <li>Dolor de cabeza</li>
+              <li>Perdida reciente de olfato o del gusto</li>
+              <li>Dolor de garganta</li>
+              <li>Congestión o moqueo</li>
+              <li>Náuseas o vómitos</li>
+              <li>Diarrea</li>
+            </ul>
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" role="button">
+        <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta5" class="preguntas">
+          <a data-bs-toggle="collapse" href="#pregunta5" role="button" aria-expanded="false" aria-controls="pregunta5" style="text-decoration: none; color: black; font-weight: bold;">
+            Cuando buscar atención medica
+          </a>
+        </p>
+        <div class="collapse" id="pregunta5">
+          <div class="card card-body">
+           <p>
+             Si presenta uno de los siguientes signos busque atención médica de emergencia inmediata:
+             <ul>
+              <li>Dificultad para respirar</li>
+              <li>Dolor o presión persistente en el pecho</li>
+              <li>Confusión</li>
+              <li>Incapacidad de despertarse o permanecer despierto</li>
+              <li>Piel, labios olechos de uñas pálidos, grises o azulados, según el tono de la piel</li>
+            </ul>
           </p>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <a type="button" class="btn btn-primary"  href="/paginaPreguntasF.html">VER MÁS</a>
       </div>
     </div>
   </div>
   
+</div>
 </div>
 
 
@@ -234,6 +268,11 @@
 </body>
 
 
-
+<script src="view/js/jquery-3.6.0.js"></script>
+<script src="view/js/angular.min.js"></script>
+<script src="view/js/bootstrap.bundle.min.js"></script>
+<script src="view/js/script.js"></script>
+<script src="view/js/insert.js"></script>
 <script src="view/js/paginaUser.js"></script>
+
 </html>
