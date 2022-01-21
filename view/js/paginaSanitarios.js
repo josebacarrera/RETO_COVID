@@ -75,10 +75,13 @@ reto_covid.directive("inputDisabled", function () {
             if (val) {
                 element.removeAttr("disabled");
                 $("#btnGuardar").css('display', 'block')
+                $('.input-file-input').prop("disabled", false); 
+
             }
             else {
                 element.attr("disabled", "disabled");
                 $("#btnGuardar").css('display', 'none')
+                $('.input-file-input').prop("disabled", true); 
             }
         });
     }

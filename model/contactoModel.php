@@ -1,8 +1,10 @@
 <?php
-//MODELO DE CONTACTO
-include_once("connect_data.php");
-include_once("contactoClass.php");
 
+
+if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {include_once ("connect_data_SERV.php");} 
+else {include_once ("connect_data_LOCAL.php");}
+
+include_once("contactoClass.php");
 
 class contactoModel extends contactoClass
 {
@@ -31,24 +33,17 @@ class contactoModel extends contactoClass
     {
 
         $this->OpenConnect();
-
         $sql = "select * from formulario";
-
         $list = array();
-
         $result = $this->link->query($sql);
-
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-
             $newForm = new contactoClass();
-
             $newForm->id_formulario = $row['id_formulario'];
             $newForm->nombre = $row['nombre'];
             $newForm->correo = $row['correo'];
             $newForm->motivo = $row['motivo'];
             $newForm->otro = $row['otro'];
             $newForm->mensaje = $row['mensaje'];
-
             array_push($list, $newForm);
         }
         mysqli_free_result($result);
@@ -66,11 +61,11 @@ class contactoModel extends contactoClass
         $otro = $this->otro;
         $mensaje = $this->mensaje;
 
-        $sql = "INSERT INTO formulario(nombre, correo, motivo, otro, mensaje) VALUES ('$nombre', ' $correo', '$motivo', '$otro', '$mensaje')";
-
-        $this->link->query($sql);
-
-
+        $sql = "INSERT INTO formulario(nombre_f, correo_f, motivo_f, otro_f, mensaje_f) VALUES ('$nombre', ' $correo', '$motivo', '$otro', '$mensaje')";
+        $result = $this->link->query($sql);
         $this->CloseConnect();
+
+        return($result);
+
     }
 }

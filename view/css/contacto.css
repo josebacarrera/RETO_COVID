@@ -1,74 +1,67 @@
-body{
+/*INICIO FORMULARIO*/
+.bgImg {
+    background-image: url(https://images.adsttc.com/media/images/570d/4584/e58e/ce87/b300/000e/large_jpg/1._NICOLAS_SAIEH.jpg?1460487544);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 5%;
+}
+
+#formulario {
+    background-color: #99E2B4;
+    width: 70%;
+    padding: 5%;
+    margin: auto;
+    box-shadow: 5px 10px;
+}
+
+/*FIN FORMULARIO*/
+
+/*INICIOMAPA*/
+.bg-light{
     background-color: #99E2B4;
 }
-/*INICIO FORMULARIO*/
-#formulario{
-    width: 70%;
-    margin-left: 15%;
-    margin-top: 15px;
+.map-container {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
 }
-/*FIN FORMULARIO*/
-/*INICIO CONTAINER DE ARRIBA*/
-.container{
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    margin-bottom: 20px;
-    margin-top: 10px;
+
+.map-container iframe {
+    left: 0;
+    top: 0;
+    height: 70%;
+    width: 100%;
+    position: absolute;
 }
-.caja{
-    background-color: #67B99A;
-}
-.caja a{
-    text-decoration: none;
-    color: rgb(226, 226, 226);
-}
-.caja li{
-    margin: 5px;
-}
-.caja h4{
-    margin-left: 10px;
-    color: green;
-}
-/*FIN CONTAINER DE ARRIBA*/
+
+/*FIN MAPA*/
+
 /*INICIO CONTAINER DE ABAJO*/
-.container2{
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-.caja2{
-    width: 30%;
-    margin-right: 5px;
+
+.caja2 {
     background-color: #67B99A;
     border-radius: 5px;
+    margin: 1%;
+    padding: 1%;
 }
-.caja2 a{
+
+.caja2 a {
     text-decoration: none;
-    color: rgb(226, 226, 226);
+    color: rgb(255, 255, 255);
 }
-.caja2 p{
+
+.caja2 p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.caja2 h4 {
     margin-left: 10px;
+    color: rgb(255, 255, 255);
+    font-family: title;
+    text-align: center;
+    font-size: 30px;
 }
-.caja2 h4{
-    margin-left: 10px;
-    color: green;
-}
-.container h4{
-    margin:10px;
-}
-/*FIN CONTAINER DE ABAJO*/
-/*RESPONSIVE*/
-@media screen and (max-width: 1199px) {
-    .container{
-        flex-flow: column;
-        margin-bottom: 50px;
-    }
-    .caja{
-        width: 100%;
-    }
-    .caja2{
-        width: 100%;
-    }
-}
+
