@@ -46,5 +46,4 @@ function showFaq() {
     $(".datos").css('display', 'none');
     $(".vacuna").css('display', 'none');
     $(".faq").css('display', 'inline-block');
-    $("")
 }
