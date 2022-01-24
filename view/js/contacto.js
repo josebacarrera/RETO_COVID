@@ -59,3 +59,9 @@ function enviarFormulario() {
 
      });
 }
+
+limpiarFormulario();
+
+function limpiarFormulario() {
+    console.log($('#formulario'));
+}
