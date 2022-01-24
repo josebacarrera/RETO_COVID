@@ -20,6 +20,11 @@ function loadPaginaSanitario() {
         $("#infoInformes").css('display', 'block');
 
     });
+    $("#configuracionVacuna").click(function () {
+        $(".infoOpcion").css('display', 'none');
+        $("#infoVacunas").css('display', 'block');
+
+    });
 }
 
 var savedFileBase64;
@@ -28,7 +33,6 @@ var filesize;
 
 reto_covid.controller('datosPersonales', async function ($scope) {
     let session = await getSession();
-    console.log(session)
 
     $scope.nombre = session.sanitario.nombre;
     $scope.apellido = session.sanitario.apellido;
@@ -59,11 +63,15 @@ reto_covid.controller('datosPersonales', async function ($scope) {
             headers: { 'Content-Type': 'application/json' }
 
         }).then(res => res.json()).then(result => {
-            console.log(result);
 
         }).catch(error => console.error('Error status:', error));
 
     };
+
+});
+
+reto_covid.controller('editarVacunas', async function ($scope) {
+
 
 });
 
@@ -75,11 +83,54 @@ reto_covid.directive("inputDisabled", function () {
             if (val) {
                 element.removeAttr("disabled");
                 $("#btnGuardar").css('display', 'block')
+                $('.input-file-input').prop("disabled", false); 
+
             }
             else {
                 element.attr("disabled", "disabled");
                 $("#btnGuardar").css('display', 'none')
+                $('.input-file-input').prop("disabled", true); 
             }
         });
     }
 });
+
+reto_covid.controller('altaPaciente', async function ($scope) {
+
+    // VARIABLES
+
+    $scope.nombre;
+    $scope.apellido;
+    $scope.fecha_nac;
+    $scope.email;
+    $scope.direccion;
+    $scope.localidad;
+
+    // FUNCIONES
+
+    $scope.localidades = await getLocalidades();
+    $scope.alta = () => {
+       console.log(1);
+    }
+
+    // CUERPO
+
+    $scope.$digest();
+
+})
+
+function getLocalidades() {
+    return new Promise((resolve, reject) => {
+        var data = {'solicitud': 'getLocalidades'}
+        var url = "controller/cLocalidad.php";
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+    
+        }).then(res => res.json()).then(result => {
+            resolve(result.localidades);
+    
+        }).catch(error => console.error('Error status:', error));
+    })
+}

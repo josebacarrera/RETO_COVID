@@ -39,6 +39,10 @@
     background-color: #67B99A;
     border-color: #67B99A;
 }
+.btn-sec{
+    background-color: #036666;
+    border-color: #036666;
+}
 
 .btn-primary:hover {
     background-color: #057A55;

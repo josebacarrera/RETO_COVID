@@ -1,6 +1,6 @@
 //CONTROLLADOR DE CONTACTO
 <?php
-include_once("../model/contactoModel.php");
+require_once("../model/contactoModel.php");
 
 $formArray = json_decode($_POST['datos']);
 $nombre = $formArray->Nombre;
@@ -28,6 +28,5 @@ if (isset($mensaje)) {
 }
 
 $response['error'] = $formulario->insert();
-
 echo json_encode($response);
 ?>

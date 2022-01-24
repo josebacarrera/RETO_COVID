@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="view/css/footer.css">
     <link rel="stylesheet" href="view/css/style.css">
+    <link rel="stylesheet" href="view/css/index.css">
 
     <title>Página de Inicio</title>
 </head>
@@ -16,8 +17,6 @@
 <body ng-controller="main">
     <!--NAVBAR-->
     <div id="navbar"></div>
-
-
 
     <div class="row py-5 parallax"
         style="background-image: url('https://www.grupoaseguranza.com/adjuntos/fichero_36627_20200625.jpg'); ">
@@ -65,7 +64,7 @@
                             <!-- Submit button -->
                             <div class="text-center">
                                 <button type="button" class="btn btn-primary btn-block"
-                                    ng-click='login("loginTis")'>Sign
+                                    ng-click='login("loginTis")' onClick="window.location.reload();">Sign
                                     in</button>
                             </div>
                         </form>
@@ -90,7 +89,7 @@
                             <!-- Submit button -->
                             <div class="text-center">
                                 <button type="button" class="btn btn-primary btn-block"
-                                    ng-click='login("loginDni")'>Sign
+                                    ng-click='login("loginDni")' onClick="window.location.reload();">Sign
                                     in</button>
                             </div>
                         </form>
@@ -100,22 +99,30 @@
 
             <div id="loggedSanitario"
                 class="w-100 h-100 m-3 bg-light rounded border align-content-center justify-content-center d-none p-3">
-
-                <p><u>Nombre y apellido:</u> {{ usuario.nombre }} {{usuario.apellido}}</p>
-                <p><u>DNI:</u> {{ usuario.dni }}</p>
-                <p><u>Cargo:</u> {{usuario.cargo}}</p>
-                <div class="text-center">
-                    <button class="btn btn-primary" ng-click="login('logout')">Log Out</button>
+                <div class="h-25 btn-primary rounded-top text-center align-middle py-3">
+                    Informacion de sesion
                 </div>
+                <div class="p-2 m-2">
+                    <p><u>Nombre y apellido:</u> {{ usuario.nombre }} {{usuario.apellido}}</p>
+                    <p><u>DNI:</u> {{ usuario.dni }}</p>
+                    <p><u>Cargo:</u> {{usuario.cargo}}</p>
+                    <div class="text-center">
+                        <button class="btn btn-primary" ng-click="login('logout')">Log Out</button>
+                    </div>
+                </div>
+
             </div>
             <div id="loggedUser" class="w-100 h-100 m-3 bg-light rounded border p-3 d-none text">
-
-                <p><u>Nombre y apellido:</u> {{ usuario.nombre }} {{usuario.apellido}}</p>
-                <p><u>TIS:</u> {{ usuario.tis }}</p>
-                <p><u>Fecha de nacimiento:</u> {{usuario.fecha_nacimiento}}</p>
-                <div class="text-center">
-                    <button class="btn btn-primary" ng-click="login('logout')">Log Out</button>
-
+                <div class="h-25 btn-primary rounded-top text-center align-middle py-3">
+                    Informacion de sesion
+                </div>
+                <div class="p-2 m-2">
+                    <p><u>Nombre y apellido:</u> {{ usuario.nombre }} {{usuario.apellido}}</p>
+                    <p><u>TIS:</u> {{ usuario.tis }}</p>
+                    <p><u>Fecha de nacimiento:</u> {{usuario.fecha_nacimiento}}</p>
+                    <div class="text-center">
+                        <button class="btn btn-primary" ng-click="login('logout')">Log Out</button>
+                    </div>
                 </div>
 
             </div>
@@ -240,6 +247,7 @@
 <script src="view/js/jquery-3.6.0.js"></script>
 <script src="view/js/angular.min.js"></script>
 <script src="view/js/bootstrap.bundle.min.js"></script>
+<script src="view/js/global.js"></script>
 <script src="view/js/script.js"></script>
 <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 

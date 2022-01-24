@@ -17,25 +17,29 @@
 
 <body ng-controller="main">
     <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-12 p-3 text-white  " style="background-color: #036666;">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
+        <div class="col-lg-2 col-md-2 col-sm-12 p-3 text-white  " style="background-color: #036666;"  >
+            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
                     class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">{{usuario.nombre}}
                     {{usuario.apellido}}</span> </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
-                <li> <a href="#" id="agendaSanitaria" class="nav-link text-white"> <i class="fa fa-book"></i><span
-                            class="ms-2" ng-click="cambiaragenda()">Agenda sanitaria</span> </a> </li>
+
                 <li> <a href="#" id="informes" class="nav-link text-white"> <i class="fa fa-scroll"></i><span
                             class="ms-2" ng-click="cambiarinformes()">Pacientes</span> </a> </li>
+                <li> <a href="#" id="agendaSanitaria" class="nav-link text-white"> <i class="fa fa-book"></i><span
+                            class="ms-2" ng-click="cambiaragenda()">Agenda sanitaria</span> </a> </li>
                 <li> <a href="#" id="datosPersonales" class="nav-link text-white"> <i class="fas fa-user"></i><span
                             class="ms-2" ng-click="cambiardatos()">Datos personales</span> </a> </li>
+                <li> <a href="#" id="configuracionVacuna" class="nav-link text-white"> <i class="fas fa-cog"></i><span
+                            class="ms-2" ng-click="cambiarVacunas()">Configurar vacuna</span> </a> </li>
+            </ul>
             </ul>
             <hr>
         </div>
 
 
 
-        <div id="infoAgenda" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion p-4">
+        <div id="infoAgenda" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion p-4" style="display: none;">
             <div class="container">
                 <table class="table">
                     <thead class="table-dark">
@@ -72,21 +76,117 @@
             </div>
         </div>
 
-        <div id="infoInformes" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion p-4" style="display: none;">
+        <div id="infoInformes" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion p-4">
             <h1 class="title">Pacientes</h1>
             <hr>
             <div class="row">
                 <div class="col-sm-12 col-md-6 ">
                     <h2>Pedir cita</h2>
+                    <input type="date" name="" id="">
+                    <input type="time" name="" id="">
 
                 </div>
-                <div class="col-sm-12 col-md-6 ">
-                    <h2>Dar de alta/baja a un cliente</h2>
-                    
+                <!-- DEBUG -->
+                <div class="col-sm-12 col-md-6 border">
+                    <form action="" ng-controller='altaPaciente'>
+                        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                            <li class="nav-item d-flex" role="presentation">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#altaPaciente" role="tab"><h2>Dar de Alta</h2></a>
+                              <a class="nav-link" data-bs-toggle="tab" href="#bajaPaciente" role="tab"><h2>Dar de Baja</h2></a>
+                            </li>
+                          </ul>
+                          <!-- Tabs navs -->
+                          
+                          <!-- Tabs content -->
+                          <div class="tab-content p-2">
+                            <div class="tab-pane fade show active" id="altaPaciente">
+                                <div class="d-flex">
+                                    <div class="form-outline mb-4 w-100">
+                                        <label class="form-label" for="newPacienteNombre">Nombre:</label>
+                                        <input type="text" id="newPacienteNombre" class="form-control" ng-model='nombre'/>
+                                    </div>
+    
+                                    <div class="form-outline mb-4  w-100">
+                                        <label class="form-label" for="newPacienteApellido">Apellido:</label>
+                                        <input type="text" id="newPacienteApellido" class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="newPacienteNacimiento">Fecha Nacimiento:</label>
+                                    <input type="date" id="newPacienteNacimiento" class="form-control"/>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="newPacienteEmail">Email:</label>
+                                    <input type="email" id="newPacienteEmail" class="form-control"/>
+                                </div>
+
+                                <div class="d-flex">
+                                    <div class="form-outline mb-4 w-100">
+                                        <label class="form-label" for="newPacienteDireccion">Direccion:</label>
+                                        <input type="text" id="newPacienteDireccion" class="form-control"/>
+                                    </div>
+                                    <div class="form-outline mb-4 w-100">
+                                        <label class="form-label" for="newPacienteDireccion">Localidad:</label>
+                                        <select name="" id="" class="form-control form-select">
+                                            <option value="{{localidad.cod}}" ng-repeat='localidad in localidades'>{{localidad.nombre}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary w-100" ng-click='alta()'>Save</button>
+
+                            </div>
+                            <div class="tab-pane fade show" id="bajaPaciente">
+                                Tab 2 content
+                              </div>
+                          </div>
+                    </form>
                 </div>
+                <!-- DEBUG -->
             </div>
         </div>
 
+        <div id="infoVacunas" class="col-lg-10 col-md-10 col-sm-12 vh-100 infoOpcion p-4" ng-controller="editarVacunas">
+            <h1 class="title">Informacion Vacunas</h1>
+            <hr>
+            <h2>Lista vacunas</h2>
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Company</th>
+                        <th>Contact</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alfreds Futterkiste</td>
+                        <td>Maria Anders</td>
+                        <td>Germany</td>
+                    </tr>
+                    <tr>
+                        <td>Centro comercial Moctezuma</td>
+                        <td>Francisco Chang</td>
+                        <td>Mexico</td>
+                    </tr>
+                    <tr>
+                        <td>Alfreds Futterkiste</td>
+                        <td>Maria Anders</td>
+                        <td>Germany</td>
+                    </tr>
+                    <tr>
+                        <td>Centro comercial Moctezuma</td>
+                        <td>Francisco Chang</td>
+                        <td>Mexico</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <button class="btn text-white" style="background-color:#036666; border-color: #036666;"> Añadir vacuna</button>
+            </div>
+        </div>
 
         <!-- DATOS PERSONALES DEL SANITARIO -->
         <div id="infoDatosPersonales" class="col-lg-10 col-md-10 col-sm-12 vh-100 p-4 infoOpcion"
@@ -103,13 +203,6 @@
             <form>
                 <div class="row justify-content-center">
                     <div class="col-sm-6 col-md-2 col-lg-2 text-center p-2">
-
-                        <div class="input-file">
-                            <input type="file" id="file" class="input-file-input" />
-                            <label for="" class="input-file-btn">
-                                Seleccionar archivo
-                            </label>
-                        </div>
                         <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg"
                             srcset="" class="img-fluid img-perfil img-thumbnail">
 
@@ -137,6 +230,13 @@
                         <div class="form-floating">
                             <input type="text" class="form-control" id="cargoTrabajador" ng-model="cargo" disabled>
                             <label for="tis">Cargo</label>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h5 class="text">Actualizar foto de perfil: </h5>
+                        <div class="input-file">
+                            <input type="file" id="file" class="input-file-input " disabled />
+                            <label for="" class="input-file-btn"></label>
                         </div>
                     </div>
                     <div class="text-center">

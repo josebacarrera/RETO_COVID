@@ -28,7 +28,9 @@
     background-size: cover;
 }
 
-
+.bg-azulOscuro{
+    background-color: #036666;
+}
 /*Card*/
 .card-img-top {
     opacity: 0.6;

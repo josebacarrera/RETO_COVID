@@ -10,6 +10,10 @@ function mostrar() {
         document.getElementById("motivo").style.display = 'none';
     }
 }
+
+function enviarFormulario(){
+    console.lo
+}
 //RELLENAR FORMULARIO
 function formRelleno() {
         event.preventDefault()
@@ -23,13 +27,13 @@ function formRelleno() {
 
 
         $.ajax({
-            url: "../../controller/cContacto.php",
+            url: "controller/cContacto.php",
             method: "POST",
             data: {
                 'datos': datos,
             },
             success: function (result) {
-                enviarFormulario();
+                result?window.alert("FORMULARIO ENVIADO"):window.alert("ERROR!! VUELVE A INTENTARLO");
             },
             error: function (xhr, textStatus, error) {
                 console.log(xhr.statusText);
