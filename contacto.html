@@ -35,7 +35,7 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="Motivo" name="Mcontacto">Motivo de Contacto</label>
-        <select name="MotivoS" id="MotivoS" onchange="mostrar()" class="form-control">
+        <select name="MotivoS" id="MotivoS" onchange="mostrar()" class="form-control" required>
           <option value="Opcion" id="Opcion" selected disabled>Escoge una opción</option>
           <option value="Duda" id="Duda">Duda</option>
           <option value="Queja">Queja</option>
@@ -51,8 +51,7 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="Mensaje">Mensaje</label>
-        <textarea rows="5" cols="30" class="form-control" id="Mensaje" name="Mensaje"
-          placeholder="Introduzca su mensaje"></textarea>
+        <textarea rows="5" cols="30" class="form-control" id="Mensaje" name="Mensaje" placeholder="Introduzca su mensaje" required></textarea>
       </div><br>
       <div class="form-group text-center">
         <button type="submit" class="btn btn-success" value="Enviar" id="btnEnviar">Enviar</button>

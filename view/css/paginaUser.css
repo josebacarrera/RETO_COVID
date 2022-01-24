@@ -4,6 +4,9 @@
 }
 
 /* INICIO MENU LATERAL */
+.ms-2{
+    font-size: 23px;
+}
 body {
     background-color: #eee
 }

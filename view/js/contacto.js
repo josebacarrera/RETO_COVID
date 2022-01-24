@@ -40,28 +40,12 @@ function formRelleno() {
                 console.log(textStatus);
                 console.log(error);
             }
-        })
+        }) 
+
+        limpiarFormulario();
 
 }
-
-//ENVIAR FORMULARIO Y LIMPIAR
-function enviarFormulario() {
-    window.alert("FORMULARIO ENVIADO");
-    var a = Array.from($('#formulario .form-control'));
-    a.forEach(element => {
-        if (element.name == 'MotivoS') {
-          var valor = document.getElementById("MotivoS");
-          valor.selectedIndex = "0";
-        }
-        else{
-            element.value = '';
-        }
-
-     });
-}
-
-limpiarFormulario();
 
 function limpiarFormulario() {
-    console.log($('#formulario'));
+    $('#formulario')[0].reset();
 }
