@@ -157,4 +157,8 @@
 #button-up:hover{
     transform: scale(1.1);
     border-color: rgba(0,0,0,0.1);
-}   
+}  
+
+.miniatura{
+    margin-bottom: 5%;
+}

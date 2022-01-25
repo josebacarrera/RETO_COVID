@@ -152,34 +152,22 @@
             <h1 class="title">Informacion Vacunas</h1>
             <hr>
             <h2>Lista vacunas</h2>
-            <table class="table">
+            <table class="table"id='here_table'>
                 <thead class="table-dark">
                     <tr>
-                        <th>Company</th>
-                        <th>Contact</th>
-                        <th>Country</th>
+                        <th>Nombre vacuna</th>
+                        <th>Numero de dosis</th>
+                        <th>Intervalo de dosis</th>
+                        <th>Editar</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                    </tr>
-                    <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                        <td>Mexico</td>
-                    </tr>
-                    <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                    </tr>
-                    <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                        <td>Mexico</td>
+                    <tr  ng-repeat='vacuna in vacunas'>
+                        <td>{{vacuna.nombre}}</td>
+                        <td>{{vacuna.max}}</td>
+                        <td>{{vacuna.intervalo}}</td>
+                        <td><i class="fas fa-edit" ng-click="updateVacuna(vacuna.cod)"></i></td>
                     </tr>
                 </tbody>
             </table>

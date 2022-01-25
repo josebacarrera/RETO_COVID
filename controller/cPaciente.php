@@ -32,12 +32,24 @@ if (isset($data['solicitud'])) {
 
 
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
-                $sanitario = new sanitarioModel();
-                $sanitario->setDni($dni);
-                $sanitario->setNombre($nombre);
-                $sanitario->setApellido($apellido);
-                if ($sanitario->update()) {
-                    $response['newSanitario'] = $sanitario->ObjVars();
+                $paciente = new datosPacienteModel();
+                $paciente->setNombre($nombre);
+                $paciente->setApellido($apellido);
+                $paciente->setFecha_nacimiento($fecha_nac);
+                $paciente->setEmail($email);
+                $paciente->setCod_localidad($localidad);
+
+                if ($paciente->insert()) {
+
+                    if ($paciente->loginTIS()) {
+                        session_start();
+                        $response['paciente'] = $paciente->ObjVars();
+    
+                    } else {
+                        $response['error'] = true;
+                        $response['errorInf'] = 'Wrong TIS';
+                    }  
+
                 } else {
                     $response['error'] = true;
                     $response['errorInf'] = 'SQL Fail';

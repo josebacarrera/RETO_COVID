@@ -8,7 +8,20 @@
     <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="../Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../css/extranet.css">
-
+    <link rel="stylesheet" href="../css/paginaPreguntasF.css">
+    <!-- FAQ -->
+    <link rel="stylesheet" href="../view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="icon" href="icono.jpg">
+    <link rel="stylesheet" href="view/css/style.css">
+    <link rel="stylesheet" href="view/css/paginaPreguntasF.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FAQ -->
     <title>Página de Inicio</title>
 </head>
 
@@ -27,7 +40,14 @@
                 </a>
             </li>
 
-            <li class="border-top border-bottom" ng-click="loadContent('PreguntasF')"> <!-- COVID -->
+            <li class="border-top border-bottom" ng-click="loadContent('COVIDBUENO')"> <!-- COVIDBUENO -->
+                <a href="" class="nav-link text-white">
+                    <i class="fa fa-virus fs-5"></i>
+                    <span class="fs-5">COVIDBUENO</span>
+                </a>
+            </li>
+
+            <li class="border-top border-bottom" ng-click="loadContent('PreguntasF')"> <!-- PREGUNTASF -->
                 <a href="" class="nav-link text-white">
                     <i class="fa fa-virus fs-5"></i>
                     <span class="fs-5">PreguntasF test</span>
@@ -39,11 +59,11 @@
     </div>
     <!-- PaneLateral --> 
 
-    
+
     <!-- Contenido -->
-    <div id="contenido">
+    <div id="contenido"> 
         
-        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='default'">
+        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default'">
            
             <div class="card shadow-sm" style="width: 18rem;">
                 <img src="../img/citaprevia.png" class="card-img-top w-100" alt="...">
@@ -71,8 +91,64 @@
 
         </div>
 
+        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default'">
+           
+            <div class="card shadow-sm" style="width: 18rem;">
+                <img src="../img/citavacuna.png" class="card-img-top w-100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">CITA VACUNACION</h5>
+                    <div class="text-center my-4"> <a href="#" class="btn" style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm" style="width: 18rem;">
+                <img src="../img/agendavacunas.png" class="card-img-top w-100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">MIS VACUNAS</h5>
+                    <div class="text-center my-4"> <a href="#" class="btn" style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm" style="width: 18rem;">
+                <img src="../img/faqs.png" class="card-img-top w-100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">PREGUNTAS FRECUENTES</h5>
+                    <div class="text-center my-4"> <a href="#" class="btn" style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default'">
+           
+            <div class="card shadow-sm" style="width: 18rem;">
+                <img src="../img/infobasica.png" class="card-img-top w-100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">INFORMACIÓN BÁSICA</h5>
+                    <div class="text-center my-4"> <a href="#" class="btn" style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm" style="width: 18rem;">
+                <img src="../img/medicinas.png" class="card-img-top w-100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">MIS MEDICACIONES</h5>
+                    <div class="text-center my-4"> <a href="#" class="btn" style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm" style="width: 18rem;">
+                <img src="../img/informe.png" class="card-img-top w-100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">INFORMES MÉDICOS</h5>
+                    <div class="text-center my-4"> <a href="#" class="btn" style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                </div>
+            </div>
+
+        </div>
+
         <div class="row mx-0 d-flex justify-content-around" ng-show="show=='PreguntasF'">
-            <div class="container">
+            
                 <div class="faq_area section_padding_130" id="faq">
         
                     <div class="row justify-content-center">
@@ -339,19 +415,11 @@
                                 </div>
         
                             </div>
-                            <!-- Support Button-->
-                            <div class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp"
-                                data-wow-delay="0.5s"
-                                style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-                                <i class="lni-emoji-sad"></i>
-                                <p class="mb-0 px-2">Can't find your answers?</p>
-                                <a href="#"> Contact us</a>
-                            </div>
                         </div>
                     </div>
         
                 </div>
-            </div>
+            
         </div>
 
     </div>
@@ -364,7 +432,11 @@
 <script src="../js/angular.min.js"></script>
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/extranet.js"></script>
-
+<script src="view/js/script.js"></script>
+<script src="view/js/insert.js"></script>
+<script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
 <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+
 
 </html>
