@@ -5,6 +5,8 @@ function init() {
 }
 
 function loadPaginaSanitario() {
+    $(".infoOpcion").css('display', 'none');
+    $("#infoInformes").css('display', 'block');
     $("#datosPersonales").click(function () {
         $(".infoOpcion").css('display', 'none');
         $("#infoDatosPersonales").css('display', 'block');
@@ -31,6 +33,7 @@ var savedFileBase64;
 var filename;
 var filesize;
 
+//CONTROLADOR DE LOS DATOS PERSONALES
 reto_covid.controller('datosPersonales', async function ($scope) {
     let session = await getSession();
 
@@ -70,31 +73,24 @@ reto_covid.controller('datosPersonales', async function ($scope) {
 
 });
 
+
+//CONTROLADOR PARA LA EDICION DE LAS VACUNAS
 reto_covid.controller('editarVacunas', async function ($scope) {
 
 
 });
 
 
-//Activar los campos para editarlos
-reto_covid.directive("inputDisabled", function () {
-    return function (scope, element, attrs) {
-        scope.$watch(attrs.inputDisabled, function (val) {
-            if (val) {
-                element.removeAttr("disabled");
-                $("#btnGuardar").css('display', 'block')
-                $('.input-file-input').prop("disabled", false);
+//CONTROLADOR PARA DAR DE BAJA A UN PACIENTE
+reto_covid.controller('bajaPaciente', async function ($scope) {
 
-            }
-            else {
-                element.attr("disabled", "disabled");
-                $("#btnGuardar").css('display', 'none')
-                $('.input-file-input').prop("disabled", true);
-            }
-        });
-    }
+ $scope.change = function() {
+    console.log($scope.dniPaciente);
+  };
 });
 
+
+//CONTROLADOR PARA EL ALTA DE LOS PACIENTES
 reto_covid.controller('altaPaciente', async function ($scope) {
 
     // VARIABLES
@@ -137,6 +133,8 @@ reto_covid.controller('editarVacunas', async function ($scope) {
     $scope.$digest();
 
 })
+
+//CARGA LAS LOCALIDADES
 function getLocalidades() {
     return new Promise((resolve, reject) => {
         var data = { 'solicitud': 'getLocalidades' }
@@ -152,6 +150,7 @@ function getLocalidades() {
     })
 }
 
+//CARGA LAS VACUNAS
 function getVacunas() {
     return new Promise((resolve, reject) => {
         var data = { 'solicitud': 'setListVacunas' }
@@ -166,3 +165,22 @@ function getVacunas() {
         }).catch(error => console.error('Error status:', error));
     })
 }
+
+//ACTIVA LOS CAMPOS PARA PODER EDITARLOS
+reto_covid.directive("inputDisabled", function () {
+    return function (scope, element, attrs) {
+        scope.$watch(attrs.inputDisabled, function (val) {
+            if (val) {
+                element.removeAttr("disabled");
+                $("#btnGuardar").css('display', 'block')
+                $('.input-file-input').prop("disabled", false);
+
+            }
+            else {
+                element.attr("disabled", "disabled");
+                $("#btnGuardar").css('display', 'none')
+                $('.input-file-input').prop("disabled", true);
+            }
+        });
+    }
+});
