@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app='reto_covid'>
 
 <head>
     <meta charset="UTF-8">
@@ -20,10 +20,66 @@
 
 </head>
 
-<body>
-    <div id="navbar"></div>
+<body ng-controller="main">
+
+    <div id="paneLateral" class='fixed-top' style="width: 250px; background-color: #036666; height: 100%;">
+        <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+            <h4 class='p-2'>{{ usuario.nombre }} {{ usuario.apellido }} </h4>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto px-2">
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="fa fa-book"></i>
+                    <span class="ms-2" onclick="cambiaragenda()">Agenda sanitaria</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="fa fa-scroll"></i>
+                    <span class="ms-2" onclick="cambiarinformes()">Informes</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="fas fa-user"></i>
+                    <span class="ms-2" onclick="cambiardatos()">Datos personales</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="fas fa-virus"></i>
+                    <span class="ms-2" onclick="cambiarcovid()">COVID</span>
+                </a>
+            </li>
+        </ul>
+        <hr>        
+    </div>
+
+    <div id="contenido" style='margin-left: 250px;'>
+        
+        <div class="row mx-0">
+           
+            <div class="row mx-0 p-2 border"> <!-- DATOS TITULO -->
+                <div class="col">DOSIS</div>
+                <div class="col">VACUNA</div>
+                <div class="col">LUGAR</div>
+                <div class="col">FECHA</div>
+            </div>
+
+            <div class="row"> <!-- DATOS AutoGen -->
+                
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
     <div class="principal">
-    <div id="aside" class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white"
+    <!-- <div id="aside" class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white"
         style="width: 250px; background-color: #036666;"> <a href="/"
             class="princi d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg
                 class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Nombre Paciente</span> </a>
@@ -42,9 +98,9 @@
         </ul>
         <hr>
 
-    </div>
+    </div> -->
     
-    <div class="container">
+    <div class="container bg-dark" style='margin-left: 250px;'>
         <table class="table">
             <thead class="table-dark">
                   <tr>
@@ -101,6 +157,8 @@
 <script src="view/js/jquery-3.6.0.js"></script>
 <script src="view/js/angular.min.js"></script>
 <script src="view/js/bootstrap.bundle.min.js"></script>
+<script src="view/js/global.js"></script>
+<script src="view/js/paginaMisVacunas.js"></script>
 <script src="view/js/script.js"></script>
 <script src="view/js/insert.js"></script>
 <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
