@@ -89,12 +89,15 @@ body {
 .informe{
     padding: 25%;
     display: none;
+    margin-left: 25%;
+   
 }
 /* FIN INFORMES */
 /* INICIO COVID AREA */
 .vacuna{
     padding: 5%;
     display:none;
+    margin-left: 25%;
 }
 .vacunaOptions{
     display:flex;
@@ -126,9 +129,12 @@ body {
     
 }
 .datos{
-    margin-left: 4vw;
+    margin-left: 17vw;
     margin-top: 4vh;
     display:none;
+}
+#mostrarDatos{
+    margin-right: 5vw;
 }
 /* FIN COVID AREA */
 /* FOTO PERFIL */

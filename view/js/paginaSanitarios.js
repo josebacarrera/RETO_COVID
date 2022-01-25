@@ -109,16 +109,30 @@ reto_covid.controller('altaPaciente', async function ($scope) {
     // FUNCIONES
 
     $scope.localidades = await getLocalidades();
+
+
+
     $scope.alta = () => {
-       console.log(1);
+       if ($scope.nombre && $scope.apellido && $scope.fecha_nac && $scope.email && $scope.direccion && $scope.localidad){
+        //REGISTRO NUEVO PACIENTE
+       }
     }
 
     // CUERPO
-
     $scope.$digest();
 
 })
 
+
+reto_covid.controller('editarVacunas', async function ($scope) {
+
+    $scope.vacunas = await getVacunas();
+    console.log($scope.vacunas );
+
+    // CUERPO
+    $scope.$digest();
+
+})
 function getLocalidades() {
     return new Promise((resolve, reject) => {
         var data = {'solicitud': 'getLocalidades'}
@@ -130,7 +144,21 @@ function getLocalidades() {
     
         }).then(res => res.json()).then(result => {
             resolve(result.localidades);
+        }).catch(error => console.error('Error status:', error));
+    })
+}
+
+function getVacunas() {
+    return new Promise((resolve, reject) => {
+        var data = {'solicitud': 'setListVacunas'}
+        var url = "controller/cVacuna.php";
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
     
+        }).then(res => res.json()).then(result => {
+            resolve(result.vacunas);
         }).catch(error => console.error('Error status:', error));
     })
 }

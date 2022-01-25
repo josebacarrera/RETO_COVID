@@ -4,7 +4,9 @@
     right: 0;
     width: 100%;
 }
-
+.row>* {
+    padding: 0px;
+}
 
 /*Login*/
 #login {
