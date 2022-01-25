@@ -13,10 +13,8 @@ reto_covid.controller('main', async function ($scope) {
 });
 
 
-
-
 function loadContent(session) {
-    
+
     if (session) { // TIENE SESSION
         $('#formLogin').css('display', 'none')
 
@@ -68,3 +66,10 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
         })
     })
 }
+
+
+$(window).on('load', function () {
+    setTimeout(function () {
+        $(".loader-page").css({ visibility: "hidden", opacity: "0" })
+    }, 500);
+});
