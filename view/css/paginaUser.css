@@ -80,14 +80,14 @@ body {
     display: flex;
 }
 .agenda{
-    padding: 5%;
+    margin-left: 25%;
 
 }
 
 /* FIN AGENDA */
 /* INICIO INFORMES */
 .informe{
-    padding: 5%;
+    padding: 25%;
     display: none;
 }
 /* FIN INFORMES */
@@ -162,6 +162,15 @@ body {
 background-color: #b2eec8;
 font-size: 105%;
 }
+.col{
+    margin: 2%;
+}
+
+
+
+
+/*mediaQuery*/
+
 
 
 
