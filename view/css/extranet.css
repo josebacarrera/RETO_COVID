@@ -1,0 +1,28 @@
+#paneLateral {
+    width: 250px;
+    height: 100%;
+    background-color: #036666;
+}
+
+#contenido {
+    margin-left: 250px;
+    padding-top: 50px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+@media (max-width: 576px) {
+
+    #paneLateral {
+        position: relative;
+        width: 100%;
+        height: 200px;
+    }
+
+    #contenido {
+        margin-left: 0px;
+    }
+
+}

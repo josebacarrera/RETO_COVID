@@ -5,6 +5,8 @@ function init() {
 }
 
 function loadPaginaSanitario() {
+    $(".infoOpcion").css('display', 'none');
+    $("#infoInformes").css('display', 'block');
     $("#datosPersonales").click(function () {
         $(".infoOpcion").css('display', 'none');
         $("#infoDatosPersonales").css('display', 'block');
@@ -31,6 +33,7 @@ var savedFileBase64;
 var filename;
 var filesize;
 
+//CONTROLADOR DE LOS DATOS PERSONALES
 reto_covid.controller('datosPersonales', async function ($scope) {
     let session = await getSession();
 
@@ -48,7 +51,7 @@ reto_covid.controller('datosPersonales', async function ($scope) {
 
     $scope.updateSanitario = function () {
 
-        
+
         var data = {
             'solicitud': 'updateSanitario',
             'dni': $('#dniTrabajador').val(),
@@ -70,31 +73,24 @@ reto_covid.controller('datosPersonales', async function ($scope) {
 
 });
 
+
+//CONTROLADOR PARA LA EDICION DE LAS VACUNAS
 reto_covid.controller('editarVacunas', async function ($scope) {
 
 
 });
 
 
-//Activar los campos para editarlos
-reto_covid.directive("inputDisabled", function () {
-    return function (scope, element, attrs) {
-        scope.$watch(attrs.inputDisabled, function (val) {
-            if (val) {
-                element.removeAttr("disabled");
-                $("#btnGuardar").css('display', 'block')
-                $('.input-file-input').prop("disabled", false); 
+//CONTROLADOR PARA DAR DE BAJA A UN PACIENTE
+reto_covid.controller('bajaPaciente', async function ($scope) {
 
-            }
-            else {
-                element.attr("disabled", "disabled");
-                $("#btnGuardar").css('display', 'none')
-                $('.input-file-input').prop("disabled", true); 
-            }
-        });
-    }
+ $scope.change = function() {
+    console.log($scope.dniPaciente);
+  };
 });
 
+
+//CONTROLADOR PARA EL ALTA DE LOS PACIENTES
 reto_covid.controller('altaPaciente', async function ($scope) {
 
     // VARIABLES
@@ -109,28 +105,82 @@ reto_covid.controller('altaPaciente', async function ($scope) {
     // FUNCIONES
 
     $scope.localidades = await getLocalidades();
+
+
+
     $scope.alta = () => {
-       console.log(1);
+        if ($scope.nombre && $scope.apellido && $scope.fecha_nac && $scope.email && $scope.direccion && $scope.localidad) {
+            //REGISTRO NUEVO PACIENTE
+        }
     }
 
     // CUERPO
-
     $scope.$digest();
 
 })
 
+
+reto_covid.controller('editarVacunas', async function ($scope) {
+
+    $scope.vacunas = await getVacunas();
+    console.log($scope.vacunas[0]);
+
+    $scope.updateVacuna =(codigo)=>{
+        console.log(codigo)
+        
+    }
+    // CUERPO
+    $scope.$digest();
+
+})
+
+//CARGA LAS LOCALIDADES
 function getLocalidades() {
     return new Promise((resolve, reject) => {
-        var data = {'solicitud': 'getLocalidades'}
+        var data = { 'solicitud': 'getLocalidades' }
         var url = "controller/cLocalidad.php";
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
-    
+
         }).then(res => res.json()).then(result => {
             resolve(result.localidades);
-    
         }).catch(error => console.error('Error status:', error));
     })
 }
+
+//CARGA LAS VACUNAS
+function getVacunas() {
+    return new Promise((resolve, reject) => {
+        var data = { 'solicitud': 'setListVacunas' }
+        var url = "controller/cVacuna.php";
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+
+        }).then(res => res.json()).then(result => {
+            resolve(result.vacunas);
+        }).catch(error => console.error('Error status:', error));
+    })
+}
+
+//ACTIVA LOS CAMPOS PARA PODER EDITARLOS
+reto_covid.directive("inputDisabled", function () {
+    return function (scope, element, attrs) {
+        scope.$watch(attrs.inputDisabled, function (val) {
+            if (val) {
+                element.removeAttr("disabled");
+                $("#btnGuardar").css('display', 'block')
+                $('.input-file-input').prop("disabled", false);
+
+            }
+            else {
+                element.attr("disabled", "disabled");
+                $("#btnGuardar").css('display', 'none')
+                $('.input-file-input').prop("disabled", true);
+            }
+        });
+    }
+});

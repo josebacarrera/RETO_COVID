@@ -81,6 +81,11 @@ if (isset($data['solicitud'])) {
 
         break;
 
+        case'setListVacunas':
+            $vacunas=new vacunaModel();
+            $response['vacunas'] = $vacunas->setList(); 
+        break;
+
     }
 } else {
     $response['error'] = true;

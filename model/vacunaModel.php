@@ -30,7 +30,28 @@ class vacunaModel extends vacunaClass{
 
     // FUNCIONES MOD //
 
-    
+    public function setList(){
+        $this->OpenConnect();
+
+        $sql="SELECT * FROM vacuna";
+        $result = $this->link->query($sql); 
+        
+        $list=array();
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+           $new = new vacunaModel();
+           $new->setCod($row['cod_vacuna_v']);
+           $new->setNombre($row['nombre_v']);
+           $new->setMax($row['intervalo_v']);
+           $new->setIntervalo($row['intervalo_v']);
+          
+            array_push($list, get_object_vars($new));
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        
+        return $list;
+    }
     public function update() {
 
         $this->OpenConnect();

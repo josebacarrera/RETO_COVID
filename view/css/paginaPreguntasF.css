@@ -120,10 +120,6 @@ body {
 /* FIN COVID AREA */
 
 /* INICIO FAQ */
-/* .general{
-    display: flex;
-} */
-/* INICIO FAQ */
 
 .section_padding_130 {
     padding-top: 130px;
@@ -184,10 +180,9 @@ body {
     margin-bottom: 0;
 }
 
-@media only screen and (max-width: 575px) {
-    .support-button p {
-        font-size: 14px;
-    }
+.support-button a {
+    text-transform: capitalize;
+    color: #2ecc71;
 }
 
 .support-button i {
@@ -195,15 +190,17 @@ body {
     font-size: 1.25rem;
 }
 @media only screen and (max-width: 575px) {
+    .support-button p {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
     .support-button i {
         font-size: 1rem;
     }
 }
 
-.support-button a {
-    text-transform: capitalize;
-    color: #2ecc71;
-}
 @media only screen and (max-width: 575px) {
     .support-button a {
         font-size: 13px;

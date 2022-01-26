@@ -39,10 +39,6 @@ class datosPacienteModel extends datosPacienteClass{
     public function     loginTIS() {
 
         $this->OpenConnect();
-
-        
-        
-                
         $sql = "CALL spLoginTIS('" . $this->getTis() . "','" . $this->getFecha_nacimiento() . "')";
         // $sql = "CALL spLoginTIS('4990916','2018-03-17')";
 
@@ -102,6 +98,17 @@ class datosPacienteModel extends datosPacienteClass{
 
         }
 
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
+
+    public function insert() {
+        $this->OpenConnect();
+        $sql = "INSERT INTO datos_paciente (tis_datos_p, nombre_p, apellido_p, fecha_nacimiento_p, email_p, foto_perfil_p, direccion_p, cod_localidad_p) VALUES ('".$this->getTis()."','".$this->getNombre()."','".$this->getApellido()."','".$this->getFecha_nacimiento()."','".$this->getEmail()."','".$this->getDireccion()."','".$this->getCod_localidad()."')";
+        $result = $this->link->query($sql);
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            return true;
+        }
         mysqli_free_result($result);
         $this->CloseConnect();
     }

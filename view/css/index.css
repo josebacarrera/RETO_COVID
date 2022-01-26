@@ -4,7 +4,9 @@
     right: 0;
     width: 100%;
 }
-
+.row>* {
+    padding: 0px;
+}
 
 /*Login*/
 #login {
@@ -140,3 +142,4 @@
 .carousel-inner .carousel-item-start {
     transform: translateX(0);
 }
+
