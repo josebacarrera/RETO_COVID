@@ -11,24 +11,27 @@ reto_covid_intranet.controller('body', async function ($scope) {
     $scope.show = 'default';
 
     $scope.loadContent = (contenType) => {
-        console.log(contenType);
 
         switch (contenType) {
+            case 'AGENDA':
+                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                break;
+
+            case 'INFORME':
+                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                break;
+
+            case 'DATOS':
+                    ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                    break;
+
             case 'COVID':
-                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
-                break;
-
-            case 'COVIDBUENO':
-                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
-                break;
-
-                case 'INFORME':
                     ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
                     break;
 
-                case 'PreguntasF':
-                    ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
-                    break;
+            case 'pedirCita':
+                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                break;
         
             default:
                 console.log('ERROR, contenType not supported');
