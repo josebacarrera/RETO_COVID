@@ -106,7 +106,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS CITAS</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                            style="background-color: #358f80; color: white;">REVISAR</a> </div>
                 </div>
             </div>
 
@@ -115,7 +115,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">ESPERA CIRUGIA</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                            style="background-color: #358f80; color: white;">COMPROBAR</a> </div>
                 </div>
             </div>
 
@@ -128,7 +128,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">INFORMACIÓN BÁSICA</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                            style="background-color: #358f80; color: white;">VER</a> </div>
                 </div>
             </div>
 
@@ -137,7 +137,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS MEDICACIONES</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                            style="background-color: #358f80; color: white;">VER</a> </div>
                 </div>
             </div>
 
@@ -146,7 +146,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">INFORMES MÉDICOS</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                            style="background-color: #358f80; color: white;">VER</a> </div>
                 </div>
             </div>
         </div>
@@ -211,7 +211,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS VACUNAS</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                            style="background-color: #358f80; color: white;">VER</a> </div>
                 </div>
             </div>
 
@@ -220,13 +220,153 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">PREGUNTAS FRECUENTES</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                            style="background-color: #358f80; color: white;">VER</a> </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- PREGUNTAS FRECUENTES -->
+
+        <!-- MODAL PREGUNAS FRECUENTES -->
+        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='COVID'">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Preguntas Frecuentes</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" role="button">
+                            <p data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta1"
+                                class="preguntas">
+                                <a data-bs-toggle="collapse" href="#pregunta1" role="button" aria-expanded="false"
+                                    aria-controls="pregunta1"
+                                    style="text-decoration: none; color: black; font-weight: bold;">
+                                    ¿Con que profesionales puedo reservar una cita?
+                                </a>
+                            </p>
+                            <div class="collapse" id="pregunta1">
+                                <div class="card card-body">
+                                    <ul>
+                                        <li>Médico o médica de cabecera</li>
+                                        <li>Pediatra</li>
+                                        <li>Matrona</li>
+                                        <li>Enfermería</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body" role="button">
+                            <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta2"
+                                class="preguntas">
+                                <a data-bs-toggle="collapse" href="#pregunta2" role="button" aria-expanded="false"
+                                    aria-controls="pregunta2"
+                                    style="text-decoration: none; color: black; font-weight: bold;">
+                                    ¿Cuál es el número de la TIS?
+                                </a>
+                            </p>
+                            <div class="collapse" id="pregunta2">
+                                <div class="card card-body">
+                                    <p>
+                                        El número de la TIS es necesario para identificarse y solicitar Cita Previa.
+                                        Independientemente del tipo de tarjeta (ONA, Tarjeta Sanitaria Electrónica o
+                                        TIS), es un número de 8 cifras que viene impreso junto al nombre. Lo podrás
+                                        encontrar donde está indicado por la flecha:
+                                        <img src="view/img/tarjetaindicadora.jpg">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body" role="button">
+                            <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta3"
+                                class="preguntas">
+                                <a data-bs-toggle="collapse" href="#pregunta3" role="button" aria-expanded="false"
+                                    aria-controls="pregunta2"
+                                    style="text-decoration: none; color: black; font-weight: bold;">
+                                    ¿Qué es el covid?
+                                </a>
+                            </p>
+                            <div class="collapse" id="pregunta3">
+                                <div class="card card-body">
+                                    <p>
+                                        El COVID-19 (enfermedad del coronavirus 2019) es una enfermedad causada por un
+                                        virus llamado SARS-CoV-2 y fue descubierta en diciembre del 2019 en Wuhan,
+                                        China. Es muy contagioso y se ha propagado rápidamente en todo el mundo.
+
+                                        Los síntomas más frecuentes del COVID-19 son respiratorios, muy parecidos a los
+                                        de un resfriado, influenza o neumonía. El COVID-19 puede atacar a otras partes
+                                        de su organismo además de sus pulmones y sistema respiratorio. Otras partes de
+                                        su cuerpo también pueden verse afectadas por la enfermedad.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body" role="button">
+                            <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta4"
+                                class="preguntas">
+                                <a data-bs-toggle="collapse" href="#pregunta4" role="button" aria-expanded="false"
+                                    aria-controls="pregunta4"
+                                    style="text-decoration: none; color: black; font-weight: bold;">
+                                    ¿Tengo COVID?
+                                </a>
+                            </p>
+                            <div class="collapse" id="pregunta4">
+                                <div class="card card-body">
+                                    <p>
+                                        <ul>
+                                            <li>Fiebre o escalofríos</li>
+                                            <li>Tos</li>
+                                            <li>Dificultad para respirar</li>
+                                            <li>Fatiga</li>
+                                            <li>Dolores musculares y corporales</li>
+                                            <li>Dolor de cabeza</li>
+                                            <li>Perdida reciente de olfato o del gusto</li>
+                                            <li>Dolor de garganta</li>
+                                            <li>Congestión o moqueo</li>
+                                            <li>Náuseas o vómitos</li>
+                                            <li>Diarrea</li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body" role="button">
+                            <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta5"
+                                class="preguntas">
+                                <a data-bs-toggle="collapse" href="#pregunta5" role="button" aria-expanded="false"
+                                    aria-controls="pregunta5"
+                                    style="text-decoration: none; color: black; font-weight: bold;">
+                                    Cuando buscar atención medica
+                                </a>
+                            </p>
+                            <div class="collapse" id="pregunta5">
+                                <div class="card card-body">
+                                    <p>
+                                        Si presenta uno de los siguientes signos busque atención médica de emergencia
+                                        inmediata:
+                                        <ul>
+                                            <li>Dificultad para respirar</li>
+                                            <li>Dolor o presión persistente en el pecho</li>
+                                            <li>Confusión</li>
+                                            <li>Incapacidad de despertarse o permanecer despierto</li>
+                                            <li>Piel, labios olechos de uñas pálidos, grises o azulados, según el tono
+                                                de la piel</li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <a type="button" class="btn btn-primary btnVMas" data-bs-dismiss="modal">VER MÁS</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- SABER MÁS-> PREGUNTAS FRECUENTES -->
         <div class="row mx-0 d-flex justify-content-around " ng-show="show=='PreguntasF'">
 
             <div class="faq_area section_padding_130" id="faq">
@@ -532,15 +672,37 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+        </div>
+    </div>
 
+    <!-- PEDIR CITA -->
+    <div class="row mx-0 d-flex justify-content-around" ng-show="show=='pedirCita'">
+
+        <div class="col-4 border">
+            <h1>{{ usuario.nombre }}</h1>
         </div>
 
-        <!-- PEDIR CITA -->
-        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='default' || show=='pedirCita'">
-            
+        <div class="col-8">
+            <div class="form-outline mb-4">
+                <label class="form-label">Selecciona la fecha:</label>
+                <input type="date" class="form-control" />
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label">Selecciona la hora:</label>
+                <input type="time" class="form-control" />
+            </div>
         </div>
+
+        <button class="btn btn-primary mt-5">Generar PDF</button>
+
+        <div class="col-12 border mt-5 text-center">
+            <h1>DOCUMENTO PDF</h1>
+            <p>...Proximamente</p>
+        </div>
+
+
+    </div>
 
     </div>
     <!-- Contenido -->

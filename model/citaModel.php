@@ -53,13 +53,11 @@ class citaModel extends citaClass {
 
     public function insertCita() {
         $this->OpenConnect();
-        $sql='INSERT INTO cita () VALUES ()';
-        var_dump($sql);
-        $result = $this->link->query($sql);
+        $sql='INSERT INTO cita (tis_paciente_ci,cod_sanitario_ci, fecha_ci, hora_ci,cod_centro_ci) VALUES ("'.$this->getTis_paciente().'","'.$this->getCod_sanitario().'","'.$this->getFecha().'","'.$this->getHora().'","'.$this->getCod_centro().'")';
+        // var_dump($sql);
         if ($this->link->query($sql)) {
             return true;
         }
-        mysqli_free_result($result);
         $this->CloseConnect();
     }
 

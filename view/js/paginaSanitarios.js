@@ -112,7 +112,16 @@ reto_covid.controller('altaPaciente', async function ($scope) {
         if ($scope.nombre && $scope.apellido && $scope.fecha_nac && $scope.email && $scope.direccion && $scope.localidad) 
         {
             $scope.mensajeAlta="Paciente introducido correctamente"
-            await insertPaciente($scope.nombre, $scope.apellido,$scope.fecha_nac,$scope.email,$scope.direccion, $scope.localidad);
+            var data = { 'solicitud': 'insertPaciente', 'nombre': $scope.nombre, 'apellido': $scope.apellido, 'fecha_nac': $scope.fecha_nac, 'localidad': $scope.localidad, 'email': $scope.email, 'direccion': $scope.direccion };
+            var url = "controller/cPaciente.php";
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            }).then(res => res.json()).then(result => {
+                console.log(result);
+                resolve(result);
+            }).catch(error => console.error('Error status:', error));
         }else if (!$scope.email && $scope.nombre && $scope.apellido && $scope.fecha_nac && $scope.direccion && $scope.localidad){
             $scope.mensajeAlta="Introduce un email valido"
         }else{
@@ -126,7 +135,6 @@ reto_covid.controller('altaPaciente', async function ($scope) {
 
 reto_covid.controller('editarVacunas', async function ($scope) {
     $scope.vacunas = await getVacunas();
-    console.log($scope.vacunas[0]);
 
     $scope.updateVacuna = (codigo) => {
         console.log(codigo)
@@ -172,20 +180,7 @@ function getTisPacientes() {
 
 
 //INSERTAR PACIENTE
-function insertPaciente(nombre, apellido,fecha_nac,email,direccion, localidad) {
-    return new Promise((resolve) => {
-        var data = { 'solicitud': 'insertPaciente', 'nombre': nombre, 'apellido': apellido, 'fecha_nac': fecha_nac, 'localidad': localidad, 'email': email, 'direccion': direccion };
-        var url = "controller/cPaciente.php";
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json' }
-        }).then(res => res.json()).then(result => {
-            console.log(result);
-            resolve(result);
-        }).catch(error => console.error('Error status:', error));
-    })
-}
+
 
 //CARGA LAS VACUNAS
 function getVacunas() {

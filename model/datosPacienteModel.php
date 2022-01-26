@@ -1,3 +1,4 @@
+
 <?php
 
 if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {include_once ("connect_data_SERV.php");} 

@@ -31,12 +31,23 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
             case 'pedirCita':
                 ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
-                break;
-        
-            default:
-                console.log('ERROR, contenType not supported');
-                break;
-        }
+                
+                var data = { 'solicitud': 'selectAllCitasByTis', 'tis': $scope.usuario.nombre}
+                var url = "controller/cCitas.php";
+                fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: { 'Content-Type': 'application/json' }
+
+                }).then(res => res.json()).then(result => {
+                    console.log(result.lisTis);
+                }).catch(error => console.error('Error status:', error));
+                        break;
+                
+                    default:
+                        console.log('ERROR, contenType not supported');
+                        break;
+                }
 
     }
 
