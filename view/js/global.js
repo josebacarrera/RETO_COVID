@@ -83,6 +83,7 @@ function scrollFunction() {
 
   } else {
     $('#myBtn').css('display', 'none')
+
   }
 }
 
