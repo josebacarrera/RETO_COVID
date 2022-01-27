@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-01-2022 a las 09:26:53
+-- Tiempo de generación: 27-01-2022 a las 12:11:19
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -72,12 +72,12 @@ CREATE TABLE IF NOT EXISTS `centro` (
 --
 
 INSERT INTO `centro` (`cod_centro_ce`, `cod_localidad_ce`, `nombre_ce`, `telefono_ce`, `email_ce`, `horario_temprano_ce`, `horario_tarde_ce`, `horario_noche_ce`, `dias_ce`) VALUES
-(3, 1, 'Ambulatorio Durango', 68867022, 'durango@gmail.com', '8:00', '16:00', '20:00', '7'),
-(4, 2, 'Centro de Gernika', 612120088, 'gernika@gmail.com', '8:00', '16:00', '20:00', '5'),
-(5, 3, 'Centro de Indautxu', 643450081, 'indautxu@gmail.com', '8:30', '17:00', '21:00', '4'),
-(6, 4, 'Ondarroko osasunetxea', 612120089, 'ondarroa@gmail.com', '9:00', '16:30', '', '6'),
-(7, 5, 'Ambulatorio Galdakao', 600612129, 'galdakao@gmail.com', '9:00', '14:00', '', '7'),
-(8, 6, 'Centro salud Mungia', 677761200, 'mungia@gmail.com', '8:30', '17:00', '21:00', '5');
+(3, 1, 'Ambulatorio Durango', 68867022, 'durango@gmail.com', '7:00-13:00', '16:00-19:00', '20:00-00:00', 'l,m,x,j,v,s,d'),
+(4, 2, 'Centro de Gernika', 612120088, 'gernika@gmail.com', '8:00-12:00', '16:00-18:30', '20:00-22:00', 'l,m,x,j,v'),
+(5, 3, 'Centro de Indautxu', 643450081, 'indautxu@gmail.com', '7:30-11:30', '17:00-19:00', '21:00-23:00', 'l,m,x,j'),
+(6, 4, 'Ondarroko osasunetxea', 612120089, 'ondarroa@gmail.com', '7:00-12:00', '16:30-18:30', '', 'l,m,x,j,v,s'),
+(7, 5, 'Ambulatorio Galdakao', 600612129, 'galdakao@gmail.com', '8:00-12:30', '14:00-19:30', '', 'l,m,x,j,v,s,d'),
+(8, 6, 'Centro salud Mungia', 677761200, 'mungia@gmail.com', '8:30-14:00', '17:00-19:00', '21:00-23:30', 'l,m,x,j,v');
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,7 @@ INSERT INTO `cita` (`cod_cita_ci`, `tis_paciente_ci`, `cod_sanitario_ci`, `fecha
 
 DROP TABLE IF EXISTS `datos_paciente`;
 CREATE TABLE IF NOT EXISTS `datos_paciente` (
-  `tis_datos_p` int(8) NOT NULL,
+  `tis_datos_p` int(8) NOT NULL AUTO_INCREMENT,
   `nombre_p` varchar(25) NOT NULL,
   `apellido_p` varchar(50) NOT NULL,
   `fecha_nacimiento_p` date NOT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `datos_paciente` (
   `cod_localidad_p` int(5) NOT NULL,
   PRIMARY KEY (`tis_datos_p`),
   KEY `cod_localidad` (`cod_localidad_p`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4990917 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `datos_paciente`
@@ -347,9 +347,9 @@ ALTER TABLE `centro`
 -- Filtros para la tabla `cita`
 --
 ALTER TABLE `cita`
-  ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`tis_paciente_ci`) REFERENCES `datos_paciente` (`tis_datos_p`),
   ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`cod_centro_ci`) REFERENCES `centro` (`cod_centro_ce`),
-  ADD CONSTRAINT `cita_ibfk_3` FOREIGN KEY (`cod_sanitario_ci`) REFERENCES `sanitario` (`cod_sanitario_s`);
+  ADD CONSTRAINT `cita_ibfk_3` FOREIGN KEY (`cod_sanitario_ci`) REFERENCES `sanitario` (`cod_sanitario_s`),
+  ADD CONSTRAINT `cita_ibfk_4` FOREIGN KEY (`tis_paciente_ci`) REFERENCES `datos_paciente` (`tis_datos_p`);
 
 --
 -- Filtros para la tabla `datos_paciente`
