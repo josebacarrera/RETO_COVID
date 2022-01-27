@@ -105,14 +105,7 @@ class datosPacienteModel extends datosPacienteClass{
     public function insert() {
         $this->OpenConnect();
         $sql = "INSERT INTO datos_paciente (nombre_p, apellido_p, fecha_nacimiento_p, email_p, direccion_p, cod_localidad_p) VALUES ('".$this->getNombre()."','".$this->getApellido()."','".$this->getFecha_nacimiento()."','".$this->getEmail()."','".$this->getDireccion()."',".$this->getCod_localidad().")";
- 
         $this->link->query($sql);
-
-        var_dump($this->link->affected_rows);
-        if ($this->link->affected_rows >= 1)
-        {
-            return true;
-        }
         $this->CloseConnect();
     }
 
@@ -129,28 +122,29 @@ class datosPacienteModel extends datosPacienteClass{
         $this->CloseConnect();
     }
 
+    public function deletePacienteByTis(){
+        $this->OpenConnect();
+
+    }
+
     public function getPacienteByTis() {
         $this->OpenConnect();
-        $sql = "SELECT * FROM datos_paciente WHERE tis_paciente_p='".$this->getTis()."'";
-
+        $sql = "SELECT * FROM datos_paciente WHERE tis_datos_p='".$this->getTis()."'";
         $result = $this->link->query($sql);
         
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
+
             $this->setNombre($row['nombre_p']);
             $this->setApellido($row['apellido_p']);
             $this->setEmail($row['email_p']);
+            $this->setFecha_nacimiento($row['fecha_nacimiento_p']);
             $this->setFoto_perfil($row['foto_perfil_p']);
             $this->setDireccion($row['direccion_p']);
             $this->setCod_localidad($row['cod_localidad_p']);
-
-            return true;
-
         }
 
         mysqli_free_result($result);
         $this->CloseConnect();
-    
     }
 
     public function ObjVars() {

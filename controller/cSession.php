@@ -9,4 +9,5 @@ if (!empty($_SESSION)) {
 }
 
 echo json_encode($response);
+unset($response);
 ?>

@@ -5,23 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ANGULAR MATERIAL -->
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.2.1/angular-material.min.css">
-    <!-- ANGULAR MATERIAL -->
+
     <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="../Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../css/extranet.css">
     <link rel="stylesheet" href="../css/paginaPreguntasF.css">
     <!-- FAQ -->
-    <link rel="stylesheet" href="../view/Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="icon" href="icono.jpg">
-    <link rel="stylesheet" href="view/css/style.css">
-    <link rel="stylesheet" href="view/css/paginaPreguntasF.css">
+    <link rel="icon" href="../img/icono.jpg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/paginaPreguntasF.css">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FAQ -->
@@ -29,6 +26,8 @@
 </head>
 
 <body ng-controller="body">
+
+    <div id="navbar"></div>
 
     <!-- PaneLateral -->
     <div id="paneLateral" class='fixed-top'>
@@ -88,11 +87,11 @@
 
 
     <!-- Contenido -->
-    <div id="contenido">
+    <div id="contenido" class="p-2" style="margin-top: 5%;">
         <!-- AGENDA -->
         <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='AGENDA'">
 
-            <div class="card shadow-sm" style="width: 18rem;">
+            <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/citaprevia.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">CITA</h5>
@@ -101,7 +100,7 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm" style="width: 18rem;">
+            <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/agenda.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS CITAS</h5>
@@ -110,7 +109,7 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm" style="width: 18rem;">
+            <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/cirugia.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">ESPERA CIRUGIA</h5>
@@ -123,7 +122,7 @@
         <!-- INFORME  -->
         <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='INFORME'">
 
-            <div class="card shadow-sm" style="width: 18rem;">
+            <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/infobasica.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">INFORMACIÓN BÁSICA</h5>
@@ -132,7 +131,7 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm" style="width: 18rem;">
+            <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/medicinas.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS MEDICACIONES</h5>
@@ -141,7 +140,7 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm" style="width: 18rem;">
+            <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/informe.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">INFORMES MÉDICOS</h5>
@@ -197,7 +196,7 @@
 
         <!-- COVID -->
         <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='COVID'">
-            <div class="card shadow-sm" style="width: 18rem;">
+            <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/citavacuna.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">CITA VACUNACION</h5>
@@ -206,7 +205,7 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm" style="width: 18rem;">
+            <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/agendavacunas.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS VACUNAS</h5>
@@ -215,12 +214,13 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm" style="width: 18rem;">
+            <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/faqs.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">PREGUNTAS FRECUENTES</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">VER</a> </div>
+                            style="background-color: #358f80; color: white;" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">VER</a> </div>
                 </div>
             </div>
 
@@ -237,124 +237,105 @@
                             <h5 class="modal-title" id="exampleModalLabel">Preguntas Frecuentes</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body" role="button">
-                            <p data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta1"
-                                class="preguntas">
-                                <a data-bs-toggle="collapse" href="#pregunta1" role="button" aria-expanded="false"
-                                    aria-controls="pregunta1"
-                                    style="text-decoration: none; color: black; font-weight: bold;">
-                                    ¿Con que profesionales puedo reservar una cita?
-                                </a>
-                            </p>
-                            <div class="collapse" id="pregunta1">
-                                <div class="card card-body">
-                                    <ul>
-                                        <li>Médico o médica de cabecera</li>
-                                        <li>Pediatra</li>
-                                        <li>Matrona</li>
-                                        <li>Enfermería</li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="card-header" id="hpregunta1" style="background-color: white;">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#pregunta1"
+                                aria-expanded="true" aria-controls="pregunta1" role="button" style="font-size: 19px;">
+                                ¿Con qué profesionales puedo reservar una cita?<span class="lni-chevron-up"></span></h6>
                         </div>
-                        <div class="modal-body" role="button">
-                            <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta2"
-                                class="preguntas">
-                                <a data-bs-toggle="collapse" href="#pregunta2" role="button" aria-expanded="false"
-                                    aria-controls="pregunta2"
-                                    style="text-decoration: none; color: black; font-weight: bold;">
-                                    ¿Cuál es el número de la TIS?
-                                </a>
-                            </p>
-                            <div class="collapse" id="pregunta2">
-                                <div class="card card-body">
-                                    <p>
-                                        El número de la TIS es necesario para identificarse y solicitar Cita Previa.
-                                        Independientemente del tipo de tarjeta (ONA, Tarjeta Sanitaria Electrónica o
-                                        TIS), es un número de 8 cifras que viene impreso junto al nombre. Lo podrás
-                                        encontrar donde está indicado por la flecha:
-                                        <img src="view/img/tarjetaindicadora.jpg">
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-body" role="button">
-                            <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta3"
-                                class="preguntas">
-                                <a data-bs-toggle="collapse" href="#pregunta3" role="button" aria-expanded="false"
-                                    aria-controls="pregunta2"
-                                    style="text-decoration: none; color: black; font-weight: bold;">
-                                    ¿Qué es el covid?
-                                </a>
-                            </p>
-                            <div class="collapse" id="pregunta3">
-                                <div class="card card-body">
-                                    <p>
-                                        El COVID-19 (enfermedad del coronavirus 2019) es una enfermedad causada por un
-                                        virus llamado SARS-CoV-2 y fue descubierta en diciembre del 2019 en Wuhan,
-                                        China. Es muy contagioso y se ha propagado rápidamente en todo el mundo.
 
-                                        Los síntomas más frecuentes del COVID-19 son respiratorios, muy parecidos a los
-                                        de un resfriado, influenza o neumonía. El COVID-19 puede atacar a otras partes
-                                        de su organismo además de sus pulmones y sistema respiratorio. Otras partes de
-                                        su cuerpo también pueden verse afectadas por la enfermedad.
-                                    </p>
-                                </div>
+                        <div class="collapse" id="pregunta1">
+                            <div class="card card-body mt-0">
+                                <!-- <p> -->
+                                <ul>
+                                    <li>Médico o médica de cabecera</li>
+                                    <li>Pediatra</li>
+                                    <li>Matrona</li>
+                                    <li>Enfermería</li>
+
+                                </ul>
+                                <!-- </p> -->
                             </div>
                         </div>
-                        <div class="modal-body" role="button">
-                            <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta4"
-                                class="preguntas">
-                                <a data-bs-toggle="collapse" href="#pregunta4" role="button" aria-expanded="false"
-                                    aria-controls="pregunta4"
-                                    style="text-decoration: none; color: black; font-weight: bold;">
-                                    ¿Tengo COVID?
-                                </a>
-                            </p>
-                            <div class="collapse" id="pregunta4">
-                                <div class="card card-body">
-                                    <p>
-                                        <ul>
-                                            <li>Fiebre o escalofríos</li>
-                                            <li>Tos</li>
-                                            <li>Dificultad para respirar</li>
-                                            <li>Fatiga</li>
-                                            <li>Dolores musculares y corporales</li>
-                                            <li>Dolor de cabeza</li>
-                                            <li>Perdida reciente de olfato o del gusto</li>
-                                            <li>Dolor de garganta</li>
-                                            <li>Congestión o moqueo</li>
-                                            <li>Náuseas o vómitos</li>
-                                            <li>Diarrea</li>
-                                        </ul>
-                                    </p>
-                                </div>
+                        <div class="card-header" id="hpregunta2" style="background-color: white;">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#pregunta2"
+                                aria-expanded="true" aria-controls="pregunta2" role="button" style="font-size: 19px;">
+                                ¿Cuál es el número de la TIS?<span class="lni-chevron-up"></span></h6>
+                        </div>
+
+                        <div class="collapse" id="pregunta2">
+                            <div class="card card-body mt-0">
+                                <p>
+                                    El número de la TIS es necesario para identificarse y solicitar Cita Previa.
+                                    Independientemente del tipo de tarjeta (ONA, Tarjeta Sanitaria Electrónica o
+                                    TIS), es un número de 8 cifras que viene impreso junto al nombre. Lo podrás
+                                    encontrar donde está indicado por la flecha:</p>
+                                <img src="../img/tarjetaindicadora.jpg">
                             </div>
                         </div>
-                        <div class="modal-body" role="button">
-                            <p data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pregunta5"
-                                class="preguntas">
-                                <a data-bs-toggle="collapse" href="#pregunta5" role="button" aria-expanded="false"
-                                    aria-controls="pregunta5"
-                                    style="text-decoration: none; color: black; font-weight: bold;">
-                                    Cuando buscar atención medica
-                                </a>
-                            </p>
-                            <div class="collapse" id="pregunta5">
-                                <div class="card card-body">
-                                    <p>
-                                        Si presenta uno de los siguientes signos busque atención médica de emergencia
-                                        inmediata:
-                                        <ul>
-                                            <li>Dificultad para respirar</li>
-                                            <li>Dolor o presión persistente en el pecho</li>
-                                            <li>Confusión</li>
-                                            <li>Incapacidad de despertarse o permanecer despierto</li>
-                                            <li>Piel, labios olechos de uñas pálidos, grises o azulados, según el tono
-                                                de la piel</li>
-                                        </ul>
-                                    </p>
-                                </div>
+
+                        <div class="card-header" id="hpregunta3" style="background-color: white;">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#pregunta3"
+                                aria-expanded="true" aria-controls="pregunta3" role="button" style="font-size: 19px;">
+                                ¿Qué es el Covid?<span class="lni-chevron-up"></span></h6>
+                        </div>
+
+                        <div class="collapse" id="pregunta3">
+                            <div class="card card-body mt-0">
+                                <p>
+                                    El COVID-19 (enfermedad del coronavirus 2019) es una enfermedad causada por un
+                                    virus llamado SARS-CoV-2 y fue descubierta en diciembre del 2019 en Wuhan,
+                                    China. Es muy contagioso y se ha propagado rápidamente en todo el mundo.
+
+                                    Los síntomas más frecuentes del COVID-19 son respiratorios, muy parecidos a los
+                                    de un resfriado, influenza o neumonía. El COVID-19 puede atacar a otras partes
+                                    de su organismo además de sus pulmones y sistema respiratorio. Otras partes de
+                                    su cuerpo también pueden verse afectadas por la enfermedad.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-header" id="hpregunta4" style="background-color: white;">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#pregunta4"
+                                aria-expanded="true" aria-controls="pregunta4" role="button" style="font-size: 19px;">
+                                ¿Tengo Covid?<span class="lni-chevron-up"></span></h6>
+                        </div>
+
+                        <div class="collapse" id="pregunta4">
+                            <div class="card card-body mt-0">
+                                <p>
+                                    <ul>
+                                        <li>Fiebre o escalofríos</li>
+                                        <li>Tos</li>
+                                        <li>Dificultad para respirar</li>
+                                        <li>Fatiga</li>
+                                        <li>Dolores musculares y corporales</li>
+                                        <li>Dolor de cabeza</li>
+                                        <li>Perdida reciente de olfato o del gusto</li>
+                                        <li>Dolor de garganta</li>
+                                        <li>Congestión o moqueo</li>
+                                        <li>Náuseas o vómitos</li>
+                                        <li>Diarrea</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-header" id="hpregunta5" style="background-color: white;">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#pregunta5"
+                                aria-expanded="true" aria-controls="pregunta5" role="button" style="font-size: 19px;">
+                                Cuando buscar atención médica<span class="lni-chevron-up"></span></h6>
+                        </div>
+
+                        <div class="collapse" id="pregunta5">
+                            <div class="card card-body mt-0">
+                                <p>
+                                    <ul>
+                                        <li>Dificultad para respirar</li>
+                                        <li>Dolor o presión persistente en el pecho</li>
+                                        <li>Confusión</li>
+                                        <li>Incapacidad de despertarse o permanecer despierto</li>
+                                        <li>Piel, labios olechos de uñas pálidos, grises o azulados, según el tono
+                                            de la piel</li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -362,14 +343,17 @@
                             <a type="button" class="btn btn-primary btnVMas" data-bs-dismiss="modal">VER MÁS</a>
                         </div>
                     </div>
+
+
                 </div>
-
             </div>
-        </div>
-        <!-- SABER MÁS-> PREGUNTAS FRECUENTES -->
-        <div class="row mx-0 d-flex justify-content-around " ng-show="show=='PreguntasF'">
 
-            <div class="faq_area section_padding_130" id="faq">
+        </div>
+
+        <!-- SABER MÁS-> PREGUNTAS FRECUENTES -->
+        <div class="row mx-0 d-flex justify-content-around" style="margin-top: -11%;">
+
+            <div class="faq_area pt-3">
 
                 <div class="row justify-content-center">
                     <div class="col-12 col-sm-8 col-lg-6">
@@ -531,7 +515,7 @@
 
                             <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
                                 style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                                <div class="card-header" id="headingeight">
+                                <div class="card-header" id="uheadingeight">
                                     <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseeight"
                                         aria-expanded="true" aria-controls="collapseeight">El sistema dice que he
                                         superado
@@ -674,35 +658,39 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- PEDIR CITA -->
-    <div class="row mx-0 d-flex justify-content-around" ng-show="show=='pedirCita'">
+        <!-- PEDIR CITA -->
+        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='pedirCita'">
 
-        <div class="col-4 border">
-            <h1>{{ usuario.nombre }}</h1>
-        </div>
-
-        <div class="col-8">
-            <div class="form-outline mb-4">
-                <label class="form-label">Selecciona la fecha:</label>
-                <input type="date" class="form-control" />
+            <div class="col-4 border">
+                <h1>{{ usuario.nombre }}</h1>
             </div>
-            <div class="form-outline mb-4">
-                <label class="form-label">Selecciona la hora:</label>
-                <input type="time" class="form-control" />
+
+            <div class="col-8">
+                <div class="form-outline mb-4">
+                    <label class="form-label">Centro asignado:</label>
+                    <input type="text" class="form-control" disabled value="{{ usuario.objCentro.nombre }}" />
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label">Selecciona la fecha:</label>
+                    <input type="date" class="form-control" ng-model="newFechaCita"
+                        ng-change="getHoraByFechaCentro()" />
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label">Selecciona la hora:</label><br>
+                    <button class="btn btn-primary">{{ horasDisponibles || '00:00' }}</button>
+                </div>
             </div>
+
+            <button class="btn btn-primary mt-5">Generar PDF</button>
+
+            <div class="col-12 border mt-5 text-center">
+                <h1>DOCUMENTO PDF</h1>
+                <p>...Proximamente</p>
+            </div>
+
+
         </div>
-
-        <button class="btn btn-primary mt-5">Generar PDF</button>
-
-        <div class="col-12 border mt-5 text-center">
-            <h1>DOCUMENTO PDF</h1>
-            <p>...Proximamente</p>
-        </div>
-
-
-    </div>
 
     </div>
     <!-- Contenido -->
@@ -720,8 +708,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-messages.min.js"></script>
 <!-- ANGULAR MATERIAL -->
 <script src="../js/extranet.js"></script>
-<script src="view/js/script.js"></script>
-<script src="view/js/insert.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/insert.js"></script>
 <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
 <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 

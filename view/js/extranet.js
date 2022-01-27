@@ -8,9 +8,17 @@ reto_covid_intranet.controller('body', async function ($scope) {
         (session.sanitario) ? $scope.usuario = session.sanitario : $scope.usuario = session.paciente;
 
     // MULTIPURPOSE CARIABLES
+    $(".btnVMas").click(showFaq);
+
+    function showFaq() {
+        
+        $(".faq_area").css('display', 'inline-block');
+        $(".covidCard").css('display', 'none');
+
+    }
     $scope.show = 'default';
 
-    $scope.loadContent = (contenType) => {
+    $scope.loadContent = async (contenType) => {
 
         switch (contenType) {
             case 'AGENDA':
@@ -30,18 +38,45 @@ reto_covid_intranet.controller('body', async function ($scope) {
                     break;
 
             case 'pedirCita':
-                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
-                
-                var data = { 'solicitud': 'selectAllCitasByTis', 'tis': $scope.usuario.nombre}
-                var url = "controller/cCitas.php";
-                fetch(url, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: { 'Content-Type': 'application/json' }
+                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;                
 
-                }).then(res => res.json()).then(result => {
-                    console.log(result.lisTis);
-                }).catch(error => console.error('Error status:', error));
+                var horasOcupadas = Array();
+
+                $scope.getHoraByFechaCentro = () => {
+
+                    var fecha = event.target.value;
+                    var data = { 'solicitud': 'selectHoraByFechaCentro', 'fecha': fecha, 'centro': $scope.usuario.objCentro.cod}
+                    var url = "../../controller/cCitas.php";
+                    fetch(url, {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: { 'Content-Type': 'application/json' }
+                    }).then(res => res.json()).then(result => {
+                        console.log(result);
+                        if (result.horasDisponibles.length == 0) {
+                            horasOcupadas = Array();
+                        } else {
+                            horasOcupadas = result.horasDisponibles;
+                        }
+                        console.log($scope.usuario.objCentro.horario_temprano);
+                        
+                        var horasDisponibles;
+
+                        var horaIni = $scope.usuario.objCentro.horario_temprano.split('-')[0]
+                        var horaFin = $scope.usuario.objCentro.horario_temprano.split('-')[1]
+
+                        var date = new Date(fecha)
+                        date.setHours(horaIni.split(':')[0], horaIni.split(':')[1])
+
+
+
+                        console.log(date);
+                        console.log(horasDisponibles);
+
+                    }).catch(error => console.error('Error status:', error));
+
+                }
+
                         break;
                 
                     default:
@@ -61,8 +96,6 @@ reto_covid_intranet.controller('body', async function ($scope) {
     console.groupEnd();
 
 });
-
-
 
 
 function getSession() { //RECOGE LAS VARIABLES DE SESSION

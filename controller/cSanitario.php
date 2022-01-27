@@ -12,6 +12,10 @@ if (isset($data['solicitud'])) {
     switch ($solicitud) {
 
         case 'updateSanitario':
+            $foto_perfil=$data['foto_perfil'];
+
+            //Se escribe el archivo
+            //file_put_contents($writable_dir.$cartel, $file,  LOCK_EX);
 
             if (isset($data['dni'])) {$dni=$data['dni'];}
             else {$response['error'] = true;$response['errorInf'] = 'Dni Not Found';}
@@ -22,18 +26,30 @@ if (isset($data['solicitud'])) {
             if (isset($data['apellido'])) {$apellido=$data['apellido'];}
             else {$response['error'] = true;$response['errorInf'] = 'Apellido Not Found';}
 
+            if (isset($data['foto_perfil'])) 
+            {
+                $foto_perfil=$data['foto_perfil'];
+                $writable_dir = '../view/img/';
+                $codigo = $data['codigo'];
+
+                if(!is_dir($writable_dir)){mkdir($writable_dir);}
+                // $nombreImg=$data['nombreImg']; 
+                // var_dump($nombreImg);
+                //Se escribe el archivo
+                file_put_contents($writable_dir.$foto_perfil, $foto_perfil,  LOCK_EX);
+            }
+            else {$foto_perfil = NULL;}
+
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
                 $sanitario = new sanitarioModel();
                 $sanitario->setDni($dni);
                 $sanitario->setNombre($nombre);
                 $sanitario->setApellido($apellido);
-                if ($sanitario->update()) {
-                    $response['newSanitario'] = $sanitario->ObjVars();
-                } else {
-                    $response['error'] = true;
-                    $response['errorInf'] = 'SQL Fail';
-                }
-                
+                $sanitario->setFoto_pefil($foto_perfil);
+
+                $response['error']=$sanitario->update();
+                $response['newSanitario'] = $sanitario->ObjVars();
+
             }
             break;
     }
@@ -43,3 +59,4 @@ if (isset($data['solicitud'])) {
 }
 
 echo json_encode($response);
+unset($response);

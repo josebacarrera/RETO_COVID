@@ -20,14 +20,12 @@ function loadPaginaSanitario() {
     $("#informes").click(function () {
         $(".infoOpcion").css('display', 'none');
         $("#infoInformes").css('display', 'block');
-        
-    
     });
     $("#configuracionVacuna").click(function () {
         $(".infoOpcion").css('display', 'none');
         $("#infoVacunas").css('display', 'block');
 
-    }); 
+    });
 }
 
 var savedFileBase64;
@@ -42,22 +40,30 @@ reto_covid.controller('datosPersonales', async function ($scope) {
     $scope.apellido = session.sanitario.apellido;
     $scope.dni = session.sanitario.dni;
     $scope.cargo = session.sanitario.cargo;
-
+    $scope.perfil = "view/img/"+session.sanitario.foto_pefil;
+    $scope.codigo=session.sanitario.codigo
+    
     $('#nombreTrabajador').val($scope.nombre);
     $('#apellidoTrabajador').val($scope.apellido);
     $('#dniTrabajador').val($scope.dni);
     $('#cargoTrabajador').val($scope.cargo);
+    $('#fotoPerfil').attr("src",$scope.perfil);
 
     $scope.editableInput = false;
 
     $scope.updateSanitario = function () {
+        var filename = $('#fotoTrabajador').val().replace(/^.*\\/, "");
+        namefile= "img"+session.sanitario.cod;
         var data = {
             'solicitud': 'updateSanitario',
+            'codigo': session.sanitario.cod,
             'dni': $('#dniTrabajador').val(),
             'nombre': $('#nombreTrabajador').val(),
             'apellido': $('#apellidoTrabajador').val(),
+            'foto_perfil': filename,
+            'nombreImg': namefile
         }
-
+    
         var url = "controller/cSanitario.php";
         fetch(url, {
             method: 'POST',
@@ -65,11 +71,9 @@ reto_covid.controller('datosPersonales', async function ($scope) {
             headers: { 'Content-Type': 'application/json' }
 
         }).then(res => res.json()).then(result => {
-
+            console.log(result);
         }).catch(error => console.error('Error status:', error));
-
     };
-
 });
 
 
@@ -77,20 +81,63 @@ reto_covid.controller('datosPersonales', async function ($scope) {
 reto_covid.controller('bajaPaciente', async function ($scope) {
     $scope.tisPacientes = await getTisPacientes();
 
-    $scope.change = async function () {
-        console.log($scope.tisPaciente);
-        var data = { 'solicitud': 'getPacienteByTis', 'tis':$scope.tisPaciente }
-        var url = "controller/cPaciente.php";
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json' }
+    $scope.change = function () {
+        if ($scope.tisPaciente.length == 7) {
+            var url = "controller/cPaciente.php";
+            var data = { 'solicitud': 'getPacienteByTis', 'tis': $scope.tisPaciente };
 
-        }).then(res => res.json()).then(result => {
-            console.log(result.lisTis);
-        }).catch(error => console.error('Error status:', error));        
+            fetch(url, {
+                method: 'POST', // or 'POST'
+                body: JSON.stringify(data), // data can be `string` or {object}!
+                headers: { 'Content-Type': 'application/json' }  // input data
+            })
+            .then(res => res.json()).then(result => {
+                console.log(result.paciente);
+                if (result.paciente) {
+                    $('#selectedPacienteNombre').val(result.paciente.nombre);
+                    $('#selectedPacienteApellido').val(result.paciente.apellido);
+                    $('#selectedPacienteFecha').val(result.paciente.fecha_nacimiento);
+                    $('#btnBaja').prop("disabled",false);
+
+                } else {
+                    $('#selectedPacienteNombre').val(" ");
+                    $('#selectedPacienteApellido').val(" ");
+                    $('#selectedPacienteFecha').val(" ");
+                    $('#btnBaja').prop("disabled",true);
+
+                }
+            })
+            .catch(error => console.error('Error status:', error));
+        }
     };
 
+    $scope.baja = function() {
+        var url = "controller/cPaciente.php";
+            var data = { 'solicitud': 'getPacienteByTis', 'tis': $scope.tisPaciente };
+
+            fetch(url, {
+                method: 'POST', // or 'POST'
+                body: JSON.stringify(data), // data can be `string` or {object}!
+                headers: { 'Content-Type': 'application/json' }  // input data
+            })
+            .then(res => res.json()).then(result => {
+                console.log(result.paciente);
+                if (result.paciente) {
+                    $('#selectedPacienteNombre').val(result.paciente.nombre);
+                    $('#selectedPacienteApellido').val(result.paciente.apellido);
+                    $('#selectedPacienteFecha').val(result.paciente.fecha_nacimiento);
+                    $('#btnBaja').prop("disabled",false);
+
+                } else {
+                    $('#selectedPacienteNombre').val(" ");
+                    $('#selectedPacienteApellido').val(" ");
+                    $('#selectedPacienteFecha').val(" ");
+                    $('#btnBaja').prop("disabled",true);
+
+                }
+            })
+            .catch(error => console.error('Error status:', error));
+    }
 });
 
 
@@ -108,10 +155,9 @@ reto_covid.controller('altaPaciente', async function ($scope) {
     // FUNCIONES
     $scope.localidades = await getLocalidades();
 
-    $scope.alta = async function() {
-        if ($scope.nombre && $scope.apellido && $scope.fecha_nac && $scope.email && $scope.direccion && $scope.localidad) 
-        {
-            $scope.mensajeAlta="Paciente introducido correctamente"
+    $scope.alta = function () {
+        if ($scope.nombre && $scope.apellido && $scope.fecha_nac && $scope.email && $scope.direccion && $scope.localidad) {
+            $scope.mensajeAlta = "Paciente introducido correctamente"
             var data = { 'solicitud': 'insertPaciente', 'nombre': $scope.nombre, 'apellido': $scope.apellido, 'fecha_nac': $scope.fecha_nac, 'localidad': $scope.localidad, 'email': $scope.email, 'direccion': $scope.direccion };
             var url = "controller/cPaciente.php";
             fetch(url, {
@@ -120,12 +166,11 @@ reto_covid.controller('altaPaciente', async function ($scope) {
                 headers: { 'Content-Type': 'application/json' }
             }).then(res => res.json()).then(result => {
                 console.log(result);
-                resolve(result);
             }).catch(error => console.error('Error status:', error));
-        }else if (!$scope.email && $scope.nombre && $scope.apellido && $scope.fecha_nac && $scope.direccion && $scope.localidad){
-            $scope.mensajeAlta="Introduce un email valido"
-        }else{
-            $scope.mensajeAlta="Introduce valores valido"
+        } else if (!$scope.email && $scope.nombre && $scope.apellido && $scope.fecha_nac && $scope.direccion && $scope.localidad) {
+            $scope.mensajeAlta = "Introduce un email valido"
+        } else {
+            $scope.mensajeAlta = "Introduce valores valido"
         }
     }
 
@@ -171,7 +216,6 @@ function getTisPacientes() {
             method: 'POST',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
-
         }).then(res => res.json()).then(result => {
             resolve(result.lisTis);
         }).catch(error => console.error('Error status:', error));

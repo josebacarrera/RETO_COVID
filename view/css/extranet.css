@@ -16,7 +16,15 @@
     font-size: 30px;
 }
 
-/*Mediaquery*/
+.card-header{
+    background-color: white;
+}
+.faq_area{
+    display: none;
+}
+
+
+/*RESPONSIVE*/
 @media (max-width: 576px) {
 
     #paneLateral {

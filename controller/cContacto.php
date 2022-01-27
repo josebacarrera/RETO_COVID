@@ -29,4 +29,5 @@ if (isset($mensaje)) {
 
 $response['error'] = $formulario->insert();
 echo json_encode($response);
+unset($response);
 ?>

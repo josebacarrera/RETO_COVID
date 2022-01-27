@@ -93,3 +93,4 @@ if (isset($data['solicitud'])) {
 }
 
 echo json_encode($response);
+unset($response);

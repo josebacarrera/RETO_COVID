@@ -105,5 +105,6 @@ if (isset($data['solicitud'])) {
 // FIN Bloque de Solicitud
 
 echo json_encode($response);
+unset($response);
 
 ?>
