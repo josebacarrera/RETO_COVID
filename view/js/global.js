@@ -82,7 +82,7 @@ function scrollFunction() {
     $('#myBtn').css('display', 'block')
 
   } else {
-    $('#myBtn').css('display', 'block')
+    $('#myBtn').css('display', 'none')
 
   }
 }
