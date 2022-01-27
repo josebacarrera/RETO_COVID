@@ -1,3 +1,4 @@
+
 <?php
 
 if ($_SERVER['SERVER_NAME']== "hiru.zerbitzaria.net") {include_once ("connect_data_SERV.php");} 
@@ -11,7 +12,6 @@ include_once("centroModel.php");
 include_once("vacunaModel.php");
 
 class datosPacienteModel extends datosPacienteClass{
-
     private $link;
     private $objLocalidad;
     private $objCita;
@@ -36,7 +36,7 @@ class datosPacienteModel extends datosPacienteClass{
         mysqli_close ($this->link);
     }
 
-    public function     loginTIS() {
+    public function loginTIS() {
 
         $this->OpenConnect();
         $sql = "CALL spLoginTIS('" . $this->getTis() . "','" . $this->getFecha_nacimiento() . "')";
@@ -104,13 +104,53 @@ class datosPacienteModel extends datosPacienteClass{
 
     public function insert() {
         $this->OpenConnect();
-        $sql = "INSERT INTO datos_paciente (tis_datos_p, nombre_p, apellido_p, fecha_nacimiento_p, email_p, foto_perfil_p, direccion_p, cod_localidad_p) VALUES ('".$this->getTis()."','".$this->getNombre()."','".$this->getApellido()."','".$this->getFecha_nacimiento()."','".$this->getEmail()."','".$this->getDireccion()."','".$this->getCod_localidad()."')";
-        $result = $this->link->query($sql);
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $sql = "INSERT INTO datos_paciente (nombre_p, apellido_p, fecha_nacimiento_p, email_p, direccion_p, cod_localidad_p) VALUES ('".$this->getNombre()."','".$this->getApellido()."','".$this->getFecha_nacimiento()."','".$this->getEmail()."','".$this->getDireccion()."',".$this->getCod_localidad().")";
+ 
+        $this->link->query($sql);
+
+        var_dump($this->link->affected_rows);
+        if ($this->link->affected_rows >= 1)
+        {
             return true;
         }
+        $this->CloseConnect();
+    }
+
+    public function getAllTis() {
+        $this->OpenConnect();
+        $sql="SELECT * FROM datos_paciente";
+        $result=$this->link->query($sql);
+        $list=array();
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($list, $row['tis_datos_p']);
+        }
+        return $list;
         mysqli_free_result($result);
         $this->CloseConnect();
+    }
+
+    public function getPacienteByTis() {
+        $this->OpenConnect();
+        $sql = "SELECT * FROM datos_paciente WHERE tis_paciente_p='".$this->getTis()."'";
+
+        $result = $this->link->query($sql);
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $this->setNombre($row['nombre_p']);
+            $this->setApellido($row['apellido_p']);
+            $this->setEmail($row['email_p']);
+            $this->setFoto_perfil($row['foto_perfil_p']);
+            $this->setDireccion($row['direccion_p']);
+            $this->setCod_localidad($row['cod_localidad_p']);
+
+            return true;
+
+        }
+
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    
     }
 
     public function ObjVars() {

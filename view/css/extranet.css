@@ -12,7 +12,11 @@
 .card {
     margin-top: 20px;
 }
+.letrasCovid{
+    font-size: 30px;
+}
 
+/*Mediaquery*/
 @media (max-width: 576px) {
 
     #paneLateral {

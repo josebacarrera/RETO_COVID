@@ -51,6 +51,16 @@ class citaModel extends citaClass {
         $this->CloseConnect();
     }
 
+    public function insertCita() {
+        $this->OpenConnect();
+        $sql='INSERT INTO cita (tis_paciente_ci,cod_sanitario_ci, fecha_ci, hora_ci,cod_centro_ci) VALUES ("'.$this->getTis_paciente().'","'.$this->getCod_sanitario().'","'.$this->getFecha().'","'.$this->getHora().'","'.$this->getCod_centro().'")';
+        // var_dump($sql);
+        if ($this->link->query($sql)) {
+            return true;
+        }
+        $this->CloseConnect();
+    }
+
     public function ObjVars() {
         return get_object_vars($this);
     }

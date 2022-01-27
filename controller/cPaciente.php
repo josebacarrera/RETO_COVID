@@ -11,7 +11,7 @@ if (isset($data['solicitud'])) {
     
     switch ($solicitud) {
 
-        //@Param: nombre, apellido, fecha_nac, email, localidad
+        //@Param: nombre, apellido, fecha_nac, email, localidad, direccion
 
         case 'insertPaciente':
 
@@ -27,6 +27,9 @@ if (isset($data['solicitud'])) {
             if (isset($data['email'])) {$email=$data['email'];}
             else {$response['error'] = true;$response['errorInf'] = 'Email Not Found';}
 
+            if (isset($data['direccion'])) {$direccion=$data['direccion'];}
+            else {$response['error'] = true;$response['errorInf'] = 'Direccion Not Found';}
+
             if (isset($data['localidad'])) {$localidad=$data['localidad'];}
             else {$response['error'] = true;$response['errorInf'] = 'Localidad Not Found';}
 
@@ -37,19 +40,11 @@ if (isset($data['solicitud'])) {
                 $paciente->setApellido($apellido);
                 $paciente->setFecha_nacimiento($fecha_nac);
                 $paciente->setEmail($email);
+                $paciente->setDireccion($direccion);
                 $paciente->setCod_localidad($localidad);
 
                 if ($paciente->insert()) {
-
-                    if ($paciente->loginTIS()) {
-                        session_start();
-                        $response['paciente'] = $paciente->ObjVars();
-    
-                    } else {
-                        $response['error'] = true;
-                        $response['errorInf'] = 'Wrong TIS';
-                    }  
-
+                    $response['paciente'] = $paciente->ObjVars();
                 } else {
                     $response['error'] = true;
                     $response['errorInf'] = 'SQL Fail';
@@ -57,7 +52,38 @@ if (isset($data['solicitud'])) {
                 
             }
             break;
+
+        case 'selectAllTis':
+            if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
+                $list = new datosPacienteModel();
+                $response['lisTis'] = $list->getAllTis();
+            }
+            break;
+
+        // @Param: tis
+
+        case 'getPacienteByTis':
+
+            if (isset($data['tis'])) {$tis=$data['tis'];}
+            else {$response['error'] = true;$response['errorInf'] = 'Tis Not Found';}
+
+            if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
+                $paciente = new datosPacienteModel();
+                $paciente->setTis($tis);
+
+                if ($paciente->getPacienteByTis()) {
+
+                    $response['paciente'] = $paciente->ObjVars(); 
+
+                } else {
+                    $response['error'] = true;
+                    $response['errorInf'] = 'SQL Fail';
+                }
+            }
+            break;
     }
+    
+        
 } else {
     $response['error'] = true;
     $response['errorInf'] = 'Solicitud Not Found';

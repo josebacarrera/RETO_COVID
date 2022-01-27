@@ -11,29 +11,43 @@ reto_covid_intranet.controller('body', async function ($scope) {
     $scope.show = 'default';
 
     $scope.loadContent = (contenType) => {
-        console.log(contenType);
 
         switch (contenType) {
+            case 'AGENDA':
+                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                break;
+
+            case 'INFORME':
+                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                break;
+
+            case 'DATOS':
+                    ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                    break;
+
             case 'COVID':
-                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
-                break;
-
-            case 'COVIDBUENO':
-                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
-                break;
-
-                case 'INFORME':
                     ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
                     break;
 
-                case 'PreguntasF':
-                    ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
-                    break;
-        
-            default:
-                console.log('ERROR, contenType not supported');
-                break;
-        }
+            case 'pedirCita':
+                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                
+                var data = { 'solicitud': 'selectAllCitasByTis', 'tis': $scope.usuario.nombre}
+                var url = "controller/cCitas.php";
+                fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: { 'Content-Type': 'application/json' }
+
+                }).then(res => res.json()).then(result => {
+                    console.log(result.lisTis);
+                }).catch(error => console.error('Error status:', error));
+                        break;
+                
+                    default:
+                        console.log('ERROR, contenType not supported');
+                        break;
+                }
 
     }
 
