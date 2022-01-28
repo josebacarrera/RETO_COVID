@@ -7,7 +7,8 @@ reto_covid_intranet.controller('body', async function ($scope) {
     if (session) // $scope.usuario recibe los datos de session.
         (session.sanitario) ? $scope.usuario = session.sanitario : $scope.usuario = session.paciente;
 
-    // MULTIPURPOSE CARIABLES
+    // MULTIPURPOSE VARIABLES
+    
     $(".btnVMas").click(showFaq);
 
     function showFaq() {
@@ -16,6 +17,14 @@ reto_covid_intranet.controller('body', async function ($scope) {
         $(".covidCard").css('display', 'none');
 
     }
+
+    $(".btn").click(hideFaq);
+
+    function hideFaq(){
+        $(".faq_area").css('display', 'none');
+        // $(".covidCard").css('display', 'none');
+    }
+
     $scope.show = 'default';
 
     $scope.loadContent = async (contenType) => {
@@ -44,8 +53,7 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
                 $scope.getHoraByFechaCentro = () => {
 
-                    var fecha = event.target.value;
-                    var data = { 'solicitud': 'selectHoraByFechaCentro', 'fecha': fecha, 'centro': $scope.usuario.objCentro.cod}
+                    var data = { 'solicitud': 'selectHoraByFechaCentro', 'fecha': event.target.value, 'centro': $scope.usuario.objCentro.cod}
                     var url = "../../controller/cCitas.php";
                     fetch(url, {
                         method: 'POST',
@@ -58,19 +66,21 @@ reto_covid_intranet.controller('body', async function ($scope) {
                         } else {
                             horasOcupadas = result.horasDisponibles;
                         }
-                        console.log($scope.usuario.objCentro.horario_temprano);
                         
                         var horasDisponibles;
 
                         var horaIni = $scope.usuario.objCentro.horario_temprano.split('-')[0]
                         var horaFin = $scope.usuario.objCentro.horario_temprano.split('-')[1]
 
-                        var date = new Date(fecha)
-                        date.setHours(horaIni.split(':')[0], horaIni.split(':')[1])
+                        
+                        for (var i = 0; i < 60; i+15) {     
+                            console.log(i%15);                            
+                        }
+
+                        console.log(horaIni);
 
 
-
-                        console.log(date);
+                        
                         console.log(horasDisponibles);
 
                     }).catch(error => console.error('Error status:', error));

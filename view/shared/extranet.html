@@ -51,9 +51,9 @@
                 </a>
             </li>
 
-            <li class="" ng-click="loadContent('DATOS')">
+            <li class="datosLateral" ng-click="loadContent('DATOS')">
                 <!-- DATOS -->
-                <a href="" class="nav-link text-white">
+                <a href="" class="nav-link text-white btnDatos">
                     <i class="fas fa-user fs-5"></i>
                     <span class="fs-5">Datos Personales</span>
                 </a>
@@ -87,7 +87,7 @@
 
 
     <!-- Contenido -->
-    <div id="contenido" class="p-2" style="margin-top: 5%;">
+    <div id="contenido" class="p-2">
         <!-- AGENDA -->
         <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='AGENDA'">
 
@@ -95,8 +95,8 @@
                 <img src="../img/citaprevia.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">CITA</h5>
-                    <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                    <div class="text-center my-4"> <a href="https://zitaberria.osakidetza.eus/o22PlamWar/o22JSP/O22jsplogin.jsp" class="btn"
+                            style="background-color: #358f80; color: white;" >PEDIR CITA</a> </div>
                 </div>
             </div>
 
@@ -112,8 +112,8 @@
             <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/cirugia.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title" style="text-align: center;">ESPERA CIRUGIA</h5>
-                    <div class="text-center my-4"> <a href="#" class="btn"
+                    <h5 class="card-title" style="text-align: center;">ESPERA CIRUGIA</a></h5>
+                    <div class="text-center my-4"> <a href="https://www.osakidetza.euskadi.eus/servicios-on-line/-/servicios-a-la-ciudadania/" class="btn"
                             style="background-color: #358f80; color: white;">COMPROBAR</a> </div>
                 </div>
             </div>
@@ -144,7 +144,7 @@
                 <img src="../img/informe.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">INFORMES MÉDICOS</h5>
-                    <div class="text-center my-4"> <a href="#" class="btn"
+                    <div class="text-center my-4"> <a href="https://micarpetasaludberria.osakidetza.eus/web/guest/acceso" class="btn"
                             style="background-color: #358f80; color: white;">VER</a> </div>
                 </div>
             </div>
@@ -199,7 +199,7 @@
             <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/citavacuna.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title" style="text-align: center;">CITA VACUNACION</h5>
+                    <h5 class="card-title" style="text-align: center;">CITA VACUNACIÓN</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
                             style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
                 </div>
@@ -228,7 +228,8 @@
 
 
         <!-- MODAL PREGUNAS FRECUENTES -->
-        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='COVID'">
+        <div class="row mx-0 d-flex justify-content-around miniatura" style="margin-top: 7%;"
+            ng-show="show=='default' || show=='COVID'">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">

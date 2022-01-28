@@ -182,8 +182,17 @@ reto_covid.controller('editarVacunas', async function ($scope) {
     $scope.vacunas = await getVacunas();
 
     $scope.updateVacuna = (codigo) => {
+        $(".*").attr("contenteditable","false")
+
         console.log(codigo)
+        if(!$("."+codigo).attr("contenteditable")){
+        $("."+codigo).attr("contenteditable","true")
+        $("."+codigo).css("color","red")
+
+    };
+
     }
+
     // CUERPO
     $scope.$digest();
 
