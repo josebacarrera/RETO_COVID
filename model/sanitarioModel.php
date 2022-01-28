@@ -34,6 +34,30 @@ class sanitarioModel extends sanitarioClass{
 
     // FUNCIONES MOD //
 
+    public function selectByDni() {
+
+        $this->OpenConnect();  
+        
+        $sql = "SELECT * FROM sanitario WHERE dni_s = '".$this->getDni()."';"; 
+        
+        $result = $this->link->query($sql);
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $this->setCod($row['cod_sanitario_s']);
+            $this->setNombre($row['nombre_s']);
+            $this->setApellido($row['apellido_s']);
+            $this->setDni($row['dni_s']);
+            $this->setCargo($row['cargo_s']);
+            $this->setCod_centro($row['cod_centro_s']);
+            $this->setFoto_pefil($row['foto_perfil_s']);
+
+            return true;
+
+        }
+
+    }
+
     public function update() {
 
         $this->OpenConnect();  
