@@ -35,13 +35,14 @@ var filesize;
 //CONTROLADOR DE LOS DATOS PERSONALES
 reto_covid.controller('datosPersonales', async function ($scope) {
     let session = await getSession();
+    namefile = "img" + session.sanitario.cod;
 
     $scope.nombre = session.sanitario.nombre;
     $scope.apellido = session.sanitario.apellido;
     $scope.dni = session.sanitario.dni;
     $scope.cargo = session.sanitario.cargo;
-    $scope.perfil = "view/img/" + session.sanitario.foto_pefil;
-    $scope.codigo = session.sanitario.codigo
+    $scope.perfil = "view/img/" +session.sanitario.foto_pefil;
+    $scope.codigo = session.sanitario.codigo;
 
     $('#nombreTrabajador').val($scope.nombre);
     $('#apellidoTrabajador').val($scope.apellido);
@@ -53,7 +54,6 @@ reto_covid.controller('datosPersonales', async function ($scope) {
 
     $scope.updateSanitario = function () {
         var filename = $('#fotoTrabajador').val().replace(/^.*\\/, "");
-        namefile = "img" + session.sanitario.cod;
         var data = {
             'solicitud': 'updateSanitario',
             'codigo': session.sanitario.cod,

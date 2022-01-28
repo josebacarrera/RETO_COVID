@@ -67,13 +67,8 @@ class sanitarioModel extends sanitarioClass{
             $sql = "UPDATE sanitario SET nombre_s='".$this->getNombre()."', apellido_s='".$this->getApellido()."', dni_s='".$this->getDni()."' WHERE dni_s = '" . $this->getDni() . "'"; 
         }
         
-        if ($this->link->query($sql))  // true if success
-        //$this->link->affected_rows;  number of inserted rows
-        {
-            return "Record updated successfully.Num de updates: ".$this->link->affected_rows;
-        } else {
-            return "Error updating ". $sql ."   ". $this->link->error;
-        }
+        $this->link->query($sql);
+        
         $this->CloseConnect();
 
     }

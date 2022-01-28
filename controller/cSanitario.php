@@ -26,19 +26,29 @@ if (isset($data['solicitud'])) {
             if (isset($data['apellido'])) {$apellido=$data['apellido'];}
             else {$response['error'] = true;$response['errorInf'] = 'Apellido Not Found';}
 
-            if (isset($data['foto_perfil'])) 
-            {               
 
+            if(isset($_FILES['foto_perfil']))
+            {
+            
                 $imgNombre=$data['nombreImg'].'.'.end(explode('.',$foto_perfil));
-                $foto_perfil=$data['foto_perfil'];
+                $foto_perfil=$_FILES['foto_perfil'];
                 $writable_dir = '../view/img/';
                 $extension=end(explode('.',$foto_perfil));
 
                 var_dump($imgNombre);
                 if(!is_dir($writable_dir)){mkdir($writable_dir);}
-           
-                file_put_contents($writable_dir.$imgNombre, $foto_perfil,  LOCK_EX);
+
+                $extension = pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION);
+            
+                $new_name = time() . '.' . $extension;
+            
+                file_put_contents($writable_dir.$foto_perfil, $foto_perfil,  LOCK_EX);
+            
+
+                echo json_encode($data);
+            
             }
+      
             else {$foto_perfil = NULL;}
 
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
