@@ -40,20 +40,20 @@ reto_covid.controller('datosPersonales', async function ($scope) {
     $scope.apellido = session.sanitario.apellido;
     $scope.dni = session.sanitario.dni;
     $scope.cargo = session.sanitario.cargo;
-    $scope.perfil = "view/img/"+session.sanitario.foto_pefil;
-    $scope.codigo=session.sanitario.codigo
-    
+    $scope.perfil = "view/img/" + session.sanitario.foto_pefil;
+    $scope.codigo = session.sanitario.codigo
+
     $('#nombreTrabajador').val($scope.nombre);
     $('#apellidoTrabajador').val($scope.apellido);
     $('#dniTrabajador').val($scope.dni);
     $('#cargoTrabajador').val($scope.cargo);
-    $('#fotoPerfil').attr("src",$scope.perfil);
+    $('#fotoPerfil').attr("src", $scope.perfil);
 
     $scope.editableInput = false;
 
     $scope.updateSanitario = function () {
         var filename = $('#fotoTrabajador').val().replace(/^.*\\/, "");
-        namefile= "img"+session.sanitario.cod;
+        namefile = "img" + session.sanitario.cod;
         var data = {
             'solicitud': 'updateSanitario',
             'codigo': session.sanitario.cod,
@@ -63,7 +63,7 @@ reto_covid.controller('datosPersonales', async function ($scope) {
             'foto_perfil': filename,
             'nombreImg': namefile
         }
-    
+
         var url = "controller/cSanitario.php";
         fetch(url, {
             method: 'POST',
@@ -91,48 +91,48 @@ reto_covid.controller('bajaPaciente', async function ($scope) {
                 body: JSON.stringify(data), // data can be `string` or {object}!
                 headers: { 'Content-Type': 'application/json' }  // input data
             })
-            .then(res => res.json()).then(result => {
-                console.log(result.paciente);
-                if (result.paciente) {
-                    $('#selectedPacienteNombre').val(result.paciente.nombre);
-                    $('#selectedPacienteApellido').val(result.paciente.apellido);
-                    $('#selectedPacienteFecha').val(result.paciente.fecha_nacimiento);
-                    $('#btnBaja').prop("disabled",false);
+                .then(res => res.json()).then(result => {
+                    console.log(result.paciente);
+                    if (result.paciente) {
+                        $('#selectedPacienteNombre').val(result.paciente.nombre);
+                        $('#selectedPacienteApellido').val(result.paciente.apellido);
+                        $('#selectedPacienteFecha').val(result.paciente.fecha_nacimiento);
+                        $('#btnBaja').prop("disabled", false);
 
-                } else {
-                    $('#selectedPacienteNombre').val(" ");
-                    $('#selectedPacienteApellido').val(" ");
-                    $('#selectedPacienteFecha').val(" ");
-                    $('#btnBaja').prop("disabled",true);
+                    } else {
+                        $('#selectedPacienteNombre').val(" ");
+                        $('#selectedPacienteApellido').val(" ");
+                        $('#selectedPacienteFecha').val(" ");
+                        $('#btnBaja').prop("disabled", true);
 
-                }
-            })
-            .catch(error => console.error('Error status:', error));
+                    }
+                })
+                .catch(error => console.error('Error status:', error));
         }
     };
 
-    $scope.baja = function() {
+    $scope.baja = function () {
         var url = "controller/cPaciente.php";
-            var data = { 'solicitud': 'getPacienteByTis', 'tis': $scope.tisPaciente };
+        var data = { 'solicitud': 'getPacienteByTis', 'tis': $scope.tisPaciente };
 
-            fetch(url, {
-                method: 'POST', // or 'POST'
-                body: JSON.stringify(data), // data can be `string` or {object}!
-                headers: { 'Content-Type': 'application/json' }  // input data
-            })
+        fetch(url, {
+            method: 'POST', // or 'POST'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers: { 'Content-Type': 'application/json' }  // input data
+        })
             .then(res => res.json()).then(result => {
                 console.log(result.paciente);
                 if (result.paciente) {
                     $('#selectedPacienteNombre').val(result.paciente.nombre);
                     $('#selectedPacienteApellido').val(result.paciente.apellido);
                     $('#selectedPacienteFecha').val(result.paciente.fecha_nacimiento);
-                    $('#btnBaja').prop("disabled",false);
+                    $('#btnBaja').prop("disabled", false);
 
                 } else {
                     $('#selectedPacienteNombre').val(" ");
                     $('#selectedPacienteApellido').val(" ");
                     $('#selectedPacienteFecha').val(" ");
-                    $('#btnBaja').prop("disabled",true);
+                    $('#btnBaja').prop("disabled", true);
 
                 }
             })
@@ -182,14 +182,16 @@ reto_covid.controller('editarVacunas', async function ($scope) {
     $scope.vacunas = await getVacunas();
 
     $scope.updateVacuna = (codigo) => {
-        $(".*").attr("contenteditable","false")
-
+    
         console.log(codigo)
-        if(!$("."+codigo).attr("contenteditable")){
-        $("."+codigo).attr("contenteditable","true")
-        $("."+codigo).css("color","red")
-
-    };
+        console.log($("." + codigo).attr("contenteditable"));
+        if (!$("." + codigo).attr("contenteditable")) {
+            $("." + codigo).attr("contenteditable", "true")
+            $("." + codigo).css("color", "red")
+            $("." + codigo).keypress(function(e) {
+                if (isNaN(String.fromCharCode(e.which))) e.preventDefault();
+            });
+        }
 
     }
 

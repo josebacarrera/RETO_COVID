@@ -27,16 +27,17 @@ if (isset($data['solicitud'])) {
             else {$response['error'] = true;$response['errorInf'] = 'Apellido Not Found';}
 
             if (isset($data['foto_perfil'])) 
-            {
+            {               
+
+                $imgNombre=$data['nombreImg'].'.'.end(explode('.',$foto_perfil));
                 $foto_perfil=$data['foto_perfil'];
                 $writable_dir = '../view/img/';
-                $codigo = $data['codigo'];
+                $extension=end(explode('.',$foto_perfil));
 
+                var_dump($imgNombre);
                 if(!is_dir($writable_dir)){mkdir($writable_dir);}
-                // $nombreImg=$data['nombreImg']; 
-                // var_dump($nombreImg);
-                //Se escribe el archivo
-                file_put_contents($writable_dir.$foto_perfil, $foto_perfil,  LOCK_EX);
+           
+                file_put_contents($writable_dir.$imgNombre, $foto_perfil,  LOCK_EX);
             }
             else {$foto_perfil = NULL;}
 

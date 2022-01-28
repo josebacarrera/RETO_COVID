@@ -202,7 +202,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat='vacuna in vacunas'>
-                        <td ng-class="vacuna.cod">{{vacuna.nombre}}</td>
+                        <td>{{vacuna.nombre}}</td>
                         <td ng-class="vacuna.cod">{{vacuna.max}}</td>
                         <td ng-class="vacuna.cod">{{vacuna.intervalo}}</td>
                         <td><i class="fas fa-edit" ng-click="updateVacuna(vacuna.cod)"></i></td>
@@ -212,6 +212,7 @@
             <div class="text-center">
                 <button class="btn text-white" style="background-color:#036666; border-color: #036666;"> Añadir
                     vacuna</button>
+     
             </div>
         </div>
 

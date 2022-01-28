@@ -18,11 +18,11 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
     }
 
-    $(".btn").click(hideFaq);
+    $(".btnAgenda").click(hideFaq);
 
     function hideFaq(){
         $(".faq_area").css('display', 'none');
-        // $(".covidCard").css('display', 'none');
+        $(".covidCard").css('display', '');
     }
 
     $scope.show = 'default';
