@@ -29,9 +29,13 @@ reto_covid.controller('login', function ($scope) {
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
 
-        }).then(res => res.json()).then(async function result () {
+        }).then(res => res.json()).then(result => {
 
-            loadContent(await getSession());
+            if (result.error) {
+                console.log(result.errorInf);
+            } else {
+                window.location.reload();
+            }
 
         }).catch(error => console.error('Error status:', error));
 

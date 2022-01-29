@@ -6,25 +6,22 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE); // <-- Esto solo muestra errores
 session_start();
 $response = array();
 
-if (!empty($_SESSION)) {
+if (!empty($_SESSION)) { // Verificamos si hay una session existente
 
     if ($_SESSION['rol'] == 'administrador') {
         $sanitario = new sanitarioModel();
         $sanitario -> setDni($_SESSION['sanitario']['dni']);
         $sanitario -> selectByDni();
-        $response['SESSION']['sanitario'] = $sanitario->ObjVars();
+        $_SESSION['sanitario'] = $sanitario->ObjVars();
 
     } else if ($_SESSION['rol'] == 'paciente') {
         $paciente = new datosPacienteModel();
         $paciente -> setTis($_SESSION['paciente']['tis']);
-        $paciente -> setFecha_nacimiento($_SESSION['paciente']['fecha_nacimiento']);
-        $paciente -> loginTIS();
-        $response["SESSION"]['paciente'] = $paciente->ObjVars();
-    } else {
-        $response["SESSION"] = $_SESSION;
+        $paciente -> selectByTis();
+        $_SESSION['paciente'] = $paciente->ObjVars();
     }
 
-    
+    $response["SESSION"] = $_SESSION;
 
 } else {
     $response["SESSION"] = null;

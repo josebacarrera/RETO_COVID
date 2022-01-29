@@ -74,7 +74,6 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
 
@@ -263,8 +262,11 @@
                     <div class="p-3">
                         <h5 class="text">Actualizar foto de perfil: </h5>
                         <div class="input-file">
-                            <input type="file" id="fotoTrabajador" class="input-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" disabled />
+                            <input type="file" id="fotoTrabajador" onchange="changeFitx()" class="input-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" disabled />
                             <label for="fotoTrabajador" class="input-file-btn"></label>
+                        </div>
+                        <div class="p-3">
+                            <img id="newFoto" src="" class="img-fluid" alt="">
                         </div>
                     </div>
                     <div class="text-center">
