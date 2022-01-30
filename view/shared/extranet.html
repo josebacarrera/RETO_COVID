@@ -58,6 +58,7 @@
                     <span class="fs-5">Datos Personales</span>
                 </a>
             </li>
+
             <li class="" ng-click="loadContent('COVID')">
                 <!-- COVID -->
                 <a href="" class="nav-link text-white btnAgenda">
@@ -77,6 +78,20 @@
                 <!-- PEDIRCITA -->
                 <a href="" class="nav-link text-white" ng-click="loadContent('pedirCita')">
                     <span class="fs-5 btnAgenda">PedirCita</span>
+                </a>
+            </li>
+
+            <li class="border-bottom">
+                <!-- VERCITA -->
+                <a href="" class="nav-link text-white" ng-click="loadContent('verCitas')">
+                    <span class="fs-5">verCitas</span>
+                </a>
+            </li>
+
+            <li class="border-bottom">
+                <!-- VERVACUNAS -->
+                <a href="" class="nav-link text-white" ng-click="loadContent('verVacunas')">
+                    <span class="fs-5">verVacunas</span>
                 </a>
             </li>
 
@@ -158,34 +173,33 @@
             </div>
             <div class="wrapper mt-sm-5">
 
-                <div class="d-flex align-items-start py-3 border-bottom"> <img
+                <div class="d-flex align-items-start py-3 border-bottom"> <img id="fotoPerfil"
                         src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                        class="img" alt="">
+                        class="img imgPerfil" alt="">
                     <div class="pl-sm-4 pl-2" id="img-section"> <b>Foto de perfil</b>
                         <p>Tamaño máximo aceptado: 1MB</p> <button class="btn button border"><b>Subir</b></button>
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control"
+                    <div class="col-md-6"><label class="labels">Nombre</label><input id="pacienteNombre" type="text" class="form-control"
                             value=""></div>
-                    <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control"
+                    <div class="col-md-6"><label class="labels">Apellido</label><input id="pacienteApellido" type="text" class="form-control"
                             value=""></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Numero TIS</label><input type="text"
+                    <div class="col-md-12"><label class="labels">Numero TIS</label><input id="pacienteTIS"  type="text"
                             class="form-control" placeholder="Numero TIS bloqueado" value=""></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control"
+                    <div class="col-md-12"><label class="labels">Email</label><input type="text" id="pacienteEmail"  class="form-control"
                             placeholder="Correo electronico" value=""></div>
-                    <div class="col-md-12"><label class="labels">Telefono</label><input type="text" class="form-control"
+                    <div class="col-md-12"><label class="labels">Telefono</label><input type="text" id="pacienteTelefono" class="form-control"
                             placeholder="Telefono" value=""></div>
-                    <div class="col-md-12"><label class="labels">Direccion</label><input type="text"
-                            class="form-control" placeholder="Direccion" value=""></div>
+                  
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Poblacion</label><input type="text" class="form-control"
-                            placeholder="Poblacion" value=""></div>
-                    <div class="col-md-6"><label class="labels">Provincia</label><input type="text" class="form-control"
-                            value="" placeholder="state"></div>
+                    <div class="col-md-6"><label class="labels">Poblacion</label><input type="text" id="pacienteDireccion"  class="form-control"
+                            placeholder="Direccion" value=""></div>
+                    <div class="col-md-6"><label class="labels">Provincia</label><input type="text" id="pacientePoblacion"  class="form-control"
+                            value="" placeholder="Poblacion"></div>
                 </div>
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">GUARDAR
                         CAMBIOS</button></div>
@@ -227,7 +241,7 @@
         </div>
 
 
-        <!-- MODAL PREGUNAS FRECUENTES -->
+        
         <div class="row mx-0 d-flex justify-content-around miniatura"
             ng-show="show=='default' || show=='COVID'"  style="margin-top: 7%;">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -246,7 +260,7 @@
 
                         <div class="collapse" id="pregunta1">
                             <div class="card card-body mt-0">
-                                <!-- <p> -->
+                                
                                 <ul>
                                     <li>Médico o médica de cabecera</li>
                                     <li>Pediatra</li>
@@ -254,7 +268,7 @@
                                     <li>Enfermería</li>
 
                                 </ul>
-                                <!-- </p> -->
+                                
                             </div>
                         </div>
                         <div class="card-header" id="hpregunta2" style="background-color: white;">
@@ -350,15 +364,14 @@
             </div>
 
         </div>
-
-        <!-- SABER MÁS-> PREGUNTAS FRECUENTES -->
+        
         <div class="row mx-0 d-flex justify-content-around" style="margin-top: -11%;">
 
             <div class="faq_area pt-3">
 
                 <div class="row justify-content-center">
                     <div class="col-12 col-sm-8 col-lg-6">
-                        <!-- Section Heading-->
+                        
                         <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s"
                             style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                             <h3><span>Preguntas Frecuentes</span></h3><br>
@@ -367,7 +380,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <!-- FAQ Area-->
+                    
                     <div class="col-12 col-sm-10 col-lg-8">
                         <div class="accordion faq-accordian" id="faqAccordion">
                             <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s"
@@ -658,6 +671,34 @@
                     </div>
                 </div>
             </div>
+        </div> 
+
+        <!-- VER VACUNAS -->
+        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='verVacunas'">
+
+            <h3>Registro de Vacunas</h3>
+
+            <div class="list-group" ng-repeat='vacuna in usuario.objVacunacion'>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <p class="m-0">El paciente ha recibido {{vacuna.dosis}} de la vacuna {{vacuna.objVacuna.nombre}}. Última fecha registreada {{vacuna.fecha_ultima_vacuna}}</p>
+                    <button class="btn btn-primary">Generar Informe</button>
+                </li>
+            </div>
+
+        </div>
+
+        <!-- VER CITAS -->
+        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='verCitas'">
+
+            <h3>Registro de citas</h3>
+
+            <div class="list-group" ng-repeat='cita in usuario.objCita'>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <p class="m-0">Cita realizada en {{cita.fecha}} a las {{cita.hora}}. Nº de Sanitario asignado: {{cita.cod_sanitario}}</p>
+                    <button class="btn btn-primary">Generar Informe</button>
+                </li>
+            </div>
+
         </div>
 
         <!-- PEDIR CITA -->
