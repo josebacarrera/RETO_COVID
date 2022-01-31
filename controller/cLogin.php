@@ -66,6 +66,7 @@ if (isset($data['solicitud'])) {
 
                 if ($paciente->loginTIS()) {
                     session_start();
+                    $response['logged'] = true;
                     $paciente->selectByTis();
                     $_SESSION['rol'] = 'paciente';
                     $_SESSION['paciente'] = $paciente->ObjVars();
@@ -80,6 +81,7 @@ if (isset($data['solicitud'])) {
 
         case 'logout':
             session_start();
+            $response['logout'] = true;
             $response['Inf'] = "Session eliminada correctamente";
             session_unset();
             session_destroy();

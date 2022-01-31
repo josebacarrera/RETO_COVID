@@ -53,6 +53,24 @@ if (isset($data['solicitud'])) {
 
             }
             break;
+
+        case 'selectByCod_Centro':
+            
+            // @Param: cod_centro
+
+            if (isset($data['cod_centro'])) {$cod_centro=$data['cod_centro'];}
+            else {$response['error'] = true;$response['errorInf'] = 'Centro Not Found';}
+
+            if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
+                $sanitario = new sanitarioModel();
+                $sanitario->setCod_centro($cod_centro);
+                $sanitario->selectByCod_Centro();
+                $response['sanitario'] = $sanitario->ObjVars();
+                
+
+            }
+
+            break;
     }
 } else {
     $response['error'] = true;

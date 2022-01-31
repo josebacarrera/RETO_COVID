@@ -12,6 +12,7 @@
 .card {
     margin-top: 20px;
 }
+
 .letrasCovid{
     font-size: 30px;
 }
@@ -19,12 +20,13 @@
 .card-header{
     background-color: white;
 }
+
 .faq_area{
     display: none;
 }
+
 .imgPerfil{
-height: 250px;
-width: auto;
+    width: 200px;
 }
 
 /*RESPONSIVE*/

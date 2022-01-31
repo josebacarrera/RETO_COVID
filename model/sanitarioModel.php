@@ -76,6 +76,28 @@ class sanitarioModel extends sanitarioClass{
 
     }
 
+    public function selectByCod_Centro() {
+
+        $this->OpenConnect();
+        $sql = 'SELECT * FROM sanitario WHERE cod_centro_s = ' . $this->getCod_centro();
+        $result = $this->link->query($sql);
+
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+        $this->setCod($row['cod_sanitario_s']);
+        $this->setNombre($row['nombre_s']);
+        $this->setApellido($row['apellido_s']);
+        $this->setDni($row['dni_s']);
+        $this->setCargo($row['cargo_s']);
+        $this->setCod_centro($row['cod_centro_s']);
+        $this->setFoto_pefil($row['foto_perfil_s']);
+
+        }
+
+        $this->CloseConnect();
+
+    }
+
     public function update() {
         $this->OpenConnect();  
         if($this->getFoto_pefil()!=NULL){

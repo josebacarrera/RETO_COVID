@@ -34,7 +34,11 @@ reto_covid.controller('login', function ($scope) {
             if (result.error) {
                 console.log(result.errorInf);
             } else {
-                window.location.reload();
+                if ( result.logged ) {
+                    window.location.reload();
+                } else if (result.logout) {
+                    window.location.reload();
+                }
             }
 
         }).catch(error => console.error('Error status:', error));
@@ -43,3 +47,17 @@ reto_covid.controller('login', function ($scope) {
     }
 
 });
+
+function validateTis(p) {
+    if(isNaN(p.value.slice(-1))){p.value = p.value.slice(0, -1);}
+    if (p.value.length > 8) {p.value = p.value.slice(0, -1);}
+}
+
+function validateDni(p) {
+    console.log(1);
+    if (p.value.length > 8) {
+        if(!isNaN(p.value.slice(-1))){p.value = p.value.slice(0, -1);}
+    } else {
+        if(isNaN(p.value.slice(-1))){p.value = p.value.slice(0, -1);}}
+    if (p.value.length > 9) {p.value = p.value.slice(0, -1);}    
+}

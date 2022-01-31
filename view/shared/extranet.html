@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="../Bootstrap/bootstrap-5.1.2-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../css/extranet.css">
     <link rel="stylesheet" href="../css/paginaPreguntasF.css">
+
     <!-- FAQ -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,8 +18,10 @@
     <link rel="icon" href="../img/icono.jpg">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/paginaPreguntasF.css">
+    <link rel="stylesheet" href="../css/extranet.css">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- FAQ -->
     <title>Página de Inicio</title>
 </head>
@@ -98,6 +99,8 @@
 
         </ul>
 
+
+     <button type="submit" class="btn btn-outline-success" value="Enviar" id="btnEnviar"><a src="../index.html"></a>BACK</button>   <!-- style="background-color: #358f80; color: white;" -->
     </div>
     <!-- PaneLateral -->
 
@@ -105,7 +108,7 @@
     <!-- Contenido -->
     <div id="contenido" class="p-2">
         <!-- AGENDA -->
-        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='AGENDA'">
+        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='default' || show=='AGENDA'">
 
             <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/citaprevia.png" class="card-img-top w-100" alt="...">
@@ -139,7 +142,7 @@
 
         </div>
         <!-- INFORME  -->
-        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='INFORME'">
+        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='default' || show=='INFORME'">
 
             <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/infobasica.png" class="card-img-top w-100" alt="...">
@@ -172,7 +175,7 @@
         </div>
 
         <!-- DATOS PERSONALES -->
-        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='DATOS'">
+        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='DATOS'">
 
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h1 class="text-right title">Datos Personales</h1>
@@ -207,20 +210,26 @@
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels fw-bold">Poblacion</label><input type="text"
                             id="pacienteDireccion" class="form-control" placeholder="Direccion" value=""></div>
-                    <div class="col-md-6"><label class="labels fw-bold">Provincia</label><input type="text"
-                            id="pacientePoblacion" class="form-control" value="" placeholder="Poblacion"></div>
+                    <div class="col-md-6">
+                        <div class="form-outline mb-4 w-100">
+                            <label class="form-label" for="newPacienteDireccion">Localidad:</label>
+                            <select name="" id="localidad" ng-model="localidad" 
+                                class="form-control form-select">
+                                <option value="{{localidad.cod}}" ng-repeat='localidad in localidades' >
+                                    {{localidad.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="my-5 text-center">
                     <button class="btn btn-primary profile-button" type="button" ng-click="updatePaciente()">GUARDAR
                         CAMBIOS</button>
                     <button class="btn btn-danger profile-button" type="button" ng-click="discardChanges()">DESCARTAR CAMBIOS</button></div>
             </div>
-
-
         </div>
 
         <!-- COVID -->
-        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='COVID'">
+        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='default' || show=='COVID'">
             <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/citavacuna.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
@@ -251,17 +260,15 @@
 
         </div>
 
-
-
-        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='COVID'"
-            style="margin-top: 7%;">
+        <!-- COVID MODAL -->
+        <div class="row mx-0 d-flex justify-content-around" style="margin-top: 7%;">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Preguntas Frecuentes</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                         </div>
                         <div class="card-header" id="hpregunta1" style="background-color: white;">
                             <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#pregunta1"
@@ -366,7 +373,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <a type="button" class="btn btn-primary btnVMas" data-bs-dismiss="modal">VER MÁS</a>
+                            <a type="button" class="btn btn-primary btnVMas" data-bs-dismiss="modal" ng-click="loadContent('preguntasFrecuentes')">VER MÁS</a>
                         </div>
                     </div>
 
@@ -376,9 +383,10 @@
 
         </div>
 
-        <div class="row mx-0 d-flex justify-content-around" style="margin-top: -11%;">
+        <!-- Preguntas Frecuentes -->
+        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='preguntasFrecuentes'">
 
-            <div class="faq_area pt-3">
+            <!-- <div class="faq_area pt-3"> -->
 
                 <div class="row justify-content-center">
                     <div class="col-12 col-sm-8 col-lg-6">
@@ -681,7 +689,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
 
         <!-- VER VACUNAS -->
@@ -733,7 +741,7 @@
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label">Selecciona la hora:</label><br>
-                    <button class="btn btn-primary">{{ horasDisponibles || '00:00' }}</button>
+                    <button class="btn btn-primary" ng-repeat='horario in horarios' ng-click='pedirCita()'>{{ horario || '00:00' }}</button>
                 </div>
             </div>
 

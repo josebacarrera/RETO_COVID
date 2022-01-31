@@ -1,3 +1,4 @@
+
 <html lang="es" ng-app='reto_covid'>
 
 <head>
@@ -30,6 +31,7 @@
                 <img src="view/img/pruebas_covid.png" class="img-fluid py-2">
             </div>
         </div>
+
         <!-- login-->
         <div id="login" class="col-lg-5 col-md-5 col-sm-12  login" ng-controller='login'>
 
@@ -53,7 +55,7 @@
                         <form class="p-3">
                             <!-- TIS input -->
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control" id="tis" ng-model="tis" required>
+                                <input type="text" class="form-control" id="tis" ng-model="tis"  oninput="validateTis(this)" required >
                                 <label for="tis">TIS (ej.: 12345678)</label>
                             </div>
 
@@ -82,7 +84,7 @@
 
                             <!-- Password input -->
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" ng-model='password' required />
+                                <input type="password" class="form-control" ng-model='password' oninput="validateDni(this)" required>
                                 <label class="form-label" for="password">Contraseña </label>
 
                             </div>

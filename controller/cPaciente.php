@@ -49,7 +49,42 @@ if (isset($data['solicitud'])) {
                 
             }
             break;
+            case 'updatePaciente':
 
+                if (isset($data['nombre'])) {$nombre=$data['nombre'];}
+                else {$response['error'] = true;$response['errorInf'] = 'Nombre Not Found';}
+    
+                if (isset($data['apellido'])) {$apellido=$data['apellido'];}
+                else {$response['error'] = true;$response['errorInf'] = 'Apellido Not Found';}
+                
+                if (isset($data['fecha_nac'])) {$fecha_nac=$data['fecha_nac'];}
+                else {$response['error'] = true;$response['errorInf'] = 'Apellido Not Found';}
+    
+                if (isset($data['email'])) {$email=$data['email'];}
+                else {$response['error'] = true;$response['errorInf'] = 'Email Not Found';}
+    
+                if (isset($data['direccion'])) {$direccion=$data['direccion'];}
+                else {$response['error'] = true;$response['errorInf'] = 'Direccion Not Found';}
+    
+                if (isset($data['localidad'])) {$localidad=$data['localidad'];}
+                else {$response['error'] = true;$response['errorInf'] = 'Localidad Not Found';}
+    
+    
+                if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
+                    $paciente = new datosPacienteModel();
+                    $paciente->setNombre($nombre);
+                    $paciente->setApellido($apellido);
+                    $paciente->setFecha_nacimiento($fecha_nac);
+                    $paciente->setEmail($email);
+                    $paciente->setDireccion($direccion);
+                    $paciente->setCod_localidad($localidad);
+                    $paciente->update();
+                    
+                    $response['paciente'] = $paciente->ObjVars();
+                    
+                    
+                }
+                break;
         case 'selectAllTis':
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
                 $list = new datosPacienteModel();

@@ -99,6 +99,13 @@ class datosPacienteModel extends datosPacienteClass{
         $this->CloseConnect();
     }
 
+    public function update() {
+        $this->OpenConnect();
+        $sql="UPDATE datos_paciente SET nombre_p='".$this->getNombre()."', apellido_p='".$this->getApellido()."', fecha_nacimiento_p='".$this->getFecha_nacimiento()."', email_p='".$this->getEmail()."', telefono_p='".$this->getTelefono()."', foto_perfil_p='".$this->getFoto_perfil()."', direccion_p='".$this->getDireccion()."', cod_localidad_p='".$this->getCod_localidad()."' WHERE tis_datos_p = '" . $this->getTis() . "'";
+        $this->link->query($sql);
+        $this->CloseConnect();
+    }
+
     public function getAllTis() {
         $this->OpenConnect();
         $sql="SELECT tis_datos_p, nombre_p FROM datos_paciente WHERE status_p =1";
@@ -131,7 +138,8 @@ class datosPacienteModel extends datosPacienteClass{
                 FROM datos_paciente 
                 WHERE tis_datos_p = '" . $this->getTis() . "' AND fecha_nacimiento_p = '" . $this->getFecha_nacimiento() . "' AND status_p = 1;";
         $logged = false;
-        if ( $this->link->query($sql)) {
+        $result = $this->link->query($sql);
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $logged = true;
         }
         $this->CloseConnect();

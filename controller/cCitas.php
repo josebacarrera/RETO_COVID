@@ -42,7 +42,40 @@ if (isset($data['solicitud'])) {
                 $response['horasOcupadas'] = $citas->selectHoraByFechaCentro();
             }
             break;
-    }
+
+        case 'insertCita':
+
+            // @Param: fecha, hora, tis, sanitario, centro
+
+            if (isset($data['fecha'])) {$fecha=$data['fecha'];}
+            else {$response['error'] = true;$response['errorInf'] = 'Fecha Not Found';}
+
+            if (isset($data['hora'])) {$hora=$data['hora'];}
+            else {$response['error'] = true;$response['errorInf'] = 'Hora Not Found';}
+
+            if (isset($data['tis'])) {$tis=$data['tis'];}
+            else {$response['error'] = true;$response['errorInf'] = 'Tis Not Found';}
+
+            if (isset($data['sanitario'])) {$sanitario=$data['sanitario'];}
+            else {$response['error'] = true;$response['errorInf'] = 'Sanitario Not Found';}
+
+            if (isset($data['centro'])) {$centro=$data['centro'];}
+            else {$response['error'] = true;$response['errorInf'] = 'Centro Not Found';}
+    
+            if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
+                $citas = new citaModel();
+                $citas->setFecha($fecha);
+                $citas->setHora($hora);
+                $citas->setTis_paciente($tis);
+                $citas->setCod_sanitario($sanitario);
+                $citas->setCod_centro($centro);
+                
+                $response['insertedCita'] = $citas->insertCita();
+
+            }
+    
+        }
+
     
         
 } else {
