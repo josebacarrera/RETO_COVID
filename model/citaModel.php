@@ -31,22 +31,99 @@ class citaModel extends citaClass {
 
     // FUNCIONES MOD //
 
-    public function getCitaByTis() {
+    public function selectByDniSanitario() {
         $this->OpenConnect();
-        $sql = "SELECT * FROM cita WHERE tis_paciente = '" . $this->getTis_paciente() . "'";
+        $sql = "SELECT * 
+                FROM cita c 
+                WHERE c.cod_sanitario_ci = ".$this->getCod_sanitario()." AND fecha_ci < LOCALTIME;";
         $result = $this->link->query($sql);
         $list=array();
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $newCita = new citaModel();
-            $newCita->setCod($row['cod']);
-            $newCita->setTis_paciente($row['tis_paciente']);
-            $newCita->setCod_sanitario($row['cod_sanitario']);
-            $newCita->setFecha($row['fecha']);
-            $newCita->setHora($row['hora']);
-            $newCita->setCod_centro($row['cod_centro']);
+            $newCita->setCod($row['cod_cita_ci']);
+            $newCita->setTis_paciente($row['tis_paciente_ci']);
+            $newCita->setCod_sanitario($row['cod_sanitario_ci']);
+            $newCita->setFecha($row['fecha_ci']);
+            $newCita->setHora($row['hora_ci']);
+            $newCita->setCod_centro($row['cod_centro_ci']);
             array_push($list, get_object_vars($newCita));
         }
-        return $list;  
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $list;
+    }
+
+    public function selectByTisPaciente() {
+        $this->OpenConnect();
+        $sql = "SELECT * 
+                FROM cita c 
+                WHERE c.tis_paciente_ci = ".$this->getTis_paciente().";";
+        $result = $this->link->query($sql);
+        $list=array();
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $newCita = new citaModel();
+            $newCita->setCod($row['cod_cita_ci']);
+            $newCita->setTis_paciente($row['tis_paciente_ci']);
+            $newCita->setCod_sanitario($row['cod_sanitario_ci']);
+            $newCita->setFecha($row['fecha_ci']);
+            $newCita->setHora($row['hora_ci']);
+            $newCita->setCod_centro($row['cod_centro_ci']);
+            array_push($list, get_object_vars($newCita));
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $list;
+    }
+
+    public function selectAllFechasHorasFromCentro() {
+        $this->OpenConnect();
+        $sql = "SELECT fecha_ci, hora_ci FROM cita WHERE cod_centro_ci  = '" . $this->getCod_centro() . "'";
+        $result = $this->link->query($sql);
+        $list=array();
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $newCita = new citaModel();
+            $newCita->setCod($row['cod_cita_ci']);
+            $newCita->setTis_paciente($row['tis_paciente_ci']);
+            $newCita->setCod_sanitario($row['cod_sanitario_ci']);
+            $newCita->setFecha($row['fecha_ci']);
+            $newCita->setHora($row['hora_ci']);
+            $newCita->setCod_centro($row['cod_centro_ci']);
+            array_push($list, get_object_vars($newCita));
+        }
+        return $list;
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
+
+    public function selectHoraByFechaCentro() {
+        $this->OpenConnect();
+        $sql = "SELECT hora_ci FROM cita WHERE fecha_ci  = '" . $this->getFecha() . "' AND cod_centro_ci = ". $this->getCod_centro();
+        $result = $this->link->query($sql);
+        $list=array();
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($list, $row['hora_ci']);
+        }
+        return $list;
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
+
+    public function selectAllByTis() {
+        $this->OpenConnect();
+        $sql = "SELECT * FROM cita WHERE tis_paciente_ci  = '" . $this->getTis_paciente() . "'";
+        $result = $this->link->query($sql);
+        $list=array();
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $newCita = new citaModel();
+            $newCita->setCod($row['cod_cita_ci']);
+            $newCita->setTis_paciente($row['tis_paciente_ci']);
+            $newCita->setCod_sanitario($row['cod_sanitario_ci']);
+            $newCita->setFecha($row['fecha_ci']);
+            $newCita->setHora($row['hora_ci']);
+            $newCita->setCod_centro($row['cod_centro_ci']);
+            array_push($list, get_object_vars($newCita));
+        }
+        return $list;
         mysqli_free_result($result);
         $this->CloseConnect();
     }

@@ -34,13 +34,11 @@ if (isset($data['solicitud'])) {
 
                 if ($user->loginDNI()) {
                     session_start();
-                    $response['logged'] = true;
-                    $response['user'] = $user->ObjVars();
-
-                    $_SESSION['cod_user'] = $user->getCod();
+                    $sanitario = new sanitarioModel();
+                    $sanitario->setDni($dni);
+                    $sanitario->selectByDni();
                     $_SESSION['rol'] = $user->ObjVars()['objRol']['nombre'];
-                    $_SESSION['sanitario'] = $user->ObjVars()['objSanitario'];
-
+                    $_SESSION['sanitario'] = $sanitario->ObjVars();
                 } else {
                     $response['error'] = true;
                     $response['errorInf'] = 'Wrong User or Password';
@@ -68,8 +66,7 @@ if (isset($data['solicitud'])) {
 
                 if ($paciente->loginTIS()) {
                     session_start();
-                    $response['logged'] = true;
-                    $response['paciente'] = $paciente->ObjVars();
+                    $paciente->selectByTis();
                     $_SESSION['rol'] = 'paciente';
                     $_SESSION['paciente'] = $paciente->ObjVars();
 
@@ -105,5 +102,6 @@ if (isset($data['solicitud'])) {
 // FIN Bloque de Solicitud
 
 echo json_encode($response);
+unset($response);
 
 ?>

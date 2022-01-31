@@ -16,13 +16,24 @@
     font-size: 30px;
 }
 
-/*Mediaquery*/
+.card-header{
+    background-color: white;
+}
+.faq_area{
+    display: none;
+}
+.imgPerfil{
+height: 250px;
+width: auto;
+}
+
+/*RESPONSIVE*/
 @media (max-width: 576px) {
 
     #paneLateral {
         position: relative;
+        height: auto;
         width: 100%;
-        height: 200px;
     }
 
     #contenido {

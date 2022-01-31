@@ -42,13 +42,10 @@ if (isset($data['solicitud'])) {
                 $paciente->setEmail($email);
                 $paciente->setDireccion($direccion);
                 $paciente->setCod_localidad($localidad);
-
-                if ($paciente->insert()) {
-                    $response['paciente'] = $paciente->ObjVars();
-                } else {
-                    $response['error'] = true;
-                    $response['errorInf'] = 'SQL Fail';
-                }
+                $paciente->insert();
+                
+                $response['paciente'] = $paciente->ObjVars();
+                
                 
             }
             break;
@@ -70,16 +67,32 @@ if (isset($data['solicitud'])) {
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
                 $paciente = new datosPacienteModel();
                 $paciente->setTis($tis);
-
-                if ($paciente->getPacienteByTis()) {
-
+                $paciente->selectByTis();
+                if ($paciente->getNombre()) {
                     $response['paciente'] = $paciente->ObjVars(); 
-
                 } else {
                     $response['error'] = true;
                     $response['errorInf'] = 'SQL Fail';
                 }
             }
+            break;
+
+        case 'deletePaciente':
+
+            if (isset($data['tis'])) {$tis=$data['tis'];}
+            else {$response['error'] = true;$response['errorInf'] = 'Tis Not Found';}
+            
+            if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
+                $paciente = new datosPacienteModel();
+                $paciente->setTis($tis);
+                if ($paciente->deletePacienteByTis()) {
+                    $response['pacienteDeleted'] =  true;
+                } else {
+                    $response['error'] = true;
+                    $response['errorInf'] = 'SQL Fail';
+                }
+            }
+
             break;
     }
     
@@ -90,3 +103,4 @@ if (isset($data['solicitud'])) {
 }
 
 echo json_encode($response);
+unset($response);

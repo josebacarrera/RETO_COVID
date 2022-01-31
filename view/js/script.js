@@ -1,5 +1,3 @@
-
-
 reto_covid.controller('login', function ($scope) {
 
     $scope.usuario;
@@ -31,9 +29,13 @@ reto_covid.controller('login', function ($scope) {
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
 
-        }).then(res => res.json()).then(async function result () {
+        }).then(res => res.json()).then(result => {
 
-            loadContent(await getSession());
+            if (result.error) {
+                console.log(result.errorInf);
+            } else {
+                window.location.reload();
+            }
 
         }).catch(error => console.error('Error status:', error));
 
@@ -41,30 +43,3 @@ reto_covid.controller('login', function ($scope) {
     }
 
 });
-// Scroll up
-
-document.getElementById("button-up").addEventListener("click", scrollUp);
-
-function scrollUp(){
-
-    var currentScroll = document.documentElement.scrollTop;
-
-    if (currentScroll > 0){
-        window.requestAnimationFrame(scrollUp);
-        window.scrollTo (0, currentScroll - (currentScroll / 10));
-    }
-}
-
-buttonUp = document.getElementById("button-up");
-
-window.onscroll = function(){
-
-    var scroll = document.documentElement.scrollTop;
-
-    if (scroll > 500){
-        buttonUp.style.transform = "scale(1)";
-    }else if(scroll < 500){
-        buttonUp.style.transform = "scale(0)";
-    }
-
-}

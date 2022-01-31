@@ -38,38 +38,27 @@ class userModel extends userClass{
 
     // FUNCIONES MOD //
 
+    
+
+    // COMPROBADO
+
     public function loginDNI() {
-
         $this->OpenConnect();  
-        
-        $sql = "CALL spLoginDNI('" . $this->getDni_sanitario() . "','" . $this->getPassword() . "')"; 
-        
+        $sql = "SELECT *
+                FROM user u
+                INNER JOIN rol r ON r.cod_r = u.cod_rol_u
+                WHERE dni_sanitario_u = '".$this->getDni_sanitario()."' AND password_u = '".$this->getPassword()."'"; 
         $result = $this->link->query($sql);
-        
+        $logged = false;
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
-            $this->setCod($row['cod_user_u']);
-
             $this->objRol = new rolModel();
             $this->objRol->setNombre($row['nombre_r']);
             $this->objRol = $this->objRol->ObjVars();
-
-            $this->objSanitario = new sanitarioModel();
-            $this->objSanitario->setCod($row['cod_sanitario_s']);
-            $this->objSanitario->setNombre($row['nombre_s']);
-            $this->objSanitario->setApellido($row['apellido_s']);
-            $this->objSanitario->setDni($row['dni_s']);
-            $this->objSanitario->setCargo($row['cargo_s']);
-            $this->objSanitario->setCod_centro($row['cod_centro_s']);
-            $this->objSanitario->setFoto_pefil($row['foto_perfil_s']);
-            $this->objSanitario = $this->objSanitario->ObjVars();
-
-            return true;
-
-        }
-
+            $logged = true;
+        } 
         mysqli_free_result($result);
         $this->CloseConnect();
+        return $logged;
     }
 
     public function ObjVars() {
