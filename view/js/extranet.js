@@ -40,6 +40,18 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
             case 'DATOS':
                     ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                    console.log(session);
+                    let url= "../img/"+session.paciente.foto_perfil;
+
+                    $("#pacienteNombre").val(session.paciente.nombre);
+                    $("#pacienteApellido").val(session.paciente.apellido);
+                    $("#pacienteTIS").val(session.paciente.tis);
+                    $("#pacienteEmail").val(session.paciente.email);
+                    $("#pacienteTelefono").val(session.paciente.telefono);
+                    $("#pacienteDireccion").val(session.paciente.direccion);
+                    $("#pacientePoblacion").val(session.paciente.objLocalidad.nombre);
+                    $('#fotoPerfil').attr("src", url);
+
                     break;
 
             case 'COVID':
@@ -61,38 +73,49 @@ reto_covid_intranet.controller('body', async function ($scope) {
                         headers: { 'Content-Type': 'application/json' }
                     }).then(res => res.json()).then(result => {
                         console.log(result);
-                        if (result.horasDisponibles.length == 0) {
-                            horasOcupadas = Array();
-                        } else {
-                            horasOcupadas = result.horasDisponibles;
+
+                        var timeZone = $scope.usuario.objCentro.horario_temprano
+                        var horarios = getTime(timeZone);
+
+                        function getTime(timeZone) {
+
+                            let h1 = timeZone.split('-')[0].split(':')[0]
+                            let m1 = timeZone.split('-')[0].split(':')[0]
+                            let h2 = timeZone.split('-')[1].split(':')[0]
+                            let m2 = timeZone.split('-')[1].split(':')[0]
+
+                            var quarterHours = ["00", "15", "30", "45"];
+                            var time = [];
+                            for(var i = h1; i < h2; i++){
+                                for(var j = 0; j < 4; j++){
+                                    time.push(i + ":" + quarterHours[j]);
+                                }
+                            }
+                            return time;
                         }
-                        
-                        var horasDisponibles;
 
-                        var horaIni = $scope.usuario.objCentro.horario_temprano.split('-')[0]
-                        var horaFin = $scope.usuario.objCentro.horario_temprano.split('-')[1]
-
-                        
-                        for (var i = 0; i < 60; i+15) {     
-                            console.log(i%15);                            
-                        }
-
-                        console.log(horaIni);
-
-
-                        
-                        console.log(horasDisponibles);
+                        console.log(horarios);
+                        console.log(timeZone);
 
                     }).catch(error => console.error('Error status:', error));
 
                 }
 
-                        break;
-                
-                    default:
-                        console.log('ERROR, contenType not supported');
-                        break;
-                }
+                break;
+
+            case 'verCitas':
+                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                break;
+
+
+            case 'verVacunas':
+                ($scope.show==contenType)?$scope.show='default':$scope.show = contenType;
+                break;
+
+            default:
+                console.log('ERROR, contenType not supported');
+                break;
+        }
 
     }
 

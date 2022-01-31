@@ -67,7 +67,7 @@ if (isset($data['solicitud'])) {
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
                 $paciente = new datosPacienteModel();
                 $paciente->setTis($tis);
-                $paciente->getPacienteByTis();
+                $paciente->selectByTis();
                 if ($paciente->getNombre()) {
                     $response['paciente'] = $paciente->ObjVars(); 
                 } else {
@@ -78,14 +78,15 @@ if (isset($data['solicitud'])) {
             break;
 
         case 'deletePaciente':
+
             if (isset($data['tis'])) {$tis=$data['tis'];}
             else {$response['error'] = true;$response['errorInf'] = 'Tis Not Found';}
+            
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
                 $paciente = new datosPacienteModel();
                 $paciente->setTis($tis);
-                $paciente->deletePacienteByTis();
-                if ($paciente->getNombre()) {
-                    $response['paciente'] = $paciente->ObjVars(); 
+                if ($paciente->deletePacienteByTis()) {
+                    $response['pacienteDeleted'] =  true;
                 } else {
                     $response['error'] = true;
                     $response['errorInf'] = 'SQL Fail';

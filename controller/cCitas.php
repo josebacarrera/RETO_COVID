@@ -39,7 +39,7 @@ if (isset($data['solicitud'])) {
                 $citas = new citaModel();
                 $citas->setFecha($fecha);
                 $citas->setCod_centro($centro);
-                $response['horasDisponibles'] = $citas->selectHoraByFechaCentro();
+                $response['horasOcupadas'] = $citas->selectHoraByFechaCentro();
             }
             break;
     }

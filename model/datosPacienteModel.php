@@ -16,7 +16,6 @@ class datosPacienteModel extends datosPacienteClass{
     private $objLocalidad;
     private $objCita;
     private $objVacunacion;
-    private $objVacuna;
     private $objCentro;
 
     public function OpenConnect(){
@@ -36,18 +35,125 @@ class datosPacienteModel extends datosPacienteClass{
         mysqli_close ($this->link);
     }
 
-    public function loginTIS() {
+    // public function loginTIS() {
 
-        $this->OpenConnect();
-        $sql = "CALL spLoginTIS('" . $this->getTis() . "','" . $this->getFecha_nacimiento() . "')";
-        // $sql = "CALL spLoginTIS('4990916','2018-03-17')";
+    //     $this->OpenConnect();
+    //     $sql = "CALL spLoginTIS('" . $this->getTis() . "','" . $this->getFecha_nacimiento() . "')";
+    //     // $sql = "CALL spLoginTIS('4990916','2018-03-17')";
 
-        $result = $this->link->query($sql);
+    //     $result = $this->link->query($sql);
         
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    //     if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             
+    //         $this->setNombre($row['nombre_p']);
+    //         $this->setApellido($row['apellido_p']);
+    //         $this->setEmail($row['email_p']);
+    //         $this->setFoto_perfil($row['foto_perfil_p']);
+    //         $this->setDireccion($row['direccion_p']);
+    //         $this->setCod_localidad($row['cod_localidad_p']);
+
+    //         $this->objLocalidad = new localidadModel();
+    //         $this->objLocalidad->setCod($row['cod_localidad_l']);
+    //         $this->objLocalidad->setNombre($row['nombre_l']);
+    //         $this->objLocalidad = $this->objLocalidad->ObjVars();
+
+    //         $this->objCentro = new centroModel();
+    //         $this->objCentro->setCod($row['cod_centro_ce']);
+    //         $this->objCentro->setCod_localidad($row['cod_localidad_ce']);
+    //         $this->objCentro->setNombre($row['nombre_ce']);
+    //         $this->objCentro->setTelefono($row['telefono_ce']);
+    //         $this->objCentro->setEmail($row['email_ce']);
+    //         $this->objCentro->setHorario_temprano($row['horario_temprano_ce']);
+    //         $this->objCentro->setHorario_tarde($row['horario_tarde_ce']);
+    //         $this->objCentro->setHorario_noche($row['horario_noche_ce']);
+    //         $this->objCentro->setDias($row['dias_ce']);
+    //         $this->objCentro = $this->objCentro->ObjVars();
+
+    //         $this->objCita = new citaModel();
+    //         $this->objCita->setTis_paciente($row['tis_paciente_ci']);
+    //         $this->objCita = $this->objCita->selectByTisPaciente();
+
+    //         $this->objVacunacion = new registroVacunacionModel();
+    //         $this->objVacunacion->setTis($row['tis_registro_rg']);
+    //         $this->objVacunacion = $this->objVacunacion->selectByTisPaciente();
+
+    //         return true;
+
+    //     }
+
+    //     mysqli_free_result($result);
+    //     $this->CloseConnect();
+    // }
+
+    public function insert() {
+        $this->OpenConnect();
+        $sql="SELECT * FROM datos_paciente WHERE nombre_p='".$this->getNombre()."' AND apellido_p='".$this->getApellido()."' AND fecha_nacimiento_p='".$this->getFecha_nacimiento()."'";
+        if ($this->link->query($sql)) {
+            $sql ="UPDATE datos_paciente SET status_p = 1 WHERE tis_datos_p = '" . $this->getTis() . "';";
+        }else{
+            $sql = "INSERT INTO datos_paciente (nombre_p, apellido_p, fecha_nacimiento_p, email_p, direccion_p, cod_localidad_p) VALUES ('".$this->getNombre()."','".$this->getApellido()."','".$this->getFecha_nacimiento()."','".$this->getEmail()."','".$this->getDireccion()."',".$this->getCod_localidad().")";
+
+        }
+
+        $this->link->query($sql);
+        $this->CloseConnect();
+    }
+
+    public function getAllTis() {
+        $this->OpenConnect();
+        $sql="SELECT tis_datos_p, nombre_p FROM datos_paciente WHERE status_p =1";
+        $result=$this->link->query($sql);
+        $list=array();
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($list, $row['tis_datos_p'] . ' - '.  $row['nombre_p']);
+        }
+        return $list;
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
+
+    public function deletePacienteByTis(){
+        $this->OpenConnect();
+        $sql ="UPDATE datos_paciente SET status_p = 0 WHERE tis_datos_p = '" . $this->getTis() . "';";
+        $deleted=false;
+        if ($this->link->query($sql)) {
+            $deleted = true;
+        }
+        $this->CloseConnect();
+        return $deleted;  
+    }
+
+    // COMPROBADO
+
+    public function loginTIS() {
+        $this->OpenConnect();
+        $sql = "SELECT * 
+                FROM datos_paciente 
+                WHERE tis_datos_p = '" . $this->getTis() . "' AND fecha_nacimiento_p = '" . $this->getFecha_nacimiento() . "' AND status_p = 1;";
+        $result = $this->link->query($sql);
+        $logged = false;
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $logged = true;
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $logged;  
+    }
+
+    public function selectByTis() {
+        $this->OpenConnect();
+        $sql = "SELECT * 
+                FROM datos_paciente d
+                INNER JOIN localidad l ON l.cod_localidad_l = d.cod_localidad_p
+                INNER JOIN centro c ON c.cod_localidad_ce = l.cod_localidad_l
+                WHERE tis_datos_p='".$this->getTis()."'";
+        $result = $this->link->query($sql);
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+            $this->setTis($row['tis_datos_p']);
             $this->setNombre($row['nombre_p']);
             $this->setApellido($row['apellido_p']);
+            $this->setFecha_nacimiento($row['fecha_nacimiento_p']);
             $this->setEmail($row['email_p']);
             $this->setFoto_perfil($row['foto_perfil_p']);
             $this->setDireccion($row['direccion_p']);
@@ -71,78 +177,13 @@ class datosPacienteModel extends datosPacienteClass{
             $this->objCentro = $this->objCentro->ObjVars();
 
             $this->objCita = new citaModel();
-            $this->objCita->setCod($row['cod_cita_ci']);
-            $this->objCita->setTis_paciente($row['tis_paciente_ci']);
-            $this->objCita->setCod_sanitario($row['cod_sanitario_ci']);
-            $this->objCita->setFecha($row['fecha_ci']);
-            $this->objCita->setHora($row['hora_ci']);
-            $this->objCita->setCod_centro($row['cod_centro_ci']);
-            $this->objCita = $this->objCita->ObjVars();
+            $this->objCita->setTis_paciente($row['tis_datos_p']);
+            $this->objCita = $this->objCita->selectByTisPaciente();
 
             $this->objVacunacion = new registroVacunacionModel();
-            $this->objVacunacion->setCod($row['cod_registro_rg']);
-            $this->objVacunacion->setTis($row['tis_registro_rg']);
-            $this->objVacunacion->setCod_vacuna($row['cod_vacuna_rg']);
-            $this->objVacunacion->setDosis($row['dosis_rg']);
-            $this->objVacunacion->setFecha_ultima_vacuna($row['fecha_ultima_vacuna_rg']);
-            $this->objVacunacion = $this->objVacunacion->ObjVars();
-
-            $this->objVacuna = new vacunaModel();
-            $this->objVacuna->setCod($row['cod_vacuna_v']);
-            $this->objVacuna->setNombre($row['nombre_v']);
-            $this->objVacuna->setMax($row['max_v']);
-            $this->objVacuna->setIntervalo($row['intervalo_v']);
-            $this->objVacuna = $this->objVacuna->ObjVars();
-
-            return true;
-
+            $this->objVacunacion->setTis($row['tis_datos_p']);
+            $this->objVacunacion = $this->objVacunacion->selectByTisPaciente();
         }
-
-        mysqli_free_result($result);
-        $this->CloseConnect();
-    }
-
-    public function insert() {
-        $this->OpenConnect();
-        $sql = "INSERT INTO datos_paciente (nombre_p, apellido_p, fecha_nacimiento_p, email_p, direccion_p, cod_localidad_p) VALUES ('".$this->getNombre()."','".$this->getApellido()."','".$this->getFecha_nacimiento()."','".$this->getEmail()."','".$this->getDireccion()."',".$this->getCod_localidad().")";
-        $this->link->query($sql);
-        $this->CloseConnect();
-    }
-
-    public function getAllTis() {
-        $this->OpenConnect();
-        $sql="SELECT * FROM datos_paciente";
-        $result=$this->link->query($sql);
-        $list=array();
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            array_push($list, $row['tis_datos_p']);
-        }
-        return $list;
-        mysqli_free_result($result);
-        $this->CloseConnect();
-    }
-
-    public function deletePacienteByTis(){
-        $this->OpenConnect();
-
-    }
-
-    public function getPacienteByTis() {
-        $this->OpenConnect();
-        $sql = "SELECT * FROM datos_paciente WHERE tis_datos_p='".$this->getTis()."'";
-        $result = $this->link->query($sql);
-        
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-
-            $this->setNombre($row['nombre_p']);
-            $this->setApellido($row['apellido_p']);
-            $this->setEmail($row['email_p']);
-            $this->setFecha_nacimiento($row['fecha_nacimiento_p']);
-            $this->setFoto_perfil($row['foto_perfil_p']);
-            $this->setDireccion($row['direccion_p']);
-            $this->setCod_localidad($row['cod_localidad_p']);
-        }
-
         mysqli_free_result($result);
         $this->CloseConnect();
     }
