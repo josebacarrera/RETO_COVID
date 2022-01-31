@@ -5,6 +5,7 @@ class datosPacienteClass
     protected $tis;
     protected $nombre;
     protected $apellido;
+    protected $telefono;
     protected $fecha_nacimiento;
     protected $email;
     protected $foto_perfil;
@@ -167,6 +168,26 @@ class datosPacienteClass
     public function setCod_localidad($cod_localidad)
     {
         $this->cod_localidad = $cod_localidad;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of telefono
+     */ 
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set the value of telefono
+     *
+     * @return  self
+     */ 
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
 
         return $this;
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-01-2022 a las 09:26:53
+-- Tiempo de generación: 31-01-2022 a las 09:26:08
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -72,12 +72,12 @@ CREATE TABLE IF NOT EXISTS `centro` (
 --
 
 INSERT INTO `centro` (`cod_centro_ce`, `cod_localidad_ce`, `nombre_ce`, `telefono_ce`, `email_ce`, `horario_temprano_ce`, `horario_tarde_ce`, `horario_noche_ce`, `dias_ce`) VALUES
-(3, 1, 'Ambulatorio Durango', 68867022, 'durango@gmail.com', '8:00', '16:00', '20:00', '7'),
-(4, 2, 'Centro de Gernika', 612120088, 'gernika@gmail.com', '8:00', '16:00', '20:00', '5'),
-(5, 3, 'Centro de Indautxu', 643450081, 'indautxu@gmail.com', '8:30', '17:00', '21:00', '4'),
-(6, 4, 'Ondarroko osasunetxea', 612120089, 'ondarroa@gmail.com', '9:00', '16:30', '', '6'),
-(7, 5, 'Ambulatorio Galdakao', 600612129, 'galdakao@gmail.com', '9:00', '14:00', '', '7'),
-(8, 6, 'Centro salud Mungia', 677761200, 'mungia@gmail.com', '8:30', '17:00', '21:00', '5');
+(3, 1, 'Ambulatorio Durango', 68867022, 'durango@gmail.com', '7:00-13:00', '16:00-19:00', '20:00-00:00', 'l,m,x,j,v,s,d'),
+(4, 2, 'Centro de Gernika', 612120088, 'gernika@gmail.com', '8:00-12:00', '16:00-18:30', '20:00-22:00', 'l,m,x,j,v'),
+(5, 3, 'Centro de Indautxu', 643450081, 'indautxu@gmail.com', '7:30-11:30', '17:00-19:00', '21:00-23:00', 'l,m,x,j'),
+(6, 4, 'Ondarroko osasunetxea', 612120089, 'ondarroa@gmail.com', '7:00-12:00', '16:30-18:30', '', 'l,m,x,j,v,s'),
+(7, 5, 'Ambulatorio Galdakao', 600612129, 'galdakao@gmail.com', '8:00-12:30', '14:00-19:30', '', 'l,m,x,j,v,s,d'),
+(8, 6, 'Centro salud Mungia', 677761200, 'mungia@gmail.com', '8:30-14:00', '17:00-19:00', '21:00-23:30', 'l,m,x,j,v');
 
 -- --------------------------------------------------------
 
@@ -119,29 +119,31 @@ INSERT INTO `cita` (`cod_cita_ci`, `tis_paciente_ci`, `cod_sanitario_ci`, `fecha
 
 DROP TABLE IF EXISTS `datos_paciente`;
 CREATE TABLE IF NOT EXISTS `datos_paciente` (
-  `tis_datos_p` int(8) NOT NULL,
+  `tis_datos_p` int(8) NOT NULL AUTO_INCREMENT,
   `nombre_p` varchar(25) NOT NULL,
   `apellido_p` varchar(50) NOT NULL,
   `fecha_nacimiento_p` date NOT NULL,
   `email_p` varchar(50) NOT NULL,
+  `telefono_p` int(9) NOT NULL,
   `foto_perfil_p` longtext NOT NULL,
   `direccion_p` varchar(25) NOT NULL,
   `cod_localidad_p` int(5) NOT NULL,
+  `status_p` tinyint(4) NOT NULL,
   PRIMARY KEY (`tis_datos_p`),
   KEY `cod_localidad` (`cod_localidad_p`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4990917 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `datos_paciente`
 --
 
-INSERT INTO `datos_paciente` (`tis_datos_p`, `nombre_p`, `apellido_p`, `fecha_nacimiento_p`, `email_p`, `foto_perfil_p`, `direccion_p`, `cod_localidad_p`) VALUES
-(1989660, 'Fali', 'Gutierrez', '1953-04-17', 'fali@gmail.com', 'img1.jgp', 'Ondarroa, Zaldupe kalea', 4),
-(2324666, 'Maria', 'Casas', '2001-03-26', 'maria@gmail.com', 'img2.jpg', 'Mungia, Maule kalea', 6),
-(2324758, 'Juan', 'Vázquez', '1965-07-12', 'juan@gmail.com', 'img3.jpg', 'Durango, Ambrosio Meabe', 1),
-(2699012, 'Miren', 'Martín', '2016-10-08', 'miren@gmail.com', 'img4.jpg', 'Gernika, Calle Huarte', 2),
-(3090114, 'Roberto', 'Torres', '1940-04-04', 'roberto@gmail.com', 'img5.jpg', 'Bilbao, Abando', 3),
-(4990916, 'Lorea', 'Barrenetxea', '2018-03-17', 'lorea@gmail.com', 'img6.jpg', 'Galdako, Zamakoa', 5);
+INSERT INTO `datos_paciente` (`tis_datos_p`, `nombre_p`, `apellido_p`, `fecha_nacimiento_p`, `email_p`, `telefono_p`, `foto_perfil_p`, `direccion_p`, `cod_localidad_p`, `status_p`) VALUES
+(1989660, 'Fali', 'Gutierrez', '1953-04-17', 'fali@gmail.com', 688659090, 'img1.jpg', 'Ondarroa, Zaldupe kalea', 4, 1),
+(2324666, 'Maria', 'Casas', '2001-03-26', 'maria@gmail.com', 611653211, 'img2.jpg', 'Mungia, Maule kalea', 6, 1),
+(2324758, 'Juan', 'Vázquez', '1965-07-12', 'juan@gmail.com', 666610853, 'img3.jpg', 'Durango, Ambrosio Meabe', 1, 1),
+(2699012, 'Miren', 'Martín', '2016-10-08', 'miren@gmail.com', 612400112, 'img4.jpg', 'Gernika, Calle Huarte', 2, 1),
+(3090114, 'Roberto', 'Torres', '1940-04-04', 'roberto@gmail.com', 600612702, 'img5.jpg', 'Bilbao, Abando', 3, 1),
+(4990916, 'Lorea', 'Barrenetxea', '2018-03-17', 'lorea@gmail.com', 690801561, 'img6.jpg', 'Galdako, Zamakoa', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -347,9 +349,9 @@ ALTER TABLE `centro`
 -- Filtros para la tabla `cita`
 --
 ALTER TABLE `cita`
-  ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`tis_paciente_ci`) REFERENCES `datos_paciente` (`tis_datos_p`),
   ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`cod_centro_ci`) REFERENCES `centro` (`cod_centro_ce`),
-  ADD CONSTRAINT `cita_ibfk_3` FOREIGN KEY (`cod_sanitario_ci`) REFERENCES `sanitario` (`cod_sanitario_s`);
+  ADD CONSTRAINT `cita_ibfk_3` FOREIGN KEY (`cod_sanitario_ci`) REFERENCES `sanitario` (`cod_sanitario_s`),
+  ADD CONSTRAINT `cita_ibfk_4` FOREIGN KEY (`tis_paciente_ci`) REFERENCES `datos_paciente` (`tis_datos_p`);
 
 --
 -- Filtros para la tabla `datos_paciente`

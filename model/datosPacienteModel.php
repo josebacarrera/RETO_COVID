@@ -130,12 +130,10 @@ class datosPacienteModel extends datosPacienteClass{
         $sql = "SELECT * 
                 FROM datos_paciente 
                 WHERE tis_datos_p = '" . $this->getTis() . "' AND fecha_nacimiento_p = '" . $this->getFecha_nacimiento() . "' AND status_p = 1;";
-        $result = $this->link->query($sql);
         $logged = false;
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        if ( $this->link->query($sql)) {
             $logged = true;
         }
-        mysqli_free_result($result);
         $this->CloseConnect();
         return $logged;  
     }
@@ -158,6 +156,7 @@ class datosPacienteModel extends datosPacienteClass{
             $this->setFoto_perfil($row['foto_perfil_p']);
             $this->setDireccion($row['direccion_p']);
             $this->setCod_localidad($row['cod_localidad_p']);
+            $this->setTelefono($row['telefono_p']);
 
             $this->objLocalidad = new localidadModel();
             $this->objLocalidad->setCod($row['cod_localidad_l']);

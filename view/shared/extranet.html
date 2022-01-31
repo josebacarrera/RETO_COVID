@@ -28,6 +28,7 @@
 <body ng-controller="body">
 
     <div id="navbar"></div>
+    <div class="loader-page"></div>
 
     <!-- PaneLateral -->
     <div id="paneLateral" class='fixed-top'>
@@ -110,8 +111,9 @@
                 <img src="../img/citaprevia.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">CITA</h5>
-                    <div class="text-center my-4"> <a href="https://zitaberria.osakidetza.eus/o22PlamWar/o22JSP/O22jsplogin.jsp" target="_blank" class="btn"
-                            style="background-color: #358f80; color: white;" >PEDIR CITA</a> </div>
+                    <div class="text-center my-4"> <a
+                            href="https://zitaberria.osakidetza.eus/o22PlamWar/o22JSP/O22jsplogin.jsp" target="_blank"
+                            class="btn" style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
                 </div>
             </div>
 
@@ -128,8 +130,10 @@
                 <img src="../img/cirugia.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">ESPERA CIRUGIA</a></h5>
-                    <div class="text-center my-4"> <a href="https://www.osakidetza.euskadi.eus/servicios-on-line/-/servicios-a-la-ciudadania/"target="_blank" class="btn"
-                            style="background-color: #358f80; color: white;">COMPROBAR</a> </div>
+                    <div class="text-center my-4"> <a
+                            href="https://www.osakidetza.euskadi.eus/servicios-on-line/-/servicios-a-la-ciudadania/"
+                            target="_blank" class="btn" style="background-color: #358f80; color: white;">COMPROBAR</a>
+                    </div>
                 </div>
             </div>
 
@@ -150,8 +154,9 @@
                 <img src="../img/medicinas.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS MEDICACIONES</h5>
-                    <div class="text-center my-4"> <a href="https://micarpetasaludberria.osakidetza.eus/web/guest/acceso" target="_blank" class="btn"
-                            style="background-color: #358f80; color: white;">VER</a> </div>
+                    <div class="text-center my-4"> <a
+                            href="https://micarpetasaludberria.osakidetza.eus/web/guest/acceso" target="_blank"
+                            class="btn" style="background-color: #358f80; color: white;">VER</a> </div>
                 </div>
             </div>
 
@@ -159,8 +164,9 @@
                 <img src="../img/informe.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">INFORMES MÉDICOS</h5>
-                    <div class="text-center my-4"> <a href="https://micarpetasaludberria.osakidetza.eus/web/guest/acceso" target="_blank" class="btn"
-                            style="background-color: #358f80; color: white;">VER</a> </div>
+                    <div class="text-center my-4"> <a
+                            href="https://micarpetasaludberria.osakidetza.eus/web/guest/acceso" target="_blank"
+                            class="btn" style="background-color: #358f80; color: white;">VER</a> </div>
                 </div>
             </div>
         </div>
@@ -169,40 +175,45 @@
         <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='DATOS'">
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Datos Personales</h4>
+                <h1 class="text-right title">Datos Personales</h1>
             </div>
-            <div class="wrapper mt-sm-5">
+            <div class="wrapper">
 
                 <div class="d-flex align-items-start py-3 border-bottom"> <img id="fotoPerfil"
                         src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                         class="img imgPerfil" alt="">
-                    <div class="pl-sm-4 pl-2" id="img-section"> <b>Foto de perfil</b>
-                        <p>Tamaño máximo aceptado: 1MB</p> <button class="btn button border"><b>Subir</b></button>
+                    <div class="pl-sm-4 pl-2 p-2" id="img-section"> <b>Foto de perfil</b>
+                        <div class="input-file">
+                            <input type="file" id="fotoPerfil" onchange="changeFitx()" class="input-file-input"
+                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" />
+                            <label for="fotoPerfil" class="input-file-btn"></label>
+                        </div>
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Nombre</label><input id="pacienteNombre" type="text" class="form-control"
-                            value=""></div>
-                    <div class="col-md-6"><label class="labels">Apellido</label><input id="pacienteApellido" type="text" class="form-control"
-                            value=""></div>
+                    <div class="col-md-6"><label class="labels fw-bold">Nombre</label><input id="pacienteNombre" type="text"
+                            class="form-control" value=""></div>
+                    <div class="col-md-6"><label class="labels fw-bold">Apellido</label><input id="pacienteApellido" type="text"
+                            class="form-control" value=""></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Numero TIS</label><input id="pacienteTIS"  type="text"
+                    <div class="col-md-12"><label class="labels fw-bold">Numero TIS</label><input id="pacienteTIS" type="text"
                             class="form-control" placeholder="Numero TIS bloqueado" value=""></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="text" id="pacienteEmail"  class="form-control"
-                            placeholder="Correo electronico" value=""></div>
-                    <div class="col-md-12"><label class="labels">Telefono</label><input type="text" id="pacienteTelefono" class="form-control"
-                            placeholder="Telefono" value=""></div>
-                  
+                    <div class="col-md-12 mt-1"><label class="labels fw-bold">Email</label><input type="text" id="pacienteEmail"
+                            class="form-control" placeholder="Correo electronico" value=""></div>
+                    <div class="col-md-12 mt-1"><label class="labels fw-bold">Telefono</label><input type="text"
+                            id="pacienteTelefono" class="form-control" placeholder="Telefono" value=""></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Poblacion</label><input type="text" id="pacienteDireccion"  class="form-control"
-                            placeholder="Direccion" value=""></div>
-                    <div class="col-md-6"><label class="labels">Provincia</label><input type="text" id="pacientePoblacion"  class="form-control"
-                            value="" placeholder="Poblacion"></div>
+                    <div class="col-md-6"><label class="labels fw-bold">Poblacion</label><input type="text"
+                            id="pacienteDireccion" class="form-control" placeholder="Direccion" value=""></div>
+                    <div class="col-md-6"><label class="labels fw-bold">Provincia</label><input type="text"
+                            id="pacientePoblacion" class="form-control" value="" placeholder="Poblacion"></div>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">GUARDAR
-                        CAMBIOS</button></div>
+                <div class="my-5 text-center">
+                    <button class="btn btn-primary profile-button" type="button" ng-click="updatePaciente()">GUARDAR
+                        CAMBIOS</button>
+                    <button class="btn btn-danger profile-button" type="button" ng-click="discardChanges()">DESCARTAR CAMBIOS</button></div>
             </div>
 
 
@@ -241,9 +252,9 @@
         </div>
 
 
-        
-        <div class="row mx-0 d-flex justify-content-around miniatura"
-            ng-show="show=='default' || show=='COVID'"  style="margin-top: 7%;">
+
+        <div class="row mx-0 d-flex justify-content-around miniatura" ng-show="show=='default' || show=='COVID'"
+            style="margin-top: 7%;">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
@@ -260,7 +271,7 @@
 
                         <div class="collapse" id="pregunta1">
                             <div class="card card-body mt-0">
-                                
+
                                 <ul>
                                     <li>Médico o médica de cabecera</li>
                                     <li>Pediatra</li>
@@ -268,7 +279,7 @@
                                     <li>Enfermería</li>
 
                                 </ul>
-                                
+
                             </div>
                         </div>
                         <div class="card-header" id="hpregunta2" style="background-color: white;">
@@ -364,14 +375,14 @@
             </div>
 
         </div>
-        
+
         <div class="row mx-0 d-flex justify-content-around" style="margin-top: -11%;">
 
             <div class="faq_area pt-3">
 
                 <div class="row justify-content-center">
                     <div class="col-12 col-sm-8 col-lg-6">
-                        
+
                         <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s"
                             style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                             <h3><span>Preguntas Frecuentes</span></h3><br>
@@ -380,7 +391,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    
+
                     <div class="col-12 col-sm-10 col-lg-8">
                         <div class="accordion faq-accordian" id="faqAccordion">
                             <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s"
@@ -671,7 +682,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
 
         <!-- VER VACUNAS -->
         <div class="row mx-0 d-flex justify-content-around" ng-show="show=='verVacunas'">
@@ -680,7 +691,8 @@
 
             <div class="list-group" ng-repeat='vacuna in usuario.objVacunacion'>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <p class="m-0">El paciente ha recibido {{vacuna.dosis}} de la vacuna {{vacuna.objVacuna.nombre}}. Última fecha registreada {{vacuna.fecha_ultima_vacuna}}</p>
+                    <p class="m-0">El paciente ha recibido {{vacuna.dosis}} de la vacuna {{vacuna.objVacuna.nombre}}.
+                        Última fecha registreada {{vacuna.fecha_ultima_vacuna}}</p>
                     <button class="btn btn-primary">Generar Informe</button>
                 </li>
             </div>
@@ -694,7 +706,8 @@
 
             <div class="list-group" ng-repeat='cita in usuario.objCita'>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <p class="m-0">Cita realizada en {{cita.fecha}} a las {{cita.hora}}. Nº de Sanitario asignado: {{cita.cod_sanitario}}</p>
+                    <p class="m-0">Cita realizada en {{cita.fecha}} a las {{cita.hora}}. Nº de Sanitario asignado:
+                        {{cita.cod_sanitario}}</p>
                     <button class="btn btn-primary">Generar Informe</button>
                 </li>
             </div>
@@ -750,8 +763,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-messages.min.js"></script>
 <!-- ANGULAR MATERIAL -->
 <script src="../js/extranet.js"></script>
-<script src="../js/script.js"></script>
-<script src="../js/insert.js"></script>
 <script src="https://kit.fontawesome.com/c4fc8a3024.js"></script>
 <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 

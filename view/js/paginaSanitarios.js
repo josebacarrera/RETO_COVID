@@ -34,7 +34,7 @@ function loadPaginaSanitario() {
 }
 
 
-function changeFitx(action) {
+function changeFitx() {
     //console.log(this);  this en este caso es Window
 
     var file = event.currentTarget.files[0];
