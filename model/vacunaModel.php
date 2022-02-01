@@ -73,11 +73,10 @@ class vacunaModel extends vacunaClass{
 
         $this->OpenConnect();
 
-        $sql = "INSERT INTO vacuna (nombre_v,max_v,intervalo_v) VALUES ('".$this->getNombre()."','".$this->getMax()."','".$this->getIntervalo()."') WHERE cod_vacuna_v='".$this->getCod()."'";
+        $sql = "INSERT INTO vacuna (nombre_v,max_v,intervalo_v) VALUES ('".$this->getNombre()."','".$this->getMax()."','".$this->getIntervalo()."')";
         $result = $this->link->query($sql);
         
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
+        if ($result) {
             return true;
         }
 

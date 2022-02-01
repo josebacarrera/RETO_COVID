@@ -37,6 +37,7 @@ if (isset($data['solicitud'])) {
                     $sanitario = new sanitarioModel();
                     $sanitario->setDni($dni);
                     $sanitario->selectByDni();
+                    $response['logged'] = true;
                     $_SESSION['rol'] = $user->ObjVars()['objRol']['nombre'];
                     $_SESSION['sanitario'] = $sanitario->ObjVars();
                 } else {

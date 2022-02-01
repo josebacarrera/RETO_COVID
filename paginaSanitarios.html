@@ -28,8 +28,8 @@
 
                 <li> <a href="#" id="informes" class="nav-link text-white"> <i class="fa fa-scroll"></i><span
                             class="ms-2" ng-click="cambiarinformes()">Pacientes</span> </a> </li>
-                <li> <a href="#" id="agendaSanitaria" class="nav-link text-white"> <i class="fa fa-book"></i><span
-                            class="ms-2" ng-click="cambiaragenda()">Agenda sanitaria</span> </a> </li>
+                <li> <a href="#" id="agendaSanitaria" class="nav-link text-white d-none"> <i class="fa fa-book"></i><span
+                            class="ms-2 " ng-click="cambiaragenda()">Agenda sanitaria</span> </a> </li>
                 <li> <a href="#" id="datosPersonales" class="nav-link text-white"> <i class="fas fa-user"></i><span
                             class="ms-2" ng-click="cambiardatos()">Datos personales</span> </a> </li>
                 <li> <a href="#" id="configuracionVacuna" class="nav-link text-white"> <i class="fas fa-cog"></i><span
@@ -209,7 +209,7 @@
                 </tbody>
             </table>
             <div class="text-center">
-                <button class="btn text-white" style="background-color:#036666; border-color: #036666;"> Añadir
+                <button class="btn text-white" style="background-color:#036666; border-color: #036666;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Añadir
                     vacuna</button>
      
             </div>
@@ -231,7 +231,7 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-6 col-md-2 col-lg-2 text-center p-2">
                         <img id="fotoPerfil" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg"
-                            srcset="" class="img-fluid img-perfil img-thumbnail">
+                            srcset="" class="img-fluid img-perfil img-thumbnail"  style="max-height: 200px;">
 
                     </div>
                     <div class="mb-4 col-sm-6 col-md-4 col-lg-5 p-1 m-auto">
@@ -266,7 +266,7 @@
                             <label for="fotoTrabajador" class="input-file-btn"></label>
                         </div>
                         <div class="p-3">
-                            <img id="newFoto" src="" class="img-fluid" alt="">
+                            <img id="newFoto" src="" class="img-fluid" alt="" style="max-height: 200px;">
                         </div>
                     </div>
                     <div class="text-center">
@@ -276,6 +276,43 @@
             </form>
         </div>
     </div>
+
+    
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Añadir vacuna</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="p-3">
+                <!-- TIS input -->
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="nombreVacuna" ng-model="nombreVacuna" required >
+                    <label for="nombreVacuna">Nombre</label>
+                </div>
+
+                <!-- Birth Date input -->
+                <div class="form-floating mb-4">
+                    <input type="number" class="form-control" id="dosisMax" ng-model='dosisMax' required>
+                    <label for="dosisMax">Dosis maximas</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="number" class="form-control" id="intervaloDosis" ng-model='intervaloDosis' required>
+                    <label for="intervaloDosis">Intervalo entre dosis (meses)</label>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="guardarVacuna()">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 <!--SCRIPTS-->

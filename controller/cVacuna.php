@@ -50,8 +50,7 @@ if (isset($data['solicitud'])) {
 
         case 'addVacuna':
         
-            if (isset($data['cod'])) {$cod=$data['cod'];}
-            else {$respons['error']=true;$response['errorInf']='Cod Not Found';}
+           
 
             if (isset($data['nombre'])) {$nombre=$data['nombre'];}
             else {$respons['error']=true;$response['errorInf']='Nombre Not Found';}
@@ -65,7 +64,6 @@ if (isset($data['solicitud'])) {
             if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
 
                 $vacuna = new vacunaModel();
-                $vacuna->setCod($cod);
                 $vacuna->setNombre($nombre);
                 $vacuna->setMax($max);
                 $vacuna->setIntervalo($intervalo);

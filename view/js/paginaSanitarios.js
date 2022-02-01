@@ -154,19 +154,7 @@ reto_covid.controller('bajaPaciente', async function ($scope) {
         })
             .then(res => res.json()).then(result => {
                 console.log(result);
-                // if (result.paciente) {
-                //     $('#selectedPacienteNombre').val(result.paciente.nombre);
-                //     $('#selectedPacienteApellido').val(result.paciente.apellido);
-                //     $('#selectedPacienteFecha').val(result.paciente.fecha_nacimiento);
-                //     $('#btnBaja').prop("disabled", false);
-
-                // } else {
-                //     $('#selectedPacienteNombre').val(" ");
-                //     $('#selectedPacienteApellido').val(" ");
-                //     $('#selectedPacienteFecha').val(" ");
-                //     $('#btnBaja').prop("disabled", true);
-
-                // }
+                alert("Se ha eliminado al paciente correctamente");
             })
             .catch(error => console.error('Error status:', error));
     }
@@ -223,6 +211,7 @@ reto_covid.controller('altaPaciente', async function ($scope) {
 reto_covid.controller('editarVacunas', async function ($scope) {
     $scope.vacunas = await getVacunas();
     console.log($scope.vacunas);
+
     $scope.updateVacuna = (codigo) => {
 
         console.log(codigo)
@@ -234,7 +223,6 @@ reto_covid.controller('editarVacunas', async function ($scope) {
                 if (isNaN(String.fromCharCode(e.which))) e.preventDefault();
             });
         }
-
     }
 
     // CUERPO
@@ -242,7 +230,23 @@ reto_covid.controller('editarVacunas', async function ($scope) {
 
 })
 
+function guardarVacuna() {
+    let nombre = $('#nombreVacuna').val();
+    let dosis = $('#dosisMax').val();
+    let intervalo =$('#intervaloDosis').val();
+    
+    var data = { 'solicitud': 'addVacuna', 'nombre':nombre, 'max':dosis, 'intervalo':intervalo }
+    var url = "controller/cVacuna.php";
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
 
+    }).then(res => res.json()).then(result => {
+        console.log(result);
+        window.location.reload();
+    }).catch(error => console.error('Error status:', error));
+}
 
 //CARGA LAS LOCALIDADES
 function getLocalidades() {

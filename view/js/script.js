@@ -7,7 +7,6 @@ reto_covid.controller('login', function ($scope) {
         
 
         if (solicitud == 'loginTis') {
-            alert("Has iniciado sesión correctamente");
             var data = {
                 'solicitud': solicitud,
                 'tis': $scope.tis,
@@ -33,9 +32,9 @@ reto_covid.controller('login', function ($scope) {
             headers: { 'Content-Type': 'application/json' }
 
         }).then(res => res.json()).then(result => {
-
+            console.log(result)
             if (result.error) {
-                console.log(result.errorInf);
+                alert("Datos incorrectos: " + result.errorInf);
             } else {
                 if ( result.logged ) {
                     window.location.reload();

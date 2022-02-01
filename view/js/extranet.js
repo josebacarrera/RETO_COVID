@@ -219,8 +219,14 @@ reto_covid_intranet.controller('body', async function ($scope) {
             case 'verCitas':
                 ($scope.show == contenType) ? $scope.show = 'default' : $scope.show = contenType;
                 $scope.cancelarCita = (cod) => {
-                    $('li#citaCod'+cod).css('display','hide')
-                    console.log($('li#citaCod'+cod));
+                    $('li#citaCod'+cod).hide('fade');
+                    var codForDelet;
+                    for (let i = 0; i < $scope.usuario.objCita.length; i++) {
+                        if ($scope.usuario.objCita[i].cod == cod) {
+                            codForDelet = i;
+                        }
+                    }
+                    $scope.usuario.objCita.splice(codForDelet,1);
                 }
                 break;
 

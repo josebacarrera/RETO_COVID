@@ -77,22 +77,21 @@
                         <form class="p-3">
                             <!-- Email input -->
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control" ng-model='dni' required />
+                                <input type="text" class="form-control" ng-model='dni' oninput="validateDni(this)"  required />
                                 <label class="form-label" for="dni">DNI (e.j.: 12345678A) </label>
-
                             </div>
 
                             <!-- Password input -->
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" ng-model='password' oninput="validateDni(this)" required>
+                                <input type="password" class="form-control" ng-model='password' required>
                                 <label class="form-label" for="password">Contraseña </label>
-2
+
                             </div>
 
                             <!-- Submit button -->
                             <div class="text-center">
                                 <button type="button" class="btn btn-primary btn-block"
-                                    ng-click='login("loginDni")'>Signin</button>
+                                    ng-click='login("loginDni")'>Sign in</button>
 
                             </div>
                         </form>
