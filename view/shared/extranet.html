@@ -69,34 +69,6 @@
                 </a>
             </li>
 
-            <li class="border-top border-bottom">
-                <!-- SEPARADOR -->
-                <a href="" class="nav-link text-white">
-                    <span class="fs-5 btnAgenda">SEPARADOR</span>
-                </a>
-            </li>
-
-            <li class="border-bottom">
-                <!-- PEDIRCITA -->
-                <a href="" class="nav-link text-white" ng-click="loadContent('pedirCita')">
-                    <span class="fs-5 btnAgenda">PedirCita</span>
-                </a>
-            </li>
-
-            <li class="border-bottom">
-                <!-- VERCITA -->
-                <a href="" class="nav-link text-white" ng-click="loadContent('verCitas')">
-                    <span class="fs-5">verCitas</span>
-                </a>
-            </li>
-
-            <li class="border-bottom">
-                <!-- VERVACUNAS -->
-                <a href="" class="nav-link text-white" ng-click="loadContent('verVacunas')">
-                    <span class="fs-5">verVacunas</span>
-                </a>
-            </li>
-
         </ul>
 
 
@@ -129,7 +101,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS CITAS</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">REVISAR</a> </div>
+                            style="background-color: #358f80; color: white;" ng-click="loadContent('verCitas')">REVISAR</a> </div>
                 </div>
             </div>
 
@@ -153,7 +125,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">INFORMACIÓN BÁSICA</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">VER</a> </div>
+                            style="background-color: #358f80; color: white;" ng-click="loadContent('DATOS')">VER</a> </div> 
                 </div>
             </div>
 
@@ -245,7 +217,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">CITA VACUNACIÓN</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
+                            style="background-color: #358f80; color: white;" ng-click="loadContent('pedirCita')">PEDIR CITA</a> </div>
                 </div>
             </div>
 
@@ -254,7 +226,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS VACUNAS</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;">VER</a> </div>
+                            style="background-color: #358f80; color: white;" ng-click="loadContent('verVacunas')">VER</a> </div>
                 </div>
             </div>
 
