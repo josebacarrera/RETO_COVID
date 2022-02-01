@@ -7,6 +7,18 @@ reto_covid_intranet.controller('body', async function ($scope) {
     if (session) // $scope.usuario recibe los datos de session.
         (session.sanitario) ? $scope.usuario = session.sanitario : $scope.usuario = session.paciente;
 
+        var data = { 'solicitud': 'getLocalidades' }
+        var url = "../../controller/cLocalidad.php";
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+
+        }).then(res => res.json()).then(result => {
+            $scope.localidades = result.localidades;
+            console.log($scope.localidades);
+            console.log($('option[value=4]'));
+        }).catch(error => console.error('Error status:', error));
     // MULTIPURPOSE VARIABLES
 
     // $(".btnVMas").click(showFaq);
@@ -42,40 +54,29 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
                 ($scope.show == contenType) ? $scope.show = 'default' : $scope.show = contenType;
 
-                var data = { 'solicitud': 'getLocalidades' }
-                var url = "../../controller/cLocalidad.php";
-                fetch(url, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: { 'Content-Type': 'application/json' }
-                    
-                }).then(res => res.json()).then(result => {
-                    $scope.localidades=result.localidades;
-                    console.log($scope.localidades);
-                    console.log($('option[value=4]'));
-                }).catch(error => console.error('Error status:', error));
-
                 $("#pacienteNombre").val(session.paciente.nombre);
                 $("#pacienteApellido").val(session.paciente.apellido);
                 $("#pacienteTIS").val(session.paciente.tis);
                 $("#pacienteEmail").val(session.paciente.email);
                 $("#pacienteTelefono").val(session.paciente.telefono);
                 $("#pacienteDireccion").val(session.paciente.direccion);
-                $("#paciente").val(session.paciente.cod_localidad);
-
                 $('#fotoPerfil').attr("src", "../img/" + session.paciente.foto_perfil);
+                $('#localidad option[value="'+session.paciente.cod_localidad+'"]').attr("selected", true);
+
+                console.log();
 
                 $scope.updatePaciente = function () {
 
-                    $("#pacienteNombre").val();
-                    $("#pacienteTIS").val();
-                    $("#pacienteEmail").val();
-                    $("#pacienteTelefono").val();
-                    $("#pacienteDireccion").val();
-                    $("#pacientePoblacion").val();
-                    $('#fotoPerfil').attr("src");
 
-                    var data = { "nombre": $("#pacienteNombre").val(), "apellido": $("#pacienteApellido").val(), "telefono": $("#pacienteTelefono").val(), "direccion": $("#pacienteDireccion").val() };
+                    var data = {
+                        "solicitud": "updatePaciente",
+                        "tis": $("#pacienteTIS").val(),
+                        "nombre": $("#pacienteNombre").val(),
+                        "apellido": $("#pacienteApellido").val(),
+                        "telefono": $("#pacienteTelefono").val(),
+                        "direccion": $("#pacienteDireccion").val(),
+                        "fotoPerfil": $("#fotoPerfil").attr("src")
+                    };
 
 
                 }

@@ -57,8 +57,6 @@ if (isset($data['solicitud'])) {
                 if (isset($data['apellido'])) {$apellido=$data['apellido'];}
                 else {$response['error'] = true;$response['errorInf'] = 'Apellido Not Found';}
                 
-                if (isset($data['fecha_nac'])) {$fecha_nac=$data['fecha_nac'];}
-                else {$response['error'] = true;$response['errorInf'] = 'Apellido Not Found';}
     
                 if (isset($data['email'])) {$email=$data['email'];}
                 else {$response['error'] = true;$response['errorInf'] = 'Email Not Found';}
@@ -74,7 +72,6 @@ if (isset($data['solicitud'])) {
                     $paciente = new datosPacienteModel();
                     $paciente->setNombre($nombre);
                     $paciente->setApellido($apellido);
-                    $paciente->setFecha_nacimiento($fecha_nac);
                     $paciente->setEmail($email);
                     $paciente->setDireccion($direccion);
                     $paciente->setCod_localidad($localidad);
