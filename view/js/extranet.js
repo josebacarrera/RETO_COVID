@@ -1,4 +1,7 @@
 var reto_covid_intranet = angular.module('reto_covid_intranet', []);
+var savedFileBase64;
+var filename;
+var filesize;
 
 reto_covid_intranet.controller('body', async function ($scope) {
 
@@ -16,26 +19,7 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
         }).then(res => res.json()).then(result => {
             $scope.localidades = result.localidades;
-            console.log($scope.localidades);
-            console.log($('option[value=4]'));
         }).catch(error => console.error('Error status:', error));
-    // MULTIPURPOSE VARIABLES
-
-    // $(".btnVMas").click(showFaq);
-
-    // function showFaq() {
-
-    //     $(".faq_area").css('display', 'inline-block');
-    //     $(".covidCard").css('display', 'none');
-
-    // }
-
-    // $(".btnAgenda").click(hideFaq);
-
-    // function hideFaq(){
-    //     $(".faq_area").css('display', 'none');
-    //     $(".covidCard").css('display', '');
-    // }
 
     $scope.show = 'default';
 
@@ -57,13 +41,12 @@ reto_covid_intranet.controller('body', async function ($scope) {
                 $("#pacienteNombre").val(session.paciente.nombre);
                 $("#pacienteApellido").val(session.paciente.apellido);
                 $("#pacienteTIS").val(session.paciente.tis);
+                $("#pacienteFecha_nac").val(session.paciente.fecha_nacimiento);
+                $("#pacienteLocalidad").val(session.paciente.cod_centro);
                 $("#pacienteEmail").val(session.paciente.email);
                 $("#pacienteTelefono").val(session.paciente.telefono);
                 $("#pacienteDireccion").val(session.paciente.direccion);
                 $('#fotoPerfil').attr("src", "../img/" + session.paciente.foto_perfil);
-                $('#localidad option[value="'+session.paciente.cod_localidad+'"]').attr("selected", true);
-
-                console.log();
 
                 $scope.updatePaciente = function () {
 
@@ -75,9 +58,21 @@ reto_covid_intranet.controller('body', async function ($scope) {
                         "apellido": $("#pacienteApellido").val(),
                         "telefono": $("#pacienteTelefono").val(),
                         "direccion": $("#pacienteDireccion").val(),
+                        "localidad": $("#pacienteLocalidad").val(),
                         "fotoPerfil": $("#fotoPerfil").attr("src")
                     };
-
+                    
+                    var url="../../controller/cPaciente.php";
+                    
+                    fetch(url, {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: { 'Content-Type': 'application/json' }
+            
+                    }).then(res => res.json()).then(result => {
+                        console.log(result);
+                        $('#fotoPerfil').attr("src", savedFileBase64);
+                    }).catch(error => console.error('Error status:', error));
 
                 }
 

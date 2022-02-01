@@ -1,6 +1,6 @@
 # RETO COVID
 
-En este proyecto hemos creado una página para pedir citas de vacunación para el COVID.
+Este proyecto está basado en una página para pedir citas de vacunación para el COVID.
 
 ### USUARIOS PARA PODER REALIZAR PRUEBAS:
 
