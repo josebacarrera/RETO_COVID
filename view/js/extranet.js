@@ -7,8 +7,12 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
 
     let session = await getSession(); // Variable session almacena los datos de session.
-    if (session) // $scope.usuario recibe los datos de session.
+    if (session){
+        // $scope.usuario recibe los datos de session.
         (session.sanitario) ? $scope.usuario = session.sanitario : $scope.usuario = session.paciente;
+    } else{
+        window.location.href = "../../index.html";
+    }
 
         var data = { 'solicitud': 'getLocalidades' }
         var url = "../../controller/cLocalidad.php";
