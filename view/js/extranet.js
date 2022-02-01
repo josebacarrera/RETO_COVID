@@ -42,7 +42,6 @@ reto_covid_intranet.controller('body', async function ($scope) {
                 $("#pacienteApellido").val(session.paciente.apellido);
                 $("#pacienteTIS").val(session.paciente.tis);
                 $("#pacienteFecha_nac").val(session.paciente.fecha_nacimiento);
-                $("#pacienteLocalidad").val(session.paciente.cod_centro);
                 $("#pacienteEmail").val(session.paciente.email);
                 $("#pacienteTelefono").val(session.paciente.telefono);
                 $("#pacienteDireccion").val(session.paciente.direccion);
@@ -50,7 +49,9 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
                 $scope.updatePaciente = function () {
 
-
+                    var cod_localidad;
+                    $("#localidad").val()?cod_localidad= $("#localidad").val:cod_localidad=session.paciente.cod_localidad;
+                    
                     var data = {
                         "solicitud": "updatePaciente",
                         "tis": $("#pacienteTIS").val(),
@@ -58,8 +59,10 @@ reto_covid_intranet.controller('body', async function ($scope) {
                         "apellido": $("#pacienteApellido").val(),
                         "telefono": $("#pacienteTelefono").val(),
                         "direccion": $("#pacienteDireccion").val(),
-                        "localidad": $("#pacienteLocalidad").val(),
-                        "fotoPerfil": $("#fotoPerfil").attr("src")
+                        "email": $("#pacienteEmail").val(),
+                        "localidad":cod_localidad,
+                        "savedFileBase64": savedFileBase64,
+                        'filename': filename
                     };
                     
                     var url="../../controller/cPaciente.php";
@@ -71,6 +74,7 @@ reto_covid_intranet.controller('body', async function ($scope) {
             
                     }).then(res => res.json()).then(result => {
                         console.log(result);
+                        alert("Se han guardado los cambios");
                         $('#fotoPerfil').attr("src", savedFileBase64);
                     }).catch(error => console.error('Error status:', error));
 
@@ -214,6 +218,10 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
             case 'verCitas':
                 ($scope.show == contenType) ? $scope.show = 'default' : $scope.show = contenType;
+                $scope.cancelarCita = (cod) => {
+                    $('li#citaCod'+cod).css('display','hide')
+                    console.log($('li#citaCod'+cod));
+                }
                 break;
 
 
@@ -269,9 +277,6 @@ $(window).on('load', function () {
         $(".loader-page").css({ visibility: "hidden", opacity: "0" })
     }, 500);
 });
-
-
-
 
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
 

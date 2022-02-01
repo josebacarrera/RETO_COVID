@@ -101,7 +101,13 @@ class datosPacienteModel extends datosPacienteClass{
 
     public function update() {
         $this->OpenConnect();
-        $sql="UPDATE datos_paciente SET nombre_p='".$this->getNombre()."', apellido_p='".$this->getApellido()."', email_p='".$this->getEmail()."', telefono_p='".$this->getTelefono()."', foto_perfil_p='".$this->getFoto_perfil()."', direccion_p='".$this->getDireccion()."', cod_localidad_p='".$this->getCod_localidad()."' WHERE tis_datos_p = '" . $this->getTis() . "'";
+        if($this->getFoto_perfil()){
+            $sql="UPDATE datos_paciente SET nombre_p='".$this->getNombre()."', apellido_p='".$this->getApellido()."', email_p='".$this->getEmail()."', telefono_p='".$this->getTelefono()."', foto_perfil_p='".$this->getFoto_perfil()."', direccion_p='".$this->getDireccion()."', cod_localidad_p='".$this->getCod_localidad()."' WHERE tis_datos_p = '" . $this->getTis() . "'";
+
+        }else{
+            $sql="UPDATE datos_paciente SET nombre_p='".$this->getNombre()."', apellido_p='".$this->getApellido()."', email_p='".$this->getEmail()."', telefono_p='".$this->getTelefono()."', direccion_p='".$this->getDireccion()."', cod_localidad_p='".$this->getCod_localidad()."' WHERE tis_datos_p = '" . $this->getTis() . "'";
+        }
+        var_dump($sql);
         $this->link->query($sql);
         $this->CloseConnect();
     }

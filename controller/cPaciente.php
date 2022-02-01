@@ -53,7 +53,10 @@ if (isset($data['solicitud'])) {
 
                 if (isset($data['nombre'])) {$nombre=$data['nombre'];}
                 else {$response['error'] = true;$response['errorInf'] = 'Nombre Not Found';}
-    
+
+                if (isset($data['tis'])) {$tis=$data['tis'];}
+                else {$response['error'] = true;$response['errorInf'] = 'Tis Not Found';}
+
                 if (isset($data['apellido'])) {$apellido=$data['apellido'];}
                 else {$response['error'] = true;$response['errorInf'] = 'Apellido Not Found';}
                 
@@ -67,14 +70,37 @@ if (isset($data['solicitud'])) {
                 if (isset($data['localidad'])) {$localidad=$data['localidad'];}
                 else {$response['error'] = true;$response['errorInf'] = 'Localidad Not Found';}
     
+                if (isset($data['telefono'])) {$telefono=$data['telefono'];}
+                else {$response['error'] = true;$response['errorInf'] = 'Telefono Not Found';}
+
+                if (isset($data['filename'])) 
+                {               
+    
+                    $writable_dir = '../view/img/';
+                    $cartel=$data['filename'];
+    
+                    $savedFileBase64=$data['savedFileBase64'];
+                    $fileBase64 = explode(',', $savedFileBase64)[1]; //parte dcha de la coma
+    
+                    $file = base64_decode($fileBase64);
+                    if(!is_dir($writable_dir)){mkdir($writable_dir);}
+               
+                    file_put_contents($writable_dir.$cartel, $file,  LOCK_EX);
+                }
+                else {$cartel = NULL;}
     
                 if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
                     $paciente = new datosPacienteModel();
+                    $paciente->setTis($tis);
                     $paciente->setNombre($nombre);
                     $paciente->setApellido($apellido);
                     $paciente->setEmail($email);
+                    $paciente->setTelefono($telefono);
+
                     $paciente->setDireccion($direccion);
                     $paciente->setCod_localidad($localidad);
+                    $paciente->setFoto_perfil($cartel);
+
                     $paciente->update();
                     
                     $response['paciente'] = $paciente->ObjVars();

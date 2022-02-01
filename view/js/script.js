@@ -4,8 +4,10 @@ reto_covid.controller('login', function ($scope) {
     $scope.password;
 
     $scope.login = function (solicitud) {
+        
 
         if (solicitud == 'loginTis') {
+            alert("Has iniciado sesión correctamente");
             var data = {
                 'solicitud': solicitud,
                 'tis': $scope.tis,
@@ -18,6 +20,7 @@ reto_covid.controller('login', function ($scope) {
                 'password': $scope.password
             };
         } else if (solicitud == 'logout') {
+            alert("Has cerrado sesión correctamente");
             var data = {
                 'solicitud': solicitud
             };

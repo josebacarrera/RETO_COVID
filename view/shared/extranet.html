@@ -100,8 +100,9 @@
         </ul>
 
 
-        <button type="submit" class="btn btn-outline-success" value="Enviar" id="btnEnviar"><a
-                src="../index.html"></a>BACK</button> <!-- style="background-color: #358f80; color: white;" -->
+        <!-- <button type="submit" class="btn btn-outline-success" value="Enviar" id="btnEnviar">
+            <a href="../index.html"></a>BACK</button> style="background-color: #358f80; color: white;" -->
+            
     </div>
     <!-- PaneLateral -->
 
@@ -220,7 +221,7 @@
                         <div class="form-outline mb-4 w-100">
                             <label class="fw-bold" for="newPacienteDireccion">Localidad</label>
                             <select name="" id="localidad" ng-model="localidad" class="form-control form-select">
-                                <option value="{{usuario.objLocalidad.cod}}">{{ usuario.objLocalidad.nombre }}</option>
+                                <option value="">{{ usuario.objLocalidad.nombre }}</option>
                                 <option value="{{localidad.cod}}" ng-repeat='localidad in localidades' ng-if='localidad.nombre != usuario.objLocalidad.nombre'>
                                     {{localidad.nombre}}</option>
                             </select>
@@ -721,10 +722,10 @@
             <h3>Registro de citas</h3>
 
             <div class="list-group" ng-repeat='cita in usuario.objCita'>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li id="citaCod{{cita.cod}}" class="list-group-item d-flex justify-content-between align-items-center">
                     <p class="m-0">Cita realizada en {{cita.fecha}} a las {{cita.hora}}. Nº de Sanitario asignado:
                         {{cita.cod_sanitario}}</p>
-                    <button class="btn btn-primary">Generar Informe</button>
+                    <button class="btn btn-primary" ng-click="cancelarCita(cita.cod)">Cancelar Cita</button>
                 </li>
             </div>
 
