@@ -54,8 +54,8 @@ reto_covid_intranet.controller('body', async function ($scope) {
                 $scope.updatePaciente = function () {
 
                     var cod_localidad;
-                    $("#localidad").val()?cod_localidad= $("#localidad").val:cod_localidad=session.paciente.cod_localidad;
-                    
+                    $("#localidad").val()?cod_localidad= $("#localidad").val():cod_localidad=session.paciente.cod_localidad;
+
                     var data = {
                         "solicitud": "updatePaciente",
                         "tis": $("#pacienteTIS").val(),
@@ -81,7 +81,6 @@ reto_covid_intranet.controller('body', async function ($scope) {
                         alert("Se han guardado los cambios");
                         $('#fotoPerfil').attr("src", savedFileBase64);
                     }).catch(error => console.error('Error status:', error));
-
                 }
 
 
@@ -107,12 +106,14 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
             case 'pedirCita':
                 ($scope.show == contenType) ? $scope.show = 'default' : $scope.show = contenType;
+                $('#fotoCita').attr("src", "../img/" + session.paciente.foto_perfil);
 
-                var horasOcupadas = Array();
                 $scope.horarios = Array();
                 var fechaSeleccionada;
 
                 $scope.getHoraByFechaCentro = () => {
+
+                    $scope.horarios = Array();
 
                     fechaSeleccionada = event.target.value
 
@@ -182,7 +183,7 @@ reto_covid_intranet.controller('body', async function ($scope) {
                         console.log($scope.horarios);
                         console.log(timeZone);
 
-                        $scope.$digest;
+                        $scope.$digest();
 
                     }).catch(error => console.error('Error status:', error));
 
@@ -208,7 +209,16 @@ reto_covid_intranet.controller('body', async function ($scope) {
                             body: JSON.stringify(data),
                             headers: { 'Content-Type': 'application/json' }
                         }).then(res2 => res2.json()).then(result2 => {
-                            console.log(result2);
+                            
+                            // Respuesta de la BBDD para la solicitud insertCita
+                            if (result2.insertedCita) {
+                                alert('La cita se a solicitado correctamente');
+                                location.reload();
+
+                            }else {
+                                alert('Fallo al pedir la cita');
+                            }
+
                         }).catch(error => console.error('Error status:', error));
 
                     }).catch(error => console.error('Error status:', error));
@@ -222,6 +232,7 @@ reto_covid_intranet.controller('body', async function ($scope) {
 
             case 'verCitas':
                 ($scope.show == contenType) ? $scope.show = 'default' : $scope.show = contenType;
+                
                 $scope.cancelarCita = (cod) => {
                     $('li#citaCod'+cod).hide('fade');
                     var codForDelet;
@@ -231,9 +242,24 @@ reto_covid_intranet.controller('body', async function ($scope) {
                         }
                     }
                     $scope.usuario.objCita.splice(codForDelet,1);
+
+
+                    var url="../../controller/cCitas.php";
+                    var data = { 'solicitud': 'deleteCita', 'cod_cita': cod }
+                    fetch(url, {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: { 'Content-Type': 'application/json' }
+                    }).then(res => res.json()).then(result => {
+                        console.log(result);
+                        if (result.deletedCita) {
+                            alert('Se ha eliminado correctamente la cita');
+                        }
+
+                    }).catch(error => console.error('Error status:', error));
+
                 }
                 break;
-
 
             case 'verVacunas':
                 ($scope.show == contenType) ? $scope.show = 'default' : $scope.show = contenType;

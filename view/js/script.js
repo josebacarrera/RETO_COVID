@@ -56,7 +56,6 @@ function validateTis(p) {
 }
 
 function validateDni(p) {
-    console.log(1);
     if (p.value.length > 8) {
         if(!isNaN(p.value.slice(-1))){p.value = p.value.slice(0, -1);}
     } else {

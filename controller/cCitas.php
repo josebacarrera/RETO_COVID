@@ -12,7 +12,6 @@ if (isset($data['solicitud'])) {
     switch ($solicitud) {
 
         //@Param: tis
-
         case 'selectAllCitasByTis':
 
             if (isset($data['tis'])) {$tis=$data['tis'];}
@@ -26,7 +25,6 @@ if (isset($data['solicitud'])) {
             break;
 
         //@Param: fecha, centro
-
         case 'selectHoraByFechaCentro':
 
             if (isset($data['fecha'])) {$fecha=$data['fecha'];}
@@ -73,10 +71,24 @@ if (isset($data['solicitud'])) {
                 $response['insertedCita'] = $citas->insertCita();
 
             }
+
+        case 'deleteCita':
+
+            // @Param: cod_cita
+
+            if (isset($data['cod_cita'])) {$cod_cita=$data['cod_cita'];}
+            else {$response['error'] = true;$response['errorInf'] = 'CodCita Not Found';}
+
+            if (!$response['error']) { // Ejecución realizado una vez combrobado que no hay errores en recibir los datos.
+                $citas = new citaModel();
+                $citas->setCod($cod_cita);
+                $response['deletedCita'] = $citas->deleteCita();
+
+            }
+
+            break;
     
         }
-
-    
         
 } else {
     $response['error'] = true;

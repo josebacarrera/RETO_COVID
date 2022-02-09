@@ -96,7 +96,6 @@ if (isset($data['solicitud'])) {
                     $paciente->setApellido($apellido);
                     $paciente->setEmail($email);
                     $paciente->setTelefono($telefono);
-
                     $paciente->setDireccion($direccion);
                     $paciente->setCod_localidad($localidad);
                     $paciente->setFoto_perfil($cartel);

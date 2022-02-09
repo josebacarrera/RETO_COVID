@@ -38,20 +38,20 @@
         <ul class="nav nav-pills flex-column mb-auto px-2">
 
             <li class="border-top " ng-click="loadContent('AGENDA')">
-                <!-- AGENDA -->
+
                 <a href="" class="nav-link text-white btnAgenda">
                     <i class="fa fa-book fs-5"></i>
                     <span class="fs-5">Agenda Sanitaria</span>
                 </a>
             </li>
 
-            <li class="" ng-click="loadContent('INFORME')">
-                <!-- INFORME -->
+            <!-- <li class="" ng-click="loadContent('INFORME')">
+                
                 <a href="" class="nav-link text-white">
                     <i class="fa fa-scroll"></i>
                     <span class="fs-5 btnInforme">Informes</span>
                 </a>
-            </li>
+            </li> -->
 
             <li class="datosLateral" ng-click="loadContent('DATOS')">
                 <!-- DATOS -->
@@ -70,15 +70,15 @@
             </li>
 
         </ul>
-<div class="text-center">
+        <div class="text-center">
 
-    <button type="button" class="btn btn-outline-success btn-primary m-4" value="Enviar" id="btnEnviar">
-        <a href="../../index.html" style="text-decoration: none;color: white;">VOLVER</a></button> 
-</div>
+            <button type="button" class="btn btn-outline-success btn-primary m-4" value="Enviar" id="btnEnviar">
+                <a href="../../index.html" style="text-decoration: none;color: white;">VOLVER</a></button>
+        </div>
 
-            
-            
-            
+
+
+
     </div>
     <!-- PaneLateral -->
 
@@ -88,7 +88,7 @@
         <!-- AGENDA -->
         <div class="row mx-0 d-flex justify-content-around" ng-show="show=='default' || show=='AGENDA'">
 
-            <div class="card shadow-sm covidCard" style="width: 18rem;">
+            <!-- <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/citaprevia.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">CITA</h5>
@@ -96,18 +96,19 @@
                             href="https://zitaberria.osakidetza.eus/o22PlamWar/o22JSP/O22jsplogin.jsp" target="_blank"
                             class="btn" style="background-color: #358f80; color: white;">PEDIR CITA</a> </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/agenda.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS CITAS</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;" ng-click="loadContent('verCitas')">REVISAR</a> </div>
+                            style="background-color: #358f80; color: white;"
+                            ng-click="loadContent('verCitas')">REVISAR</a> </div>
                 </div>
             </div>
 
-            <div class="card shadow-sm covidCard" style="width: 18rem;">
+            <!-- <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/cirugia.png" class="card-img-top w-100" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">ESPERA CIRUGIA</a></h5>
@@ -116,11 +117,11 @@
                             target="_blank" class="btn" style="background-color: #358f80; color: white;">COMPROBAR</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
         <!-- INFORME  -->
-        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='default' || show=='INFORME'">
+        <!-- <div class="row mx-0 d-flex justify-content-around" ng-show="show=='default' || show=='INFORME'">
 
             <div class="card shadow-sm covidCard" style="width: 18rem;">
                 <img src="../img/infobasica.png" class="card-img-top w-100" alt="...">
@@ -150,7 +151,7 @@
                             class="btn" style="background-color: #358f80; color: white;">VER</a> </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- DATOS PERSONALES -->
         <div class="row mx-0 d-flex justify-content-around" ng-show="show=='DATOS'">
@@ -174,8 +175,9 @@
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels fw-bold">Numero TIS</label><input id="pacienteTIS"
                             type="text" class="form-control" placeholder="Numero TIS bloqueado" value="" disabled></div>
-                    <div class="col-md-6"><label class="labels fw-bold">Fecha nacimiento</label><input id="pacienteFecha_nac"
-                            type="text" class="form-control" placeholder="Numero TIS bloqueado" value="" disabled></div>
+                    <div class="col-md-6"><label class="labels fw-bold">Fecha nacimiento</label><input
+                            id="pacienteFecha_nac" type="text" class="form-control" placeholder="Numero TIS bloqueado"
+                            value="" disabled></div>
                 </div>
                 <div class="row mt-2">
 
@@ -198,7 +200,8 @@
                             <label class="fw-bold" for="newPacienteDireccion">Localidad</label>
                             <select name="" id="localidad" ng-model="localidad" class="form-control form-select">
                                 <option value="">{{ usuario.objLocalidad.nombre }}</option>
-                                <option value="{{localidad.cod}}" ng-repeat='localidad in localidades' ng-if='localidad.nombre != usuario.objLocalidad.nombre'>
+                                <option value="{{localidad.cod}}" ng-repeat='localidad in localidades'
+                                    ng-if='localidad.nombre != usuario.objLocalidad.nombre'>
                                     {{localidad.nombre}}</option>
                             </select>
                         </div>
@@ -208,7 +211,8 @@
                     <button class="btn btn-primary profile-button" type="button" ng-click="updatePaciente()">GUARDAR
                         CAMBIOS</button>
                     <button class="btn btn-danger profile-button" type="button" ng-click="discardChanges()">DESCARTAR
-                        CAMBIOS</button></div>
+                        CAMBIOS</button>
+                </div>
             </div>
         </div>
 
@@ -219,7 +223,8 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">CITA VACUNACIÓN</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;" ng-click="loadContent('pedirCita')">PEDIR CITA</a> </div>
+                            style="background-color: #358f80; color: white;" ng-click="loadContent('pedirCita')">PEDIR
+                            CITA</a> </div>
                 </div>
             </div>
 
@@ -228,7 +233,8 @@
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">MIS VACUNAS</h5>
                     <div class="text-center my-4"> <a href="#" class="btn"
-                            style="background-color: #358f80; color: white;" ng-click="loadContent('verVacunas')">VER</a> </div>
+                            style="background-color: #358f80; color: white;"
+                            ng-click="loadContent('verVacunas')">VER</a> </div>
                 </div>
             </div>
 
@@ -245,7 +251,7 @@
         </div>
 
         <!-- COVID MODAL -->
-        <div class="row mx-0 d-flex justify-content-around" style="margin-top: 7%;">
+        <div class="row mx-0 d-flex justify-content-around">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
@@ -319,19 +325,19 @@
                         <div class="collapse" id="pregunta4">
                             <div class="card card-body mt-0">
                                 <p>
-                                    <ul>
-                                        <li>Fiebre o escalofríos</li>
-                                        <li>Tos</li>
-                                        <li>Dificultad para respirar</li>
-                                        <li>Fatiga</li>
-                                        <li>Dolores musculares y corporales</li>
-                                        <li>Dolor de cabeza</li>
-                                        <li>Perdida reciente de olfato o del gusto</li>
-                                        <li>Dolor de garganta</li>
-                                        <li>Congestión o moqueo</li>
-                                        <li>Náuseas o vómitos</li>
-                                        <li>Diarrea</li>
-                                    </ul>
+                                <ul>
+                                    <li>Fiebre o escalofríos</li>
+                                    <li>Tos</li>
+                                    <li>Dificultad para respirar</li>
+                                    <li>Fatiga</li>
+                                    <li>Dolores musculares y corporales</li>
+                                    <li>Dolor de cabeza</li>
+                                    <li>Perdida reciente de olfato o del gusto</li>
+                                    <li>Dolor de garganta</li>
+                                    <li>Congestión o moqueo</li>
+                                    <li>Náuseas o vómitos</li>
+                                    <li>Diarrea</li>
+                                </ul>
                                 </p>
                             </div>
                         </div>
@@ -344,14 +350,14 @@
                         <div class="collapse" id="pregunta5">
                             <div class="card card-body mt-0">
                                 <p>
-                                    <ul>
-                                        <li>Dificultad para respirar</li>
-                                        <li>Dolor o presión persistente en el pecho</li>
-                                        <li>Confusión</li>
-                                        <li>Incapacidad de despertarse o permanecer despierto</li>
-                                        <li>Piel, labios olechos de uñas pálidos, grises o azulados, según el tono
-                                            de la piel</li>
-                                    </ul>
+                                <ul>
+                                    <li>Dificultad para respirar</li>
+                                    <li>Dolor o presión persistente en el pecho</li>
+                                    <li>Confusión</li>
+                                    <li>Incapacidad de despertarse o permanecer despierto</li>
+                                    <li>Piel, labios olechos de uñas pálidos, grises o azulados, según el tono
+                                        de la piel</li>
+                                </ul>
                                 </p>
                             </div>
                         </div>
@@ -477,12 +483,12 @@
                                 <div class="card-body">
                                     <p>En la aplicación, una vez escojas “Pedir una nueva cita” se dará la opción de
                                         solicitarla para los siguientes profesionales según corresponda:
-                                        <ul>
-                                            <li>Médico o médica de cabecera</li>
-                                            <li>Pediatra</li>
-                                            <li>Matrona</li>
-                                            <li>Enfermería (pediátrica y/o de adultos)</li>
-                                        </ul>
+                                    <ul>
+                                        <li>Médico o médica de cabecera</li>
+                                        <li>Pediatra</li>
+                                        <li>Matrona</li>
+                                        <li>Enfermería (pediátrica y/o de adultos)</li>
+                                    </ul>
                                     </p>
 
                                 </div>
@@ -545,19 +551,19 @@
                                     <p>Actualmente existe un límite de citas pendientes para poder coger una cita
                                         por la
                                         web. Este límite es:
-                                        <ul>
-                                            <li>Máximo de 2 citas pendientes por profesional en el mismo día, por
-                                                cada
-                                                paciente.</li>
-                                            <li>Máximo de 12 citas pendientes a futuro por profesional, por cada
-                                                paciente.
-                                            </li>
-                                        </ul>
-                                        Si se supera este número, se mostrará un mensaje indicando que se ha
-                                        superado el
-                                        límite de citas. Para poder coger una nueva, tendrás que ponerte en contacto
-                                        con tu
-                                        centro de salud.</p>
+                                    <ul>
+                                        <li>Máximo de 2 citas pendientes por profesional en el mismo día, por
+                                            cada
+                                            paciente.</li>
+                                        <li>Máximo de 12 citas pendientes a futuro por profesional, por cada
+                                            paciente.
+                                        </li>
+                                    </ul>
+                                    Si se supera este número, se mostrará un mensaje indicando que se ha
+                                    superado el
+                                    límite de citas. Para poder coger una nueva, tendrás que ponerte en contacto
+                                    con tu
+                                    centro de salud.</p>
                                 </div>
                             </div>
                         </div>
@@ -678,30 +684,53 @@
         </div>
 
         <!-- VER VACUNAS -->
-        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='verVacunas'">
+        <div class="row mx-0  my-2 d-flex justify-content-around" ng-show="show=='verVacunas'">
 
-            <h3>Registro de Vacunas</h3>
+            <h1 class="title m-2">Registro de Vacunas</h3>
 
-            <div class="list-group" ng-repeat='vacuna in usuario.objVacunacion'>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <p class="m-0">El paciente ha recibido {{vacuna.dosis}} de la vacuna {{vacuna.objVacuna.nombre}}.
-                        Última fecha registreada {{vacuna.fecha_ultima_vacuna}}</p>
-                    <button class="btn btn-primary">Generar Informe</button>
-                </li>
-            </div>
+                <div class="list-group" ng-repeat='vacuna in usuario.objVacunacion'>
+                    <li class="list-group-item justify-content-between align-items-center m-2">
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <div class="col-sm-6 col-md-1">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJnQyLKPH8dO7Arn_XeREWk3vKv48iKBqmRWcEaSvo2GU1RZQeoktYETCVXA8qXXvHn-Y&usqp=CAU" alt="" class="img-fluid" srcset="">
+                            </div>
+                            <div class="col-sm-6 col-md-9">
+                                <p class="m-0">El paciente ha recibido <b> {{vacuna.dosis}}</b> de la vacuna
+                                    <b> {{vacuna.objVacuna.nombre}}</b>.
+                                    <br> Última fecha registreada <b>{{vacuna.fecha_ultima_vacuna}}</b></p>
+                            </div>
+                            <div class="col-sm-12 col-md-2 text-center">
+                                <button class="btn btn-primary">Generar Informe</button>
+                            </div>
+                        </div>
+                    </li>
+                </div>
 
         </div>
 
         <!-- VER CITAS -->
-        <div class="row mx-0 d-flex justify-content-around" ng-show="show=='verCitas'">
+        <div class="row m-0 d-flex justify-content-around" ng-show="show=='verCitas'">
 
-            <h3>Registro de citas</h3>
+            <h1 class="title m-2">Registro de citas</h1>
 
             <div class="list-group" ng-repeat='cita in usuario.objCita'>
-                <li id="citaCod{{cita.cod}}" class="list-group-item d-flex justify-content-between align-items-center">
-                    <p class="m-0">Cita realizada en {{cita.fecha}} a las {{cita.hora}}. Nº de Sanitario asignado:
-                        {{cita.cod_sanitario}}</p>
-                    <button class="btn btn-primary" ng-click="cancelarCita(cita.cod)">Cancelar Cita</button>
+                <li id="citaCod{{cita.cod}}"
+                    class="list-group-item m-2 d-flex justify-content-between align-items-center">
+                    <div class="row d-flex align-items-center justify-content-center">
+                        <div class="col-sm-6 col-md-1">
+                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/calendar-clipart-logo-design-template-9a3d7bbcf620587d4b74313072040475_screen.jpg?ts=1611246431"
+                                class="img-fluid" srcset="">
+                        </div>
+                        <div class="col-sm-6 col-md-9">
+                            <p class="m-2">Cita realizada el <b>{{cita.fecha}}</b> a las <b>{{cita.hora}}</b>.
+                                <br>Nº de Sanitario asignado: <b> {{cita.cod_sanitario}}</b>
+                            </p>
+                        </div>
+                        <div class="col-sm-12 col-md-2 text-center"> 
+                            <button class="btn btn-primary" ng-click="cancelarCita(cita.cod)">Cancelar
+                                Cita</button>
+                        </div>
+                    </div>
                 </li>
             </div>
 
@@ -711,7 +740,9 @@
         <div class="row mx-0 d-flex justify-content-around" ng-show="show=='pedirCita'">
 
             <div class="col-4 border">
-                <h1>{{ usuario.nombre }}</h1>
+                <img id="fotoCita"
+                    src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    class="img-fluid" alt="">
             </div>
 
             <div class="col-8">
@@ -727,7 +758,7 @@
                 <div class="form-outline mb-4">
                     <label class="form-label">Selecciona la hora:</label><br>
                     <button class="btn btn-primary" ng-repeat='horario in horarios'
-                        ng-click='pedirCita()'>{{ horario || '00:00' }}</button>
+                        ng-click="pedirCita()">{{ horario || '00:00' }}</button>
                 </div>
             </div>
 

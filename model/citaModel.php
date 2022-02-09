@@ -138,6 +138,17 @@ class citaModel extends citaClass {
         $this->CloseConnect();
     }
 
+    public function deleteCita() {
+        $this->OpenConnect();
+        $sql="DELETE FROM cita WHERE cod_cita_ci = '".$this->getCod()."'";
+        $response = false;
+        if ($this->link->query($sql)) {
+            $response = true;
+        }
+        $this->CloseConnect();
+        return $response;
+    }
+
     public function ObjVars() {
         return get_object_vars($this);
     }
